@@ -1,0 +1,152 @@
+/* ===========================================================
+   Eclipse 2026 — Design tokens & global base
+   Aesthetic: editorial astronómico · negro vacío + oro corona
+   =========================================================== */
+
+:root {
+	/* --- Color --- */
+	--void: #07060a;
+	--ink: #0e0b14;
+	--ink-soft: #16121f;
+	--bone: #f4efe6;
+	--bone-dim: #cfc8bd;
+	--muted: #8d8699;
+	--muted-deep: #5b5566;
+
+	--corona: #f6c453;
+	--corona-hot: #ffe09a;
+	--ember: #db7a3c;
+	--ember-deep: #a84e23;
+
+	--line: rgba(244, 239, 230, 0.12);
+	--line-strong: rgba(244, 239, 230, 0.24);
+	--halo: rgba(246, 196, 83, 0.55);
+	--halo-soft: rgba(246, 196, 83, 0.16);
+
+	/* --- Type --- */
+	--font-display: "Fraunces", "Times New Roman", serif;
+	--font-body: "Hanken Grotesk", system-ui, sans-serif;
+	--font-mono: "Space Mono", ui-monospace, monospace;
+
+	/* fluid scale */
+	--step--1: clamp(0.78rem, 0.74rem + 0.2vw, 0.9rem);
+	--step-0: clamp(1rem, 0.95rem + 0.25vw, 1.15rem);
+	--step-1: clamp(1.3rem, 1.1rem + 1vw, 1.85rem);
+	--step-2: clamp(1.9rem, 1.4rem + 2.4vw, 3.1rem);
+	--step-3: clamp(2.8rem, 1.6rem + 5.5vw, 6rem);
+	--step-4: clamp(3.6rem, 1.2rem + 11vw, 11rem);
+
+	/* --- Space --- */
+	--gutter: clamp(1.25rem, 4vw, 5rem);
+	--section-y: clamp(5rem, 12vh, 11rem);
+	--radius: 14px;
+
+	/* --- Motion --- */
+	--ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	margin: 0;
+	min-height: 100%;
+	background: var(--void);
+	color: var(--bone);
+	font-family: var(--font-body);
+	font-size: var(--step-0);
+	line-height: 1.6;
+	font-weight: 380;
+	letter-spacing: 0.01em;
+	-webkit-font-smoothing: antialiased;
+	overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+	font-family: var(--font-display);
+	font-weight: 340;
+	line-height: 0.96;
+	letter-spacing: -0.02em;
+	margin: 0;
+	font-optical-sizing: auto;
+}
+
+p {
+	margin: 0;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+/* --- Reusable atoms --- */
+.shell {
+	width: min(100% - var(--gutter) * 2, 1240px);
+	margin-inline: auto;
+}
+
+.kicker {
+	font-family: var(--font-mono);
+	font-size: var(--step--1);
+	text-transform: uppercase;
+	letter-spacing: 0.32em;
+	color: var(--corona);
+}
+
+.eyebrow {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.7rem;
+	font-family: var(--font-mono);
+	font-size: 0.72rem;
+	text-transform: uppercase;
+	letter-spacing: 0.3em;
+	color: var(--muted);
+}
+
+.eyebrow::before {
+	content: "";
+	width: 28px;
+	height: 1px;
+	background: var(--line-strong);
+}
+
+/* --- Atmosphere: grain overlay --- */
+.grain {
+	position: fixed;
+	inset: 0;
+	z-index: 999;
+	pointer-events: none;
+	opacity: 0.05;
+	mix-blend-mode: overlay;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+::selection {
+	background: var(--corona);
+	color: var(--void);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+	}
+}

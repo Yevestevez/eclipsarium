@@ -1,0 +1,12 @@
+{
+	"date": "2026-08-12",
+	"dateLabel": "12 de agosto de 2026",
+	"type": "Eclipse solar total",
+	"facts": [
+		{ "label": "Tipo", "value": "Total", "note": "El disco lunar cubre por completo al Sol" },
+		{ "label": "Totalidad máx.", "value": "1m 49s", "note": "Duración máxima en la península" },
+		{ "label": "Magnitud", "value": "1.039", "note": "Fracción del diámetro solar cubierto" },
+		{ "label": "Anterior total", "value": "1905", "note": "Último eclipse total visible en España" }
+	],
+	"intro": "Tras más de un siglo de espera, la sombra de la Luna volverá a recorrer la península. El atardecer del 12 de agosto de 2026, el cielo se apagará en pleno día sobre una franja del norte de España."
+}

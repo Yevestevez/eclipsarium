@@ -1,0 +1,66 @@
+---
+import "../styles/tokens.css";
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = "Eclipse Total · 12 de agosto de 2026 · España",
+	description = "Guía del eclipse solar total del 12 de agosto de 2026 sobre España: qué es, cuándo y dónde verlo con seguridad.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..600&family=Hanken+Grotesk:wght@300..700&family=Space+Mono:wght@400;700&display=swap"
+			rel="stylesheet"
+		/>
+
+		<title>{title}</title>
+	</head>
+	<body>
+		<div class="starfield" aria-hidden="true"></div>
+		<slot />
+		<div class="grain" aria-hidden="true"></div>
+
+		<style>
+			/* Layered starfield — three depths, slow drift */
+			.starfield {
+				position: fixed;
+				inset: -50% -50% -50% -50%;
+				z-index: 0;
+				pointer-events: none;
+				background-image:
+					radial-gradient(1px 1px at 20% 30%, rgba(244, 239, 230, 0.9), transparent),
+					radial-gradient(1px 1px at 70% 65%, rgba(244, 239, 230, 0.7), transparent),
+					radial-gradient(1.4px 1.4px at 45% 80%, rgba(255, 224, 154, 0.8), transparent),
+					radial-gradient(1px 1px at 85% 15%, rgba(244, 239, 230, 0.6), transparent),
+					radial-gradient(1px 1px at 12% 78%, rgba(244, 239, 230, 0.65), transparent),
+					radial-gradient(1.2px 1.2px at 60% 40%, rgba(244, 239, 230, 0.5), transparent),
+					radial-gradient(1px 1px at 33% 12%, rgba(255, 224, 154, 0.7), transparent),
+					radial-gradient(1px 1px at 92% 88%, rgba(244, 239, 230, 0.55), transparent);
+				background-size: 600px 600px, 420px 420px, 780px 780px, 320px 320px, 540px 540px, 700px 700px, 380px 380px, 480px 480px;
+				animation: drift 220s linear infinite;
+				opacity: 0.85;
+			}
+
+			@keyframes drift {
+				to {
+					transform: translate3d(-180px, -120px, 0);
+				}
+			}
+		</style>
+	</body>
+</html>

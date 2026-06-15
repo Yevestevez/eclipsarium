@@ -1,0 +1,10 @@
+{
+	"places": [
+		{ "city": "A Coruña", "region": "Galicia", "totality": true, "duration": "1m 44s", "contact": "20:27" },
+		{ "city": "Oviedo", "region": "Asturias", "totality": true, "duration": "1m 35s", "contact": "20:28" },
+		{ "city": "Burgos", "region": "Castilla y León", "totality": true, "duration": "1m 41s", "contact": "20:30" },
+		{ "city": "Zaragoza", "region": "Aragón", "totality": true, "duration": "1m 24s", "contact": "20:32" },
+		{ "city": "Palma", "region": "Islas Baleares", "totality": true, "duration": "1m 06s", "contact": "20:35" },
+		{ "city": "Madrid", "region": "Comunidad de Madrid", "totality": false, "duration": "99% parcial", "contact": "20:31" }
+	]
+}

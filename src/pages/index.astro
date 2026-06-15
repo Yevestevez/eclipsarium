@@ -1,272 +1,281 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import EclipseAnimation from "../components/EclipseAnimation.astro";
-import EventInfo from "../components/EventInfo.astro";
-import WhereToWatch from "../components/WhereToWatch.astro";
-import Countdown from "../components/Countdown.astro";
+import Layout from '../layouts/Layout.astro';
+import EclipseAnimation from '../components/EclipseAnimation.astro';
+import OrbitSimulation from '../components/OrbitSimulation.astro';
+import EventInfo from '../components/EventInfo.astro';
+import WhereToWatch from '../components/WhereToWatch.astro';
+import Countdown from '../components/Countdown.astro';
 ---
 
 <Layout>
-	<header class="topbar">
-		<div class="shell topbar__inner">
-			<a href="#" class="brand">ECLIPSE<span>·26</span></a>
-			<nav class="nav">
-				<a href="#evento">El evento</a>
-				<a href="#donde">Dónde verlo</a>
-				<a href="#cuenta">Cuenta atrás</a>
-			</nav>
-		</div>
-	</header>
+    <header class="topbar">
+        <div class="shell topbar__inner">
+            <a href="#" class="brand">ECLIPSARIUM<span>·26</span></a>
+            <nav class="nav">
+                <a href="#evento">El evento</a>
+                <a href="#donde">Dónde verlo</a>
+                <a href="#cuenta">Cuenta atrás</a>
+            </nav>
+        </div>
+    </header>
 
-	<main>
-		<section class="hero">
-			<div class="shell hero__inner">
-				<div class="hero__copy">
-					<span class="kicker">12 · 08 · 2026 — España</span>
-					<h1 class="hero__title">
-						El día en que<br /><em>cae la noche</em><br />a mediodía
-					</h1>
-					<p class="hero__sub">
-						Un eclipse solar total cruzará el norte de la península por
-						primera vez en más de un siglo. Esto es lo que vas a ver, y dónde.
-					</p>
-					<a href="#donde" class="hero__cta">
-						Encuentra tu lugar
-						<span aria-hidden="true">↓</span>
-					</a>
-				</div>
+    <main>
+        <section class="hero">
+            <div class="shell hero__inner">
+                <div class="hero__copy">
+                    <span class="kicker">12 · 08 · 2026 — España</span>
+                    <h1 class="hero__title">
+                        El día en que<br /><em>cae la noche</em><br />a mediodía
+                    </h1>
+                    <p class="hero__sub">
+                        Un eclipse solar total cruzará el norte de la península
+                        por primera vez en más de un siglo. Esto es lo que vas a
+                        ver, y dónde.
+                    </p>
+                    <a href="#donde" class="hero__cta">
+                        Encuentra tu lugar
+                        <span aria-hidden="true">↓</span>
+                    </a>
+                </div>
 
-				<div class="hero__visual">
-					<EclipseAnimation />
-				</div>
-			</div>
+                <div class="hero__visual">
+                    <EclipseAnimation />
+                    <!-- <OrbitSimulation /> -->
+                </div>
+            </div>
 
-			<div class="hero__marquee" aria-hidden="true">
-				<div class="marquee__track">
-					<span>Totalidad · 1m 49s</span><span>✦</span>
-					<span>Corona visible</span><span>✦</span>
-					<span>Anillo de diamante</span><span>✦</span>
-					<span>Sombra de la Luna</span><span>✦</span>
-					<span>Totalidad · 1m 49s</span><span>✦</span>
-					<span>Corona visible</span><span>✦</span>
-					<span>Anillo de diamante</span><span>✦</span>
-					<span>Sombra de la Luna</span><span>✦</span>
-				</div>
-			</div>
-		</section>
+            <div class="hero__marquee" aria-hidden="true">
+                <div class="marquee__track">
+                    <span>Totalidad · 1m 49s</span><span>✦</span>
+                    <span>Corona visible</span><span>✦</span>
+                    <span>Anillo de diamante</span><span>✦</span>
+                    <span>Sombra de la Luna</span><span>✦</span>
+                    <span>Totalidad · 1m 49s</span><span>✦</span>
+                    <span>Corona visible</span><span>✦</span>
+                    <span>Anillo de diamante</span><span>✦</span>
+                    <span>Sombra de la Luna</span><span>✦</span>
+                </div>
+            </div>
+        </section>
 
-		<EventInfo />
-		<WhereToWatch />
-		<Countdown />
-	</main>
+        <EventInfo />
+        <WhereToWatch />
+        <Countdown />
+    </main>
 
-	<footer class="foot">
-		<div class="shell foot__inner">
-			<p class="foot__warn">
-				<strong>⚠ Nunca mires al Sol sin protección certificada.</strong>
-				Usa gafas de eclipse con norma <span>ISO&nbsp;12312-2</span>. Las gafas de
-				sol normales no protegen tu vista.
-			</p>
-			<p class="foot__sig">Eclipse&nbsp;26 — proyecto divulgativo · Sprint&nbsp;1</p>
-		</div>
-	</footer>
+    <footer class="foot">
+        <div class="shell foot__inner">
+            <p class="foot__warn">
+                <strong>⚠ Nunca mires al Sol sin protección certificada.</strong
+                >
+                Usa gafas de eclipse con norma <span>ISO&nbsp;12312-2</span>.
+                Las gafas de sol normales no protegen tu vista.
+            </p>
+            <p class="foot__sig">
+                Eclipse&nbsp;26 — proyecto divulgativo · Sprint&nbsp;1
+            </p>
+        </div>
+    </footer>
 </Layout>
 
 <style>
-	/* --- Topbar --- */
-	.topbar {
-		position: sticky;
-		top: 0;
-		z-index: 100;
-		padding-block: 1.2rem;
-		backdrop-filter: blur(10px);
-		background: linear-gradient(var(--void), rgba(7, 6, 10, 0));
-	}
+    /* --- Topbar --- */
+    .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        padding-block: 1.2rem;
+        backdrop-filter: blur(10px);
+        background: linear-gradient(var(--void), rgba(7, 6, 10, 0));
+    }
 
-	.topbar__inner {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
+    .topbar__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
 
-	.brand {
-		font-family: var(--font-mono);
-		font-weight: 700;
-		letter-spacing: 0.2em;
-		font-size: 0.9rem;
-	}
+    .brand {
+        font-family: var(--font-mono);
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        font-size: 0.9rem;
+    }
 
-	.brand span {
-		color: var(--corona);
-	}
+    .brand span {
+        color: var(--space-blue);
+    }
 
-	.nav {
-		display: flex;
-		gap: clamp(1rem, 3vw, 2.4rem);
-		font-family: var(--font-mono);
-		font-size: 0.72rem;
-		text-transform: uppercase;
-		letter-spacing: 0.18em;
-		color: var(--muted);
-	}
+    .nav {
+        display: flex;
+        gap: clamp(1rem, 3vw, 2.4rem);
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--muted);
+    }
 
-	.nav a {
-		transition: color 0.3s var(--ease);
-	}
+    .nav a {
+        transition: color 0.3s var(--ease);
+    }
 
-	.nav a:hover {
-		color: var(--bone);
-	}
+    .nav a:hover {
+        color: var(--bone);
+    }
 
-	@media (max-width: 560px) {
-		.nav {
-			display: none;
-		}
-	}
+    @media (max-width: 560px) {
+        .nav {
+            display: none;
+        }
+    }
 
-	/* --- Hero --- */
-	.hero {
-		position: relative;
-		z-index: 1;
-		padding-top: clamp(2rem, 6vh, 5rem);
-	}
+    /* --- Hero --- */
+    .hero {
+        position: relative;
+        z-index: 1;
+        padding-top: clamp(2rem, 6vh, 5rem);
+    }
 
-	.hero__inner {
-		display: grid;
-		grid-template-columns: 1.05fr 0.95fr;
-		align-items: center;
-		gap: clamp(2rem, 5vw, 4rem);
-		min-height: 78vh;
-	}
+    .hero__inner {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        align-items: center;
+        gap: clamp(2rem, 5vw, 4rem);
+        min-height: 78vh;
+    }
 
-	.hero__title {
-		font-size: var(--step-3);
-		margin-top: 1.4rem;
-		font-weight: 320;
-	}
+    .hero__title {
+        font-size: var(--step-3);
+        margin-top: 1.4rem;
+        font-weight: 700;
+    }
 
-	.hero__title em {
-		font-style: italic;
-		color: var(--corona);
-	}
+    .hero__title em {
+        font-style: italic;
+        color: var(--space-blue);
+    }
 
-	.hero__sub {
-		margin-top: 1.8rem;
-		max-width: 42ch;
-		color: var(--bone-dim);
-		font-size: var(--step-1);
-		font-weight: 300;
-		line-height: 1.5;
-	}
+    .hero__sub {
+        margin-top: 1.8rem;
+        max-width: 42ch;
+        color: var(--bone-dim);
+        font-size: var(--step-1);
+        font-weight: 300;
+        line-height: 1.5;
+    }
 
-	.hero__cta {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.7rem;
-		margin-top: 2.4rem;
-		padding: 0.95rem 1.7rem;
-		border: 1px solid var(--line-strong);
-		border-radius: 100px;
-		font-family: var(--font-mono);
-		font-size: 0.74rem;
-		text-transform: uppercase;
-		letter-spacing: 0.18em;
-		transition: border-color 0.4s var(--ease), color 0.4s var(--ease), gap 0.4s var(--ease);
-	}
+    .hero__cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.7rem;
+        margin-top: 2.4rem;
+        padding: 0.95rem 1.7rem;
+        border: 1px solid var(--line-strong);
+        border-radius: 100px;
+        font-family: var(--font-mono);
+        font-size: 0.74rem;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        transition:
+            border-color 0.4s var(--ease),
+            color 0.4s var(--ease),
+            gap 0.4s var(--ease);
+    }
 
-	.hero__cta:hover {
-		border-color: var(--corona);
-		color: var(--corona);
-		gap: 1.1rem;
-	}
+    .hero__cta:hover {
+        border-color: var(--space-blue);
+        color: var(--space-blue);
+        gap: 1.1rem;
+    }
 
-	.hero__visual {
-		display: grid;
-		place-items: center;
-	}
+    .hero__visual {
+        display: grid;
+        place-items: center;
+    }
 
-	@media (max-width: 860px) {
-		.hero__inner {
-			grid-template-columns: 1fr;
-			min-height: auto;
-			gap: 1rem;
-		}
-		.hero__visual {
-			order: -1;
-			margin-bottom: 1rem;
-		}
-	}
+    @media (max-width: 860px) {
+        .hero__inner {
+            grid-template-columns: 1fr;
+            min-height: auto;
+            gap: 1rem;
+        }
+        .hero__visual {
+            order: -1;
+            margin-bottom: 1rem;
+        }
+    }
 
-	/* --- Marquee --- */
-	.hero__marquee {
-		margin-top: clamp(3rem, 8vh, 6rem);
-		border-block: 1px solid var(--line);
-		padding-block: 1.1rem;
-		overflow: hidden;
-		white-space: nowrap;
-	}
+    /* --- Marquee --- */
+    .hero__marquee {
+        margin-top: clamp(3rem, 8vh, 6rem);
+        border-block: 1px solid var(--line);
+        padding-block: 1.1rem;
+        overflow: hidden;
+        white-space: nowrap;
+    }
 
-	.marquee__track {
-		display: inline-flex;
-		align-items: center;
-		gap: 2.4rem;
-		font-family: var(--font-display);
-		font-style: italic;
-		font-size: var(--step-1);
-		color: var(--bone-dim);
-		animation: marquee 32s linear infinite;
-	}
+    .marquee__track {
+        display: inline-flex;
+        align-items: center;
+        gap: 2.4rem;
+        font-family: var(--font-display);
+        font-style: italic;
+        font-size: var(--step-1);
+        color: var(--bone-dim);
+        animation: marquee 32s linear infinite;
+    }
 
-	.marquee__track span:nth-child(even) {
-		color: var(--corona);
-		font-style: normal;
-		font-size: 0.6em;
-	}
+    .marquee__track span:nth-child(even) {
+        color: var(--space-blue);
+        font-style: normal;
+        font-size: 0.6em;
+    }
 
-	@keyframes marquee {
-		to {
-			transform: translateX(-50%);
-		}
-	}
+    @keyframes marquee {
+        to {
+            transform: translateX(-50%);
+        }
+    }
 
-	/* --- Footer --- */
-	.foot {
-		position: relative;
-		z-index: 1;
-		border-top: 1px solid var(--line);
-		padding-block: clamp(3rem, 7vw, 5rem);
-	}
+    /* --- Footer --- */
+    .foot {
+        position: relative;
+        z-index: 1;
+        border-top: 1px solid var(--line);
+        padding-block: clamp(3rem, 7vw, 5rem);
+    }
 
-	.foot__inner {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		gap: 2rem;
-		align-items: end;
-	}
+    .foot__inner {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 2rem;
+        align-items: end;
+    }
 
-	.foot__warn {
-		max-width: 52ch;
-		color: var(--bone-dim);
-		font-size: var(--step--1);
-		line-height: 1.7;
-	}
+    .foot__warn {
+        max-width: 52ch;
+        color: var(--bone-dim);
+        font-size: var(--step--1);
+        line-height: 1.7;
+    }
 
-	.foot__warn strong {
-		color: var(--corona);
-		font-weight: 600;
-	}
+    .foot__warn strong {
+        color: var(--space-blue);
+        font-weight: 600;
+    }
 
-	.foot__warn span {
-		font-family: var(--font-mono);
-		color: var(--bone);
-	}
+    .foot__warn span {
+        font-family: var(--font-mono);
+        color: var(--bone);
+    }
 
-	.foot__sig {
-		font-family: var(--font-mono);
-		font-size: 0.66rem;
-		text-transform: uppercase;
-		letter-spacing: 0.22em;
-		color: var(--muted-deep);
-	}
+    .foot__sig {
+        font-family: var(--font-mono);
+        font-size: 0.66rem;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        color: var(--muted-deep);
+    }
 </style>

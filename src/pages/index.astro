@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import EclipseAnimation from '../components/EclipseAnimation.astro';
-import OrbitSimulation from '../components/OrbitSimulation.astro';
+// import OrbitSimulation from '../components/OrbitSimulation.astro';
 import EventInfo from '../components/EventInfo.astro';
 import WhereToWatch from '../components/WhereToWatch.astro';
 import Countdown from '../components/Countdown.astro';
@@ -25,12 +25,12 @@ import Countdown from '../components/Countdown.astro';
                 <div class="hero__copy">
                     <span class="kicker">12 · 08 · 2026 — España</span>
                     <h1 class="hero__title">
-                        El día en que<br /><em>cae la noche</em><br />a mediodía
+                        <br /><em>ECLIPSE SOLAR TOTAL</em><br />visible desde
+                        España
                     </h1>
                     <p class="hero__sub">
-                        Un eclipse solar total cruzará el norte de la península
-                        por primera vez en más de un siglo. Esto es lo que vas a
-                        ver, y dónde.
+                        Cruzará el norte de la península por primera vez en más
+                        de un siglo. Esto es lo que vas a ver, y dónde.
                     </p>
                     <a href="#donde" class="hero__cta">
                         Encuentra tu lugar
@@ -46,14 +46,14 @@ import Countdown from '../components/Countdown.astro';
 
             <div class="hero__marquee" aria-hidden="true">
                 <div class="marquee__track">
-                    <span>Totalidad · 1m 49s</span><span>✦</span>
-                    <span>Corona visible</span><span>✦</span>
-                    <span>Anillo de diamante</span><span>✦</span>
-                    <span>Sombra de la Luna</span><span>✦</span>
-                    <span>Totalidad · 1m 49s</span><span>✦</span>
-                    <span>Corona visible</span><span>✦</span>
-                    <span>Anillo de diamante</span><span>✦</span>
-                    <span>Sombra de la Luna</span><span>✦</span>
+                    <span>TOTALIDAD · 1M 49S</span><span>✦</span>
+                    <span>CORONA VISIBLE</span><span>✦</span>
+                    <span>ANILLO DE DIAMANTE</span><span>✦</span>
+                    <span>SOMBRA DE LA LUNA</span><span>✦</span>
+                    <span>TOTALIDAD · 1M 49S</span><span>✦</span>
+                    <span>CORONA VISIBLE</span><span>✦</span>
+                    <span>ANILLO DE DIAMANTE</span><span>✦</span>
+                    <span>SOMBRA DE LA LUNA</span><span>✦</span>
                 </div>
             </div>
         </section>
@@ -84,9 +84,10 @@ import Countdown from '../components/Countdown.astro';
         position: sticky;
         top: 0;
         z-index: 100;
-        padding-block: 1.2rem;
+        padding-block: 2rem;
         backdrop-filter: blur(10px);
         background: linear-gradient(var(--void), rgba(7, 6, 10, 0));
+        border-bottom: 1px solid var(--space-blue);
     }
 
     .topbar__inner {
@@ -128,6 +129,9 @@ import Countdown from '../components/Countdown.astro';
         .nav {
             display: none;
         }
+        .topbar {
+            padding-block: 1rem;
+        }
     }
 
     /* --- Hero --- */
@@ -142,13 +146,14 @@ import Countdown from '../components/Countdown.astro';
         grid-template-columns: 1.05fr 0.95fr;
         align-items: center;
         gap: clamp(2rem, 5vw, 4rem);
+        gap: 0
         min-height: 78vh;
     }
 
     .hero__title {
         font-size: var(--step-3);
-        margin-top: 1.4rem;
         font-weight: 700;
+        margin-top: -2rem;
     }
 
     .hero__title em {
@@ -219,8 +224,9 @@ import Countdown from '../components/Countdown.astro';
         display: inline-flex;
         align-items: center;
         gap: 2.4rem;
-        font-family: var(--font-display);
-        font-style: italic;
+        font-family: var(--font-accent);
+        font-weight: 200;
+        text-transform: uppercase;
         font-size: var(--step-1);
         color: var(--bone-dim);
         animation: marquee 32s linear infinite;

@@ -1,141 +1,157 @@
 ---
-import data from "../data/locations.json";
+import data from '../data/locations.json';
 ---
 
 <section id="donde" class="where">
-	<div class="shell">
-		<header class="where__head">
-			<span class="eyebrow">Dónde verlo</span>
-			<h2 class="where__title">La franja de <em>totalidad</em></h2>
-			<p class="where__lead">
-				Solo dentro de una estrecha banda que cruza el norte peninsular el Sol
-				desaparecerá por completo. Fuera de ella, el eclipse será parcial.
-			</p>
-		</header>
+    <div class="shell">
+        <header class="where__head">
+            <span class="eyebrow">Dónde verlo</span>
+            <h2 class="where__title">La franja de <em>totalidad</em></h2>
+            <p class="where__lead">
+                Solo dentro de una estrecha banda que cruza el norte peninsular
+                el Sol desaparecerá por completo. Fuera de ella, el eclipse será
+                parcial.
+            </p>
+        </header>
 
-		<ul class="places">
-			{
-				data.places.map((p) => (
-					<li class:list={["place", { "place--total": p.totality }]}>
-						<div class="place__tag">{p.totality ? "Totalidad" : "Parcial"}</div>
-						<h3 class="place__city">{p.city}</h3>
-						<p class="place__region">{p.region}</p>
-						<div class="place__meta">
-							<span class="place__dur">{p.duration}</span>
-							<span class="place__time">Contacto · {p.contact}</span>
-						</div>
-					</li>
-				))
-			}
-		</ul>
-	</div>
+        <ul class="places">
+            {
+                data.places.map((p) => (
+                    <li class:list={['place', { 'place--total': p.totality }]}>
+                        <div class="place__tag">
+                            {p.totality ? 'Total' : 'Parcial'}
+                        </div>
+                        <h3 class="place__city">{p.city}</h3>
+                        <p class="place__region">{p.region}</p>
+                        <div class="place__meta">
+                            <span class="place__dur">{p.duration}</span>
+                            <span class="place__time">
+                                Contacto · {p.contact}
+                            </span>
+                        </div>
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
 </section>
 
 <style>
-	.where {
-		padding-block: var(--section-y);
-		position: relative;
-		z-index: 1;
-	}
+    .where {
+        padding-block: var(--section-y);
+        position: relative;
+        z-index: 1;
+    }
 
-	.where__head {
-		max-width: 52ch;
-	}
+    .where__head {
+        max-width: 52ch;
+    }
 
-	.where__title {
-		font-size: var(--step-2);
-		margin-top: 1.2rem;
-	}
+    .where__title {
+        font-size: var(--step-2);
+        margin-top: 1.2rem;
+    }
 
-	.where__title em {
-		font-style: italic;
-		color: var(--space-blue);
-	}
+    .where__title em {
+        font-style: italic;
+        color: var(--space-blue);
+    }
 
-	.where__lead {
-		margin-top: 1.4rem;
-		color: var(--bone-dim);
-		font-weight: 300;
-		max-width: 46ch;
-	}
+    .where__lead {
+        margin-top: 1.4rem;
+        color: var(--bone-dim);
+        font-weight: 300;
+        max-width: 46ch;
+    }
 
-	.places {
-		list-style: none;
-		margin: clamp(3rem, 7vw, 5rem) 0 0;
-		padding: 0;
-		display: grid;
-		gap: 1px;
-		grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr));
-		background: var(--line);
-		border: 1px solid var(--line);
-		border-radius: var(--radius);
-		overflow: hidden;
-	}
+    .places {
+        list-style: none;
+        margin: clamp(3rem, 7vw, 5rem) 0 0;
+        padding: 0;
+        display: grid;
+        gap: 1px;
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr));
+        background: var(--line);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        overflow: hidden;
+    }
 
-	.place {
-		background: var(--ink);
-		padding: 1.8rem 1.6rem 1.6rem;
-		display: flex;
-		flex-direction: column;
-		gap: 0.35rem;
-		transition: background 0.4s var(--ease), transform 0.4s var(--ease);
-	}
+    .place {
+        background: var(--ink);
+        padding: 1.8rem 1.6rem 1.6rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+        transition:
+            background 0.4s var(--ease),
+            transform 0.4s var(--ease);
+    }
 
-	.place:hover {
-		background: var(--ink-soft);
-	}
+    .place:hover {
+        background: var(--ink-soft);
+    }
 
-	.place__tag {
-		align-self: flex-start;
-		font-family: var(--font-mono);
-		font-size: 0.62rem;
-		text-transform: uppercase;
-		letter-spacing: 0.22em;
-		padding: 0.3rem 0.6rem;
-		border: 1px solid var(--line-strong);
-		border-radius: 100px;
-		color: var(--muted);
-		margin-bottom: 0.8rem;
-	}
+    .place__tag {
+        align-self: flex-start;
+        font-family: var(--font-mono);
+        font-size: 0.62rem;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        padding: 0.3rem 0.6rem;
+        border: none;
+        --cut: 10px;
+        border-radius: 0.2rem;
+        background: var(--ink-soft);
+        clip-path: polygon(
+            0 0,
+            100% 0,
+            100% 100%,
+            var(--cut) 100%,
+            0 calc(100% - var(--cut))
+        );
+        color: var(--muted);
+        margin-bottom: 0.8rem;
+    }
 
-	.place--total .place__tag {
-		color: var(--void);
-		background: var(--space-blue);
-		border-color: var(--space-blue);
-	}
+    .place--total .place__tag {
+        color: var(--void);
+        background: var(--space-blue);
+        border-color: var(--space-blue);
+    }
 
-	.place__city {
-		font-size: clamp(1.6rem, 3vw, 2.1rem);
-	}
+    .place__city {
+        font-size: clamp(1.6rem, 3vw, 2.1rem);
+    }
 
-	.place__region {
-		color: var(--muted);
-		font-size: var(--step--1);
-		margin: 0;
-	}
+    .place__region {
+        color: var(--muted);
+        font-size: var(--step--1);
+        margin: 0;
+    }
 
-	.place__meta {
-		margin-top: 1.2rem;
-		padding-top: 1rem;
-		border-top: 1px solid var(--line);
-		display: flex;
-		justify-content: space-between;
-		align-items: baseline;
-		gap: 1rem;
-		font-family: var(--font-mono);
-		font-size: 0.74rem;
-	}
+    .place__meta {
+        margin-top: 1.2rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--line);
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1rem;
+        font-family: var(--font-mono);
+        font-size: 0.74rem;
+    }
 
-	.place__dur {
-		color: var(--space-blue-light);
-	}
+    .place__dur {
+        color: var(--space-blue-light);
+    }
 
-	.place--total .place__dur {
-		color: var(--space-blue);
-	}
+    .place--total .place__dur {
+        color: var(--space-blue);
+    }
 
-	.place__time {
-		color: var(--muted);
-		letter-spacing: 0.05em;
-	}
+    .place__time {
+        color: var(--muted);
+        letter-spacing: 0.05em;
+    }
 </style>

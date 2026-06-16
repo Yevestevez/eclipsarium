@@ -89,7 +89,10 @@ import Countdown from '../components/Countdown.astro';
                 Las gafas de sol normales no protegen tu vista.
             </p>
             <p class="foot__sig">
-                ECLIPSARIUM — proyecto divulgativo · Edu Yeves
+                ECLIPSARIUM — proyecto divulgativo · <a
+                    class="foot__link"
+                    href="https://github.com/Yevestevez/">Edu Yeves</a
+                >
             </p>
         </div>
     </footer>
@@ -467,5 +470,8 @@ import Countdown from '../components/Countdown.astro';
         text-transform: uppercase;
         letter-spacing: 0.22em;
         color: var(--muted-deep);
+    }
+    .foot__sig .foot__link:hover {
+        color: var(--space-blue);
     }
 </style>

@@ -44,6 +44,7 @@ const target = `${event.date}T20:30:00+02:00`;
 <style>
     .cd {
         padding-block: var(--section-y);
+
         position: relative;
         z-index: 1;
         text-align: center;
@@ -101,6 +102,19 @@ const target = `${event.date}T20:30:00+02:00`;
         font-style: italic;
         font-size: var(--step-1);
         color: var(--bone-dim);
+    }
+
+    @media (max-width: 560px) {
+        .cd__shell {
+            width: 100%;
+        }
+
+        .cd__clock {
+            width: 100%;
+            box-sizing: border-box;
+            justify-content: center;
+            padding-inline: clamp(0.8rem, 4vw, 1.2rem);
+        }
     }
 </style>
 

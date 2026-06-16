@@ -11,11 +11,28 @@ import Countdown from '../components/Countdown.astro';
     <header class="topbar">
         <div class="shell topbar__inner">
             <a href="#" class="brand">ECLIPSARIUM<span>·26</span></a>
-            <nav class="nav">
+            <nav class="nav nav--desktop">
                 <a href="#evento">El evento</a>
                 <a href="#donde">Dónde verlo</a>
                 <a href="#cuenta">Cuenta atrás</a>
             </nav>
+            <details class="nav-mobile">
+                <summary
+                    class="nav-mobile__trigger"
+                    aria-label="Abrir navegación"
+                >
+                    <span class="nav-mobile__icon" aria-hidden="true">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </summary>
+                <nav class="nav-mobile__panel" aria-label="Navegación móvil">
+                    <a href="#evento">El evento</a>
+                    <a href="#donde">Dónde verlo</a>
+                    <a href="#cuenta">Cuenta atrás</a>
+                </nav>
+            </details>
         </div>
     </header>
 
@@ -94,6 +111,7 @@ import Countdown from '../components/Countdown.astro';
         display: flex;
         align-items: center;
         justify-content: space-between;
+        position: relative;
     }
 
     .brand {
@@ -122,13 +140,123 @@ import Countdown from '../components/Countdown.astro';
     }
 
     .nav a:hover {
-        color: var(--bone);
+        color: var(--space-blue);
+    }
+
+    .nav-mobile {
+        display: none;
+    }
+
+    .nav-mobile__trigger {
+        list-style: none;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.6rem;
+        height: 2.3rem;
+        padding: 0;
+        --cut: 12px;
+        border-radius: 0.2rem;
+        border: none;
+        background: var(--ink-soft);
+        clip-path: polygon(
+            0 0,
+            100% 0,
+            100% 100%,
+            var(--cut) 100%,
+            0 calc(100% - var(--cut))
+        );
+        transition: background-color 0.25s var(--ease);
+        user-select: none;
+    }
+
+    .nav-mobile__trigger:hover {
+        background: rgba(var(--space-blue-rgb), 0.18);
+    }
+
+    .nav-mobile__icon {
+        display: inline-flex;
+        flex-direction: column;
+        gap: 0.28rem;
+    }
+
+    .nav-mobile__icon span {
+        display: block;
+        width: 1.05rem;
+        height: 1px;
+        background: var(--space-blue);
+        transform-origin: center;
+        transition:
+            transform 0.25s var(--ease),
+            opacity 0.2s var(--ease);
+    }
+
+    .nav-mobile[open] .nav-mobile__trigger {
+        background: rgba(var(--space-blue-rgb), 0.18);
+    }
+
+    .nav-mobile[open] .nav-mobile__icon span:nth-child(1) {
+        transform: translateY(0.38rem) rotate(45deg);
+    }
+
+    .nav-mobile[open] .nav-mobile__icon span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-mobile[open] .nav-mobile__icon span:nth-child(3) {
+        transform: translateY(-0.38rem) rotate(-45deg);
+    }
+
+    .nav-mobile__trigger::-webkit-details-marker {
+        display: none;
+    }
+
+    .nav-mobile__panel {
+        position: absolute;
+        top: calc(100% + 0.6rem);
+        right: 0;
+        min-width: 190px;
+        display: grid;
+        gap: 0.2rem;
+        padding: 0.5rem;
+        border: 1px solid var(--line);
+        border-radius: 0.2rem;
+        background: rgba(14, 11, 20, 0.95);
+        backdrop-filter: blur(8px);
+    }
+
+    .nav-mobile__panel a {
+        font-family: var(--font-mono);
+        font-size: 0.68rem;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--bone-dim);
+        padding: 0.55rem 0.6rem;
+        border-radius: 0.2rem;
+        transition:
+            color 0.25s var(--ease),
+            background-color 0.25s var(--ease);
+    }
+
+    .nav-mobile__panel a:hover {
+        color: var(--space-blue);
+        background: rgba(var(--space-blue-rgb), 0.12);
+    }
+
+    .nav-mobile:not([open]) .nav-mobile__panel {
+        display: none;
     }
 
     @media (max-width: 560px) {
-        .nav {
+        .nav--desktop {
             display: none;
         }
+
+        .nav-mobile {
+            display: block;
+        }
+
         .topbar {
             padding-block: 1rem;
         }

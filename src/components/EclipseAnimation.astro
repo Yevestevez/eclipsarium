@@ -4,137 +4,254 @@
 // diamond-ring flashes on each contact. Loops. Respects reduced motion.
 ---
 
-<figure class="eclipse" role="img" aria-label="Animación de un eclipse solar total: la Luna cruza el Sol y revela la corona.">
-	<div class="stage">
-		<div class="corona"></div>
-		<div class="chromosphere"></div>
-		<div class="sun"></div>
-		<div class="moon"></div>
-		<div class="diamond"></div>
-	</div>
+<figure
+    class="eclipse"
+    role="img"
+    aria-label="Animación de un eclipse solar total: la Luna cruza el Sol y revela la corona."
+>
+    <div class="stage">
+        <div class="corona"></div>
+        <div class="chromosphere"></div>
+        <div class="sun"></div>
+        <div class="moon"></div>
+        <div class="diamond"></div>
+    </div>
 </figure>
 
 <style>
-	.eclipse {
-		margin: 0;
-		display: grid;
-		place-items: center;
-		aspect-ratio: 1;
-		width: min(72vmin, 540px);
-	}
+    .eclipse {
+        /* Override global blue palette — sun stays gold */
+        --space-blue: #f6c453;
+        --space-blue-light: #ffe09a;
+        --ember: #db7a3c;
+        --ember-deep: #a84e23;
+        --space-blue-rgb: 246, 196, 83;
+        --ember-rgb: 219, 122, 60;
+        --halo: rgba(246, 196, 83, 0.55);
+        --halo-soft: rgba(246, 196, 83, 0.16);
 
-	.stage {
-		position: relative;
-		width: 100%;
-		height: 100%;
-		display: grid;
-		place-items: center;
-		isolation: isolate;
-	}
+        margin: 0 auto;
+        display: grid;
+        place-items: center;
+        aspect-ratio: 1;
+        width: min(100%, 800px);
+        max-width: 100vmin;
+        max-height: 50vh;
+    }
 
-	.stage > * {
-		position: absolute;
-		border-radius: 50%;
-	}
+    .stage {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        place-items: center;
+        isolation: isolate;
+    }
 
-	/* The solar disc */
-	.sun {
-		width: 46%;
-		aspect-ratio: 1;
-		background: radial-gradient(circle at 50% 50%, var(--corona-hot) 0%, var(--corona) 45%, var(--ember) 88%, var(--ember-deep) 100%);
-		box-shadow:
-			0 0 60px 6px var(--halo),
-			0 0 160px 30px var(--halo-soft);
-		z-index: 1;
-		animation: sun-dim 16s var(--ease) infinite;
-	}
+    .stage > * {
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        border-radius: 50%;
+    }
 
-	/* Inner chromosphere ring revealed at totality */
-	.chromosphere {
-		width: 49%;
-		aspect-ratio: 1;
-		background: transparent;
-		box-shadow: 0 0 0 2px rgba(219, 122, 60, 0.0);
-		z-index: 0;
-		animation: chromo 16s var(--ease) infinite;
-	}
+    /* The solar disc */
+    .sun {
+        width: 46%;
+        aspect-ratio: 1;
+        background: radial-gradient(
+            circle at 50% 50%,
+            var(--space-blue-light) 0%,
+            var(--space-blue) 45%,
+            var(--ember) 88%,
+            var(--ember-deep) 100%
+        );
+        box-shadow:
+            0 0 60px 6px var(--halo),
+            0 0 160px 30px var(--halo-soft);
+        z-index: 1;
+        animation: sun-dim 16s var(--ease) infinite;
+    }
 
-	/* The streaming corona — only blooms at totality */
-	.corona {
-		width: 46%;
-		aspect-ratio: 1;
-		background: radial-gradient(circle, transparent 48%, var(--halo) 50%, rgba(246, 196, 83, 0.05) 62%, transparent 75%);
-		filter: blur(2px);
-		opacity: 0;
-		transform: scale(0.9);
-		z-index: 0;
-		animation: corona-bloom 16s var(--ease) infinite;
-	}
+    /* Inner chromosphere ring revealed at totality */
+    .chromosphere {
+        width: 49%;
+        aspect-ratio: 1;
+        background: transparent;
+        box-shadow: 0 0 0 2px rgba(var(--ember-rgb), 0);
+        z-index: 0;
+        animation: chromo 16s var(--ease) infinite;
+    }
 
-	/* The Moon — opaque disc that occludes the Sun */
-	.moon {
-		width: 46.5%;
-		aspect-ratio: 1;
-		background: radial-gradient(circle at 38% 35%, #1b1722 0%, #0c0a11 60%, #060509 100%);
-		box-shadow: inset -8px -8px 24px rgba(0, 0, 0, 0.7);
-		z-index: 2;
-		transform: translateX(-150%);
-		animation: transit 16s var(--ease) infinite;
-	}
+    /* The streaming corona — only blooms at totality */
+    .corona {
+        width: 46%;
+        aspect-ratio: 1;
+        background: radial-gradient(
+            circle,
+            transparent 48%,
+            var(--halo) 50%,
+            rgba(var(--space-blue-rgb), 0.05) 62%,
+            transparent 75%
+        );
+        filter: blur(2px);
+        opacity: 0;
+        transform: scale(0.9);
+        z-index: 0;
+        animation: corona-bloom 16s var(--ease) infinite;
+    }
 
-	/* Diamond-ring flash at second & third contact */
-	.diamond {
+    /* The Moon — opaque disc that occludes the Sun */
+    .moon {
+        width: 46.5%;
+        aspect-ratio: 1;
+        background: radial-gradient(
+            circle at 38% 35%,
+            #1b1722 0%,
+            #0c0a11 60%,
+            #060509 100%
+        );
+        box-shadow: inset -8px -8px 24px rgba(0, 0, 0, 0.7);
+        z-index: 2;
+        transform: translateX(-150%);
+        animation: transit 16s ease-in-out infinite;
+    }
+
+    /* Diamond-ring flash at second & third contact */
+    /* .diamond {
 		width: 7%;
 		aspect-ratio: 1;
-		background: radial-gradient(circle, #fff 0%, var(--corona-hot) 30%, transparent 70%);
-		box-shadow: 0 0 30px 10px var(--corona-hot);
+		background: radial-gradient(circle, #fff 0%, var(--space-blue-light) 30%, transparent 70%);
+		box-shadow: 0 0 30px 10px var(--space-blue-light);
 		opacity: 0;
 		z-index: 3;
 		transform: translate(-150%, 0);
 		animation: diamond 16s linear infinite;
-	}
+	} */
 
-	@keyframes transit {
-		0% { transform: translateX(-150%); }
-		44%, 56% { transform: translateX(0%); }
-		100% { transform: translateX(150%); }
-	}
+    @keyframes transit {
+        0% {
+            opacity: 0;
+            transform: translateX(-150%);
+        }
+        20% {
+            opacity: 1;
+        }
+        44%,
+        56% {
+            opacity: 1;
+            transform: translateX(0%);
+        }
+        80% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+            transform: translateX(150%);
+        }
+    }
 
-	@keyframes corona-bloom {
-		0%, 38% { opacity: 0; transform: scale(0.85); }
-		47%, 53% { opacity: 1; transform: scale(1.18); }
-		62%, 100% { opacity: 0; transform: scale(0.85); }
-	}
+    @keyframes corona-bloom {
+        0%,
+        38% {
+            opacity: 0;
+            transform: scale(0.85);
+        }
+        47%,
+        53% {
+            opacity: 1;
+            transform: scale(1.18);
+        }
+        62%,
+        100% {
+            opacity: 0;
+            transform: scale(0.85);
+        }
+    }
 
-	@keyframes chromo {
-		0%, 42% { box-shadow: 0 0 0 2px rgba(219, 122, 60, 0); }
-		48%, 52% { box-shadow: 0 0 14px 3px rgba(219, 122, 60, 0.65); }
-		58%, 100% { box-shadow: 0 0 0 2px rgba(219, 122, 60, 0); }
-	}
+    @keyframes chromo {
+        0%,
+        42% {
+            box-shadow: 0 0 0 2px rgba(var(--ember-rgb), 0);
+        }
+        48%,
+        52% {
+            box-shadow: 0 0 14px 3px rgba(var(--ember-rgb), 0.65);
+        }
+        58%,
+        100% {
+            box-shadow: 0 0 0 2px rgba(var(--ember-rgb), 0);
+        }
+    }
 
-	@keyframes sun-dim {
-		0%, 38% { filter: brightness(1); }
-		50% { filter: brightness(0.92); }
-		62%, 100% { filter: brightness(1); }
-	}
+    @keyframes sun-dim {
+        0%,
+        38% {
+            filter: brightness(1);
+        }
+        50% {
+            filter: brightness(0.92);
+        }
+        62%,
+        100% {
+            filter: brightness(1);
+        }
+    }
 
-	/* Diamond rides the moon's leading/trailing edge: bright just
-	   before and after totality, dark during. */
-	@keyframes diamond {
-		0%, 40% { opacity: 0; transform: translate(-22%, 0); }
-		42% { opacity: 1; transform: translate(-22%, 0); }
-		44% { opacity: 0; transform: translate(-22%, 0); }
-		56% { opacity: 0; transform: translate(22%, 0); }
-		58% { opacity: 1; transform: translate(22%, 0); }
-		60%, 100% { opacity: 0; transform: translate(22%, 0); }
-	}
+    /* Diamond rides the moon's leading/trailing edge: bright just
+	   before and after totality, dark during.
+	   Off-screen during totality to prevent render artifacts. */
+    @keyframes diamond {
+        0%,
+        40% {
+            opacity: 0;
+            transform: translate(-150%, 0);
+        }
+        42% {
+            opacity: 1;
+            transform: translate(-22%, 0);
+        }
+        44% {
+            opacity: 0;
+            transform: translate(-150%, 0);
+        }
+        56% {
+            opacity: 0;
+            transform: translate(-150%, 0);
+        }
+        58% {
+            opacity: 1;
+            transform: translate(22%, 0);
+        }
+        60%,
+        100% {
+            opacity: 0;
+            transform: translate(150%, 0);
+        }
+    }
 
-	/* Reduced motion: freeze at the totality moment */
-	@media (prefers-reduced-motion: reduce) {
-		.moon { transform: translateX(0%); animation: none; }
-		.corona { opacity: 1; transform: scale(1.15); animation: none; }
-		.chromosphere { box-shadow: 0 0 14px 3px rgba(219, 122, 60, 0.65); animation: none; }
-		.sun { animation: none; filter: brightness(0.92); }
-		.diamond { opacity: 1; transform: translate(22%, 0); animation: none; }
-	}
+    /* Reduced motion: freeze at the totality moment */
+    @media (prefers-reduced-motion: reduce) {
+        .moon {
+            transform: translateX(0%);
+            animation: none;
+        }
+        .corona {
+            opacity: 1;
+            transform: scale(1.15);
+            animation: none;
+        }
+        .chromosphere {
+            box-shadow: 0 0 14px 3px rgba(var(--ember-rgb), 0.65);
+            animation: none;
+        }
+        .sun {
+            animation: none;
+            filter: brightness(0.92);
+        }
+        .diamond {
+            opacity: 0;
+            animation: none;
+        }
+    }
 </style>

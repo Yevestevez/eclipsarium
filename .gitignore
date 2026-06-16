@@ -22,3 +22,13 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# caveman (local agent config, not project deps)
+.agents/
+.cursor/
+.windsurf/
+.clinerules/
+.opencode/
+AGENTS.md
+.github/copilot-instructions.md
+skills-lock.json

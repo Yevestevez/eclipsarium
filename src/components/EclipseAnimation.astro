@@ -37,6 +37,10 @@
         width: min(100%, 800px);
         max-width: 100vmin;
         max-height: 50vh;
+        box-sizing: border-box;
+        padding: clamp(0.55rem, 2.2vw, 1rem);
+        overflow: visible;
+        contain: layout;
     }
 
     .stage {
@@ -62,25 +66,42 @@
         background: radial-gradient(
             circle at 50% 50%,
             var(--space-blue-light) 0%,
-            var(--space-blue) 45%,
-            var(--ember) 88%,
-            var(--ember-deep) 100%
+            #ffd77a 38%,
+            var(--space-blue) 72%,
+            #e7b347 100%
         );
         box-shadow:
-            0 0 60px 6px var(--halo),
-            0 0 160px 30px var(--halo-soft);
+            0 0 34px 3px var(--halo),
+            0 0 68px 10px var(--halo-soft);
         z-index: 1;
-        animation: sun-dim 16s var(--ease) infinite;
+    }
+
+    .sun::after {
+        content: '';
+        position: absolute;
+        inset: -18%;
+        border-radius: 50%;
+        background: radial-gradient(
+            circle,
+            rgba(var(--space-blue-rgb), 0.42) 0%,
+            rgba(var(--space-blue-rgb), 0.16) 36%,
+            rgba(var(--space-blue-rgb), 0) 72%
+        );
+        opacity: 0;
+        transform: scale(0.9);
+        animation: totality-glow 16s var(--ease) infinite;
+        pointer-events: none;
     }
 
     /* Inner chromosphere ring revealed at totality */
     .chromosphere {
         width: 49%;
         aspect-ratio: 1;
-        background: transparent;
-        box-shadow: 0 0 0 2px rgba(var(--ember-rgb), 0);
+        border: 2px solid rgba(var(--ember-rgb), 0.55);
+        opacity: 0;
+        transform: scale(0.96);
         z-index: 0;
-        animation: chromo 16s var(--ease) infinite;
+        animation: none;
     }
 
     /* The streaming corona — only blooms at totality */
@@ -94,11 +115,11 @@
             rgba(var(--space-blue-rgb), 0.05) 62%,
             transparent 75%
         );
-        filter: blur(2px);
         opacity: 0;
         transform: scale(0.9);
         z-index: 0;
         animation: corona-bloom 16s var(--ease) infinite;
+        will-change: transform, opacity;
     }
 
     /* The Moon — opaque disc that occludes the Sun */
@@ -113,8 +134,9 @@
         );
         box-shadow: inset -8px -8px 24px rgba(0, 0, 0, 0.7);
         z-index: 2;
-        transform: translateX(-150%);
+        transform: translate3d(-150%, 0, 0);
         animation: transit 16s ease-in-out infinite;
+        will-change: transform, opacity;
     }
 
     /* Diamond-ring flash at second & third contact */
@@ -132,22 +154,22 @@
     @keyframes transit {
         0% {
             opacity: 0;
-            transform: translateX(-150%);
+            transform: translate3d(-150%, 0, 0);
         }
-        20% {
+        14% {
             opacity: 1;
         }
         44%,
         56% {
             opacity: 1;
-            transform: translateX(0%);
+            transform: translate3d(0, 0, 0);
         }
-        80% {
+        86% {
             opacity: 1;
         }
         100% {
             opacity: 0;
-            transform: translateX(150%);
+            transform: translate3d(150%, 0, 0);
         }
     }
 
@@ -172,29 +194,36 @@
     @keyframes chromo {
         0%,
         42% {
-            box-shadow: 0 0 0 2px rgba(var(--ember-rgb), 0);
+            opacity: 0;
+            transform: scale(0.96);
         }
         48%,
-        52% {
-            box-shadow: 0 0 14px 3px rgba(var(--ember-rgb), 0.65);
+        50% {
+            opacity: 1;
+            transform: scale(1.01);
         }
-        58%,
+        54%,
         100% {
-            box-shadow: 0 0 0 2px rgba(var(--ember-rgb), 0);
+            opacity: 0;
+            transform: scale(0.96);
         }
     }
 
-    @keyframes sun-dim {
+    @keyframes totality-glow {
         0%,
-        38% {
-            filter: brightness(1);
+        43% {
+            opacity: 0;
+            transform: scale(0.9);
         }
-        50% {
-            filter: brightness(0.92);
+        48%,
+        52% {
+            opacity: 1;
+            transform: scale(1.18);
         }
-        62%,
+        58%,
         100% {
-            filter: brightness(1);
+            opacity: 0;
+            transform: scale(0.9);
         }
     }
 
@@ -242,16 +271,53 @@
             animation: none;
         }
         .chromosphere {
-            box-shadow: 0 0 14px 3px rgba(var(--ember-rgb), 0.65);
+            opacity: 0;
+            transform: scale(0.96);
             animation: none;
         }
         .sun {
             animation: none;
-            filter: brightness(0.92);
         }
+
+        .sun::after {
+            opacity: 1;
+            transform: scale(1.1);
+            animation: none;
+        }
+
         .diamond {
             opacity: 0;
             animation: none;
+        }
+    }
+
+    @media (max-width: 560px) {
+        .eclipse {
+            width: 100dvw;
+            max-width: 100dvw;
+            max-height: 42vh;
+            margin-inline: calc(50% - 50dvw);
+            padding: 0;
+            overflow: hidden;
+            contain: layout paint;
+        }
+
+        .sun {
+            background: radial-gradient(
+                circle at 50% 50%,
+                var(--space-blue-light) 0%,
+                #ffd77a 42%,
+                var(--space-blue) 78%,
+                #f0bf56 100%
+            );
+            box-shadow:
+                0 0 26px 2px var(--halo),
+                0 0 48px 7px var(--halo-soft);
+        }
+
+        .chromosphere {
+            animation: none;
+            opacity: 0;
         }
     }
 </style>

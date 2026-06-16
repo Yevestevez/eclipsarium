@@ -95,6 +95,19 @@ import Countdown from '../components/Countdown.astro';
     </footer>
 </Layout>
 
+<script>
+    const mobileMenu = document.querySelector('.nav-mobile');
+    const mobileLinks = document.querySelectorAll('.nav-mobile__panel a');
+
+    mobileLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+            if (mobileMenu instanceof HTMLDetailsElement) {
+                mobileMenu.open = false;
+            }
+        });
+    });
+</script>
+
 <style>
     /* --- Topbar --- */
     .topbar {

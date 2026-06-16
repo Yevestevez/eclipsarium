@@ -1,125 +1,127 @@
 ---
-import event from "../data/event.json";
+import event from '../data/event.json';
 ---
 
 <section id="evento" class="event">
-	<div class="shell">
-		<header class="event__head">
-			<span class="eyebrow">El evento</span>
-			<h2 class="event__title">{event.type}<span class="event__date">{event.dateLabel}</span></h2>
-			<p class="event__intro">{event.intro}</p>
-		</header>
+    <div class="shell">
+        <header class="event__head">
+            <span class="eyebrow">El evento</span>
+            <h2 class="event__title">
+                {event.type}<span class="event__date">{event.dateLabel}</span>
+            </h2>
+            <p class="event__intro">{event.intro}</p>
+        </header>
 
-		<dl class="facts">
-			{
-				event.facts.map((f) => (
-					<div class="fact">
-						<dt class="fact__label">{f.label}</dt>
-						<dd class="fact__value">{f.value}</dd>
-						<dd class="fact__note">{f.note}</dd>
-					</div>
-				))
-			}
-		</dl>
-	</div>
+        <dl class="facts">
+            {
+                event.facts.map((f) => (
+                    <div class="fact">
+                        <dt class="fact__label">{f.label}</dt>
+                        <dd class="fact__value">{f.value}</dd>
+                        <dd class="fact__note">{f.note}</dd>
+                    </div>
+                ))
+            }
+        </dl>
+    </div>
 </section>
 
 <style>
-	.event {
-		padding-block: var(--section-y);
-		position: relative;
-		z-index: 1;
-	}
+    .event {
+        padding-block: var(--section-y);
+        position: relative;
+        z-index: 1;
+    }
 
-	.event__head {
-		max-width: 46ch;
-	}
+    .event__head {
+        max-width: 46ch;
+    }
 
-	.event__title {
-		font-size: var(--step-2);
-		margin-top: 1.2rem;
-		display: flex;
-		flex-direction: column;
-	}
+    .event__title {
+        font-size: var(--step-2);
+        margin-top: 1.2rem;
+        display: flex;
+        flex-direction: column;
+    }
 
-	.event__date {
-		font-style: italic;
-		font-size: 0.5em;
-		color: var(--space-blue);
-		margin-top: 0.4rem;
-		letter-spacing: 0;
-	}
+    .event__date {
+        font-style: italic;
+        font-size: 0.5em;
+        color: var(--space-blue);
+        margin-top: 0.4rem;
+        letter-spacing: 0;
+    }
 
-	.event__intro {
-		margin-top: 1.6rem;
-		color: var(--bone-dim);
-		font-size: var(--step-1);
-		line-height: 1.5;
-		font-weight: 300;
-	}
+    .event__intro {
+        margin-top: 1.6rem;
+        color: var(--bone-dim);
+        font-size: var(--step-1);
+        line-height: 1.5;
+        font-weight: 300;
+    }
 
-	.facts {
-		margin: clamp(3rem, 7vw, 5rem) 0 0;
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
-		border-top: 1px solid var(--line);
-	}
+    .facts {
+        margin: clamp(3rem, 7vw, 5rem) 0 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+        border-top: 1px solid var(--line);
+    }
 
-	.fact {
-		margin: 0;
-		padding: 2rem 1.8rem 2rem 0;
-		border-bottom: 1px solid var(--line);
-		position: relative;
-	}
+    .fact {
+        margin: 0;
+        padding: 2rem 1.8rem 2rem 0;
+        border-bottom: 1px solid var(--line);
+        position: relative;
+    }
 
-	.fact::before {
-		content: "";
-		position: absolute;
-		top: -1px;
-		left: 0;
-		width: 0;
-		height: 2px;
-		background: var(--space-blue);
-		transition: width 0.6s var(--ease);
-	}
+    .fact::before {
+        content: '';
+        position: absolute;
+        top: -1px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--space-blue);
+        transition: width 0.6s var(--ease);
+    }
 
-	.fact:hover::before {
-		width: 38px;
-	}
+    .fact:hover::before {
+        width: 50%;
+    }
 
-	.fact__label {
-		font-family: var(--font-mono);
-		font-size: 0.7rem;
-		text-transform: uppercase;
-		letter-spacing: 0.26em;
-		color: var(--muted);
-	}
+    .fact__label {
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.26em;
+        color: var(--muted);
+    }
 
-	.fact__value {
-		margin: 0.8rem 0 0;
-		font-family: var(--font-display);
-		font-size: clamp(2.4rem, 5vw, 3.4rem);
-		line-height: 1;
-		color: var(--bone);
-	}
+    .fact__value {
+        margin: 0.8rem 0 0;
+        font-family: var(--font-display);
+        font-size: clamp(2.4rem, 5vw, 3.4rem);
+        line-height: 1;
+        color: var(--bone);
+    }
 
-	.fact__note {
-		margin: 0.7rem 0 0;
-		font-size: var(--step--1);
-		color: var(--muted);
-		max-width: 24ch;
-	}
+    .fact__note {
+        margin: 0.7rem 0 0;
+        font-size: var(--step--1);
+        color: var(--muted);
+        max-width: 24ch;
+    }
 
-	@media (min-width: 720px) {
-		.facts {
-			grid-template-columns: repeat(4, 1fr);
-		}
-		.fact {
-			border-right: 1px solid var(--line);
-			padding-left: 1.6rem;
-		}
-		.fact:last-child {
-			border-right: none;
-		}
-	}
+    @media (min-width: 720px) {
+        .facts {
+            grid-template-columns: repeat(4, 1fr);
+        }
+        .fact {
+            border-right: 1px solid var(--line);
+            padding-left: 1.6rem;
+        }
+        .fact:last-child {
+            border-right: none;
+        }
+    }
 </style>

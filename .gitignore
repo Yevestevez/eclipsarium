@@ -34,3 +34,7 @@ AGENTS.md
 skills-lock.json
 
 coverage
+
+# playwright test results
+test-results/
+playwright-report/

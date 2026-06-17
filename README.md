@@ -50,7 +50,7 @@ Crear un punto de referencia divulgativo y atractivo para el público general:
 ## 🛠️ Stack
 
 - [Astro](https://astro.build/) `^6.4.2`
-- Node `>=22.12.0`
+- Node `>=22.13.0`
 
 ## 🚀 Inicio rápido
 

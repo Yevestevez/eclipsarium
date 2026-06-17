@@ -246,7 +246,9 @@ const totalityPolygon = [...northLimit, ...southLimit.reverse()];
         fillOpacity: 0.12,
     }).addTo(map);
 
-    places.forEach((p) => {
+    interface Place { city: string; lat: number; lng: number; type: string; duration: string; contact: string; slug: string }
+
+    places.forEach((p: Place) => {
         if (!p.lat || !p.lng) return;
 
         let dotClass = 'map-marker__dot';

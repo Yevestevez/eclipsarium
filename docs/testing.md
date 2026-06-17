@@ -1,6 +1,6 @@
 # Hoja de ruta de tests — Eclipsarium
 
-> Stack: Astro 6 · Node ≥22 · pnpm
+> Stack: Astro 6 · Node ≥22.13.0 · pnpm
 
 ---
 

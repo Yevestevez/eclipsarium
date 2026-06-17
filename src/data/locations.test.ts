@@ -2,26 +2,14 @@ import { describe, expect, it } from 'vitest';
 import locations from './locations.json';
 
 describe('locations.json', () => {
-    it('U05: places is an array with at least one item', () => {
-        // GIVEN valid locations data
-        const source = locations;
-
-        // WHEN reading places
-        const { places } = source;
-
-        // THEN places contains at least one entry
+    it('U05: places is an array with exactly 29 items', () => {
+        const { places } = locations;
         expect(Array.isArray(places)).toBe(true);
-        expect(places.length).toBeGreaterThan(0);
+        expect(places).toHaveLength(29);
     });
 
-    it('U06: each place has non-empty city, region, duration, and contact', () => {
-        // GIVEN valid locations data
-        const source = locations;
-
-        // WHEN iterating over places
-        const { places } = source;
-
-        // THEN each place has required non-empty string fields
+    it('U06: each place has non-empty city, region, duration, contact, slug', () => {
+        const { places } = locations;
         places.forEach((place) => {
             expect(typeof place.city).toBe('string');
             expect(place.city.trim().length).toBeGreaterThan(0);
@@ -34,41 +22,35 @@ describe('locations.json', () => {
 
             expect(typeof place.contact).toBe('string');
             expect(place.contact.trim().length).toBeGreaterThan(0);
+
+            expect(typeof place.slug).toBe('string');
+            expect(place.slug.trim().length).toBeGreaterThan(0);
         });
     });
 
-    it('U07: totality is a boolean for every place', () => {
-        // GIVEN valid locations data
-        const source = locations;
-
-        // WHEN checking each place
-        const { places } = source;
-
-        // THEN totality is always boolean
+    it('U07: each place has type total, edge, or partial', () => {
+        const { places } = locations;
         places.forEach((place) => {
-            expect(typeof place.totality).toBe('boolean');
+            expect(['total', 'edge', 'partial']).toContain(place.type);
         });
     });
 
-    it('U08: at least one place has totality set to true', () => {
-        // GIVEN valid locations data
-        const source = locations;
-
-        // WHEN filtering places by totality = true
-        const totalPlaces = source.places.filter((place) => place.totality);
-
-        // THEN at least one place is in totality
-        expect(totalPlaces.length).toBeGreaterThan(0);
+    it('U08: at least one place of each type exists', () => {
+        const types = locations.places.map((p) => p.type);
+        expect(types.filter((t) => t === 'total').length).toBeGreaterThan(0);
+        expect(types.filter((t) => t === 'edge').length).toBeGreaterThan(0);
+        expect(types.filter((t) => t === 'partial').length).toBeGreaterThan(0);
     });
 
-    it('U09: at least one place has totality set to false', () => {
-        // GIVEN valid locations data
-        const source = locations;
-
-        // WHEN filtering places by totality = false
-        const partialPlaces = source.places.filter((place) => !place.totality);
-
-        // THEN at least one place is partial
-        expect(partialPlaces.length).toBeGreaterThan(0);
+    it('U09: each place has valid lat/lng numbers', () => {
+        const { places } = locations;
+        places.forEach((place) => {
+            expect(typeof place.lat).toBe('number');
+            expect(typeof place.lng).toBe('number');
+            expect(place.lat).toBeGreaterThanOrEqual(35);
+            expect(place.lat).toBeLessThanOrEqual(50);
+            expect(place.lng).toBeGreaterThanOrEqual(-12);
+            expect(place.lng).toBeLessThanOrEqual(6);
+        });
     });
 });

@@ -5,84 +5,108 @@
             "region": "Galicia",
             "totality": true,
             "duration": "1m 44s",
-            "contact": "20:27"
+            "contact": "20:27",
+            "lat": 43.3714,
+            "lng": -8.396
         },
         {
             "city": "Lugo",
             "region": "Galicia",
             "totality": true,
             "duration": "1m 22s",
-            "contact": "20:28"
+            "contact": "20:28",
+            "lat": 43.0122,
+            "lng": -7.5536
         },
         {
             "city": "Oviedo",
             "region": "Asturias",
             "totality": true,
             "duration": "1m 35s",
-            "contact": "20:28"
+            "contact": "20:28",
+            "lat": 43.3619,
+            "lng": -5.8494
         },
         {
             "city": "Santander",
             "region": "Cantabria",
             "totality": true,
             "duration": "1m 04s",
-            "contact": "20:26"
+            "contact": "20:26",
+            "lat": 43.4623,
+            "lng": -3.8092
         },
         {
             "city": "León",
             "region": "Castilla y León",
             "totality": true,
             "duration": "1m 44s",
-            "contact": "20:28"
+            "contact": "20:28",
+            "lat": 42.5987,
+            "lng": -5.5674
         },
         {
             "city": "Zamora",
             "region": "Castilla y León",
             "totality": true,
             "duration": "1m 17s",
-            "contact": "20:28"
+            "contact": "20:28",
+            "lat": 41.5035,
+            "lng": -5.7442
         },
         {
             "city": "Burgos",
             "region": "Castilla y León",
             "totality": true,
             "duration": "1m 41s",
-            "contact": "20:30"
+            "contact": "20:30",
+            "lat": 42.344,
+            "lng": -3.6969
         },
         {
             "city": "Logroño",
             "region": "La Rioja",
             "totality": true,
             "duration": "1m 21s",
-            "contact": "20:28"
+            "contact": "20:28",
+            "lat": 42.4627,
+            "lng": -2.4443
         },
         {
             "city": "Zaragoza",
             "region": "Aragón",
             "totality": true,
             "duration": "1m 24s",
-            "contact": "20:32"
+            "contact": "20:32",
+            "lat": 41.6488,
+            "lng": -0.8891
         },
         {
             "city": "Castellón",
             "region": "C. Valenciana",
             "totality": true,
             "duration": "1m 34s",
-            "contact": "20:31"
+            "contact": "20:31",
+            "lat": 39.9864,
+            "lng": -0.0513
         },
         {
             "city": "Palma",
             "region": "Islas Baleares",
             "totality": true,
             "duration": "1m 06s",
-            "contact": "20:35"
+            "contact": "20:35",
+            "lat": 39.5696,
+            "lng": 2.6502
         },
         {
             "city": "Madrid",
             "region": "Comunidad de Madrid",
             "totality": false,
             "duration": "99% parcial",
-            "contact": "20:31"
+            "contact": "20:31",
+            "lat": 40.4168,
+            "lng": -3.7038
         }
     ]
 }

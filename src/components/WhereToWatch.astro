@@ -1,6 +1,17 @@
 ---
 import data from '../data/locations.json';
 import EclipseMap from './EclipseMap.astro';
+
+const parseDur = (d) => {
+    if (d.includes('%')) return parseFloat(d.replace(',', '.'));
+    const m = d.match(/(\d+)m\s*(\d+)s/);
+    return m ? +m[1] * 60 + +m[2] : parseInt(d) || 0;
+};
+
+const sorted = [...data.places].sort((a, b) => {
+    const order = { total: 0, edge: 1, partial: 2 };
+    return order[a.type] - order[b.type] || parseDur(b.duration) - parseDur(a.duration);
+});
 ---
 
 <section id="donde" class="where">
@@ -19,21 +30,34 @@ import EclipseMap from './EclipseMap.astro';
 
         <ul class="places">
             {
-                data.places.map((p) => (
-                    <li class:list={['place', { 'place--total': p.totality }]}>
-                        <div class="place__tag">
-                            {p.totality ? 'Total' : 'Parcial'}
-                        </div>
-                        <h3 class="place__city">{p.city}</h3>
-                        <p class="place__region">{p.region}</p>
-                        <div class="place__meta">
-                            <span class="place__dur">{p.duration}</span>
-                            <span class="place__time">
-                                Contacto · {p.contact}
-                            </span>
-                        </div>
-                    </li>
-                ))
+                sorted.map((p) => {
+                    const tag =
+                        p.type === 'total'
+                            ? 'Total'
+                            : p.type === 'edge'
+                              ? 'Borde'
+                              : 'Parcial';
+                    return (
+                        <li
+                            class:list={[
+                                'place',
+                                `place--${p.type}`,
+                            ]}
+                        >
+                            <div class="place__tag">
+                                {tag}
+                            </div>
+                            <h3 class="place__city">{p.city}</h3>
+                            <p class="place__region">{p.region}</p>
+                            <div class="place__meta">
+                                <span class="place__dur">{p.duration}</span>
+                                <span class="place__time">
+                                    Contacto · {p.contact}
+                                </span>
+                            </div>
+                        </li>
+                    );
+                })
             }
         </ul>
     </div>
@@ -123,6 +147,12 @@ import EclipseMap from './EclipseMap.astro';
         border-color: var(--space-blue);
     }
 
+    .place--edge .place__tag {
+        color: var(--bone);
+        background: var(--edge-blue);
+        border-color: var(--edge-blue);
+    }
+
     .place__city {
         font-size: clamp(1.6rem, 3vw, 2.1rem);
     }
@@ -146,11 +176,15 @@ import EclipseMap from './EclipseMap.astro';
     }
 
     .place__dur {
-        color: var(--space-blue-light);
+        color: var(--muted);
     }
 
     .place--total .place__dur {
         color: var(--space-blue);
+    }
+
+    .place--edge .place__dur {
+        color: var(--edge-blue);
     }
 
     .place__time {

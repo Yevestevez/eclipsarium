@@ -3,110 +3,292 @@
         {
             "city": "A Coruña",
             "region": "Galicia",
-            "totality": true,
-            "duration": "1m 44s",
+            "type": "total",
+            "duration": "1m 16s",
             "contact": "20:27",
-            "lat": 43.3714,
-            "lng": -8.396
+            "lat": 43.3623,
+            "lng": -8.4115,
+            "slug": "a-coruna"
         },
         {
-            "city": "Lugo",
-            "region": "Galicia",
-            "totality": true,
-            "duration": "1m 22s",
-            "contact": "20:28",
-            "lat": 43.0122,
-            "lng": -7.5536
-        },
-        {
-            "city": "Oviedo",
+            "city": "Asturias",
             "region": "Asturias",
-            "totality": true,
-            "duration": "1m 35s",
+            "type": "total",
+            "duration": "1m 48s",
             "contact": "20:28",
             "lat": 43.3619,
-            "lng": -5.8494
-        },
-        {
-            "city": "Santander",
-            "region": "Cantabria",
-            "totality": true,
-            "duration": "1m 04s",
-            "contact": "20:26",
-            "lat": 43.4623,
-            "lng": -3.8092
+            "lng": -5.8494,
+            "slug": "asturias"
         },
         {
             "city": "León",
             "region": "Castilla y León",
-            "totality": true,
-            "duration": "1m 44s",
+            "type": "total",
+            "duration": "1m 45s",
             "contact": "20:28",
             "lat": 42.5987,
-            "lng": -5.5674
+            "lng": -5.5671,
+            "slug": "leon"
         },
         {
-            "city": "Zamora",
+            "city": "Cantabria",
+            "region": "Cantabria",
+            "type": "total",
+            "duration": "1m 03s",
+            "contact": "20:29",
+            "lat": 43.1828,
+            "lng": -3.9878,
+            "slug": "cantabria"
+        },
+        {
+            "city": "Palencia",
             "region": "Castilla y León",
-            "totality": true,
-            "duration": "1m 17s",
-            "contact": "20:28",
-            "lat": 41.5035,
-            "lng": -5.7442
+            "type": "total",
+            "duration": "1m 42s",
+            "contact": "20:29",
+            "lat": 42.0096,
+            "lng": -4.5288,
+            "slug": "palencia"
         },
         {
             "city": "Burgos",
             "region": "Castilla y León",
-            "totality": true,
-            "duration": "1m 41s",
+            "type": "total",
+            "duration": "1m 44s",
             "contact": "20:30",
-            "lat": 42.344,
-            "lng": -3.6969
+            "lat": 42.3439,
+            "lng": -3.6969,
+            "slug": "burgos"
         },
         {
-            "city": "Logroño",
-            "region": "La Rioja",
-            "totality": true,
-            "duration": "1m 21s",
-            "contact": "20:28",
-            "lat": 42.4627,
-            "lng": -2.4443
+            "city": "Valladolid",
+            "region": "Castilla y León",
+            "type": "total",
+            "duration": "1m 28s",
+            "contact": "20:29",
+            "lat": 41.6523,
+            "lng": -4.7245,
+            "slug": "valladolid"
+        },
+        {
+            "city": "Vitoria-Gasteiz",
+            "region": "País Vasco",
+            "type": "total",
+            "duration": "1m 04s",
+            "contact": "20:30",
+            "lat": 42.8467,
+            "lng": -2.6716,
+            "slug": "vitoria-gasteiz"
+        },
+        {
+            "city": "Lugo",
+            "region": "Galicia",
+            "type": "total",
+            "duration": "1m 30s",
+            "contact": "20:27",
+            "lat": 43.0096,
+            "lng": -7.556,
+            "slug": "lugo"
+        },
+        {
+            "city": "Soria",
+            "region": "Castilla y León",
+            "type": "total",
+            "duration": "1m 43s",
+            "contact": "20:30",
+            "lat": 41.7636,
+            "lng": -2.4649,
+            "slug": "soria"
         },
         {
             "city": "Zaragoza",
             "region": "Aragón",
-            "totality": true,
+            "type": "total",
             "duration": "1m 24s",
             "contact": "20:32",
             "lat": 41.6488,
-            "lng": -0.8891
+            "lng": -0.8891,
+            "slug": "zaragoza"
+        },
+        {
+            "city": "Guadalajara",
+            "region": "Castilla-La Mancha",
+            "type": "total",
+            "duration": "1m 07s",
+            "contact": "20:30",
+            "lat": 40.6337,
+            "lng": -3.1674,
+            "slug": "guadalajara"
+        },
+        {
+            "city": "Teruel",
+            "region": "Aragón",
+            "type": "total",
+            "duration": "1m 34s",
+            "contact": "20:32",
+            "lat": 40.3456,
+            "lng": -1.1065,
+            "slug": "teruel"
         },
         {
             "city": "Castellón",
             "region": "C. Valenciana",
-            "totality": true,
+            "type": "total",
             "duration": "1m 34s",
             "contact": "20:31",
             "lat": 39.9864,
-            "lng": -0.0513
+            "lng": -0.0513,
+            "slug": "castellon"
         },
         {
-            "city": "Palma",
+            "city": "Tarragona",
+            "region": "Cataluña",
+            "type": "total",
+            "duration": "1m 00s",
+            "contact": "20:33",
+            "lat": 41.1189,
+            "lng": 1.2445,
+            "slug": "tarragona"
+        },
+        {
+            "city": "Reus",
+            "region": "Cataluña",
+            "type": "total",
+            "duration": "1m 04s",
+            "contact": "20:33",
+            "lat": 41.1559,
+            "lng": 1.107,
+            "slug": "reus"
+        },
+        {
+            "city": "Salou",
+            "region": "Cataluña",
+            "type": "total",
+            "duration": "1m 07s",
+            "contact": "20:33",
+            "lat": 41.0766,
+            "lng": 1.1316,
+            "slug": "salou"
+        },
+        {
+            "city": "Mallorca",
             "region": "Islas Baleares",
-            "totality": true,
-            "duration": "1m 06s",
+            "type": "total",
+            "duration": "1m 36s",
             "contact": "20:35",
             "lat": 39.5696,
-            "lng": 2.6502
+            "lng": 2.6502,
+            "slug": "mallorca"
+        },
+        {
+            "city": "Menorca",
+            "region": "Islas Baleares",
+            "type": "total",
+            "duration": "1m 10s",
+            "contact": "20:36",
+            "lat": 39.9496,
+            "lng": 4.1104,
+            "slug": "menorca"
+        },
+        {
+            "city": "Zamora",
+            "region": "Castilla y León",
+            "type": "edge",
+            "duration": "24s",
+            "contact": "20:28",
+            "lat": 41.5034,
+            "lng": -5.7468,
+            "slug": "zamora"
+        },
+        {
+            "city": "País Vasco",
+            "region": "País Vasco",
+            "type": "edge",
+            "duration": "31s",
+            "contact": "20:29",
+            "lat": 43.263,
+            "lng": -2.935,
+            "slug": "pais-vasco"
+        },
+        {
+            "city": "Segovia",
+            "region": "Castilla y León",
+            "type": "edge",
+            "duration": "57s",
+            "contact": "20:29",
+            "lat": 40.9429,
+            "lng": -4.1088,
+            "slug": "segovia"
+        },
+        {
+            "city": "Cuenca",
+            "region": "Castilla-La Mancha",
+            "type": "edge",
+            "duration": "53s",
+            "contact": "20:30",
+            "lat": 40.0704,
+            "lng": -2.1374,
+            "slug": "cuenca"
+        },
+        {
+            "city": "Valencia",
+            "region": "C. Valenciana",
+            "type": "edge",
+            "duration": "1m 00s",
+            "contact": "20:32",
+            "lat": 39.4699,
+            "lng": -0.3763,
+            "slug": "valencia"
+        },
+        {
+            "city": "Lleida",
+            "region": "Cataluña",
+            "type": "edge",
+            "duration": "28s",
+            "contact": "20:32",
+            "lat": 41.6176,
+            "lng": 0.62,
+            "slug": "lleida"
+        },
+        {
+            "city": "Vilanova i la Geltrú",
+            "region": "Cataluña",
+            "type": "edge",
+            "duration": "15s",
+            "contact": "20:33",
+            "lat": 41.2242,
+            "lng": 1.7257,
+            "slug": "vilanova"
         },
         {
             "city": "Madrid",
             "region": "Comunidad de Madrid",
-            "totality": false,
-            "duration": "99% parcial",
+            "type": "partial",
+            "duration": "99,9%",
             "contact": "20:31",
             "lat": 40.4168,
-            "lng": -3.7038
+            "lng": -3.7038,
+            "slug": "madrid"
+        },
+        {
+            "city": "Salamanca",
+            "region": "Castilla y León",
+            "type": "partial",
+            "duration": "99,5%",
+            "contact": "20:28",
+            "lat": 40.9701,
+            "lng": -5.6635,
+            "slug": "salamanca"
+        },
+        {
+            "city": "Extremadura",
+            "region": "Extremadura",
+            "type": "partial",
+            "duration": "98%",
+            "contact": "20:27",
+            "lat": 39.4735,
+            "lng": -6.3724,
+            "slug": "extremadura"
         }
     ]
 }

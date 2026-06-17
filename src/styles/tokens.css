@@ -15,10 +15,12 @@
 
     --space-blue: #00aaff;
     --space-blue-light: #66d0ff;
+    --edge-blue: #2e6b9e;
     --ember: #6c5ce7;
     --ember-deep: #2d1b69;
 
     --space-blue-rgb: 0, 170, 255;
+    --edge-blue-rgb: 46, 107, 158;
     --ember-rgb: 108, 92, 231;
 
     --line: rgba(244, 239, 230, 0.12);

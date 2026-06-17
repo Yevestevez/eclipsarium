@@ -70,7 +70,7 @@ src/
 
 ### P1 — Core (imprescindible)
 
-- [ ] **Mapa interactivo** — franja de totalidad embebida, puntos recomendados si existen (AEMET, ministerios, CCAA, expertos fiables). Fallback: solo franja + pueblos/ciudades en Google Maps base.
+- [x] **Mapa interactivo** — franja de totalidad embebida, puntos recomendados si existen (AEMET, ministerios, CCAA, expertos fiables). Fallback: solo franja + pueblos/ciudades en Google Maps base.
 - [ ] **Integración Google Calendar** — agregar evento al calendario (notificaciones: 1 semana, 1 día, 1 hora antes).
 - [ ] **Checklist de preparación** — qué llevar, estimadores de asistencia, datos históricos de afluencia.
 

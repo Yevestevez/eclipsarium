@@ -3,13 +3,18 @@
     "type": "module",
     "version": "1.1.0",
     "engines": {
-        "node": ">=22.12.0"
+        "node": ">=22.13.0"
     },
     "scripts": {
         "dev": "astro dev",
         "build": "astro build",
         "preview": "astro preview",
-        "astro": "astro"
+        "astro": "astro",
+        "test": "vitest run",
+        "test:watch": "vitest",
+        "test:c": "vitest run --coverage",
+        "test:e2e": "playwright test",
+        "test:e2e:ui": "playwright test --ui"
     },
     "dependencies": {
         "astro": "^6.4.2"
@@ -22,7 +27,12 @@
         ]
     },
     "devDependencies": {
+        "@axe-core/playwright": "^4.11.3",
+        "@playwright/test": "^1.61.0",
+        "@types/node": "^25.9.3",
+        "@vitest/coverage-v8": "4.1.9",
         "prettier": "^3.8.4",
-        "prettier-plugin-astro": "^0.14.1"
+        "prettier-plugin-astro": "^0.14.1",
+        "vitest": "^4.1.9"
     }
 }

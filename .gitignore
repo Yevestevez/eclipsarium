@@ -32,3 +32,9 @@ pnpm-debug.log*
 AGENTS.md
 .github/copilot-instructions.md
 skills-lock.json
+
+coverage
+
+# playwright test results
+test-results/
+playwright-report/

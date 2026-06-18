@@ -1,0 +1,209 @@
+---
+const siteHost = 'eclipsarium.vercel.app';
+
+const title = 'Eclipse Solar Total 2026 — España ☀️🌑';
+const desc =
+    'Eclipse solar total del 12 de agosto de 2026 visible desde España. La Luna cubrirá completamente al Sol durante más de un minuto en la franja de totalidad que cruza el norte peninsular.\n\nMás información: https://eclipsarium.vercel.app';
+const location = 'Franja de totalidad — norte de España';
+
+const baseDate = '20260812';
+const startUTC = baseDate + 'T180000Z';
+const endUTC = baseDate + 'T193000Z';
+
+const webcalUrl = `webcal://${siteHost}/eclipse-2026.ics`;
+
+const googleUrl =
+    'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+    `&text=${encodeURIComponent(title)}` +
+    `&dates=${startUTC}/${endUTC}` +
+    `&details=${encodeURIComponent(desc)}` +
+    `&location=${encodeURIComponent(location)}` +
+    '&trp=false&sf=true&output=xml';
+
+const outlookUrl =
+    'https://outlook.live.com/calendar/0/deeplink/compose' +
+    `?body=${encodeURIComponent(desc)}` +
+    `&subject=${encodeURIComponent(title)}` +
+    `&startdt=${encodeURIComponent('2026-08-12T20:00:00+02:00')}` +
+    `&enddt=${encodeURIComponent('2026-08-12T21:30:00+02:00')}` +
+    `&location=${encodeURIComponent(location)}` +
+    '&path=%2Fcalendar%2Faction%2Fcompose&rru=addevent';
+
+const icsUrl = '/eclipse-2026.ics';
+---
+
+<div class="cal-actions">
+    <h3 class="cal-actions__eyebrow">Añadir a calendario</h3>
+    <p class="cal-actions__lead">
+        ¡No te olvides del evento astronómico del año!
+    </p>
+    <div class="cal-actions__btns">
+        <a href={googleUrl} target="_blank" rel="noopener" class="cal-btn">
+            <svg
+                class="cal-btn__icon"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+            >
+                <path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/>
+            </svg>
+            Google Calendar
+        </a>
+        <a href={webcalUrl} class="cal-btn">
+            <svg
+                class="cal-btn__icon"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+            >
+                <path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/>
+            </svg>
+            Apple Calendar
+        </a>
+        <a href={outlookUrl} target="_blank" rel="noopener" class="cal-btn">
+            <svg
+                class="cal-btn__icon"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+            >
+                <path d="M7.88 12.04q0 .45-.11.87-.1.41-.33.74-.22.33-.58.52-.37.2-.87.2t-.85-.2q-.35-.21-.57-.55-.22-.33-.33-.75-.1-.42-.1-.86t.1-.87q.1-.43.34-.76.22-.34.59-.54.36-.2.87-.2t.86.2q.35.21.57.55.22.34.31.77.1.43.1.88zM24 12v9.38q0 .46-.33.8-.33.32-.8.32H7.13q-.46 0-.8-.33-.32-.33-.32-.8V18H1q-.41 0-.7-.3-.3-.29-.3-.7V7q0-.41.3-.7Q.58 6 1 6h6.5V2.55q0-.44.3-.75.3-.3.75-.3h12.9q.44 0 .75.3.3.3.3.75V10.85l1.24.72h.01q.1.07.18.18.07.12.07.25zm-6-8.25v3h3v-3zm0 4.5v3h3v-3zm0 4.5v1.83l3.05-1.83zm-5.25-9v3h3.75v-3zm0 4.5v3h3.75v-3zm0 4.5v2.03l2.41 1.5 1.34-.8v-2.73zM9 3.75V6h2l.13.01.12.04v-2.3zM5.98 15.98q.9 0 1.6-.3.7-.32 1.19-.86.48-.55.73-1.28.25-.74.25-1.61 0-.83-.25-1.55-.24-.71-.71-1.24t-1.15-.83q-.68-.3-1.55-.3-.92 0-1.64.3-.71.3-1.2.85-.5.54-.75 1.3-.25.74-.25 1.63 0 .85.26 1.56.26.72.74 1.23.48.52 1.17.81.69.3 1.56.3zM7.5 21h12.39L12 16.08V17q0 .41-.3.7-.29.3-.7.3H7.5zm15-.13v-7.24l-5.9 3.54Z"/>
+            </svg>
+            Outlook
+        </a>
+        <a href={icsUrl} download class="cal-btn">
+            <svg
+                class="cal-btn__icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+            >
+                <path
+                    d="M12 3a1 1 0 011 1v10.586l3.293-3.293a1 1 0 111.414 1.414l-5 5a1 1 0 01-1.414 0l-5-5a1 1 0 111.414-1.414L11 14.586V4a1 1 0 011-1z"
+                    fill="currentColor"
+                />
+                <path
+                    d="M4 20a1 1 0 011-1h14a1 1 0 110 2H5a1 1 0 01-1-1z"
+                    fill="currentColor"
+                />
+            </svg>
+            Descargar .ics
+        </a>
+    </div>
+</div>
+
+<style>
+    .cal-actions {
+        margin-top: clamp(2rem, 5vw, 3.5rem);
+    }
+
+    .cal-actions__eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.7rem;
+        font-family: var(--font-accent);
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.3em;
+        color: var(--muted);
+        margin: 0 0 1.2rem;
+        font-weight: 400;
+    }
+
+    .cal-actions__eyebrow::before {
+        content: '';
+        width: 28px;
+        height: 1px;
+        background: var(--line-strong);
+    }
+
+    .cal-actions__lead {
+        font-size: var(--step-0);
+        color: var(--bone-dim);
+        font-weight: 300;
+        line-height: 1.5;
+        margin: 0 0 1.4rem;
+        max-width: 42ch;
+    }
+
+    .cal-actions__btns {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .cal-btn {
+        display: inline-flex;
+        align-items: center;
+        position: relative;
+        isolation: isolate;
+        gap: 0.7rem;
+        padding: 0.95rem 1.7rem;
+        border: none;
+        --cut: 18px;
+        --stroke: 1px;
+        --corner: 0.2rem;
+        border-radius: var(--corner);
+        clip-path: polygon(
+            0 0,
+            100% 0,
+            100% 100%,
+            var(--cut) 100%,
+            0 calc(100% - var(--cut))
+        );
+        font-family: var(--font-mono);
+        font-size: 0.74rem;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--bone-dim);
+        text-decoration: none;
+        cursor: pointer;
+        transition:
+            color 0.4s var(--ease),
+            gap 0.4s var(--ease);
+    }
+
+    .cal-btn::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: var(--line-strong);
+        border-radius: var(--corner);
+        clip-path: inherit;
+        pointer-events: none;
+        transition: background-color 0.4s var(--ease);
+    }
+
+    .cal-btn::after {
+        content: '';
+        position: absolute;
+        inset: var(--stroke);
+        z-index: -1;
+        background: var(--void);
+        border-radius: calc(var(--corner) - var(--stroke));
+        clip-path: polygon(
+            0 0,
+            100% 0,
+            100% 100%,
+            calc(var(--cut) - var(--stroke)) 100%,
+            0 calc(100% - (var(--cut) - var(--stroke)))
+        );
+        pointer-events: none;
+    }
+
+    .cal-btn__icon {
+        width: 1.1rem;
+        height: 1.1rem;
+        flex-shrink: 0;
+    }
+
+    .cal-btn:hover {
+        color: var(--space-blue);
+        gap: 0.9rem;
+    }
+
+    .cal-btn:hover::before {
+        background: var(--space-blue);
+    }
+</style>

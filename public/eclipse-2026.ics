@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Eclipsarium//ES
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:eclipse-2026@eclipsarium
+DTSTART:20260812T180000Z
+DTEND:20260812T193000Z
+SUMMARY:Eclipse Solar Total 2026 — España
+DESCRIPTION:Eclipse solar total del 12 de agosto de 2026 visible desde Espa
+ ña. La Luna cubrirá completamente al Sol durante más de un minuto en la
+  franja de totalidad que cruza el norte peninsular.\n\nMás información:
+  https://eclipsarium.vercel.app
+LOCATION:Franja de totalidad — norte de España
+BEGIN:VALARM
+TRIGGER:-P1W
+ACTION:DISPLAY
+DESCRIPTION:1 semana para el eclipse solar total
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:1 día para el eclipse solar total
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT1H
+ACTION:DISPLAY
+DESCRIPTION:1 hora para el eclipse solar total
+END:VALARM
+END:VEVENT
+END:VCALENDAR

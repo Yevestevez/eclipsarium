@@ -1,7 +1,7 @@
 # Sprint 2 Plan — Eclipse 2026
 
 **Deadline:** viernes 26 de junio  
-**Estado:** F1 (Mapa) ✅ · F2 (Calendario) ✅ · F3 (Checklist) pendiente
+**Estado:** F1 (Mapa) ✅ · F2 (Calendario) ✅ · F3 (Checklist) ✅
 
 ---
 
@@ -40,12 +40,22 @@
 
 ---
 
-#### F3: Checklist de Preparación (pendiente)
+#### F3: Checklist de Preparación ✅
 
-- **Descripción:** Sección estática con checklist visual: gafas ISO, agua, combustible, etc.
-- **Ubicación:** Nueva sección en index.astro
-- **Contenido:** Estático
-- **Pendiente:** Inicio tras validación F1+F2
+- **Descripción:** Sección interactiva de preparación con 3 bloques: recomendaciones (expandibles, 3 columnas en desktop), checklist (14 ítems con persistencia localStorage + barra de progreso), y advertencias de seguridad ocular.
+- **Fuentes consultadas:** NASA, Público, Guía Repsol, Fundación Descubre, Astronomía Visión Certificada, Helioclipse, Space.com
+- **Stack:** Astro, CSS Grid, localStorage API, vanilla JS
+- **Ubicación:** Sección "Preparación" en index.astro (componente `PrepChecklist.astro`)
+- **Aceptación:**
+    - ✅ Checklist interactiva con checkboxes y progreso
+    - ✅ Persistencia localStorage entre visitas
+    - ✅ Recomendaciones colapsables: Antes / Día / Después del eclipse
+    - ✅ Recomendación Perseidas (quedarse noche 12→13 agosto)
+    - ✅ Plan B meteorológico (AEMET, Windy, rutas de escape)
+    - ✅ Sección de seguridad: métodos que NO protegen la vista
+    - ✅ 8 tests unitarios (Vitest)
+    - ✅ Responsivo mobile/desktop
+    - ✅ Build producción sin errores
 
 ---
 
@@ -72,7 +82,7 @@
 | ----------- | ------------------------ | ---------------------------------------- |
 | Mapa ✅     | —                        | Completado con Leaflet + OSM             |
 | Calendar ✅ | —                        | .ics + webcal sin OAuth ni backend       |
-| Checklist   | —                        | Contenido conocido, pendiente implementar |
+| Checklist ✅ | —                        | Interactiva, 14 ítems, localStorage, tests |
 | Actividades | Links breaking           | Verificación durante dev                 |
 | Horarios    | Precisión astronómica    | Usar NASA ephemeris o Stellarium API     |
 
@@ -82,8 +92,8 @@
 
 - [x] F1 mergeado a main
 - [x] F2 mergeado a main
-- [ ] F3 mergeado a main
+- [x] F3 mergeado a main
 - [x] Testing responsivo (mobile 360px, tablet, desktop)
 - [x] README actualizado con Sprint 2 features
-- [ ] No console errors
-- [ ] Performance: animación sin jank, mapa carga rápido
+- [x] No console errors
+- [x] Performance: animación sin jank, mapa carga rápido

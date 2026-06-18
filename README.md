@@ -8,7 +8,8 @@ Web informativa sobre el **eclipse solar total del 12 de agosto de 2026**, visib
 
 - **v1.0.0 (MVP):** https://eclipsarium.vercel.app/
 - **v1.1.0 (mapa):** mapa interactivo con franja de totalidad y localizaciones
-- **v1.2.0 (actual):** botones añadir evento a calendario
+- **v1.2.0 (calendario):** botones añadir evento a calendario
+- **v1.3.0 (actual):** recomendaciones y checklist interactiva de preparación
 
 ## 🎯 Objetivo
 
@@ -44,8 +45,9 @@ pnpm test:e2e         # tests E2E (Playwright)
 src/
 ├── assets/           # imágenes y svg
 ├── components/       # componentes .astro
-│   ├── EclipseMap.astro    # mapa Leaflet con polígono + markers
-│   ├── WhereToWatch.astro  # lista de lugares con mapa
+│   ├── EclipseMap.astro      # mapa Leaflet con polígono + markers
+│   ├── WhereToWatch.astro    # lista de lugares con mapa
+│   ├── PrepChecklist.astro   # checklist interactiva con persistencia
 │   └── ...
 ├── data/             # datos estáticos (JSON + test co-localizado)
 ├── layouts/          # layouts de página
@@ -73,7 +75,7 @@ tests/
 - [x] Cuenta atrás al evento
 - [x] Navegación responsive con menú hamburguesa
 
-### Sprint 2 ✅ — Mapa + Calendario (v1.1.0)
+### Sprint 2 ✅ — Mapa + Calendario + Checklist (v1.3.0)
 
 - [x] Mapa Leaflet con tiles CartoDB dark_all
 - [x] Polígono de totalidad con coordenadas reales NASA/JPL (83 puntos)
@@ -82,15 +84,13 @@ tests/
 - [x] Lista ordenada por duración de totalidad
 - [x] Botones calendario: Google Calendar, Apple Calendar (webcal con avisos), Outlook
 - [x] Archivo .ics con 3 alarmas predefinidas (1 semana, 1 día, 1 hora)
-- [x] Tests unitarios (Vitest, 22 tests) + E2E (Playwright)
-- [ ] Checklist de preparación
+- [x] Checklist interactiva de preparación: recomendaciones (3 columnas desktop), 14 ítems checklist con persistencia localStorage y barra de progreso, advertencias de seguridad ocular
+- [x] Tests unitarios (Vitest, 32 tests) + E2E (Playwright)
 
 ### Roadmap
 
 - [ ] Horarios por localidad (tiempos de contacto)
-- [ ] Guía de observación segura (gafas ISO 12312-2, proyección)
 - [ ] FAQ y mitos sobre eclipses
-- [ ] Predicción meteorológica
 - [ ] Actividades para familias
 
 ## 📄 Licencia

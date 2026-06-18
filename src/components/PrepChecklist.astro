@@ -1,0 +1,820 @@
+---
+const checklist = [
+    {
+        id: 'vital',
+        label: 'Imprescindible',
+        accent: 'var(--space-blue)',
+        items: [
+            {
+                id: 'v-glasses',
+                text: 'Gafas eclipse ISO 12312-2 — una por persona + repuesto',
+            },
+            {
+                id: 'v-filter',
+                text: 'Filtro solar para cámara o móvil (si piensas fotografiarlo)',
+            },
+        ],
+    },
+    {
+        id: 'prep',
+        label: 'Preparativos',
+        accent: 'var(--ember)',
+        items: [
+            { id: 'p-water', text: 'Agua (≥2 L por persona) y snacks' },
+            {
+                id: 'p-sun',
+                text: 'Protección solar: crema, gorra, gafas de sol',
+            },
+            { id: 'p-chair', text: 'Silla plegable o manta' },
+            {
+                id: 'p-layers',
+                text: 'Ropa de capas —la temperatura baja durante la totalidad',
+            },
+            { id: 'p-fuel', text: 'Depósito de combustible lleno' },
+            { id: 'p-power', text: 'Power bank y cargador del móvil' },
+            { id: 'p-light', text: 'Linterna (mejor con luz roja)' },
+            { id: 'p-map', text: 'Mapa offline o direcciones impresas' },
+            {
+                id: 'p-spot',
+                text: 'Ubicación definitiva elegida con horizonte oeste despejado',
+            },
+            {
+                id: 'p-planb',
+                text: 'Plan B meteorológico preparado (zona alternativa a ≤90 min)',
+            },
+            {
+                id: 'p-weather',
+                text: 'Previsión meteorológica consultada (AEMET, Windy, Meteoblue)',
+            },
+            { id: 'p-lodge', text: 'Alojamiento reservado si viajas' },
+        ],
+    },
+];
+
+const totalItems = checklist.reduce((sum, cat) => sum + cat.items.length, 0);
+const now = Date.now();
+const diff = new Date('2026-08-12T20:30:00+02:00').getTime() - now;
+const daysLeft = Math.max(0, Math.floor(diff / 86400000));
+const eclipsePast = now > new Date('2026-08-12T22:00:00+02:00').getTime();
+---
+
+<section id="checklist" class="pcl">
+    <div class="shell pcl__shell">
+        <span class="eyebrow">Preparación</span>
+        <h2 class="pcl__title">
+            Checklist<span class="pcl__title-sub"> para el eclipse</span>
+        </h2>
+
+        {
+            !eclipsePast && (
+                <p class="pcl__urgency">
+                    {daysLeft <= 35
+                        ? 'Faltan ' +
+                          daysLeft +
+                          ' días. Queda poco tiempo — prioriza lo urgente.'
+                        : 'Todavía estás a tiempo. No dejes las gafas para última hora.'}
+                </p>
+            )
+        }
+
+        <!-- ======================== RECOMENDACIONES ======================== -->
+        <div class="pcl__rec">
+            <h3 class="pcl__rec-title">Recomendaciones</h3>
+
+            <details class="pcl__rec-block">
+                <summary class="pcl__rec-head"> Antes del eclipse </summary>
+                <ul class="pcl__rec-body">
+                    <li>
+                        Elige una ubicación con horizonte oeste despejado. El
+                        eclipse será al atardecer; montañas, edificios o árboles
+                        pueden taparlo.
+                    </li>
+                    <li>
+                        Ten un plan B por si el cielo se nubla. Consulta AEMET,
+                        Windy o Meteoblue 48–24 h antes y prepárate para
+                        desplazarte dentro de la franja de totalidad si es
+                        necesario.
+                    </li>
+                    <li>
+                        Si viajas, reserva alojamiento con antelación. La
+                        demanda será altísima. Mejor con cancelación flexible.
+                    </li>
+                    <li>
+                        Lleva efectivo. En zonas rurales los datáfonos pueden
+                        fallar con la alta afluencia.
+                    </li>
+                </ul>
+            </details>
+
+            <details class="pcl__rec-block">
+                <summary class="pcl__rec-head"> El día del eclipse </summary>
+                <ul class="pcl__rec-body">
+                    <li>
+                        Llega al lugar con al menos 2 horas de antelación. El
+                        tráfico será intenso y querrás montarlo todo con calma.
+                    </li>
+                    <li>
+                        Durante las fases parciales, mantén las gafas puestas en
+                        todo momento. Mírate al suelo al ponértelas, luego
+                        levanta la vista.
+                    </li>
+                    <li>
+                        Solo durante la totalidad (100 % cubierto) puedes mirar
+                        sin protección. En cuanto veas el <em>diamond ring</em>,
+                        vuelve a ponerte las gafas.
+                    </li>
+                    <li>
+                        Si llevas niños, supervisa que usen las gafas
+                        correctamente en todo momento.
+                    </li>
+                </ul>
+            </details>
+
+            <details class="pcl__rec-block">
+                <summary class="pcl__rec-head"> Después del eclipse </summary>
+                <ul class="pcl__rec-body">
+                    <li>
+                        No conduzcas inmediatamente. El tráfico de vuelta será
+                        denso; espera 1–2 horas o quédate a cenar.
+                    </li>
+                    <li>
+                        Aprovecha la noche: las Perseidas alcanzan su máximo la
+                        noche del 12 al 13 de agosto. Si puedes, quédate una
+                        noche más.
+                    </li>
+                    <li>
+                        Guarda las gafas en un lugar seco y sin riesgo de
+                        perforación. Valen para futuros eclipses (2027, 2028).
+                    </li>
+                    <li>
+                        Comparte la experiencia. Las fotos no capturan lo que se
+                        siente, pero ayudan a recordarlo.
+                    </li>
+                </ul>
+            </details>
+        </div>
+
+        <!-- ======================== CHECKLIST ======================== -->
+        <div class="pcl__checklist">
+            <h3 class="pcl__checklist-title">Checklist</h3>
+
+            <div
+                class="pcl__progress-total"
+                role="progressbar"
+                aria-valuenow="0"
+                aria-valuemin="0"
+                aria-valuemax={totalItems}
+                aria-label="Progreso"
+            >
+                <span class="pcl__progress-track">
+                    <span
+                        class="pcl__progress-fill"
+                        data-bar="total"
+                        style="width:0%"></span>
+                </span>
+                <span class="pcl__progress-label" data-label="total"
+                    >0&thinsp;/&thinsp;{totalItems}</span
+                >
+            </div>
+
+            {
+                checklist.map((cat) => (
+                    <div class="pcl__cat" data-cat={cat.id}>
+                        <div
+                            class="pcl__cat-head"
+                            style={`--cat-accent: ${cat.accent}`}
+                        >
+                            <h4 class="pcl__cat-label">{cat.label}</h4>
+                            <span
+                                class="pcl__cat-progress"
+                                data-cat-label={cat.id}
+                            >
+                                <span data-cat-count={cat.id}>0</span>
+                                &thinsp;/&thinsp;{cat.items.length}
+                            </span>
+                        </div>
+                        <ul
+                            class="pcl__items"
+                            role="group"
+                            aria-label={cat.label}
+                        >
+                            {cat.items.map((item) => (
+                                <li class="pcl__item" data-id={item.id}>
+                                    <label class="pcl__check">
+                                        <input
+                                            type="checkbox"
+                                            class="pcl__check-input"
+                                            data-key={item.id}
+                                        />
+                                        <span
+                                            class="pcl__check-box"
+                                            aria-hidden="true"
+                                        >
+                                            <svg
+                                                class="pcl__check-icon"
+                                                viewBox="0 0 12 12"
+                                                width="12"
+                                                height="12"
+                                                fill="none"
+                                            >
+                                                <path
+                                                    d="M2 6l3 3 5-5"
+                                                    stroke="currentColor"
+                                                    stroke-width="1.5"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                />
+                                            </svg>
+                                        </span>
+                                        <span class="pcl__check-text">
+                                            {item.text}
+                                        </span>
+                                    </label>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                ))
+            }
+        </div>
+
+        <!-- ======================== WARNINGS ======================== -->
+        <div class="pcl__warn">
+            <div class="pcl__warn-head">
+                <span class="pcl__warn-icon" aria-hidden="true">
+                    <svg viewBox="0 0 20 20" width="20" height="20" fill="none">
+                        <circle
+                            cx="10"
+                            cy="10"
+                            r="9"
+                            stroke="currentColor"
+                            stroke-width="1.5"></circle>
+                        <path
+                            d="M10 6v5"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                            stroke-linecap="round"></path>
+                        <circle cx="10" cy="14" r="0.8" fill="currentColor"
+                        ></circle>
+                    </svg>
+                </span>
+                <div>
+                    <h3 class="pcl__warn-label">Esto NO protege tu vista</h3>
+                    <p class="pcl__warn-sub">
+                        Ninguno de estos métodos es seguro. <strong
+                            >Solo las gafas ISO 12312-2</strong
+                        > bloquean la radiación UV e infrarroja.
+                    </p>
+                </div>
+            </div>
+            <ul class="pcl__warn-list">
+                <li class="pcl__warn-item">
+                    <span class="pcl__warn-x" aria-hidden="true">✕</span>Gafas
+                    de sol convencionales (incluso polarizadas o muy oscuras)
+                </li>
+                <li class="pcl__warn-item">
+                    <span class="pcl__warn-x" aria-hidden="true">✕</span
+                    >Radiografías médicas
+                </li>
+                <li class="pcl__warn-item">
+                    <span class="pcl__warn-x" aria-hidden="true">✕</span>Cristal
+                    ahumado con humo de vela
+                </li>
+                <li class="pcl__warn-item">
+                    <span class="pcl__warn-x" aria-hidden="true">✕</span
+                    >Negativos fotográficos o carretes revelados
+                </li>
+                <li class="pcl__warn-item">
+                    <span class="pcl__warn-x" aria-hidden="true">✕</span>CD, DVD
+                    o cualquier disco reflectante
+                </li>
+                <li class="pcl__warn-item">
+                    <span class="pcl__warn-x" aria-hidden="true">✕</span>Filtros
+                    genéricos de cámara (ND, polarizador, UV)
+                </li>
+                <li class="pcl__warn-item">
+                    <span class="pcl__warn-x" aria-hidden="true">✕</span>Filtros
+                    colocados en el ocular del telescopio (deben ir en el
+                    frontal)
+                </li>
+                <li class="pcl__warn-item">
+                    <span class="pcl__warn-x" aria-hidden="true">✕</span>Agua,
+                    espejos o cualquier superficie reflectante
+                </li>
+            </ul>
+            <p class="pcl__warn-foot">
+                La retina no tiene receptores de dolor. Puedes estar dañándola
+                sin notarlo. No improvises.
+            </p>
+        </div>
+    </div>
+</section>
+
+<script>
+    const LS_KEY = 'eclipsarium-checklist';
+
+    class Checklist {
+        state = {};
+        bar = null;
+        label = null;
+        catCounts = new Map();
+        totalItems = 0;
+
+        constructor() {
+            this.state = this.load();
+            this.bar = document.querySelector('[data-bar="total"]');
+            this.label = document.querySelector('[data-label="total"]');
+
+            document.querySelectorAll('[data-cat]').forEach((cat) => {
+                const id = cat.dataset.cat;
+                const count = cat.querySelectorAll('[data-key]').length;
+                this.totalItems += count;
+                const countEl = cat.querySelector(`[data-cat-count="${id}"]`);
+                if (countEl) this.catCounts.set(id, countEl);
+            });
+
+            const progressbar = document.querySelector('.pcl__progress-total');
+            if (progressbar)
+                progressbar.setAttribute('aria-valuemax', this.totalItems);
+
+            this.render();
+            this.bind();
+        }
+
+        load() {
+            try {
+                return JSON.parse(localStorage.getItem(LS_KEY)) || {};
+            } catch {
+                return {};
+            }
+        }
+
+        save() {
+            localStorage.setItem(LS_KEY, JSON.stringify(this.state));
+        }
+
+        bind() {
+            document.querySelectorAll('.pcl__check-input').forEach((input) => {
+                input.addEventListener('change', () => {
+                    this.state[input.dataset.key] = input.checked;
+                    this.save();
+                    this.render();
+                });
+            });
+        }
+
+        render() {
+            document.querySelectorAll('.pcl__check-input').forEach((input) => {
+                input.checked = this.state[input.dataset.key] === true;
+            });
+
+            let done = 0;
+            const catTotals = {};
+
+            document.querySelectorAll('[data-cat]').forEach((cat) => {
+                const id = cat.dataset.cat;
+                let catDone = 0;
+                cat.querySelectorAll('.pcl__check-input').forEach((inp) => {
+                    if (inp.checked) catDone++;
+                });
+                const total = cat.querySelectorAll('[data-key]').length;
+                catTotals[id] = { done: catDone, total };
+                done += catDone;
+            });
+
+            const pct =
+                this.totalItems > 0 ? (done / this.totalItems) * 100 : 0;
+            if (this.bar) this.bar.style.width = pct + '%';
+            if (this.label)
+                this.label.innerHTML =
+                    done + '&thinsp;/&thinsp;' + this.totalItems;
+            const pb = document.querySelector('.pcl__progress-total');
+            if (pb) pb.setAttribute('aria-valuenow', done);
+
+            for (const [id, el] of this.catCounts) {
+                const t = catTotals[id];
+                if (t) el.textContent = String(t.done);
+            }
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => new Checklist());
+    } else {
+        new Checklist();
+    }
+</script>
+
+<style>
+    .pcl {
+        padding-block: var(--section-y);
+        position: relative;
+        z-index: 1;
+    }
+
+    .pcl__shell {
+        display: flex;
+        flex-direction: column;
+        gap: 1.6rem;
+    }
+
+    .pcl__title {
+        font-size: var(--step-2);
+        font-weight: 600;
+    }
+
+    .pcl__title-sub {
+        font-weight: 300;
+        color: var(--bone-dim);
+    }
+
+    .pcl__urgency {
+        color: var(--space-blue);
+        font-family: var(--font-accent);
+        font-size: var(--step--1);
+        margin-top: -0.8rem;
+    }
+
+    /* ================================
+       RECOMENDACIONES
+    ================================ */
+    .pcl__rec {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--ink);
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .pcl__rec-title {
+        font-family: var(--font-accent);
+        font-size: var(--step-0);
+        font-weight: 500;
+        padding: 1rem 1.4rem 0.2rem;
+    }
+
+    .pcl__rec-block {
+        border-top: 1px solid var(--line);
+    }
+
+    .pcl__rec-block:first-of-type {
+        border-top: none;
+    }
+
+    .pcl__rec-head {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.85rem 1.4rem;
+        cursor: pointer;
+        font-family: var(--font-accent);
+        font-size: var(--step--1);
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--space-blue);
+        transition: background-color 0.2s var(--ease);
+        list-style: none;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .pcl__rec-head::-webkit-details-marker,
+    .pcl__rec-head::marker {
+        display: none;
+        content: '';
+    }
+
+    .pcl__rec-head:hover {
+        background: rgba(244, 239, 230, 0.03);
+    }
+
+    .pcl__rec-head::before {
+        content: '▶';
+        font-size: 0.55rem;
+        line-height: 1;
+        transition: transform 0.25s var(--ease);
+        color: var(--space-blue);
+        opacity: 0.7;
+    }
+
+    .pcl__rec-block[open] > .pcl__rec-head::before {
+        transform: rotate(90deg);
+        opacity: 1;
+    }
+
+    .pcl__rec-body {
+        margin: 0;
+        padding: 0 1.4rem 1rem 2.4rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.45rem;
+    }
+
+    .pcl__rec-body li {
+        font-size: var(--step--1);
+        color: var(--bone-dim);
+        line-height: 1.6;
+    }
+
+    .pcl__rec-body li em {
+        color: var(--bone);
+        font-style: italic;
+    }
+
+    /* ================================
+       CHECKLIST
+    ================================ */
+    .pcl__checklist-title {
+        font-family: var(--font-accent);
+        font-size: var(--step-0);
+        font-weight: 500;
+        margin-bottom: -0.4rem;
+    }
+
+    .pcl__checklist {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .pcl__progress-total {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 0.2rem;
+    }
+
+    .pcl__progress-track {
+        flex: 1;
+        height: 6px;
+        background: var(--line);
+        border-radius: 99px;
+        overflow: hidden;
+    }
+
+    .pcl__progress-fill {
+        display: block;
+        height: 100%;
+        background: linear-gradient(90deg, var(--space-blue), var(--ember));
+        border-radius: 99px;
+        transition: width 0.35s var(--ease);
+        width: 0%;
+    }
+
+    .pcl__progress-label {
+        font-family: var(--font-mono);
+        font-size: 0.78rem;
+        color: var(--muted);
+        min-width: 5ch;
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .pcl__cat {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        overflow: hidden;
+        background: var(--ink);
+    }
+
+    .pcl__cat-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.85rem 1.4rem;
+        border-bottom: 1px solid var(--line);
+        border-left: 3px solid var(--cat-accent, var(--space-blue));
+    }
+
+    .pcl__cat-label {
+        font-family: var(--font-accent);
+        font-size: var(--step-0);
+        font-weight: 500;
+        line-height: 1.2;
+    }
+
+    .pcl__cat-progress {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        color: var(--muted-deep);
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .pcl__items {
+        list-style: none;
+        margin: 0;
+        padding: 0.15rem 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .pcl__item {
+        margin: 0;
+    }
+
+    .pcl__check {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 0.55rem 1.4rem;
+        cursor: pointer;
+        transition: background-color 0.2s var(--ease);
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .pcl__check:hover {
+        background: rgba(244, 239, 230, 0.03);
+    }
+
+    .pcl__check-input {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+        pointer-events: none;
+    }
+
+    .pcl__check-box {
+        flex-shrink: 0;
+        width: 1.15rem;
+        height: 1.15rem;
+        margin-top: 0.15rem;
+        border: 1.5px solid var(--line-strong);
+        border-radius: 3px;
+        display: grid;
+        place-items: center;
+        transition:
+            background-color 0.2s var(--ease),
+            border-color 0.2s var(--ease);
+        color: var(--void);
+    }
+
+    .pcl__check-icon {
+        opacity: 0;
+        transition: opacity 0.15s var(--ease);
+    }
+
+    .pcl__check-input:checked + .pcl__check-box {
+        background: var(--space-blue);
+        border-color: var(--space-blue);
+    }
+
+    .pcl__check-input:checked + .pcl__check-box .pcl__check-icon {
+        opacity: 1;
+        color: var(--void);
+    }
+
+    .pcl__check-input:focus-visible + .pcl__check-box {
+        outline: 2px solid var(--space-blue);
+        outline-offset: 2px;
+    }
+
+    .pcl__check-text {
+        font-size: var(--step--1);
+        line-height: 1.55;
+        color: var(--bone-dim);
+        transition: color 0.25s var(--ease);
+    }
+
+    .pcl__check-input:checked ~ .pcl__check-text {
+        color: var(--muted-deep);
+        text-decoration: line-through;
+        text-decoration-color: rgba(141, 134, 153, 0.3);
+    }
+
+    /* ================================
+       WARNINGS
+    ================================ */
+    .pcl__warn {
+        border: 1px solid rgba(255, 100, 80, 0.25);
+        border-radius: var(--radius);
+        background: rgba(255, 60, 40, 0.06);
+        padding: 1.2rem 1.4rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+    }
+
+    .pcl__warn-head {
+        display: flex;
+        gap: 0.8rem;
+        align-items: flex-start;
+    }
+
+    .pcl__warn-icon {
+        flex-shrink: 0;
+        color: rgb(255, 120, 100);
+        margin-top: 0.1rem;
+    }
+
+    .pcl__warn-label {
+        font-family: var(--font-accent);
+        font-size: var(--step-0);
+        font-weight: 500;
+        color: rgb(255, 140, 120);
+        line-height: 1.2;
+    }
+
+    .pcl__warn-sub {
+        font-size: var(--step--1);
+        color: var(--muted);
+        margin-top: 0.2rem;
+    }
+
+    .pcl__warn-sub strong {
+        color: var(--bone);
+    }
+
+    .pcl__warn-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+    }
+
+    .pcl__warn-item {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-size: var(--step--1);
+        color: var(--bone-dim);
+        line-height: 1.5;
+    }
+
+    .pcl__warn-x {
+        flex-shrink: 0;
+        width: 1.2rem;
+        height: 1.2rem;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: rgba(255, 60, 40, 0.15);
+        color: rgb(255, 120, 100);
+        font-size: 0.6rem;
+        font-weight: 700;
+        line-height: 1;
+    }
+
+    .pcl__warn-foot {
+        font-size: var(--step--1);
+        color: rgb(255, 120, 100);
+        font-style: italic;
+        padding-top: 0.4rem;
+        border-top: 1px solid rgba(255, 100, 80, 0.12);
+    }
+
+    /* ================================
+       WIDE — 3 columnas recomendaciones
+    ================================ */
+    @media (min-width: 860px) {
+        .pcl__rec {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .pcl__rec-title {
+            grid-column: 1 / -1;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid var(--line);
+            margin-bottom: 0;
+        }
+
+        .pcl__rec-block {
+            border-top: none;
+            border-right: 1px solid var(--line);
+        }
+
+        .pcl__rec-block:last-child {
+            border-right: none;
+        }
+    }
+
+    /* ================================
+       RESPONSIVE
+    ================================ */
+    @media (max-width: 560px) {
+        .pcl__rec-head,
+        .pcl__cat-head,
+        .pcl__check,
+        .pcl__warn {
+            padding-inline: 1rem;
+        }
+
+        .pcl__rec-body {
+            padding: 0 1rem 0.8rem 2rem;
+        }
+
+        .pcl__progress-total {
+            gap: 0.6rem;
+        }
+
+        .pcl__progress-label {
+            font-size: 0.7rem;
+            min-width: 4ch;
+        }
+    }
+</style>

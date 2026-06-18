@@ -7,7 +7,8 @@ Web informativa sobre el **eclipse solar total del 12 de agosto de 2026**, visib
 ## 🌐 Despliegue
 
 - **v1.0.0 (MVP):** https://eclipsarium.vercel.app/
-- **v1.1.0 (actual):** mapa interactivo con franja de totalidad y localizaciones
+- **v1.1.0 (mapa):** mapa interactivo con franja de totalidad y localizaciones
+- **v1.2.0 (actual):** botones añadir evento a calendario
 
 ## 🎯 Objetivo
 
@@ -72,15 +73,16 @@ tests/
 - [x] Cuenta atrás al evento
 - [x] Navegación responsive con menú hamburguesa
 
-### Sprint 2 ✅ — Mapa interactivo (v1.1.0)
+### Sprint 2 ✅ — Mapa + Calendario (v1.1.0)
 
 - [x] Mapa Leaflet con tiles CartoDB dark_all
 - [x] Polígono de totalidad con coordenadas reales NASA/JPL (83 puntos)
 - [x] 29 localizaciones con 3 categorías: total (azul), borde (azul oscuro), parcial (gris)
 - [x] Labels y dots con colores por tipo
 - [x] Lista ordenada por duración de totalidad
-- [x] Tests unitarios (Vitest, 17 tests) + E2E (Playwright)
-- [ ] Integración Google Calendar
+- [x] Botones calendario: Google Calendar, Apple Calendar (webcal con avisos), Outlook
+- [x] Archivo .ics con 3 alarmas predefinidas (1 semana, 1 día, 1 hora)
+- [x] Tests unitarios (Vitest, 22 tests) + E2E (Playwright)
 - [ ] Checklist de preparación
 
 ### Roadmap

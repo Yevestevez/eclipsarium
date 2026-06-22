@@ -1,7 +1,7 @@
 # Sprint 2 Plan — Eclipse 2026
 
 **Deadline:** viernes 26 de junio  
-**Estado:** F1 ✅ · F2 ✅ · F3 ✅ · F4 (Páginas + buscador + geocoding Nominatim) ✅ · F5 🚧
+**Estado:** F1 ✅ · F2 ✅ · F3 ✅ · F4 (Páginas + buscador + geocoding Nominatim) ✅ · F5 ✅
 
 ---
 
@@ -107,11 +107,29 @@
 
 ---
 
-#### F5: Actividades para Familias
+#### F5: Actividades para Familias ✅
 
-- Recursos educativos, mini-cuestionarios, guía para niños.
-- **Pendiente:** Post F3 / F4 si hay tiempo.
+- 6 actividades prácticas con materiales, pasos y explicación científica.
+- Mini-quiz interactivo de 5 preguntas Verdadero/Falso con localStorage.
+- Cada actividad enlaza a su fuente original (Exploratorium, NASA Space Place).
+- Sección independiente en index.astro (`KidsActivities.astro`) con navegación.
+- **Stack:** Astro, CSS Grid (2 col desktop), vanilla JS, localStorage API
+- **Ubicación:** Sección "Actividades" (componente `KidsActivities.astro` dentro de index.astro)
+- **Aceptación:**
+    - ✅ 6 actividades con edad, tiempo, materiales, pasos, tip y explicación
+    - ✅ Cada actividad expandible con `<details>`
+    - ✅ Enlace "Fuente:" por actividad a recurso externo
+    - ✅ Quiz interactivo con 5 preguntas, feedback y récord localStorage
+    - ✅ Sección externa de enlaces a recursos (NASA, Exploratorium, CESAR, AEMET)
+    - ✅ 8 tests unitarios (Vitest) + 8 tests E2E (Playwright) + axe a11y
+    - ✅ Responsivo mobile/desktop
+    - ✅ Build producción sin errores · 60 tests (9 suites)
+
+**Fuentes consultadas:**
+
 - https://spaceplace.nasa.gov/search/eclipse/sp/
+- https://www.exploratorium.edu/es/eclipse/activities
+- https://cesar.esa.int/index.php?Section=Eclipses&ChangeLang=en
 
 ---
 
@@ -124,7 +142,7 @@
 | Checklist ✅    | —                          | Interactiva, 14 ítems, localStorage, tests |
 | Horarios + Págs | Tiempo dev rutas estáticas | Astro `getStaticPaths` — trivial           |
 | Buscador        | —                          | Filtrado JS in-memory, sin dependencias    |
-| Actividades     | Links breaking             | Verificación durante dev                   |
+| Actividades ✅  | —                          | Actividades offline, quiz client-side      |
 
 ---
 
@@ -141,6 +159,11 @@
 - [x] No console errors
 - [x] Performance: animación sin jank, mapa carga rápido
 - [x] Build producción sin errores · 41 tests (7 suites)
+- [x] F5: 6 actividades prácticas con materiales, pasos y explicación
+- [x] F5: Quiz interactivo 5 preguntas con localStorage
+- [x] F5: Enlaces fuente por actividad
+- [x] F5: Tests unitarios (10) + E2E (8) + axe a11y
+- [x] Build producción sin errores · 60 tests (9 suites)
 - [x] README actualizado con v1.5.0 features
 - [x] Nominatim geocoding en 2 fases (mundial + España)
 - [x] Filtro addresstype (city/town/village/hamlet/municipality)
@@ -151,3 +174,8 @@
 ## 🔮 Próximo
 
 - [ ] FAQ y mitos sobre eclipses
+- [ ] Ampliar quiz con más preguntas
+- [ ] Cuenta atrás más accesible ¿quizá al principio?
+- [ ] Eventos planificados https://divulgacion.trioeclipses.es/eventos
+- [ ] Enlaces de interés (recursos usados para info de la web, en una sección y ordenados por categoría)
+- [ ] Información ampliada por localidad: eventos, recomendaciones locales, zonas de visionado...

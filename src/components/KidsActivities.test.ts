@@ -101,7 +101,7 @@ describe('KidsActivities.astro', () => {
         const container = await AstroContainer.create();
         const html = await container.renderToString(KidsActivities);
 
-        expect(html).toMatch(/supervisión\s+de un adulto/);
+        expect(html).toMatch(/supervisión\s+de\s+un\s+adulto/);
     });
 
     it('includes "Fuente:" prefix for each source link', async () => {

@@ -451,5 +451,20 @@ const totalityPolygon = [...northLimit, ...southLimit.reverse()];
         marker.on('click', function () {
             window.location.href = '/location/' + p.slug;
         });
+
+        marker.on('popupopen', function () {
+            var popup = marker.getPopup();
+            if (!popup) return;
+            var popupEl = popup.getElement();
+            if (popupEl && !popupEl.hasAttribute('data-hover')) {
+                popupEl.setAttribute('data-hover', '1');
+                popupEl.addEventListener('mouseenter', function () {
+                    clearTimeout(popupTimeout);
+                });
+                popupEl.addEventListener('mouseleave', function () {
+                    marker.closePopup();
+                });
+            }
+        });
     });
 </script>

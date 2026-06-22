@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { experimental_AstroContainer as AstroContainer } from 'astro/container';
-import LocationPage, { getStaticPaths } from './[slug].astro';
-import data from '../../data/locations.json';
+import LocationPage, { getStaticPaths } from '../pages/location/[slug].astro';
+import data from '../data/locations.json';
 
 describe('[slug].astro', () => {
     it('getStaticPaths returns 29 paths', async () => {

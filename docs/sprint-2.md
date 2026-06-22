@@ -1,7 +1,7 @@
 # Sprint 2 Plan — Eclipse 2026
 
 **Deadline:** viernes 26 de junio  
-**Estado:** F1 (Mapa) ✅ · F2 (Calendario) ✅ · F3 (Checklist) ✅
+**Estado:** F1 ✅ · F2 ✅ · F3 ✅ · F4 (Páginas + buscador + geocoding Nominatim) ✅ · F5 🚧
 
 ---
 
@@ -61,30 +61,69 @@
 
 ### P2 — Add-on (si hay tiempo)
 
-#### F4: Actividades para Familias
+#### F4: Páginas por Localidad + Buscador + Geocoding Nominatim ✅
 
-- Recursos educativos, mini-cuestionarios, guía para niños.
-- **Pendiente:** Post F3 si hay tiempo.
+- **Descripción:** Cada localización en mapa y lista enlaza a página individual `/location/[slug]`. Buscador JS filtra localidades en tiempo real (lista + mapa). Popup hover con datos y enlace. Geocoding Nominatim para localidades no cubiertas.
+- **Mapa (Leaflet):**
+    - Hover en markers: dot escala 1.8x + glow
+    - Popup con datos (city, region, type, duration, contact) + enlace "Más info" → `/location/[slug]`
+    - Popup se mantiene abierto al hacer hover (mouseenter cancela timeout de cierre)
+    - Click en marker navega a `/location/[slug]`
+    - Hover + click en dot (no solo en label)
+- **Lista (`WhereToWatch.astro`):**
+    - Cada localización envuelta en `<a href="/location/{slug}">` con `class="place__link"`
+    - Hover existe, se mantiene
+- **Páginas individuales (`/location/[slug]`):**
+    - 29 rutas estáticas generadas con `getStaticPaths`
+    - Muestra ciudad, región, tipo, duración, contacto
+    - Copia "en construcción" con tono espacial, enlace volver al mapa
+- **Buscador de localidades:**
+    - Input `type="search"` con icono lupa SVG
+    - Filtra por ciudad/región/tipo (case-insensitive)
+    - Lista: oculta elementos no coincidentes (`place--hidden`)
+    - Mapa: `map.addLayer` / `map.removeLayer` sobre markers registrados globalmente
+    - Marcadores expuestos via `window.__eclipsariumMarkers` + `WeakMap` para metadatos
+    - Sin backend — filtrado JS in-memory sobre 29 localidades
+- **Nominatim Geocoding:**
+    - Fase 1: búsqueda mundial (`&limit=5`), prioriza settlement (city/town/village/hamlet/municipality)
+    - Fase 2: si no hay settlement, repite con `countrycodes=es` para streets/códigos postales
+    - Filtro `addresstype` evita calles confusas de otros países
+    - Muestra contexto: ciudad + provincia + país siempre visible
+    - Punto-en-polígono con ray-casting para determinar si está dentro de franja
+    - Mensajes informativos: "dentro de totalidad" / "parcial" / "no encontrado"
+    - Debounce 1.2s + contador para evitar respuestas obsoletas
+- **Datos:** `locations.json` con slug, contact, lat/lng. Todo client-side.
+- **Ubicación:** `WhereToWatch.astro` (lista + buscador), `EclipseMap.astro` (mapa + registro markers), `src/pages/location/[slug].astro` (páginas)
+- **Stack:** Astro `getStaticPaths`, Leaflet popups + `getElement()`, vanilla JS, `WeakMap`
+- **Aceptación:**
+    - ✅ Markers del mapa escalan + glow al hover
+    - ✅ Popup hover se mantiene abierto al pasar ratón sobre él
+    - ✅ Click marker navega a `/location/[slug]`
+    - ✅ Lista localizaciones clickable → `/location/[slug]`
+    - ✅ 29 rutas `/location/[slug]` con getStaticPaths
+    - ✅ Página individual muestra datos + copia "en construcción"
+    - ✅ Buscador filtra lista + mapa en tiempo real
+    - ✅ Build producción sin errores · 41 tests (7 suites)
 
 ---
 
-#### F5: Horarios por Localidad
+#### F5: Actividades para Familias
 
-- Tiempos de contacto por localidad, integración con mapa.
-- **Datos:** Requiere cálculos astronómicos o API externa.
-- **Pendiente:** Post F3 si hay tiempo.
+- Recursos educativos, mini-cuestionarios, guía para niños.
+- **Pendiente:** Post F3 / F4 si hay tiempo.
 
 ---
 
 ## 📊 Dependencias & Blockers
 
-| Feature     | Blocker?                 | Mitigation                               |
-| ----------- | ------------------------ | ---------------------------------------- |
-| Mapa ✅     | —                        | Completado con Leaflet + OSM             |
-| Calendar ✅ | —                        | .ics + webcal sin OAuth ni backend       |
-| Checklist ✅ | —                        | Interactiva, 14 ítems, localStorage, tests |
-| Actividades | Links breaking           | Verificación durante dev                 |
-| Horarios    | Precisión astronómica    | Usar NASA ephemeris o Stellarium API     |
+| Feature         | Blocker?                   | Mitigation                                 |
+| --------------- | -------------------------- | ------------------------------------------ |
+| Mapa ✅         | —                          | Completado con Leaflet + OSM               |
+| Calendar ✅     | —                          | .ics + webcal sin OAuth ni backend         |
+| Checklist ✅    | —                          | Interactiva, 14 ítems, localStorage, tests |
+| Horarios + Págs | Tiempo dev rutas estáticas | Astro `getStaticPaths` — trivial           |
+| Buscador        | —                          | Filtrado JS in-memory, sin dependencias    |
+| Actividades     | Links breaking             | Verificación durante dev                   |
 
 ---
 
@@ -93,7 +132,21 @@
 - [x] F1 mergeado a main
 - [x] F2 mergeado a main
 - [x] F3 mergeado a main
+- [x] F4: Páginas `/location/[slug]` con getStaticPaths
+- [x] F4: Hover + popup en markers del mapa (popup persistente al hover)
+- [x] F4: Click en marker / lista → navega a página localidad
+- [x] F4: Buscador JS client-side funcional (filtra lista + mapa)
 - [x] Testing responsivo (mobile 360px, tablet, desktop)
-- [x] README actualizado con Sprint 2 features
 - [x] No console errors
 - [x] Performance: animación sin jank, mapa carga rápido
+- [x] Build producción sin errores · 41 tests (7 suites)
+- [x] README actualizado con v1.5.0 features
+- [x] Nominatim geocoding en 2 fases (mundial + España)
+- [x] Filtro addresstype (city/town/village/hamlet/municipality)
+- [x] Contexto de localización con país siempre visible
+- [x] Ciudad en negrita azul en resultados de búsqueda
+- [x] CSS scoping fix para contenido dinámico
+
+## 🔮 Próximo
+
+- [ ] FAQ y mitos sobre eclipses

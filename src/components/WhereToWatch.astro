@@ -2,15 +2,19 @@
 import data from '../data/locations.json';
 import EclipseMap from './EclipseMap.astro';
 
-const parseDur = (d) => {
+const parseDur = (d: string) => {
     if (d.includes('%')) return parseFloat(d.replace(',', '.'));
     const m = d.match(/(\d+)m\s*(\d+)s/);
     return m ? +m[1] * 60 + +m[2] : parseInt(d) || 0;
 };
 
+const order = { total: 0, edge: 1, partial: 2 };
 const sorted = [...data.places].sort((a, b) => {
-    const order = { total: 0, edge: 1, partial: 2 };
-    return order[a.type] - order[b.type] || parseDur(b.duration) - parseDur(a.duration);
+    return (
+        order[a.type as keyof typeof order] -
+            order[b.type as keyof typeof order] ||
+        parseDur(b.duration) - parseDur(a.duration)
+    );
 });
 ---
 
@@ -28,6 +32,32 @@ const sorted = [...data.places].sort((a, b) => {
 
         <EclipseMap />
 
+        <div class="search">
+            <svg
+                class="search__icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+            >
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input
+                type="search"
+                id="location-search"
+                class="search__input"
+                placeholder="Buscar localidad…"
+                aria-label="Filtrar localidades por nombre o región"
+            />
+        </div>
+        <div class="search__extra" id="search-extra" aria-live="polite"></div>
+
         <ul class="places">
             {
                 sorted.map((p) => {
@@ -39,22 +69,22 @@ const sorted = [...data.places].sort((a, b) => {
                               : 'Parcial';
                     return (
                         <li
-                            class:list={[
-                                'place',
-                                `place--${p.type}`,
-                            ]}
+                            data-city={p.city}
+                            data-region={p.region}
+                            data-type={p.type}
+                            class:list={['place', `place--${p.type}`]}
                         >
-                            <div class="place__tag">
-                                {tag}
-                            </div>
-                            <h3 class="place__city">{p.city}</h3>
-                            <p class="place__region">{p.region}</p>
-                            <div class="place__meta">
-                                <span class="place__dur">{p.duration}</span>
-                                <span class="place__time">
-                                    Contacto · {p.contact}
-                                </span>
-                            </div>
+                            <a href={`/location/${p.slug}`} class="place__link">
+                                <div class="place__tag">{tag}</div>
+                                <h3 class="place__city">{p.city}</h3>
+                                <p class="place__region">{p.region}</p>
+                                <div class="place__meta">
+                                    <span class="place__dur">{p.duration}</span>
+                                    <span class="place__time">
+                                        Contacto · {p.contact}
+                                    </span>
+                                </div>
+                            </a>
                         </li>
                     );
                 })
@@ -63,11 +93,309 @@ const sorted = [...data.places].sort((a, b) => {
     </div>
 </section>
 
+<script>
+    import L from 'leaflet';
+
+    function normalize(s: string): string {
+        return s
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .toLowerCase();
+    }
+
+    function pointInPolygon(
+        lat: number,
+        lng: number,
+        polygon: number[][],
+    ): boolean {
+        var inside = false;
+        for (var i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+            var lat1 = polygon[i][0],
+                lng1 = polygon[i][1];
+            var lat2 = polygon[j][0],
+                lng2 = polygon[j][1];
+            if (
+                lat1 > lat !== lat2 > lat &&
+                lng < ((lng2 - lng1) * (lat - lat1)) / (lat2 - lat1) + lng1
+            ) {
+                inside = !inside;
+            }
+        }
+        return inside;
+    }
+
+    var searchInput = document.getElementById(
+        'location-search',
+    ) as HTMLInputElement | null;
+    var placeItems = document.querySelectorAll('.place');
+    var extra = document.getElementById('search-extra');
+    var nominatimCounter = 0;
+    var GEO_DEBOUNCE = 1200;
+
+    if (searchInput) {
+        searchInput.addEventListener('input', function () {
+            var raw = this.value;
+            var q = normalize(raw);
+            var visibleCount = 0;
+
+            placeItems.forEach(function (el: Element) {
+                var city = normalize(el.getAttribute('data-city') || '');
+                var region = normalize(el.getAttribute('data-region') || '');
+                var type = normalize(el.getAttribute('data-type') || '');
+                var match =
+                    !q ||
+                    city.indexOf(q) !== -1 ||
+                    region.indexOf(q) !== -1 ||
+                    type.indexOf(q) !== -1;
+                el.classList.toggle('place--hidden', !match);
+                if (match) visibleCount++;
+            });
+
+            var win = window as Window & {
+                __eclipsariumMarkers?: L.Marker[];
+                __eclipsariumMap?: L.Map;
+                __eclipsariumMeta?: WeakMap<
+                    L.Marker,
+                    { city: string; region: string }
+                >;
+            };
+            var markers = win.__eclipsariumMarkers;
+            var meta = win.__eclipsariumMeta;
+            var map = win.__eclipsariumMap;
+            if (markers && meta && map) {
+                markers.forEach(function (m: L.Marker) {
+                    var d = meta!.get(m);
+                    if (!d) return;
+                    var city = normalize(d.city || '');
+                    var region = normalize(d.region || '');
+                    var match =
+                        !q ||
+                        city.indexOf(q) !== -1 ||
+                        region.indexOf(q) !== -1;
+                    if (match) map!.addLayer(m);
+                    else map!.removeLayer(m);
+                });
+            }
+
+            // Clear extra when typing
+            if (extra) {
+                extra.classList.remove('search__extra--visible');
+                extra.innerHTML = '';
+            }
+
+            // Debounced Nominatim lookup when no local results
+            if (q && visibleCount === 0) {
+                nominatimCounter++;
+                var myCounter = nominatimCounter;
+                setTimeout(function () {
+                    if (myCounter !== nominatimCounter) return;
+                    if (!extra) return;
+
+                    function showResult(result: any): void {
+                        var lat = parseFloat(result.lat);
+                        var lng = parseFloat(result.lon);
+                        var parts = result.display_name
+                            .split(',')
+                            .map(function (s: string) {
+                                return s.trim();
+                            });
+                        var name = parts[0];
+                        var country = parts[parts.length - 1];
+                        var middle = parts.slice(
+                            1,
+                            Math.min(parts.length - 1, 4),
+                        );
+                        var context = middle.length
+                            ? middle.join(', ') + ', ' + country
+                            : country;
+                        var container = document.getElementById('eclipse-map');
+                        if (!container) return;
+                        var polygon: number[][] = JSON.parse(
+                            container.dataset.polygon || '[]',
+                        );
+                        if (polygon.length === 0) return;
+                        var inside = pointInPolygon(lat, lng, polygon);
+                        var loc = context
+                            ? '<strong>' + name + '</strong>, ' + context
+                            : '<strong>' + name + '</strong>';
+                        extra!.innerHTML =
+                            '<p class="search__geo-text">' +
+                            loc +
+                            (inside
+                                ? ' está <strong>dentro de la franja de totalidad</strong> del eclipse. Si el tiempo lo permite, el Sol se ocultará por completo.'
+                                : ' está fuera de la franja de totalidad, pero el eclipse será visible como <strong>parcial</strong>. Recuerda usar protección ocular certificada ISO 12312-2.') +
+                            '</p>';
+                        extra!.classList.add('search__extra--visible');
+                    }
+
+                    function findSettlement(data: any[]): any {
+                        var settled = [
+                            'city',
+                            'town',
+                            'village',
+                            'hamlet',
+                            'municipality',
+                        ];
+                        for (var k = 0; k < data.length; k++) {
+                            if (settled.indexOf(data[k].addresstype) !== -1)
+                                return data[k];
+                        }
+                        return null;
+                    }
+
+                    function showNotFound(): void {
+                        if (myCounter !== nominatimCounter) return;
+                        if (!extra) return;
+                        extra.innerHTML =
+                            '<p class="search__geo-text">No hemos encontrado esa localidad. El eclipse solar del 12 de agosto de 2026 será visible como <strong>parcial</strong> desde toda España.</p>';
+                        extra.classList.add('search__extra--visible');
+                    }
+
+                    function searchNominatim(
+                        qs: string,
+                        country: string,
+                    ): Promise<any[]> {
+                        var url =
+                            'https://nominatim.openstreetmap.org/search?format=json&q=' +
+                            encodeURIComponent(qs) +
+                            (country ? '&countrycodes=' + country : '') +
+                            '&limit=5';
+                        return fetch(url).then(function (r: Response) {
+                            return r.json();
+                        });
+                    }
+
+                    function onError(): void {
+                        if (myCounter !== nominatimCounter) return;
+                        if (extra) {
+                            extra.innerHTML =
+                                '<p class="search__geo-text">No se ha podido consultar el mapa. El eclipse será visible como parcial en toda España.</p>';
+                            extra.classList.add('search__extra--visible');
+                        }
+                    }
+
+                    extra.innerHTML =
+                        '<span class="search__extra-loading">Buscando información…</span>';
+                    extra.classList.add('search__extra--visible');
+
+                    // Phase 1: worldwide, prefer settlement
+                    searchNominatim(raw, '')
+                        .then(function (data: any[]) {
+                            if (myCounter !== nominatimCounter) return;
+                            if (data && data.length > 0) {
+                                var r = findSettlement(data);
+                                if (r) {
+                                    showResult(r);
+                                    return;
+                                }
+                            }
+                            // Phase 2: no settlement found, try Spain-only
+                            if (myCounter !== nominatimCounter) return;
+                            searchNominatim(raw, 'es')
+                                .then(function (data2: any[]) {
+                                    if (myCounter !== nominatimCounter) return;
+                                    if (data2 && data2.length > 0) {
+                                        var r =
+                                            findSettlement(data2) || data2[0];
+                                        showResult(r);
+                                        return;
+                                    }
+                                    showNotFound();
+                                })
+                                .catch(onError);
+                        })
+                        .catch(onError);
+                }, GEO_DEBOUNCE);
+            } else if (!q && extra) {
+                extra.classList.remove('search__extra--visible');
+                extra.innerHTML = '';
+            }
+        });
+    }
+</script>
+
 <style>
     .where {
         padding-block: var(--section-y);
         position: relative;
         z-index: 1;
+    }
+
+    .search {
+        position: relative;
+        margin-top: 2rem;
+        max-width: 22rem;
+    }
+
+    .search__icon {
+        position: absolute;
+        left: 0.9rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--muted);
+        pointer-events: none;
+    }
+
+    .search__input {
+        all: unset;
+        box-sizing: border-box;
+        display: block;
+        width: 100%;
+        padding: 0.75rem 0.9rem 0.75rem 2.6rem;
+        font-family: var(--font-mono);
+        font-size: var(--step-0);
+        color: var(--bone);
+        background: var(--ink-soft);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        transition:
+            border-color 0.3s var(--ease),
+            box-shadow 0.3s var(--ease);
+    }
+
+    .search__input::placeholder {
+        color: var(--muted-deep);
+    }
+
+    .search__input:focus {
+        border-color: var(--space-blue);
+        box-shadow: 0 0 0 1px var(--space-blue);
+        outline: none;
+    }
+
+    .search__extra {
+        display: none;
+        margin-top: 1rem;
+        padding: 1rem 1.2rem;
+        background: var(--ink-soft);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        font-size: var(--step--1);
+        line-height: 1.6;
+        color: var(--bone-dim);
+        max-width: 46ch;
+    }
+
+    .search__extra--visible {
+        display: block;
+    }
+
+    .search__extra-loading {
+        color: var(--muted);
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+    }
+
+    .search__geo-text :global(strong) {
+        color: var(--bone);
+    }
+
+    .search__geo-text :global(strong:first-child) {
+        color: var(--space-blue);
+    }
+
+    .place--hidden {
+        display: none;
     }
 
     .where__head {
@@ -106,16 +434,20 @@ const sorted = [...data.places].sort((a, b) => {
 
     .place {
         background: var(--ink);
-        padding: 1.8rem 1.6rem 1.6rem;
+        transition: background 0.4s var(--ease);
+    }
+
+    .place__link {
         display: flex;
         flex-direction: column;
         gap: 0.35rem;
-        transition:
-            background 0.4s var(--ease),
-            transform 0.4s var(--ease);
+        padding: 1.8rem 1.6rem 1.6rem;
+        text-decoration: none;
+        color: inherit;
+        transition: background 0.4s var(--ease);
     }
 
-    .place:hover {
+    .place__link:hover {
         background: var(--ink-soft);
     }
 

@@ -152,7 +152,7 @@ const totalityPolygon = [...northLimit, ...southLimit.reverse()];
         display: flex;
         align-items: center;
         gap: 6px;
-        pointer-events: none;
+        cursor: pointer;
     }
 
     .map-container :global(.map-marker__dot) {
@@ -165,11 +165,25 @@ const totalityPolygon = [...northLimit, ...southLimit.reverse()];
             0 0 8px var(--halo),
             0 0 20px var(--halo-soft);
         flex-shrink: 0;
+        transition:
+            transform 0.3s var(--ease),
+            box-shadow 0.3s var(--ease);
+    }
+
+    .map-container :global(.map-marker:hover .map-marker__dot) {
+        transform: scale(1.8);
+        box-shadow:
+            0 0 16px var(--halo),
+            0 0 40px var(--halo-soft);
     }
 
     .map-container :global(.map-marker__dot--edge) {
         background: var(--edge-blue);
         box-shadow: 0 0 6px rgba(46, 107, 158, 0.4);
+    }
+
+    .map-container :global(.map-marker:hover .map-marker__dot--edge) {
+        box-shadow: 0 0 14px rgba(46, 107, 158, 0.7);
     }
 
     .map-container :global(.map-marker__dot--partial) {
@@ -178,6 +192,13 @@ const totalityPolygon = [...northLimit, ...southLimit.reverse()];
         background: var(--muted-deep);
         border-color: var(--line);
         box-shadow: none;
+    }
+
+    .map-container :global(.map-marker:hover .map-marker__dot--partial) {
+        width: 12px;
+        height: 12px;
+        background: var(--muted);
+        box-shadow: 0 0 10px rgba(141, 134, 153, 0.4);
     }
 
     .map-container :global(.map-marker__label) {
@@ -189,6 +210,11 @@ const totalityPolygon = [...northLimit, ...southLimit.reverse()];
         font-size: 0.65rem;
         color: var(--bone-dim);
         white-space: nowrap;
+        transition: color 0.3s var(--ease);
+    }
+
+    .map-container :global(.map-marker:hover .map-marker__label) {
+        color: var(--bone);
     }
 
     .map-container :global(.map-marker__label--total) {
@@ -199,6 +225,88 @@ const totalityPolygon = [...northLimit, ...southLimit.reverse()];
     .map-container :global(.map-marker__label--edge) {
         color: var(--edge-blue);
         border-color: rgba(46, 107, 158, 0.35);
+    }
+
+    /* --- Marker popup on hover --- */
+    .map-container
+        :global(.map-marker__popup-wrap .leaflet-popup-content-wrapper) {
+        background: var(--ink-soft) !important;
+        border: 1px solid var(--line) !important;
+        border-radius: var(--radius) !important;
+        box-shadow:
+            0 4px 24px rgba(0, 0, 0, 0.6),
+            0 0 0 1px rgba(0, 170, 255, 0.08) !important;
+        color: var(--bone) !important;
+        font-family: var(--font-body);
+        padding: 0 !important;
+        overflow: hidden;
+    }
+
+    .map-container :global(.map-marker__popup-wrap .leaflet-popup-tip) {
+        background: var(--ink-soft) !important;
+        border: 1px solid var(--line) !important;
+        box-shadow: none !important;
+    }
+
+    .map-container :global(.map-marker__popup-wrap .leaflet-popup-content) {
+        margin: 0;
+        padding: 0.9rem 1rem 0.8rem;
+        font-family: var(--font-body);
+    }
+
+    .map-container :global(.map-marker__popup) {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+    }
+
+    .map-container :global(.map-marker__popup-tag) {
+        font-family: var(--font-mono);
+        font-size: 0.55rem;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        padding: 0.15rem 0.45rem;
+        border-radius: 0.15rem;
+        align-self: flex-start;
+        color: var(--void);
+        background: var(--space-blue);
+        margin-bottom: 0.3rem;
+    }
+
+    .map-container :global(.map-marker__popup-city) {
+        font-size: 1rem;
+        line-height: 1.2;
+        color: var(--bone);
+        font-weight: 600;
+    }
+
+    .map-container :global(.map-marker__popup-region) {
+        font-size: 0.75rem;
+        color: var(--muted);
+    }
+
+    .map-container :global(.map-marker__popup-meta) {
+        display: flex;
+        gap: 0.8rem;
+        font-family: var(--font-mono);
+        font-size: 0.68rem;
+        color: var(--bone-dim);
+        margin-top: 0.3rem;
+    }
+
+    .map-container :global(.map-marker__popup-link) {
+        display: inline-block;
+        margin-top: 0.4rem;
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        color: var(--space-blue-light);
+        text-decoration: none;
+        transition: color 0.2s var(--ease);
+    }
+
+    .map-container :global(.map-marker__popup-link:hover) {
+        color: var(--space-blue);
+        text-decoration: underline;
     }
 
     @media (max-width: 560px) {
@@ -212,13 +320,24 @@ const totalityPolygon = [...northLimit, ...southLimit.reverse()];
     import 'leaflet/dist/leaflet.css';
     import L from 'leaflet';
 
-    const container = document.getElementById('eclipse-map');
+    type MapPlace = {
+        city: string;
+        region: string;
+        slug: string;
+        lat: number;
+        lng: number;
+        type: 'total' | 'edge' | 'partial';
+        duration?: string;
+        contact?: string;
+    };
+
+    var container = document.getElementById('eclipse-map');
     if (!container) throw new Error('Map container not found');
 
-    const polygon = JSON.parse(container.dataset.polygon || '[]');
-    const places = JSON.parse(container.dataset.places || '[]');
+    var polygon = JSON.parse(container.dataset.polygon || '[]');
+    var places: MapPlace[] = JSON.parse(container.dataset.places || '[]');
 
-    const map = L.map(container, {
+    var map = L.map(container, {
         center: [41.5, -2.5],
         zoom: 7,
         scrollWheelZoom: true,
@@ -246,13 +365,11 @@ const totalityPolygon = [...northLimit, ...southLimit.reverse()];
         fillOpacity: 0.12,
     }).addTo(map);
 
-    interface Place { city: string; lat: number; lng: number; type: string; duration: string; contact: string; slug: string }
-
-    places.forEach((p: Place) => {
+    places.forEach(function (p: MapPlace) {
         if (!p.lat || !p.lng) return;
 
-        let dotClass = 'map-marker__dot';
-        let labelClass = 'map-marker__label';
+        var dotClass = 'map-marker__dot';
+        var labelClass = 'map-marker__label';
 
         if (p.type === 'edge') {
             dotClass += ' map-marker__dot--edge';
@@ -263,15 +380,111 @@ const totalityPolygon = [...northLimit, ...southLimit.reverse()];
             labelClass += ' map-marker__label--total';
         }
 
-        const html = `<span class="${dotClass}"></span><span class="${labelClass}">${p.city}</span>`;
+        var html =
+            '<span class="' +
+            dotClass +
+            '"></span><span class="' +
+            labelClass +
+            '">' +
+            p.city +
+            '</span>';
 
-        L.marker([p.lat, p.lng], {
+        var marker = L.marker([p.lat, p.lng], {
             icon: L.divIcon({
                 className: 'map-marker',
-                html,
+                html: html,
                 iconSize: [0, 0],
                 iconAnchor: [0, 12],
             }),
         }).addTo(map);
+
+        var typeTag =
+            p.type === 'total'
+                ? 'Total'
+                : p.type === 'edge'
+                  ? 'Borde'
+                  : 'Parcial';
+
+        var popupHtml =
+            '<div class="map-marker__popup">' +
+            '<span class="map-marker__popup-tag">' +
+            typeTag +
+            '</span>' +
+            '<strong class="map-marker__popup-city">' +
+            p.city +
+            '</strong>' +
+            '<span class="map-marker__popup-region">' +
+            p.region +
+            '</span>' +
+            '<div class="map-marker__popup-meta">' +
+            '<span>' +
+            p.duration +
+            '</span>' +
+            '<span>Contacto: ' +
+            p.contact +
+            '</span>' +
+            '</div>' +
+            '<a href="/location/' +
+            p.slug +
+            '" class="map-marker__popup-link">Más info →</a>' +
+            '</div>';
+
+        marker.bindPopup(popupHtml, {
+            closeButton: false,
+            className: 'map-marker__popup-wrap',
+            offset: [0, -16],
+        });
+
+        var eclipseWindow = window as Window & {
+            __eclipsariumMarkers?: L.Marker[];
+            __eclipsariumMap?: L.Map;
+            __eclipsariumMeta?: WeakMap<
+                L.Marker,
+                { city: string; region: string }
+            >;
+        };
+
+        if (!eclipseWindow.__eclipsariumMarkers) {
+            eclipseWindow.__eclipsariumMarkers = [];
+            eclipseWindow.__eclipsariumMap = map;
+            eclipseWindow.__eclipsariumMeta = new WeakMap();
+        }
+        eclipseWindow.__eclipsariumMeta!.set(marker, {
+            city: p.city,
+            region: p.region,
+        });
+        eclipseWindow.__eclipsariumMarkers.push(marker);
+
+        let popupTimeout: ReturnType<typeof setTimeout> | undefined;
+
+        marker.on('mouseover', function () {
+            clearTimeout(popupTimeout);
+            marker.openPopup();
+        });
+
+        marker.on('mouseout', function () {
+            popupTimeout = setTimeout(function () {
+                marker.closePopup();
+            }, 300);
+        });
+
+        marker.on('click', function () {
+            window.location.href = '/location/' + p.slug;
+        });
+
+        marker.on('popupopen', function () {
+            var popup = marker.getPopup();
+            if (!popup) return;
+            var popupEl = popup.getElement();
+            if (popupEl && !popupEl.hasAttribute('data-hover')) {
+                popupEl.setAttribute('data-hover', '1');
+                popupEl.addEventListener('mouseenter', function () {
+                    clearTimeout(popupTimeout);
+                });
+                popupEl.addEventListener('mouseleave', function () {
+                    marker.closePopup();
+                });
+            }
+        });
     });
 </script>

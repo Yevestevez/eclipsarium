@@ -1,0 +1,212 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import data from '../../data/locations.json';
+
+export function getStaticPaths() {
+    return data.places.map((p) => ({
+        params: { slug: p.slug },
+        props: { place: p },
+    }));
+}
+
+const { place } = Astro.props;
+
+const typeLabel =
+    place.type === 'total' ? 'Totalidad' : place.type === 'edge' ? 'Borde' : 'Parcial';
+const typeDesc =
+    place.type === 'total'
+        ? 'El Sol desaparecerá por completo.'
+        : place.type === 'edge'
+          ? 'Rozando la totalidad.'
+          : 'Eclipse parcial — fuera de la franja.';
+---
+
+<Layout title={`${place.city} · ECLIPSARIUM`}>
+    <main class="location">
+        <div class="shell">
+            <a href="/#donde" class="location__back">← Volver al mapa</a>
+
+            <header class="location__head">
+                <span class="eyebrow">{place.region}</span>
+                <h1 class="location__title">{place.city}</h1>
+                <span class="location__type location__type--{place.type}">{typeLabel}</span>
+            </header>
+
+            <div class="location__stats">
+                <div class="stat">
+                    <span class="stat__label">Duración</span>
+                    <span class="stat__value">{place.duration}</span>
+                </div>
+                <div class="stat">
+                    <span class="stat__label">Contacto</span>
+                    <span class="stat__value">{place.contact}</span>
+                </div>
+                <div class="stat">
+                    <span class="stat__label">Tipo</span>
+                    <span class="stat__value">{typeDesc}</span>
+                </div>
+            </div>
+
+            <div class="location__notice">
+                <div class="notice__icon" aria-hidden="true">🚀</div>
+                <h2 class="notice__title">Estación espacial en construcción</h2>
+                <p class="notice__text">
+                    Esta página está flotando en el espacio a la espera de ser aterrizada.
+                    Pronto tendrás aquí toda la información sobre cómo ver el eclipse desde{' '}
+                    <strong>{place.city}</strong>: horas exactas, mapas detallados, rutas de
+                    escape meteorológico y planes de observación.
+                </p>
+                <p class="notice__text">
+                    Mientras tanto, los astronautas del Eclipsarium siguen calibrando los
+                    instrumentos. Vuelve a orbitar por aquí más tarde.
+                </p>
+                <a href="/#donde" class="notice__cta">← Regresar a la Tierra (y al mapa)</a>
+            </div>
+        </div>
+    </main>
+</Layout>
+
+<style>
+    .location {
+        padding-block: var(--section-y);
+        position: relative;
+        z-index: 1;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+    }
+
+    .location__back {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        color: var(--muted);
+        font-family: var(--font-mono);
+        font-size: var(--step--1);
+        text-decoration: none;
+        transition: color 0.3s var(--ease);
+        margin-bottom: 2rem;
+    }
+
+    .location__back:hover {
+        color: var(--space-blue);
+    }
+
+    .location__head {
+        margin-bottom: 2.5rem;
+    }
+
+    .location__title {
+        font-size: var(--step-3);
+        margin-top: 0.6rem;
+    }
+
+    .location__type {
+        display: inline-block;
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        padding: 0.35rem 0.8rem;
+        border-radius: 0.2rem;
+        margin-top: 1rem;
+    }
+
+    .location__type--total {
+        color: var(--void);
+        background: var(--space-blue);
+    }
+
+    .location__type--edge {
+        color: var(--bone);
+        background: var(--edge-blue);
+    }
+
+    .location__type--partial {
+        color: var(--muted);
+        background: var(--ink-soft);
+    }
+
+    .location__stats {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+        margin-bottom: 3rem;
+        padding: 1.5rem 2rem;
+        background: var(--ink-soft);
+        border-radius: var(--radius);
+        border: 1px solid var(--line);
+    }
+
+    .stat {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .stat__label {
+        font-family: var(--font-mono);
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: var(--muted-deep);
+    }
+
+    .stat__value {
+        font-size: var(--step-1);
+        font-weight: 500;
+    }
+
+    .location__notice {
+        background: var(--ink-soft);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 2.5rem;
+        max-width: 54ch;
+    }
+
+    .notice__icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .notice__title {
+        font-size: var(--step-1);
+        margin-bottom: 1rem;
+    }
+
+    .notice__text {
+        color: var(--bone-dim);
+        font-weight: 300;
+        line-height: 1.7;
+        margin-bottom: 1rem;
+    }
+
+    .notice__cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        margin-top: 0.5rem;
+        color: var(--space-blue);
+        text-decoration: none;
+        font-family: var(--font-mono);
+        font-size: var(--step--1);
+        transition: color 0.3s var(--ease);
+    }
+
+    .notice__cta:hover {
+        color: var(--space-blue-light);
+    }
+
+    @media (max-width: 560px) {
+        .location__stats {
+            flex-direction: column;
+            gap: 1rem;
+            padding: 1.2rem 1.4rem;
+        }
+
+        .location__notice {
+            padding: 1.5rem;
+        }
+    }
+</style>

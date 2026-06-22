@@ -61,30 +61,52 @@
 
 ### P2 — Add-on (si hay tiempo)
 
-#### F4: Actividades para Familias
+#### F4: Horarios + Páginas por Localidad 🚧
 
-- Recursos educativos, mini-cuestionarios, guía para niños.
-- **Pendiente:** Post F3 si hay tiempo.
+- **Descripción:** Tiempos de contacto por localidad (ya integrados). Localizaciones en mapa y lista `WhereToWatch.astro` con hover + click → página individual `/location/[slug]` con info y copia "en construcción" estilo espacial.
+- **Mapa (Leaflet):**
+    - Hover en markers: cambio tamaño/color para resaltar
+    - Popup con datos de localización (city, region, type, duration, contact) + enlace "Más info" → `/location/[slug]`
+    - Click en marker navega a `/location/[slug]`
+- **Lista (`WhereToWatch.astro`):**
+    - Cada localización clickable → `/location/[slug]`
+    - Hover ya existe, se mantiene
+- **Buscador de localidades:**
+    - Input de texto para filtrar por ciudad/región
+    - Muestra tipo (total/borde/parcial) en tiempo real
+    - Sin backend — filtrado JS sobre array local (29 localidades)
+- **Datos:** Locations.json ya tiene slug, contact, lat/lng. Todo client-side.
+- **Ubicación:** `WhereToWatch.astro` (lista), `EclipseMap.astro` (mapa), `src/pages/location/[slug].astro` (páginas dinámicas)
+- **Stack:** Astro `getStaticPaths`, Leaflet popups, vanilla JS (buscador)
+- **Aceptación:**
+    - ✅ Markers del mapa cambian tamaño/color al hover
+    - ✅ Popup marker muestra datos + enlace "Más info"
+    - ✅ Click marker navega a `/location/[slug]`
+    - ✅ Lista localizaciones clickable → `/location/[slug]`
+    - ✅ Páginas `/location/[slug]` renderizan 29 slugs con getStaticPaths
+    - ✅ Página individual muestra mensaje "en construcción" con tono espacial
+    - ✅ Buscador filtra por ciudad/región en tiempo real
+    - ✅ Build producción sin errores
 
 ---
 
-#### F5: Horarios por Localidad
+#### F5: Actividades para Familias
 
-- Tiempos de contacto por localidad, integración con mapa.
-- **Datos:** Requiere cálculos astronómicos o API externa.
-- **Pendiente:** Post F3 si hay tiempo.
+- Recursos educativos, mini-cuestionarios, guía para niños.
+- **Pendiente:** Post F3 / F5 si hay tiempo.
 
 ---
 
 ## 📊 Dependencias & Blockers
 
-| Feature     | Blocker?                 | Mitigation                               |
-| ----------- | ------------------------ | ---------------------------------------- |
-| Mapa ✅     | —                        | Completado con Leaflet + OSM             |
-| Calendar ✅ | —                        | .ics + webcal sin OAuth ni backend       |
-| Checklist ✅ | —                        | Interactiva, 14 ítems, localStorage, tests |
-| Actividades | Links breaking           | Verificación durante dev                 |
-| Horarios    | Precisión astronómica    | Usar NASA ephemeris o Stellarium API     |
+| Feature         | Blocker?                   | Mitigation                                 |
+| --------------- | -------------------------- | ------------------------------------------ |
+| Mapa ✅         | —                          | Completado con Leaflet + OSM               |
+| Calendar ✅     | —                          | .ics + webcal sin OAuth ni backend         |
+| Checklist ✅    | —                          | Interactiva, 14 ítems, localStorage, tests |
+| Horarios + Págs | Tiempo dev rutas estáticas | Astro `getStaticPaths` — trivial           |
+| Buscador        | —                          | Filtrado JS in-memory, sin dependencias    |
+| Actividades     | Links breaking             | Verificación durante dev                   |
 
 ---
 
@@ -97,3 +119,8 @@
 - [x] README actualizado con Sprint 2 features
 - [x] No console errors
 - [x] Performance: animación sin jank, mapa carga rápido
+- [ ] F5: Páginas `/location/[slug]` con getStaticPaths
+- [ ] F5: Hover + popup en markers del mapa
+- [ ] F5: Click en marker / lista → navega a página localidad
+- [ ] F5: Buscador JS client-side funcional
+- [ ] Build producción sin errores

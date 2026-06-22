@@ -24,41 +24,43 @@ test.describe('countdown.spec.ts — Countdown', () => {
         }
     });
 
-    // E15: values are numeric (not `—`) after 1 second
+    // E15: values are numeric (not `—`) after JS hydration
     test('E15: values are numeric after 1 second', async ({ page }) => {
-        // Wait for page to be fully rendered and JS to execute
-        await page.waitForTimeout(1500);
+        // Wait until at least one timer block shows a digit (JS hydrated)
+        await page.waitForFunction(
+            () => {
+                const el = document.querySelector('.unit__n');
+                return el && /\d/.test(el.textContent || '');
+            },
+            { timeout: 5000 },
+        );
 
-        // Find elements containing numeric values
         const values = page.locator('#cuenta .unit__n');
         const count = await values.count();
 
         expect(count).toBe(4);
 
-        // At least one should have a number (not just —)
-        let hasNumber = false;
+        // All 4 should have numbers now
         for (let i = 0; i < count; i++) {
             const text = await values.nth(i).textContent();
-            if (text && /\d/.test(text)) {
-                hasNumber = true;
-                break;
-            }
+            expect(text).toMatch(/\d/);
         }
-
-        expect(hasNumber).toBe(true);
     });
 
     // E16: days shows value ≥ 0
     test('E16: days shows value ≥ 0', async ({ page }) => {
-        await page.waitForTimeout(1500);
+        await page.waitForFunction(
+            () => {
+                const el = document.querySelector('.unit__n[data-d]');
+                return el && /\d/.test(el.textContent || '');
+            },
+            { timeout: 5000 },
+        );
 
-        // First .unit__n contains days (data-d selector)
         const daysValue = page.locator('#cuenta .unit__n[data-d]');
         await expect(daysValue).toBeVisible();
 
         const text = await daysValue.textContent();
-
-        // If contains a number, verify it is >= 0
         const match = text?.match(/(\d+)/);
         if (match) {
             const days = parseInt(match[1], 10);

@@ -111,6 +111,7 @@
 
 - Recursos educativos, mini-cuestionarios, guía para niños.
 - **Pendiente:** Post F3 / F4 si hay tiempo.
+- https://spaceplace.nasa.gov/search/eclipse/sp/
 
 ---
 

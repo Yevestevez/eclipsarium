@@ -2,15 +2,15 @@
 import data from '../data/locations.json';
 import EclipseMap from './EclipseMap.astro';
 
-const parseDur = (d) => {
+const parseDur = (d: string) => {
     if (d.includes('%')) return parseFloat(d.replace(',', '.'));
     const m = d.match(/(\d+)m\s*(\d+)s/);
     return m ? +m[1] * 60 + +m[2] : parseInt(d) || 0;
 };
 
+const order = { total: 0, edge: 1, partial: 2 };
 const sorted = [...data.places].sort((a, b) => {
-    const order = { total: 0, edge: 1, partial: 2 };
-    return order[a.type] - order[b.type] || parseDur(b.duration) - parseDur(a.duration);
+    return order[a.type as keyof typeof order] - order[b.type as keyof typeof order] || parseDur(b.duration) - parseDur(a.duration);
 });
 ---
 

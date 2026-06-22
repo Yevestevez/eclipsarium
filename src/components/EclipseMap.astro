@@ -228,7 +228,8 @@ const totalityPolygon = [...northLimit, ...southLimit.reverse()];
     }
 
     /* --- Marker popup on hover --- */
-    .map-container :global(.map-marker__popup-wrap .leaflet-popup-content-wrapper) {
+    .map-container
+        :global(.map-marker__popup-wrap .leaflet-popup-content-wrapper) {
         background: var(--ink-soft) !important;
         border: 1px solid var(--line) !important;
         border-radius: var(--radius) !important;
@@ -319,13 +320,24 @@ const totalityPolygon = [...northLimit, ...southLimit.reverse()];
     import 'leaflet/dist/leaflet.css';
     import L from 'leaflet';
 
-    const container = document.getElementById('eclipse-map');
+    type MapPlace = {
+        city: string;
+        region: string;
+        slug: string;
+        lat: number;
+        lng: number;
+        type: 'total' | 'edge' | 'partial';
+        duration?: string;
+        contact?: string;
+    };
+
+    var container = document.getElementById('eclipse-map');
     if (!container) throw new Error('Map container not found');
 
-    const polygon = JSON.parse(container.dataset.polygon || '[]');
-    const places = JSON.parse(container.dataset.places || '[]');
+    var polygon = JSON.parse(container.dataset.polygon || '[]');
+    var places: MapPlace[] = JSON.parse(container.dataset.places || '[]');
 
-    const map = L.map(container, {
+    var map = L.map(container, {
         center: [41.5, -2.5],
         zoom: 7,
         scrollWheelZoom: true,
@@ -353,13 +365,11 @@ const totalityPolygon = [...northLimit, ...southLimit.reverse()];
         fillOpacity: 0.12,
     }).addTo(map);
 
-    interface Place { city: string; lat: number; lng: number; type: string; duration: string; contact: string; slug: string }
-
-    places.forEach((p: Place) => {
+    places.forEach(function (p: MapPlace) {
         if (!p.lat || !p.lng) return;
 
-        let dotClass = 'map-marker__dot';
-        let labelClass = 'map-marker__label';
+        var dotClass = 'map-marker__dot';
+        var labelClass = 'map-marker__label';
 
         if (p.type === 'edge') {
             dotClass += ' map-marker__dot--edge';
@@ -370,32 +380,54 @@ const totalityPolygon = [...northLimit, ...southLimit.reverse()];
             labelClass += ' map-marker__label--total';
         }
 
-        const html = `<span class="${dotClass}"></span><span class="${labelClass}">${p.city}</span>`;
+        var html =
+            '<span class="' +
+            dotClass +
+            '"></span><span class="' +
+            labelClass +
+            '">' +
+            p.city +
+            '</span>';
 
-        const marker = L.marker([p.lat, p.lng], {
+        var marker = L.marker([p.lat, p.lng], {
             icon: L.divIcon({
                 className: 'map-marker',
-                html,
+                html: html,
                 iconSize: [0, 0],
                 iconAnchor: [0, 12],
             }),
         }).addTo(map);
 
-        const typeTag =
-            p.type === 'total' ? 'Total' : p.type === 'edge' ? 'Borde' : 'Parcial';
+        var typeTag =
+            p.type === 'total'
+                ? 'Total'
+                : p.type === 'edge'
+                  ? 'Borde'
+                  : 'Parcial';
 
-        const popupHtml = `
-            <div class="map-marker__popup">
-                <span class="map-marker__popup-tag">${typeTag}</span>
-                <strong class="map-marker__popup-city">${p.city}</strong>
-                <span class="map-marker__popup-region">${p.region}</span>
-                <div class="map-marker__popup-meta">
-                    <span>${p.duration}</span>
-                    <span>Contacto: ${p.contact}</span>
-                </div>
-                <a href="/location/${p.slug}" class="map-marker__popup-link">Más info →</a>
-            </div>
-        `;
+        var popupHtml =
+            '<div class="map-marker__popup">' +
+            '<span class="map-marker__popup-tag">' +
+            typeTag +
+            '</span>' +
+            '<strong class="map-marker__popup-city">' +
+            p.city +
+            '</strong>' +
+            '<span class="map-marker__popup-region">' +
+            p.region +
+            '</span>' +
+            '<div class="map-marker__popup-meta">' +
+            '<span>' +
+            p.duration +
+            '</span>' +
+            '<span>Contacto: ' +
+            p.contact +
+            '</span>' +
+            '</div>' +
+            '<a href="/location/' +
+            p.slug +
+            '" class="map-marker__popup-link">Más info →</a>' +
+            '</div>';
 
         marker.bindPopup(popupHtml, {
             closeButton: false,
@@ -403,31 +435,21 @@ const totalityPolygon = [...northLimit, ...southLimit.reverse()];
             offset: [0, -16],
         });
 
-        let popupTimeout: ReturnType<typeof setTimeout>;
+        let popupTimeout: ReturnType<typeof setTimeout> | undefined;
 
         marker.on('mouseover', function () {
             clearTimeout(popupTimeout);
-            this.openPopup();
+            marker.openPopup();
         });
 
         marker.on('mouseout', function () {
-            const p = this.getPopup();
-            if (!p) return;
-            popupTimeout = setTimeout(() => {
-                this.closePopup();
-            }, 200);
+            popupTimeout = setTimeout(function () {
+                marker.closePopup();
+            }, 300);
         });
 
-        marker.on('popupopen', function () {
-            const c = this.getPopup()._container;
-            if (!c) return;
-            const self = this;
-            c.addEventListener('mouseenter', () => clearTimeout(popupTimeout));
-            c.addEventListener('mouseleave', () => self.closePopup());
-        });
-
-        marker.on('click', () => {
-            window.location.href = `/location/${p.slug}`;
+        marker.on('click', function () {
+            window.location.href = '/location/' + p.slug;
         });
     });
 </script>

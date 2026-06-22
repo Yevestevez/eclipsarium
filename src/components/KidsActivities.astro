@@ -12,103 +12,116 @@ const { activities, quiz } = data;
         <p class="kac__intro">
             El eclipse es un evento para todas las edades. Aquí encontrarás
             actividades prácticas para hacer en casa o en el punto de
-            observación, explicadas paso a paso. Todas incluyen supervisión
-            de un adulto — sobre todo las que tienen que ver con mirar al
-            Sol.
+            observación, explicadas paso a paso. Todas incluyen supervisión de
+            un adulto — sobre todo las que tienen que ver con mirar al Sol.
         </p>
 
         <!-- ======================== ACTIVITIES ======================== -->
         <div class="kac__grid">
-            {activities.map((act) => (
-                <article class="kac__card" data-id={act.id}>
-                    <div class="kac__card-head">
-                        <span class="kac__badge-group">
-                            <span class="kac__badge kac__badge--age"
-                                >{act.age}</span
-                            >
-                            <span class="kac__badge kac__badge--time"
-                                >{act.time}</span
-                            >
-                        </span>
-                        <h3 class="kac__card-title">{act.title}</h3>
-                        <p class="kac__card-sub">{act.subtitle}</p>
-                    </div>
+            {
+                activities.map((act) => (
+                    <article class="kac__card" data-id={act.id}>
+                        <div class="kac__card-head">
+                            <span class="kac__badge-group">
+                                <span class="kac__badge kac__badge--age">
+                                    {act.age}
+                                </span>
+                                <span class="kac__badge kac__badge--time">
+                                    {act.time}
+                                </span>
+                            </span>
+                            <h3 class="kac__card-title">{act.title}</h3>
+                            <p class="kac__card-sub">{act.subtitle}</p>
+                        </div>
 
-                    <details class="kac__details">
-                        <summary class="kac__details-head">
-                            Materiales y pasos
-                            <span class="kac__details-arrow" aria-hidden="true"
-                                >→</span
-                            >
-                        </summary>
-                        <div class="kac__details-body">
-                            <div class="kac__materials">
-                                <h4 class="kac__label">
-                                    <span
-                                        class="kac__label-icon"
-                                        aria-hidden="true"
-                                        >⊘</span
-                                    >
-                                    Materiales
-                                </h4>
-                                <ul class="kac__materials-list">
-                                    {act.materials.map((m) => (
-                                        <li class="kac__materials-item">
-                                            {m}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
+                        <details class="kac__details">
+                            <summary class="kac__details-head">
+                                Materiales y pasos
+                                <span
+                                    class="kac__details-arrow"
+                                    aria-hidden="true"
+                                >
+                                    →
+                                </span>
+                            </summary>
+                            <div class="kac__details-body">
+                                <div class="kac__materials">
+                                    <h4 class="kac__label">
+                                        <span
+                                            class="kac__label-icon"
+                                            aria-hidden="true"
+                                        >
+                                            ⊘
+                                        </span>
+                                        Materiales
+                                    </h4>
+                                    <ul class="kac__materials-list">
+                                        {act.materials.map((m) => (
+                                            <li class="kac__materials-item">
+                                                {m}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
 
-                            <div class="kac__steps">
-                                <h4 class="kac__label">
-                                    <span
-                                        class="kac__label-icon"
-                                        aria-hidden="true"
-                                        >①</span
-                                    >
-                                    Instrucciones
-                                </h4>
-                                <ol class="kac__steps-list">
-                                    {act.steps.map((s) => (
-                                        <li class="kac__steps-item">{s}</li>
-                                    ))}
-                                </ol>
-                                {act.tip && (
-                                    <p class="kac__tip">
-                                        <strong>💡 Consejo:</strong> {act.tip}
+                                <div class="kac__steps">
+                                    <h4 class="kac__label">
+                                        <span
+                                            class="kac__label-icon"
+                                            aria-hidden="true"
+                                        >
+                                            ①
+                                        </span>
+                                        Instrucciones
+                                    </h4>
+                                    <ol class="kac__steps-list">
+                                        {act.steps.map((s) => (
+                                            <li class="kac__steps-item">{s}</li>
+                                        ))}
+                                    </ol>
+                                    {act.tip && (
+                                        <p class="kac__tip">
+                                            <strong>💡 Consejo:</strong>{' '}
+                                            {act.tip}
+                                        </p>
+                                    )}
+                                </div>
+
+                                <div class="kac__science">
+                                    <h4 class="kac__label">
+                                        <span
+                                            class="kac__label-icon"
+                                            aria-hidden="true"
+                                        >
+                                            ✦
+                                        </span>
+                                        Qué está pasando
+                                    </h4>
+                                    <p class="kac__science-text">
+                                        {act.explain}
                                     </p>
+                                </div>
+                                {act.source && (
+                                    <a
+                                        href={act.source.url}
+                                        class="kac__source"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        Fuente: {act.source.name}
+                                        <span
+                                            class="kac__source-arrow"
+                                            aria-hidden="true"
+                                        >
+                                            ↗
+                                        </span>
+                                    </a>
                                 )}
                             </div>
-
-                            <div class="kac__science">
-                                <h4 class="kac__label">
-                                    <span
-                                        class="kac__label-icon"
-                                        aria-hidden="true"
-                                        >✦</span
-                                    >
-                                    Qué está pasando
-                                </h4>
-                                <p class="kac__science-text">{act.explain}</p>
-                            </div>
-                            {act.source && (
-                                <a
-                                    href={act.source.url}
-                                    class="kac__source"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    Fuente: {act.source.name}
-                                    <span class="kac__source-arrow" aria-hidden="true"
-                                        >↗</span
-                                    >
-                                </a>
-                            )}
-                        </div>
-                    </details>
-                </article>
-            ))}
+                        </details>
+                    </article>
+                ))
+            }
         </div>
 
         <!-- ======================== QUIZ ======================== -->
@@ -122,55 +135,57 @@ const { activities, quiz } = data;
             </div>
 
             <div class="kac__quiz" data-quiz={JSON.stringify(quiz)}>
+                <div class="kac__quiz-stage" data-stage="question">
+                    <div class="kac__quiz-progress" data-progress="">
+                        <span class="kac__quiz-track">
+                            <span
+                                class="kac__quiz-fill"
+                                data-fill=""
+                                style="width: 0%"></span>
+                        </span>
+                        <span class="kac__quiz-count" data-count=""
+                            >1 / {quiz.length}</span
+                        >
+                    </div>
 
-            <div class="kac__quiz-stage" data-stage="question">
-                <div class="kac__quiz-progress" data-progress="">
-                    <span class="kac__quiz-track">
-                        <span
-                            class="kac__quiz-fill"
-                            data-fill=""
-                            style="width: 0%"></span>
-                    </span>
-                    <span class="kac__quiz-count" data-count=""
-                        >1 / {quiz.length}</span
+                    <p class="kac__quiz-q" data-question=""></p>
+
+                    <div class="kac__quiz-btns">
+                        <button
+                            class="kac__quiz-btn kac__quiz-btn--true"
+                            data-btn="true"
+                        >
+                            Verdadero
+                        </button>
+                        <button
+                            class="kac__quiz-btn kac__quiz-btn--false"
+                            data-btn="false"
+                        >
+                            Falso
+                        </button>
+                    </div>
+
+                    <p
+                        class="kac__quiz-feedback"
+                        data-feedback=""
+                        aria-live="polite"
                     >
+                    </p>
+
+                    <button class="kac__quiz-next" data-next="" hidden>
+                        Siguiente →
+                    </button>
                 </div>
 
-                <p class="kac__quiz-q" data-question=""></p>
-
-                <div class="kac__quiz-btns">
-                    <button
-                        class="kac__quiz-btn kac__quiz-btn--true"
-                        data-btn="true"
-                    >
-                        Verdadero
-                    </button>
-                    <button
-                        class="kac__quiz-btn kac__quiz-btn--false"
-                        data-btn="false"
-                    >
-                        Falso
+                <div class="kac__quiz-result" data-result="" hidden>
+                    <p class="kac__quiz-result-score" data-score=""></p>
+                    <p class="kac__quiz-result-best" data-best=""></p>
+                    <button class="kac__quiz-retry" data-retry="">
+                        Repetir ↻
                     </button>
                 </div>
-
-                <p class="kac__quiz-feedback" data-feedback="" aria-live="polite">
-                </p>
-
-                <button class="kac__quiz-next" data-next="" hidden>
-                    Siguiente →
-                </button>
-            </div>
-
-            <div class="kac__quiz-result" data-result="" hidden>
-                <p class="kac__quiz-result-score" data-score=""></p>
-                <p class="kac__quiz-result-best" data-best=""></p>
-                <button class="kac__quiz-retry" data-retry="">
-                    Repetir ↻
-                </button>
             </div>
         </div>
-        </div>
-
     </div>
 </section>
 
@@ -178,26 +193,30 @@ const { activities, quiz } = data;
     const QUIZ_KEY = 'eclipsarium-quiz-best';
 
     const quizData = JSON.parse(
-        document.querySelector('[data-quiz]')?.dataset.quiz || '[]'
+        (document.querySelector('[data-quiz]') as HTMLElement | null)?.dataset
+            .quiz || '[]',
     );
 
     class Quiz {
         current = 0;
         score = 0;
         answered = false;
+        questions: any[] = [];
 
-        qEl = document.querySelector('[data-question]');
-        fbEl = document.querySelector('[data-feedback]');
-        nextEl = document.querySelector('[data-next]');
-        fillEl = document.querySelector('[data-fill]');
-        countEl = document.querySelector('[data-count]');
-        stageEl = document.querySelector('[data-stage]');
-        resultEl = document.querySelector('[data-result]');
-        scoreEl = document.querySelector('[data-score]');
-        bestEl = document.querySelector('[data-best]');
-        retryEl = document.querySelector('[data-retry]');
+        qEl = document.querySelector('[data-question]') as HTMLElement | null;
+        fbEl = document.querySelector('[data-feedback]') as HTMLElement | null;
+        nextEl = document.querySelector('[data-next]') as HTMLElement | null;
+        fillEl = document.querySelector('[data-fill]') as HTMLElement | null;
+        countEl = document.querySelector('[data-count]') as HTMLElement | null;
+        stageEl = document.querySelector('[data-stage]') as HTMLElement | null;
+        resultEl = document.querySelector(
+            '[data-result]',
+        ) as HTMLElement | null;
+        scoreEl = document.querySelector('[data-score]') as HTMLElement | null;
+        bestEl = document.querySelector('[data-best]') as HTMLElement | null;
+        retryEl = document.querySelector('[data-retry]') as HTMLElement | null;
 
-        constructor(questions) {
+        constructor(questions: any[]) {
             this.questions = questions;
             this.bind();
             this.show();
@@ -207,56 +226,56 @@ const { activities, quiz } = data;
             document.querySelectorAll('[data-btn]').forEach((btn) => {
                 btn.addEventListener('click', () => {
                     if (this.answered) return;
-                    this.answer(btn.dataset.btn === 'true');
+                    this.answer((btn as HTMLElement).dataset.btn === 'true');
                 });
             });
 
-            this.nextEl.addEventListener('click', () => this.next());
-            this.retryEl.addEventListener('click', () => this.reset());
+            this.nextEl?.addEventListener('click', () => this.next());
+            this.retryEl?.addEventListener('click', () => this.reset());
         }
 
         show() {
             const q = this.questions[this.current];
             if (!q) return this.finish();
 
-            this.qEl.textContent = q.question;
-            this.countEl.textContent =
+            this.qEl!.textContent = q.question;
+            this.countEl!.textContent =
                 this.current + 1 + ' / ' + this.questions.length;
-            this.fillEl.style.width =
-                ((this.current) / this.questions.length) * 100 + '%';
-            this.fbEl.textContent = '';
-            this.fbEl.className = 'kac__quiz-feedback';
-            this.nextEl.hidden = true;
+            this.fillEl!.style.width =
+                (this.current / this.questions.length) * 100 + '%';
+            this.fbEl!.textContent = '';
+            this.fbEl!.className = 'kac__quiz-feedback';
+            this.nextEl!.hidden = true;
             this.answered = false;
-            this.stageEl.hidden = false;
-            this.resultEl.hidden = true;
+            this.stageEl!.hidden = false;
+            this.resultEl!.hidden = true;
 
             document.querySelectorAll('[data-btn]').forEach((btn) => {
-                btn.disabled = false;
+                (btn as HTMLButtonElement).disabled = false;
             });
         }
 
-        answer(val) {
+        answer(val: boolean) {
             this.answered = true;
             const q = this.questions[this.current];
             const correct = val === q.answer;
 
             if (correct) {
                 this.score++;
-                this.fbEl.textContent = '¡Correcto! ' + q.explain;
-                this.fbEl.className = 'kac__quiz-feedback kac__quiz-feedback--ok';
+                this.fbEl!.textContent = '¡Correcto! ' + q.explain;
+                this.fbEl!.className =
+                    'kac__quiz-feedback kac__quiz-feedback--ok';
             } else {
-                this.fbEl.textContent =
-                    'No es correcto. ' + q.explain;
-                this.fbEl.className =
+                this.fbEl!.textContent = 'No es correcto. ' + q.explain;
+                this.fbEl!.className =
                     'kac__quiz-feedback kac__quiz-feedback--ko';
             }
 
             document.querySelectorAll('[data-btn]').forEach((btn) => {
-                btn.disabled = true;
+                (btn as HTMLButtonElement).disabled = true;
             });
 
-            this.nextEl.hidden = false;
+            this.nextEl!.hidden = false;
         }
 
         next() {
@@ -269,30 +288,35 @@ const { activities, quiz } = data;
         }
 
         finish() {
-            this.stageEl.hidden = true;
-            this.resultEl.hidden = false;
+            this.stageEl!.hidden = true;
+            this.resultEl!.hidden = false;
 
             const total = this.questions.length;
             const pct = Math.round((this.score / total) * 100);
 
             let msg;
-            if (pct === 100) msg = '¡Perfecto! Eres un verdadero cazador de eclipses.';
+            if (pct === 100)
+                msg = '¡Perfecto! Eres un verdadero cazador de eclipses.';
             else if (pct >= 80) msg = 'Casi perfecto. Sabes un montón.';
-            else if (pct >= 60) msg = 'Vas por buen camino. Repasa los materiales y vuelve a intentarlo.';
+            else if (pct >= 60)
+                msg =
+                    'Vas por buen camino. Repasa los materiales y vuelve a intentarlo.';
             else msg = 'Sigue explorando — cada vez sabrás más.';
 
-            this.scoreEl.textContent = this.score + ' / ' + total + ' — ' + msg;
+            this.scoreEl!.textContent =
+                this.score + ' / ' + total + ' — ' + msg;
 
             this.saveBest(this.score);
         }
 
-        saveBest(score) {
+        saveBest(score: number) {
             const prev = parseInt(localStorage.getItem(QUIZ_KEY) || '0', 10);
             if (score > prev) {
                 localStorage.setItem(QUIZ_KEY, String(score));
-                this.bestEl.textContent = '🏆 ¡Nuevo récord!';
+                this.bestEl!.textContent = '🏆 ¡Nuevo récord!';
             } else {
-                this.bestEl.textContent = 'Mejor puntuación: ' + prev + ' / ' + this.questions.length;
+                this.bestEl!.textContent =
+                    'Mejor puntuación: ' + prev + ' / ' + this.questions.length;
             }
         }
 
@@ -559,7 +583,11 @@ const { activities, quiz } = data;
        QUIZ
     ================================ */
     .kac__quiz-section {
-        background: linear-gradient(135deg, var(--ink) 0%, rgba(0, 170, 255, 0.04) 100%);
+        background: linear-gradient(
+            135deg,
+            var(--ink) 0%,
+            rgba(0, 170, 255, 0.04) 100%
+        );
         border: 1px solid var(--line);
         border-radius: var(--radius);
         padding: 1.6rem;
@@ -570,6 +598,12 @@ const { activities, quiz } = data;
         align-items: flex-start;
         gap: 0.8rem;
         margin-bottom: 0.5rem;
+    }
+
+    .kac__quiz-head > div {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
     }
 
     .kac__quiz-star {
@@ -586,14 +620,15 @@ const { activities, quiz } = data;
 
     .kac__quiz-title {
         font-family: var(--font-accent);
-        font-size: var(--step-0);
-        font-weight: 500;
+        font-size: var(--step-1);
+        font-weight: 600;
+        line-height: 1.15;
     }
 
     .kac__quiz-help {
         font-size: var(--step--1);
         color: var(--muted);
-        margin-top: 0.15rem;
+        line-height: 1.5;
     }
 
     .kac__quiz-stage {

@@ -1,0 +1,183 @@
+{
+    "activities": [
+        {
+            "id": "pinhole",
+            "title": "Proyector de agujeros",
+            "subtitle": "Construye tu propio proyector para ver el eclipse sin mirar al Sol",
+            "age": "6+",
+            "time": "15 min",
+            "source": {
+                "name": "Exploratorium",
+                "url": "https://www.exploratorium.edu/es/eclipse/activities"
+            },
+            "materials": [
+                "Caja de zapatos",
+                "Papel de aluminio",
+                "Cinta adhesiva",
+                "Tijeras",
+                "Aguja o alfiler"
+            ],
+            "steps": [
+                "Corta un rectángulo de 5×5 cm en un extremo de la caja.",
+                "Cubre el agujero con papel de aluminio y fíjalo con cinta adhesiva.",
+                "Con la aguja, haz un agujero muy pequeño en el centro del aluminio.",
+                "En el extremo opuesto de la caja, haz otro agujero más grande para mirar.",
+                "De espaldas al Sol, mira por el agujero grande: verás el eclipse proyectado dentro."
+            ],
+            "tip": "Prueba varios agujeros de diferentes tamaños — los más pequeños dan imágenes más nítidas.",
+            "explain": "La luz del Sol pasa por un agujero diminuto (efecto cámara oscura) y proyecta la imagen invertida del eclipse en el interior de la caja. Así puedes verlo sin mirar directamente al Sol."
+        },
+        {
+            "id": "cosmic",
+            "title": "La coincidencia cósmica",
+            "subtitle": "¿Por qué el Sol y la Luna se ven del mismo tamaño en el cielo?",
+            "age": "7+",
+            "time": "10 min",
+            "source": {
+                "name": "Exploratorium",
+                "url": "https://www.exploratorium.edu/es/eclipse/activities"
+            },
+            "materials": [
+                "Pelota de tenis o pelota grande",
+                "Canica",
+                "Cinta métrica o regla larga"
+            ],
+            "steps": [
+                "Coloca la pelota de tenis en una mesa — ese es el Sol.",
+                "Sujeta la canica a 30 cm de la pelota — esa es la Luna.",
+                "Aléjate 8 metros: la canica y la pelota se ven del mismo tamaño.",
+                "Así funciona con el Sol y la Luna reales: el Sol es 400 veces más grande pero está 400 veces más lejos."
+            ],
+            "tip": "Si no tienes 8 metros, usa objetos más pequeños (lenteja y garbanzo) y mide la distancia equivalente.",
+            "explain": "Se llama coincidencia cósmica: el Sol tiene un diámetro ~400 veces mayor que la Luna, pero también está ~400 veces más lejos. Por eso desde la Tierra se ven prácticamente del mismo tamaño, permitiendo que la Luna tape exactamente el Sol durante un eclipse total."
+        },
+        {
+            "id": "hand",
+            "title": "Eclipse con las manos",
+            "subtitle": "Demuestra cómo la Luna tapa al Sol con solo tus manos",
+            "age": "4+",
+            "time": "2 min",
+            "source": {
+                "name": "Exploratorium",
+                "url": "https://www.exploratorium.edu/es/eclipse/activities"
+            },
+            "materials": ["Linterna (o la luz del techo)", "Tus manos"],
+            "steps": [
+                "Enciende la linterna y apunta hacia ti — ese es el Sol.",
+                "Cierra el puño y extiende solo el pulgar hacia arriba.",
+                "Acerca el pulgar a un ojo, cerranto el otro ojo.",
+                "Mueve el pulgar hasta que tape la linterna: ¡acabas de hacer un eclipse!"
+            ],
+            "tip": "Prueba a mover el pulgar despacio, como la Luna moviéndose frente al Sol.",
+            "explain": "Un objeto pequeño cerca del ojo puede tapar completamente uno mucho más grande que está lejos. La Luna es pequeña comparada con el Sol, pero como está tan cerca de nosotros, lo cubre perfectamente."
+        },
+        {
+            "id": "oreo",
+            "title": "Galletas de luna",
+            "subtitle": "Las fases lunares… ¡con galletas Oreo!",
+            "age": "5+",
+            "time": "20 min",
+            "source": {
+                "name": "NASA Space Place",
+                "url": "https://spaceplace.nasa.gov/search/eclipse/sp/"
+            },
+            "materials": [
+                "Galletas Oreo (al menos 8)",
+                "Cuchillo de mantequilla o palillo",
+                "Plato o cartulina"
+            ],
+            "steps": [
+                "Despega suavemente la tapa de cada galleta.",
+                "Con el cuchillo o palillo, raspa la crema para dar forma a cada fase lunar: luna nueva, creciente, cuarto creciente, gibosa creciente, luna llena, gibosa menguante, cuarto menguante, creciente menguante.",
+                "Colócalas en orden sobre el plato o la cartulina.",
+                "Señala dónde estaría el Sol y explica: el eclipse ocurre cuando la Luna nueva se alinea justo entre el Sol y la Tierra."
+            ],
+            "tip": "Guarda una foto del plato antes de comértelas — ¡y que aproveche!",
+            "explain": "Las fases lunares son la parte iluminada de la Luna que vemos desde la Tierra. Un eclipse solar solo puede ocurrir en luna nueva, cuando la Luna está entre la Tierra y el Sol."
+        },
+        {
+            "id": "diamond",
+            "title": "Anillo de diamante",
+            "subtitle": "Pinta el momento más espectacular del eclipse",
+            "age": "6+",
+            "time": "20 min",
+            "source": {
+                "name": "NASA Space Place",
+                "url": "https://spaceplace.nasa.gov/search/eclipse/sp/"
+            },
+            "materials": [
+                "Papel o cartulina negra",
+                "Pintura acrílica blanca, plateada y dorada",
+                "Pincel fino",
+                "Cepillo de dientes viejo (opcional)"
+            ],
+            "steps": [
+                "Dibuja un círculo negro (la Luna) en el centro del papel oscuro — puede ser un círculo de papel pegado.",
+                "Con el pincel fino, pinta destellos de luz blanca alrededor del borde: es la corona solar.",
+                "Añade un punto brillante (dorado o blanco intenso) en un borde: el anillo de diamante.",
+                "Salpica pintura blanca con el cepillo de dientes para simular estrellas.",
+                "Escribe: «12 de agosto de 2026 — lo vi»."
+            ],
+            "tip": "Mira fotos de anillos de diamante reales para inspirarte: cada uno es diferente.",
+            "explain": "El anillo de diamante aparece justo antes y después de la totalidad, cuando un último rayito de Sol brilla por un valle de la Luna. Es uno de los momentos más fotografiados del eclipse."
+        },
+        {
+            "id": "shadows",
+            "title": "Caza de sombras",
+            "subtitle": "Observa cómo cambian las sombras durante las fases parciales",
+            "age": "5+",
+            "time": "Durante el eclipse",
+            "source": {
+                "name": "Exploratorium",
+                "url": "https://www.exploratorium.edu/es/eclipse/activities"
+            },
+            "materials": [
+                "Papel blanco o cartulina",
+                "Colador de cocina",
+                "Hojas de árboles (si tienes cerca)",
+                "Tus manos"
+            ],
+            "steps": [
+                "Coloca el papel blanco en el suelo, a la luz del Sol.",
+                "Pon el colador entre el Sol y el papel: los agujeros proyectan mini-eclipses.",
+                "Haz lo mismo con las manos: entrelaza los dedos y mira las sombras en el suelo.",
+                "Cada 10 minutos, haz una foto de las sombras para ver cómo cambian a medida que avanza el eclipse."
+            ],
+            "tip": "Si hay un árbol cerca, mira el suelo bajo sus hojas: verás cientos de pequeños eclipses proyectados.",
+            "explain": "Cada pequeño agujero actúa como un proyector de agujero (cámara oscura). Durante un eclipse parcial, todos los rayos de luz tienen forma de medialuna, así que cada proyector natural muestra esa forma."
+        }
+    ],
+    "quiz": [
+        {
+            "id": "q1",
+            "question": "¿Durante la totalidad (cuando la Luna tapa completamente el Sol) puedo mirar sin gafas de eclipse?",
+            "answer": true,
+            "explain": "¡Sí! Solo durante esos segundos de totalidad puedes mirar directamente. En cuanto veas el anillo de diamante, vuelve a ponerte las gafas inmediatamente."
+        },
+        {
+            "id": "q2",
+            "question": "¿Las gafas de sol normales protegen suficiente para ver un eclipse?",
+            "answer": false,
+            "explain": "No. Las gafas de sol normales no bloquean la radiación UV e infrarroja. Solo las gafas con certificación ISO 12312-2 son seguras."
+        },
+        {
+            "id": "q3",
+            "question": "¿El Sol y la Luna se ven del mismo tamaño desde la Tierra?",
+            "answer": true,
+            "explain": "El Sol es 400 veces más grande, pero está 400 veces más lejos. Esta coincidencia hace que se vean del mismo tamaño, permitiendo los eclipses totales."
+        },
+        {
+            "id": "q4",
+            "question": "¿La totalidad del eclipse del 12 de agosto de 2026 durará más de 5 minutos?",
+            "answer": false,
+            "explain": "No. La totalidad durará 1 minuto y 49 segundos. ¡Por eso es tan importante estar preparado!"
+        },
+        {
+            "id": "q5",
+            "question": "¿Después de 2026 habrá otro eclipse solar total visible desde España en los próximos años?",
+            "answer": true,
+            "explain": "¡Sí! El 2 de agosto de 2027 habrá otro eclipse total visible desde el sur de España. Y en 2028 uno anular. Son tres en tres años: una ocasión única."
+        }
+    ],
+    "quizHelp": "Responde las 5 preguntas. Al final verás tu puntuación. ¡Puedes repetirlo cuantas veces quieras!"
+}

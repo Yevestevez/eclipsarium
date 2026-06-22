@@ -6,6 +6,7 @@ import EventInfo from '../components/EventInfo.astro';
 import WhereToWatch from '../components/WhereToWatch.astro';
 import Countdown from '../components/Countdown.astro';
 import PrepChecklist from '../components/PrepChecklist.astro';
+import KidsActivities from '../components/KidsActivities.astro';
 ---
 
 <Layout>
@@ -13,10 +14,11 @@ import PrepChecklist from '../components/PrepChecklist.astro';
         <div class="shell topbar__inner">
             <a href="#" class="brand">ECLIPSARIUM<span>·26</span></a>
             <nav class="nav nav--desktop">
+                <a href="#cuenta">Cuenta atrás</a>
                 <a href="#evento">El evento</a>
                 <a href="#donde">Dónde verlo</a>
                 <a href="#checklist">Checklist</a>
-                <a href="#cuenta">Cuenta atrás</a>
+                <a href="#actividades">Actividades</a>
             </nav>
             <details class="nav-mobile">
                 <summary
@@ -30,10 +32,11 @@ import PrepChecklist from '../components/PrepChecklist.astro';
                     </span>
                 </summary>
                 <nav class="nav-mobile__panel" aria-label="Navegación móvil">
+                    <a href="#cuenta">Cuenta atrás</a>
                     <a href="#evento">El evento</a>
                     <a href="#donde">Dónde verlo</a>
                     <a href="#checklist">Checklist</a>
-                    <a href="#cuenta">Cuenta atrás</a>
+                    <a href="#actividades">Actividades</a>
                 </nav>
             </details>
         </div>
@@ -77,11 +80,11 @@ import PrepChecklist from '../components/PrepChecklist.astro';
                 </div>
             </div>
         </section>
-
+        <Countdown />
         <EventInfo />
         <WhereToWatch />
         <PrepChecklist />
-        <Countdown />
+        <KidsActivities />
     </main>
 
     <footer class="foot">

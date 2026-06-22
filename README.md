@@ -11,7 +11,8 @@ Web informativa sobre el **eclipse solar total del 12 de agosto de 2026**, visib
 - **v1.2.0 (calendario):** botones añadir evento a calendario
 - **v1.3.0 (checklist):** recomendaciones y checklist interactiva de preparación
 - **v1.4.0:** páginas por localidad + buscador + hover/popup en mapa
-- **v1.5.0 (actual):** Nominatim geocoding con búsqueda inteligente (fase mundial + España) + filtro por tipo de lugar + contexto con país
+- **v1.5.0:** Nominatim geocoding con búsqueda inteligente (fase mundial + España) + filtro por tipo de lugar + contexto con país
+- **v1.6.0 (actual):** Actividades para familias: 6 actividades hands-on + quiz interactivo + enlaces fuente
 
 ## 🎯 Objetivo
 
@@ -51,13 +52,13 @@ src/
 │   ├── EclipseMap.astro      # mapa Leaflet con polígono + markers
 │   ├── WhereToWatch.astro    # lista de lugares + buscador + mapa
 │   ├── PrepChecklist.astro   # checklist interactiva con persistencia
-│   └── ...
+│   └── KidsActivities.astro  # actividades y quiz para familias
 ├── data/             # datos estáticos (JSON + test co-localizado)
 ├── layouts/          # layouts de página
 ├── pages/            # rutas (index.astro, /location/[slug].astro)
 └── styles/           # tokens de diseño CSS
 test/
-└── e2e/              # tests Playwright (home, nav, countdown, a11y)
+└── e2e/              # tests Playwright (home, nav, countdown, checklist, activities, a11y)
 ```
 
 ## 📅 El evento
@@ -100,10 +101,17 @@ test/
 - [x] Ciudad en negrita azul, contexto gris, énfasis blanco
 - [x] CSS scoping fix (`:global()`) para contenido dinámico de búsqueda
 
+### Sprint 2 ✅ — Actividades para Familias (v1.6.0)
+
+- [x] 6 actividades prácticas con materiales, pasos, tips y explicación científica
+- [x] Mini-quiz interactivo 5 preguntas Verdadero/Falso con feedback y localStorage
+- [x] Enlace "Fuente:" por actividad a recurso externo (NASA Space Place, Exploratorium)
+- [x] Tests unitarios (Vitest, 60 tests en 9 suites) + E2E (Playwright, 16 tests) + axe a11y
+- [x] Responsivo mobile/desktop
+
 ### Roadmap
 
 - [ ] FAQ y mitos sobre eclipses
-- [ ] Actividades para familias
 
 ## 📄 Licencia
 

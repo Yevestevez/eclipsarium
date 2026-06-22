@@ -44,17 +44,19 @@ const sorted = [...data.places].sort((a, b) => {
                                 `place--${p.type}`,
                             ]}
                         >
-                            <div class="place__tag">
-                                {tag}
-                            </div>
-                            <h3 class="place__city">{p.city}</h3>
-                            <p class="place__region">{p.region}</p>
-                            <div class="place__meta">
-                                <span class="place__dur">{p.duration}</span>
-                                <span class="place__time">
-                                    Contacto · {p.contact}
-                                </span>
-                            </div>
+                            <a href={`/location/${p.slug}`} class="place__link">
+                                <div class="place__tag">
+                                    {tag}
+                                </div>
+                                <h3 class="place__city">{p.city}</h3>
+                                <p class="place__region">{p.region}</p>
+                                <div class="place__meta">
+                                    <span class="place__dur">{p.duration}</span>
+                                    <span class="place__time">
+                                        Contacto · {p.contact}
+                                    </span>
+                                </div>
+                            </a>
                         </li>
                     );
                 })
@@ -106,16 +108,20 @@ const sorted = [...data.places].sort((a, b) => {
 
     .place {
         background: var(--ink);
-        padding: 1.8rem 1.6rem 1.6rem;
+        transition: background 0.4s var(--ease);
+    }
+
+    .place__link {
         display: flex;
         flex-direction: column;
         gap: 0.35rem;
-        transition:
-            background 0.4s var(--ease),
-            transform 0.4s var(--ease);
+        padding: 1.8rem 1.6rem 1.6rem;
+        text-decoration: none;
+        color: inherit;
+        transition: background 0.4s var(--ease);
     }
 
-    .place:hover {
+    .place__link:hover {
         background: var(--ink-soft);
     }
 

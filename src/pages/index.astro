@@ -14,11 +14,11 @@ import KidsActivities from '../components/KidsActivities.astro';
         <div class="shell topbar__inner">
             <a href="#" class="brand">ECLIPSARIUM<span>·26</span></a>
             <nav class="nav nav--desktop">
+                <a href="#cuenta">Cuenta atrás</a>
                 <a href="#evento">El evento</a>
                 <a href="#donde">Dónde verlo</a>
                 <a href="#checklist">Checklist</a>
                 <a href="#actividades">Actividades</a>
-                <a href="#cuenta">Cuenta atrás</a>
             </nav>
             <details class="nav-mobile">
                 <summary
@@ -32,11 +32,11 @@ import KidsActivities from '../components/KidsActivities.astro';
                     </span>
                 </summary>
                 <nav class="nav-mobile__panel" aria-label="Navegación móvil">
+                    <a href="#cuenta">Cuenta atrás</a>
                     <a href="#evento">El evento</a>
                     <a href="#donde">Dónde verlo</a>
                     <a href="#checklist">Checklist</a>
                     <a href="#actividades">Actividades</a>
-                    <a href="#cuenta">Cuenta atrás</a>
                 </nav>
             </details>
         </div>
@@ -80,12 +80,11 @@ import KidsActivities from '../components/KidsActivities.astro';
                 </div>
             </div>
         </section>
-
+        <Countdown />
         <EventInfo />
         <WhereToWatch />
         <PrepChecklist />
         <KidsActivities />
-        <Countdown />
     </main>
 
     <footer class="foot">

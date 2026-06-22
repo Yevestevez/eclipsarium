@@ -28,6 +28,14 @@ const sorted = [...data.places].sort((a, b) => {
 
         <EclipseMap />
 
+        <div class="search">
+            <svg class="search__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <input type="search" id="location-search" class="search__input" placeholder="Buscar localidad…" aria-label="Filtrar localidades por nombre o región">
+        </div>
+
         <ul class="places">
             {
                 sorted.map((p) => {
@@ -39,6 +47,9 @@ const sorted = [...data.places].sort((a, b) => {
                               : 'Parcial';
                     return (
                         <li
+                            data-city={p.city}
+                            data-region={p.region}
+                            data-type={p.type}
                             class:list={[
                                 'place',
                                 `place--${p.type}`,
@@ -65,11 +76,96 @@ const sorted = [...data.places].sort((a, b) => {
     </div>
 </section>
 
+<script>
+    var searchInput = document.getElementById('location-search');
+    if (searchInput) {
+        var placeItems = document.querySelectorAll('.place');
+
+        searchInput.addEventListener('input', function () {
+            var q = this.value.trim().toLowerCase();
+
+            placeItems.forEach(function (el) {
+                var city = (el.getAttribute('data-city') || '').toLowerCase();
+                var region = (el.getAttribute('data-region') || '').toLowerCase();
+                var type = (el.getAttribute('data-type') || '').toLowerCase();
+                var match =
+                    !q ||
+                    city.indexOf(q) !== -1 ||
+                    region.indexOf(q) !== -1 ||
+                    type.indexOf(q) !== -1;
+                el.classList.toggle('place--hidden', !match);
+            });
+
+            var markers = window.__eclipsariumMarkers;
+            var meta = window.__eclipsariumMeta;
+            var map = window.__eclipsariumMap;
+            if (markers && meta && map) {
+                markers.forEach(function (m) {
+                    var d = meta.get(m);
+                    if (!d) return;
+                    var city = (d.city || '').toLowerCase();
+                    var region = (d.region || '').toLowerCase();
+                    var match = !q || city.indexOf(q) !== -1 || region.indexOf(q) !== -1;
+                    if (match) {
+                        map.addLayer(m);
+                    } else {
+                        map.removeLayer(m);
+                    }
+                });
+            }
+        });
+    }
+</script>
+
 <style>
     .where {
         padding-block: var(--section-y);
         position: relative;
         z-index: 1;
+    }
+
+    .search {
+        position: relative;
+        margin-top: 2rem;
+        max-width: 22rem;
+    }
+
+    .search__icon {
+        position: absolute;
+        left: 0.9rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--muted);
+        pointer-events: none;
+    }
+
+    .search__input {
+        all: unset;
+        box-sizing: border-box;
+        display: block;
+        width: 100%;
+        padding: 0.75rem 0.9rem 0.75rem 2.6rem;
+        font-family: var(--font-mono);
+        font-size: var(--step-0);
+        color: var(--bone);
+        background: var(--ink-soft);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    }
+
+    .search__input::placeholder {
+        color: var(--muted-deep);
+    }
+
+    .search__input:focus {
+        border-color: var(--space-blue);
+        box-shadow: 0 0 0 1px var(--space-blue);
+        outline: none;
+    }
+
+    .place--hidden {
+        display: none;
     }
 
     .where__head {

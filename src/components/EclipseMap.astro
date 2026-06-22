@@ -435,6 +435,26 @@ const totalityPolygon = [...northLimit, ...southLimit.reverse()];
             offset: [0, -16],
         });
 
+        var eclipseWindow = window as Window & {
+            __eclipsariumMarkers?: L.Marker[];
+            __eclipsariumMap?: L.Map;
+            __eclipsariumMeta?: WeakMap<
+                L.Marker,
+                { city: string; region: string }
+            >;
+        };
+
+        if (!eclipseWindow.__eclipsariumMarkers) {
+            eclipseWindow.__eclipsariumMarkers = [];
+            eclipseWindow.__eclipsariumMap = map;
+            eclipseWindow.__eclipsariumMeta = new WeakMap();
+        }
+        eclipseWindow.__eclipsariumMeta!.set(marker, {
+            city: p.city,
+            region: p.region,
+        });
+        eclipseWindow.__eclipsariumMarkers.push(marker);
+
         let popupTimeout: ReturnType<typeof setTimeout> | undefined;
 
         marker.on('mouseover', function () {

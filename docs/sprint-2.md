@@ -170,12 +170,14 @@
 - [x] Contexto de localización con país siempre visible
 - [x] Ciudad en negrita azul en resultados de búsqueda
 - [x] CSS scoping fix para contenido dinámico
+- [x] Cuenta atrás más accesible, al inicio
 
 ## 🔮 Próximo
 
+- [ ] Coherencia de estilos entre secciones (tamaños, márgenes, colores)
+- [ ] Eventos planificados https://divulgacion.trioeclipses.es/eventos
+- [ ] Información ampliada por localidad: eventos, recomendaciones locales, zonas de visionado...
 - [ ] FAQ y mitos sobre eclipses
 - [ ] Ampliar quiz con más preguntas
-- [ ] Cuenta atrás más accesible ¿quizá al principio?
-- [ ] Eventos planificados https://divulgacion.trioeclipses.es/eventos
 - [ ] Enlaces de interés (recursos usados para info de la web, en una sección y ordenados por categoría)
-- [ ] Información ampliada por localidad: eventos, recomendaciones locales, zonas de visionado...
+- [ ] Hover en el marquee del hero que explique los términos

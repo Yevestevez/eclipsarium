@@ -1,0 +1,800 @@
+---
+import data from '../data/activities.json';
+const { activities, quiz } = data;
+---
+
+<section id="actividades" class="kac">
+    <div class="shell kac__shell">
+        <span class="eyebrow">En familia</span>
+        <h2 class="kac__title">
+            Actividades<span class="kac__title-sub"> para el eclipse</span>
+        </h2>
+        <p class="kac__intro">
+            El eclipse es un evento para todas las edades. Aquí encontrarás
+            actividades prácticas para hacer en casa o en el punto de
+            observación, explicadas paso a paso. Todas incluyen supervisión
+            de un adulto — sobre todo las que tienen que ver con mirar al
+            Sol.
+        </p>
+
+        <!-- ======================== ACTIVITIES ======================== -->
+        <div class="kac__grid">
+            {activities.map((act) => (
+                <article class="kac__card" data-id={act.id}>
+                    <div class="kac__card-head">
+                        <span class="kac__badge-group">
+                            <span class="kac__badge kac__badge--age"
+                                >{act.age}</span
+                            >
+                            <span class="kac__badge kac__badge--time"
+                                >{act.time}</span
+                            >
+                        </span>
+                        <h3 class="kac__card-title">{act.title}</h3>
+                        <p class="kac__card-sub">{act.subtitle}</p>
+                    </div>
+
+                    <details class="kac__details">
+                        <summary class="kac__details-head">
+                            Materiales y pasos
+                            <span class="kac__details-arrow" aria-hidden="true"
+                                >→</span
+                            >
+                        </summary>
+                        <div class="kac__details-body">
+                            <div class="kac__materials">
+                                <h4 class="kac__label">
+                                    <span
+                                        class="kac__label-icon"
+                                        aria-hidden="true"
+                                        >⊘</span
+                                    >
+                                    Materiales
+                                </h4>
+                                <ul class="kac__materials-list">
+                                    {act.materials.map((m) => (
+                                        <li class="kac__materials-item">
+                                            {m}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+
+                            <div class="kac__steps">
+                                <h4 class="kac__label">
+                                    <span
+                                        class="kac__label-icon"
+                                        aria-hidden="true"
+                                        >①</span
+                                    >
+                                    Instrucciones
+                                </h4>
+                                <ol class="kac__steps-list">
+                                    {act.steps.map((s) => (
+                                        <li class="kac__steps-item">{s}</li>
+                                    ))}
+                                </ol>
+                                {act.tip && (
+                                    <p class="kac__tip">
+                                        <strong>💡 Consejo:</strong> {act.tip}
+                                    </p>
+                                )}
+                            </div>
+
+                            <div class="kac__science">
+                                <h4 class="kac__label">
+                                    <span
+                                        class="kac__label-icon"
+                                        aria-hidden="true"
+                                        >✦</span
+                                    >
+                                    Qué está pasando
+                                </h4>
+                                <p class="kac__science-text">{act.explain}</p>
+                            </div>
+                            {act.source && (
+                                <a
+                                    href={act.source.url}
+                                    class="kac__source"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Fuente: {act.source.name}
+                                    <span class="kac__source-arrow" aria-hidden="true"
+                                        >↗</span
+                                    >
+                                </a>
+                            )}
+                        </div>
+                    </details>
+                </article>
+            ))}
+        </div>
+
+        <!-- ======================== QUIZ ======================== -->
+        <div class="kac__quiz-section">
+            <div class="kac__quiz-head">
+                <span class="kac__quiz-star" aria-hidden="true">✦</span>
+                <div>
+                    <h3 class="kac__quiz-title">¿Cuánto sabes del eclipse?</h3>
+                    <p class="kac__quiz-help">{data.quizHelp}</p>
+                </div>
+            </div>
+
+            <div class="kac__quiz" data-quiz={JSON.stringify(quiz)}>
+
+            <div class="kac__quiz-stage" data-stage="question">
+                <div class="kac__quiz-progress" data-progress="">
+                    <span class="kac__quiz-track">
+                        <span
+                            class="kac__quiz-fill"
+                            data-fill=""
+                            style="width: 0%"></span>
+                    </span>
+                    <span class="kac__quiz-count" data-count=""
+                        >1 / {quiz.length}</span
+                    >
+                </div>
+
+                <p class="kac__quiz-q" data-question=""></p>
+
+                <div class="kac__quiz-btns">
+                    <button
+                        class="kac__quiz-btn kac__quiz-btn--true"
+                        data-btn="true"
+                    >
+                        Verdadero
+                    </button>
+                    <button
+                        class="kac__quiz-btn kac__quiz-btn--false"
+                        data-btn="false"
+                    >
+                        Falso
+                    </button>
+                </div>
+
+                <p class="kac__quiz-feedback" data-feedback="" aria-live="polite">
+                </p>
+
+                <button class="kac__quiz-next" data-next="" hidden>
+                    Siguiente →
+                </button>
+            </div>
+
+            <div class="kac__quiz-result" data-result="" hidden>
+                <p class="kac__quiz-result-score" data-score=""></p>
+                <p class="kac__quiz-result-best" data-best=""></p>
+                <button class="kac__quiz-retry" data-retry="">
+                    Repetir ↻
+                </button>
+            </div>
+        </div>
+        </div>
+
+    </div>
+</section>
+
+<script>
+    const QUIZ_KEY = 'eclipsarium-quiz-best';
+
+    const quizData = JSON.parse(
+        document.querySelector('[data-quiz]')?.dataset.quiz || '[]'
+    );
+
+    class Quiz {
+        current = 0;
+        score = 0;
+        answered = false;
+
+        qEl = document.querySelector('[data-question]');
+        fbEl = document.querySelector('[data-feedback]');
+        nextEl = document.querySelector('[data-next]');
+        fillEl = document.querySelector('[data-fill]');
+        countEl = document.querySelector('[data-count]');
+        stageEl = document.querySelector('[data-stage]');
+        resultEl = document.querySelector('[data-result]');
+        scoreEl = document.querySelector('[data-score]');
+        bestEl = document.querySelector('[data-best]');
+        retryEl = document.querySelector('[data-retry]');
+
+        constructor(questions) {
+            this.questions = questions;
+            this.bind();
+            this.show();
+        }
+
+        bind() {
+            document.querySelectorAll('[data-btn]').forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    if (this.answered) return;
+                    this.answer(btn.dataset.btn === 'true');
+                });
+            });
+
+            this.nextEl.addEventListener('click', () => this.next());
+            this.retryEl.addEventListener('click', () => this.reset());
+        }
+
+        show() {
+            const q = this.questions[this.current];
+            if (!q) return this.finish();
+
+            this.qEl.textContent = q.question;
+            this.countEl.textContent =
+                this.current + 1 + ' / ' + this.questions.length;
+            this.fillEl.style.width =
+                ((this.current) / this.questions.length) * 100 + '%';
+            this.fbEl.textContent = '';
+            this.fbEl.className = 'kac__quiz-feedback';
+            this.nextEl.hidden = true;
+            this.answered = false;
+            this.stageEl.hidden = false;
+            this.resultEl.hidden = true;
+
+            document.querySelectorAll('[data-btn]').forEach((btn) => {
+                btn.disabled = false;
+            });
+        }
+
+        answer(val) {
+            this.answered = true;
+            const q = this.questions[this.current];
+            const correct = val === q.answer;
+
+            if (correct) {
+                this.score++;
+                this.fbEl.textContent = '¡Correcto! ' + q.explain;
+                this.fbEl.className = 'kac__quiz-feedback kac__quiz-feedback--ok';
+            } else {
+                this.fbEl.textContent =
+                    'No es correcto. ' + q.explain;
+                this.fbEl.className =
+                    'kac__quiz-feedback kac__quiz-feedback--ko';
+            }
+
+            document.querySelectorAll('[data-btn]').forEach((btn) => {
+                btn.disabled = true;
+            });
+
+            this.nextEl.hidden = false;
+        }
+
+        next() {
+            this.current++;
+            if (this.current < this.questions.length) {
+                this.show();
+            } else {
+                this.finish();
+            }
+        }
+
+        finish() {
+            this.stageEl.hidden = true;
+            this.resultEl.hidden = false;
+
+            const total = this.questions.length;
+            const pct = Math.round((this.score / total) * 100);
+
+            let msg;
+            if (pct === 100) msg = '¡Perfecto! Eres un verdadero cazador de eclipses.';
+            else if (pct >= 80) msg = 'Casi perfecto. Sabes un montón.';
+            else if (pct >= 60) msg = 'Vas por buen camino. Repasa los materiales y vuelve a intentarlo.';
+            else msg = 'Sigue explorando — cada vez sabrás más.';
+
+            this.scoreEl.textContent = this.score + ' / ' + total + ' — ' + msg;
+
+            this.saveBest(this.score);
+        }
+
+        saveBest(score) {
+            const prev = parseInt(localStorage.getItem(QUIZ_KEY) || '0', 10);
+            if (score > prev) {
+                localStorage.setItem(QUIZ_KEY, String(score));
+                this.bestEl.textContent = '🏆 ¡Nuevo récord!';
+            } else {
+                this.bestEl.textContent = 'Mejor puntuación: ' + prev + ' / ' + this.questions.length;
+            }
+        }
+
+        reset() {
+            this.current = 0;
+            this.score = 0;
+            this.show();
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => new Quiz(quizData));
+    } else {
+        new Quiz(quizData);
+    }
+</script>
+
+<style>
+    .kac {
+        padding-block: var(--section-y);
+        position: relative;
+        z-index: 1;
+    }
+
+    .kac__shell {
+        display: flex;
+        flex-direction: column;
+        gap: 1.6rem;
+    }
+
+    .kac__title {
+        font-size: var(--step-2);
+        font-weight: 600;
+    }
+
+    .kac__title-sub {
+        font-weight: 300;
+        color: var(--bone-dim);
+    }
+
+    .kac__intro {
+        color: var(--bone-dim);
+        font-size: var(--step--1);
+        line-height: 1.6;
+        max-width: 64ch;
+    }
+
+    /* ================================
+       ACTIVITY CARDS
+    ================================ */
+    .kac__grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    .kac__card {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--ink);
+        overflow: hidden;
+        transition: border-color 0.25s var(--ease);
+    }
+
+    .kac__card:hover {
+        border-color: var(--line-strong);
+    }
+
+    .kac__card-head {
+        padding: 1.2rem 1.4rem;
+    }
+
+    .kac__badge-group {
+        display: inline-flex;
+        gap: 0.4rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .kac__badge {
+        font-family: var(--font-mono);
+        font-size: 0.6rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        padding: 0.15rem 0.5rem;
+        border-radius: 99px;
+        border: 1px solid;
+        line-height: 1.5;
+    }
+
+    .kac__badge--age {
+        border-color: var(--space-blue);
+        color: var(--space-blue);
+    }
+
+    .kac__badge--time {
+        border-color: var(--muted);
+        color: var(--muted);
+    }
+
+    .kac__card-title {
+        font-family: var(--font-accent);
+        font-size: var(--step-0);
+        font-weight: 600;
+        line-height: 1.2;
+    }
+
+    .kac__card-sub {
+        font-size: var(--step--1);
+        color: var(--muted);
+        margin-top: 0.3rem;
+        line-height: 1.5;
+    }
+
+    .kac__details {
+        border-top: 1px solid var(--line);
+    }
+
+    .kac__details-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.6rem;
+        padding: 0.75rem 1.4rem;
+        cursor: pointer;
+        font-family: var(--font-accent);
+        font-size: var(--step--1);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--space-blue);
+        transition: background-color 0.2s var(--ease);
+        list-style: none;
+        user-select: none;
+    }
+
+    .kac__details-head::-webkit-details-marker,
+    .kac__details-head::marker {
+        display: none;
+        content: '';
+    }
+
+    .kac__details-head:hover {
+        background: rgba(244, 239, 230, 0.03);
+    }
+
+    .kac__details-arrow {
+        font-size: 0.9rem;
+        transition: transform 0.25s var(--ease);
+        opacity: 0.7;
+    }
+
+    .kac__details[open] .kac__details-arrow {
+        transform: rotate(90deg);
+    }
+
+    .kac__details-body {
+        padding: 0 1.4rem 1.2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .kac__label {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-family: var(--font-accent);
+        font-size: var(--step--1);
+        font-weight: 500;
+        color: var(--bone);
+        margin-bottom: 0.4rem;
+    }
+
+    .kac__label-icon {
+        color: var(--muted);
+        font-size: 0.7rem;
+    }
+
+    .kac__materials-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+    }
+
+    .kac__materials-item {
+        font-size: var(--step--1);
+        color: var(--bone-dim);
+        padding: 0.2rem 0.6rem;
+        background: rgba(244, 239, 230, 0.05);
+        border-radius: 4px;
+        line-height: 1.5;
+    }
+
+    .kac__steps-list {
+        margin: 0;
+        padding: 0 0 0 1.2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+    }
+
+    .kac__steps-item {
+        font-size: var(--step--1);
+        color: var(--bone-dim);
+        line-height: 1.55;
+        padding-left: 0.2rem;
+    }
+
+    .kac__tip {
+        font-size: var(--step--1);
+        color: var(--space-blue-light);
+        margin-top: 0.6rem;
+        padding: 0.5rem 0.75rem;
+        border: 1px solid rgba(0, 170, 255, 0.15);
+        border-radius: 6px;
+        background: rgba(0, 170, 255, 0.05);
+        line-height: 1.5;
+    }
+
+    .kac__science {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 0.8rem 1rem;
+        background: rgba(244, 239, 230, 0.02);
+    }
+
+    .kac__science-text {
+        font-size: var(--step--1);
+        color: var(--bone-dim);
+        line-height: 1.6;
+    }
+
+    .kac__source {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-family: var(--font-mono);
+        font-size: 0.62rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--muted);
+        padding: 0.35rem 0.7rem;
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        transition:
+            color 0.2s var(--ease),
+            border-color 0.2s var(--ease);
+        width: fit-content;
+    }
+
+    .kac__source:hover {
+        color: var(--space-blue);
+        border-color: var(--space-blue);
+    }
+
+    .kac__source-arrow {
+        font-size: 0.75rem;
+        line-height: 1;
+    }
+
+    /* ================================
+       QUIZ
+    ================================ */
+    .kac__quiz-section {
+        background: linear-gradient(135deg, var(--ink) 0%, rgba(0, 170, 255, 0.04) 100%);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 1.6rem;
+    }
+
+    .kac__quiz-head {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .kac__quiz-star {
+        flex-shrink: 0;
+        font-size: 1.4rem;
+        color: var(--space-blue);
+        line-height: 1;
+        margin-top: 0.1rem;
+    }
+    .kac__quiz {
+        margin-top: 1rem;
+        padding: 0;
+    }
+
+    .kac__quiz-title {
+        font-family: var(--font-accent);
+        font-size: var(--step-0);
+        font-weight: 500;
+    }
+
+    .kac__quiz-help {
+        font-size: var(--step--1);
+        color: var(--muted);
+        margin-top: 0.15rem;
+    }
+
+    .kac__quiz-stage {
+        margin-top: 1.2rem;
+    }
+
+    .kac__quiz-progress {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .kac__quiz-track {
+        flex: 1;
+        height: 5px;
+        background: var(--line);
+        border-radius: 99px;
+        overflow: hidden;
+    }
+
+    .kac__quiz-fill {
+        display: block;
+        height: 100%;
+        background: var(--space-blue);
+        border-radius: 99px;
+        transition: width 0.35s var(--ease);
+        width: 0%;
+    }
+
+    .kac__quiz-count {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        color: var(--muted);
+        min-width: 4ch;
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .kac__quiz-q {
+        font-family: var(--font-accent);
+        font-size: var(--step-0);
+        font-weight: 400;
+        line-height: 1.4;
+        margin-bottom: 1rem;
+        min-height: 3lh;
+    }
+
+    .kac__quiz-btns {
+        display: flex;
+        gap: 0.75rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .kac__quiz-btn {
+        flex: 1;
+        padding: 0.75rem 1rem;
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        border: 1px solid var(--line-strong);
+        border-radius: var(--radius);
+        background: transparent;
+        color: var(--bone);
+        cursor: pointer;
+        transition:
+            background-color 0.2s var(--ease),
+            border-color 0.2s var(--ease),
+            color 0.2s var(--ease);
+    }
+
+    .kac__quiz-btn:hover:not(:disabled) {
+        background: rgba(244, 239, 230, 0.06);
+        border-color: var(--bone-dim);
+    }
+
+    .kac__quiz-btn:disabled {
+        opacity: 0.4;
+        cursor: default;
+    }
+
+    .kac__quiz-btn--true:hover:not(:disabled) {
+        border-color: #00cc88;
+        color: #00cc88;
+    }
+
+    .kac__quiz-btn--false:hover:not(:disabled) {
+        border-color: #ff6655;
+        color: #ff6655;
+    }
+
+    .kac__quiz-feedback {
+        font-size: var(--step--1);
+        line-height: 1.5;
+        padding: 0.6rem 0.8rem;
+        border-radius: 6px;
+        margin-bottom: 0.6rem;
+        min-height: 2.5lh;
+    }
+
+    .kac__quiz-feedback--ok {
+        background: rgba(0, 204, 136, 0.08);
+        border: 1px solid rgba(0, 204, 136, 0.2);
+        color: #88eebb;
+    }
+
+    .kac__quiz-feedback--ko {
+        background: rgba(255, 102, 85, 0.08);
+        border: 1px solid rgba(255, 102, 85, 0.2);
+        color: #ffaa99;
+    }
+
+    .kac__quiz-next {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        padding: 0.5rem 1.2rem;
+        border: none;
+        border-radius: var(--radius);
+        background: var(--space-blue);
+        color: var(--void);
+        cursor: pointer;
+        transition: background-color 0.2s var(--ease);
+    }
+
+    .kac__quiz-next:hover {
+        background: var(--space-blue-light);
+    }
+
+    .kac__quiz-result {
+        margin-top: 1rem;
+        text-align: center;
+        padding: 1.2rem;
+    }
+
+    .kac__quiz-result-score {
+        font-family: var(--font-accent);
+        font-size: var(--step-1);
+        font-weight: 500;
+        line-height: 1.4;
+    }
+
+    .kac__quiz-result-best {
+        font-size: var(--step--1);
+        color: var(--muted);
+        margin-top: 0.5rem;
+    }
+
+    .kac__quiz-retry {
+        margin-top: 1rem;
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        padding: 0.6rem 1.4rem;
+        border: 1px solid var(--line-strong);
+        border-radius: var(--radius);
+        background: transparent;
+        color: var(--bone);
+        cursor: pointer;
+        transition:
+            background-color 0.2s var(--ease),
+            border-color 0.2s var(--ease);
+    }
+
+    .kac__quiz-retry:hover {
+        background: rgba(244, 239, 230, 0.06);
+        border-color: var(--bone-dim);
+    }
+
+    /* ================================
+       WIDE — 2 col cards
+    ================================ */
+    @media (min-width: 720px) {
+        .kac__grid {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    /* ================================
+       RESPONSIVE
+    ================================ */
+    @media (max-width: 560px) {
+        .kac__card-head,
+        .kac__details-head,
+        .kac__details-body {
+            padding-inline: 1rem;
+        }
+
+        .kac__quiz-section {
+            padding: 1rem;
+        }
+
+        .kac__quiz-q {
+            font-size: var(--step-0);
+        }
+
+        .kac__quiz-btns {
+            flex-direction: column;
+        }
+    }
+</style>

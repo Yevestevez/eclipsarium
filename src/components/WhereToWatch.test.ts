@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { experimental_AstroContainer as AstroContainer } from 'astro/container';
 import WhereToWatch from './WhereToWatch.astro';
+import data from '../data/locations.json';
 
 describe('WhereToWatch.astro', () => {
     it('renders section with id="donde" and correct structure', async () => {
@@ -54,5 +55,22 @@ describe('WhereToWatch.astro', () => {
         expect(firstTotal).toBe(0);
         expect(lastTotal).toBeLessThan(firstEdge);
         expect(lastEdge).toBeLessThan(firstPartial);
+    });
+
+    it('each place links to /location/{slug}', async () => {
+        const container = await AstroContainer.create();
+        const html = await container.renderToString(WhereToWatch);
+
+        data.places.forEach((p) => {
+            expect(html).toContain(`href="/location/${p.slug}"`);
+        });
+    });
+
+    it('each place link has class="place__link"', async () => {
+        const container = await AstroContainer.create();
+        const html = await container.renderToString(WhereToWatch);
+
+        const links = html.match(/class="place__link"/g) || [];
+        expect(links).toHaveLength(29);
     });
 });

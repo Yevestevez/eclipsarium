@@ -1,7 +1,7 @@
 # Sprint 2 Plan — Eclipse 2026
 
 **Deadline:** viernes 26 de junio  
-**Estado:** F1 (Mapa) ✅ · F2 (Calendario) ✅ · F3 (Checklist) ✅ · F4 (Páginas localidad + buscador) ✅ · F5 (Actividades) 🚧
+**Estado:** F1 ✅ · F2 ✅ · F3 ✅ · F4 (Páginas + buscador + geocoding Nominatim) ✅ · F5 🚧
 
 ---
 
@@ -61,9 +61,9 @@
 
 ### P2 — Add-on (si hay tiempo)
 
-#### F4: Páginas por Localidad + Buscador ✅
+#### F4: Páginas por Localidad + Buscador + Geocoding Nominatim ✅
 
-- **Descripción:** Cada localización en mapa y lista enlaza a página individual `/location/[slug]`. Buscador JS filtra localidades en tiempo real (lista + mapa). Popup hover con datos y enlace.
+- **Descripción:** Cada localización en mapa y lista enlaza a página individual `/location/[slug]`. Buscador JS filtra localidades en tiempo real (lista + mapa). Popup hover con datos y enlace. Geocoding Nominatim para localidades no cubiertas.
 - **Mapa (Leaflet):**
     - Hover en markers: dot escala 1.8x + glow
     - Popup con datos (city, region, type, duration, contact) + enlace "Más info" → `/location/[slug]`
@@ -84,6 +84,14 @@
     - Mapa: `map.addLayer` / `map.removeLayer` sobre markers registrados globalmente
     - Marcadores expuestos via `window.__eclipsariumMarkers` + `WeakMap` para metadatos
     - Sin backend — filtrado JS in-memory sobre 29 localidades
+- **Nominatim Geocoding:**
+    - Fase 1: búsqueda mundial (`&limit=5`), prioriza settlement (city/town/village/hamlet/municipality)
+    - Fase 2: si no hay settlement, repite con `countrycodes=es` para streets/códigos postales
+    - Filtro `addresstype` evita calles confusas de otros países
+    - Muestra contexto: ciudad + provincia + país siempre visible
+    - Punto-en-polígono con ray-casting para determinar si está dentro de franja
+    - Mensajes informativos: "dentro de totalidad" / "parcial" / "no encontrado"
+    - Debounce 1.2s + contador para evitar respuestas obsoletas
 - **Datos:** `locations.json` con slug, contact, lat/lng. Todo client-side.
 - **Ubicación:** `WhereToWatch.astro` (lista + buscador), `EclipseMap.astro` (mapa + registro markers), `src/pages/location/[slug].astro` (páginas)
 - **Stack:** Astro `getStaticPaths`, Leaflet popups + `getElement()`, vanilla JS, `WeakMap`
@@ -102,7 +110,7 @@
 #### F5: Actividades para Familias
 
 - Recursos educativos, mini-cuestionarios, guía para niños.
-- **Pendiente:** Post F3 / F5 si hay tiempo.
+- **Pendiente:** Post F3 / F4 si hay tiempo.
 
 ---
 
@@ -132,9 +140,13 @@
 - [x] No console errors
 - [x] Performance: animación sin jank, mapa carga rápido
 - [x] Build producción sin errores · 41 tests (7 suites)
-- [x] README actualizado con v1.4.0 features
+- [x] README actualizado con v1.5.0 features
+- [x] Nominatim geocoding en 2 fases (mundial + España)
+- [x] Filtro addresstype (city/town/village/hamlet/municipality)
+- [x] Contexto de localización con país siempre visible
+- [x] Ciudad en negrita azul en resultados de búsqueda
+- [x] CSS scoping fix para contenido dinámico
 
-## 🔮 Próximo (v1.5.0+)
+## 🔮 Próximo
 
-- [ ] Buscador con Nominatim (OSM geocoding) + point-in-polygon — cuando búsqueda no encuentra localidad, geocodifica y comprueba si cae dentro del polígono de totalidad
-- [ ] Mensaje informativo cuando no hay resultados en búsqueda
+- [ ] FAQ y mitos sobre eclipses

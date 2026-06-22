@@ -10,7 +10,8 @@ Web informativa sobre el **eclipse solar total del 12 de agosto de 2026**, visib
 - **v1.1.0 (mapa):** mapa interactivo con franja de totalidad y localizaciones
 - **v1.2.0 (calendario):** botones añadir evento a calendario
 - **v1.3.0 (checklist):** recomendaciones y checklist interactiva de preparación
-- **v1.4.0 (actual):** páginas por localidad + buscador + hover/popup en mapa
+- **v1.4.0:** páginas por localidad + buscador + hover/popup en mapa
+- **v1.5.0 (actual):** Nominatim geocoding con búsqueda inteligente (fase mundial + España) + filtro por tipo de lugar + contexto con país
 
 ## 🎯 Objetivo
 
@@ -77,7 +78,7 @@ test/
 - [x] Cuenta atrás al evento
 - [x] Navegación responsive con menú hamburguesa
 
-### Sprint 2 ✅ — Mapa + Calendario + Checklist + Páginas + Buscador (v1.4.0)
+### Sprint 2 ✅ — Mapa + Calendario + Checklist + Páginas + Buscador + Geocoding (v1.5.0)
 
 - [x] Mapa Leaflet con tiles CartoDB dark_all
 - [x] Polígono de totalidad con coordenadas reales NASA/JPL (83 puntos)
@@ -93,10 +94,14 @@ test/
 - [x] 29 páginas individuales `/location/[slug]` con getStaticPaths
 - [x] Buscador JS client-side: filtra lista + mapa por ciudad/región/tipo
 - [x] Tests unitarios (Vitest, 41 tests en 7 suites) + E2E (Playwright)
+- [x] Nominatim geocoding: búsqueda en 2 fases (mundial settlements → España streets/cód.postal)
+- [x] Filtro `addresstype` (city/town/village/hamlet/municipality) — evita calles confusas
+- [x] Contexto de localización con país siempre visible
+- [x] Ciudad en negrita azul, contexto gris, énfasis blanco
+- [x] CSS scoping fix (`:global()`) para contenido dinámico de búsqueda
 
 ### Roadmap
 
-- [ ] Buscador con Nominatim (geocoding + point-in-polygon para localidades no cubiertas)
 - [ ] FAQ y mitos sobre eclipses
 - [ ] Actividades para familias
 

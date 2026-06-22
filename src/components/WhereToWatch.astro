@@ -190,83 +190,121 @@ const sorted = [...data.places].sort((a, b) => {
                 setTimeout(function () {
                     if (myCounter !== nominatimCounter) return;
                     if (!extra) return;
+
+                    function showResult(result: any): void {
+                        var lat = parseFloat(result.lat);
+                        var lng = parseFloat(result.lon);
+                        var parts = result.display_name
+                            .split(',')
+                            .map(function (s: string) {
+                                return s.trim();
+                            });
+                        var name = parts[0];
+                        var country = parts[parts.length - 1];
+                        var middle = parts.slice(
+                            1,
+                            Math.min(parts.length - 1, 4),
+                        );
+                        var context = middle.length
+                            ? middle.join(', ') + ', ' + country
+                            : country;
+                        var container = document.getElementById('eclipse-map');
+                        if (!container) return;
+                        var polygon: number[][] = JSON.parse(
+                            container.dataset.polygon || '[]',
+                        );
+                        if (polygon.length === 0) return;
+                        var inside = pointInPolygon(lat, lng, polygon);
+                        var loc = context
+                            ? '<strong>' + name + '</strong>, ' + context
+                            : '<strong>' + name + '</strong>';
+                        extra!.innerHTML =
+                            '<p class="search__geo-text">' +
+                            loc +
+                            (inside
+                                ? ' está <strong>dentro de la franja de totalidad</strong> del eclipse. Si el tiempo lo permite, el Sol se ocultará por completo.'
+                                : ' está fuera de la franja de totalidad, pero el eclipse será visible como <strong>parcial</strong>. Recuerda usar protección ocular certificada ISO 12312-2.') +
+                            '</p>';
+                        extra!.classList.add('search__extra--visible');
+                    }
+
+                    function findSettlement(data: any[]): any {
+                        var settled = [
+                            'city',
+                            'town',
+                            'village',
+                            'hamlet',
+                            'municipality',
+                        ];
+                        for (var k = 0; k < data.length; k++) {
+                            if (settled.indexOf(data[k].addresstype) !== -1)
+                                return data[k];
+                        }
+                        return null;
+                    }
+
+                    function showNotFound(): void {
+                        if (myCounter !== nominatimCounter) return;
+                        if (!extra) return;
+                        extra.innerHTML =
+                            '<p class="search__geo-text">No hemos encontrado esa localidad. El eclipse solar del 12 de agosto de 2026 será visible como <strong>parcial</strong> desde toda España.</p>';
+                        extra.classList.add('search__extra--visible');
+                    }
+
+                    function searchNominatim(
+                        qs: string,
+                        country: string,
+                    ): Promise<any[]> {
+                        var url =
+                            'https://nominatim.openstreetmap.org/search?format=json&q=' +
+                            encodeURIComponent(qs) +
+                            (country ? '&countrycodes=' + country : '') +
+                            '&limit=5';
+                        return fetch(url).then(function (r: Response) {
+                            return r.json();
+                        });
+                    }
+
+                    function onError(): void {
+                        if (myCounter !== nominatimCounter) return;
+                        if (extra) {
+                            extra.innerHTML =
+                                '<p class="search__geo-text">No se ha podido consultar el mapa. El eclipse será visible como parcial en toda España.</p>';
+                            extra.classList.add('search__extra--visible');
+                        }
+                    }
+
                     extra.innerHTML =
                         '<span class="search__extra-loading">Buscando información…</span>';
                     extra.classList.add('search__extra--visible');
 
-                    var url =
-                        'https://nominatim.openstreetmap.org/search?format=json&q=' +
-                        encodeURIComponent(raw) +
-                        '&limit=5';
-                    fetch(url)
-                        .then(function (r: Response) {
-                            return r.json();
-                        })
+                    // Phase 1: worldwide, prefer settlement
+                    searchNominatim(raw, '')
                         .then(function (data: any[]) {
                             if (myCounter !== nominatimCounter) return;
                             if (data && data.length > 0) {
-                                var settled = ['city','town','village','hamlet','municipality'];
-                                var result: any = null;
-                                for (var k = 0; k < data.length; k++) {
-                                    if (settled.indexOf(data[k].addresstype) !== -1) {
-                                        result = data[k];
-                                        break;
-                                    }
+                                var r = findSettlement(data);
+                                if (r) {
+                                    showResult(r);
+                                    return;
                                 }
-                                if (!result) result = data[0];
-                                var lat = parseFloat(result.lat);
-                                var lng = parseFloat(result.lon);
-                                var parts = result.display_name.split(',');
-                                var name = parts[0];
-                                var context = parts.slice(1, Math.min(4, parts.length)).join(',').trim();
-
-                                var container =
-                                    document.getElementById('eclipse-map');
-                                if (container) {
-                                    var polygon: number[][] = JSON.parse(
-                                        container.dataset.polygon || '[]',
-                                    );
-                                    if (polygon.length > 0) {
-                                        var inside = pointInPolygon(
-                                            lat,
-                                            lng,
-                                            polygon,
-                                        );
-                                        var loc =
-                                            context
-                                                ? '<strong>' + name + '</strong>, ' + context
-                                                : '<strong>' + name + '</strong>';
-                                        if (inside) {
-                                            extra!.innerHTML =
-                                                '<p class="search__geo-text">' +
-                                                loc +
-                                                ' está <strong>dentro de la franja de totalidad</strong> del eclipse. Si el tiempo lo permite, el Sol se ocultará por completo.</p>';
-                                        } else {
-                                            extra!.innerHTML =
-                                                '<p class="search__geo-text">' +
-                                                loc +
-                                                ' está fuera de la franja de totalidad, pero el eclipse será visible como <strong>parcial</strong>. Recuerda usar protección ocular certificada ISO 12312-2.</p>';
-                                        }
-                                        extra!.classList.add(
-                                            'search__extra--visible',
-                                        );
+                            }
+                            // Phase 2: no settlement found, try Spain-only
+                            if (myCounter !== nominatimCounter) return;
+                            searchNominatim(raw, 'es')
+                                .then(function (data2: any[]) {
+                                    if (myCounter !== nominatimCounter) return;
+                                    if (data2 && data2.length > 0) {
+                                        var r =
+                                            findSettlement(data2) || data2[0];
+                                        showResult(r);
                                         return;
                                     }
-                                }
-                            }
-                            if (myCounter !== nominatimCounter) return;
-                            extra!.innerHTML =
-                                '<p class="search__geo-text">No hemos encontrado esa localidad. El eclipse solar del 12 de agosto de 2026 será visible como <strong>parcial</strong> desde toda España.</p>';
-                            extra!.classList.add('search__extra--visible');
+                                    showNotFound();
+                                })
+                                .catch(onError);
                         })
-                        .catch(function () {
-                            if (myCounter !== nominatimCounter) return;
-                            if (extra) {
-                                extra.innerHTML =
-                                    '<p class="search__geo-text">No se ha podido consultar el mapa. El eclipse será visible como parcial en toda España.</p>';
-                                extra.classList.add('search__extra--visible');
-                            }
-                        });
+                        .catch(onError);
                 }, GEO_DEBOUNCE);
             } else if (!q && extra) {
                 extra.classList.remove('search__extra--visible');

@@ -56,6 +56,7 @@ const sorted = [...data.places].sort((a, b) => {
                 aria-label="Filtrar localidades por nombre o región"
             />
         </div>
+        <div class="search__extra" id="search-extra" aria-live="polite"></div>
 
         <ul class="places">
             {
@@ -95,30 +96,62 @@ const sorted = [...data.places].sort((a, b) => {
 <script>
     import L from 'leaflet';
 
+    function normalize(s: string): string {
+        return s
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .toLowerCase();
+    }
+
+    function pointInPolygon(
+        lat: number,
+        lng: number,
+        polygon: number[][],
+    ): boolean {
+        var inside = false;
+        for (var i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+            var lat1 = polygon[i][0],
+                lng1 = polygon[i][1];
+            var lat2 = polygon[j][0],
+                lng2 = polygon[j][1];
+            if (
+                lat1 > lat !== lat2 > lat &&
+                lng < ((lng2 - lng1) * (lat - lat1)) / (lat2 - lat1) + lng1
+            ) {
+                inside = !inside;
+            }
+        }
+        return inside;
+    }
+
     var searchInput = document.getElementById(
         'location-search',
     ) as HTMLInputElement | null;
+    var placeItems = document.querySelectorAll('.place');
+    var extra = document.getElementById('search-extra');
+    var nominatimCounter = 0;
+    var GEO_DEBOUNCE = 1200;
+
     if (searchInput) {
-        var placeItems = document.querySelectorAll('.place');
-
         searchInput.addEventListener('input', function () {
-            var q = this.value.trim().toLowerCase();
+            var raw = this.value;
+            var q = normalize(raw);
+            var visibleCount = 0;
 
-            placeItems.forEach(function (el) {
-                var city = (el.getAttribute('data-city') || '').toLowerCase();
-                var region = (
-                    el.getAttribute('data-region') || ''
-                ).toLowerCase();
-                var type = (el.getAttribute('data-type') || '').toLowerCase();
+            placeItems.forEach(function (el: Element) {
+                var city = normalize(el.getAttribute('data-city') || '');
+                var region = normalize(el.getAttribute('data-region') || '');
+                var type = normalize(el.getAttribute('data-type') || '');
                 var match =
                     !q ||
                     city.indexOf(q) !== -1 ||
                     region.indexOf(q) !== -1 ||
                     type.indexOf(q) !== -1;
                 el.classList.toggle('place--hidden', !match);
+                if (match) visibleCount++;
             });
 
-            var eclipseWindow = window as Window & {
+            var win = window as Window & {
                 __eclipsariumMarkers?: L.Marker[];
                 __eclipsariumMap?: L.Map;
                 __eclipsariumMeta?: WeakMap<
@@ -126,25 +159,104 @@ const sorted = [...data.places].sort((a, b) => {
                     { city: string; region: string }
                 >;
             };
-            var markers = eclipseWindow.__eclipsariumMarkers;
-            var meta = eclipseWindow.__eclipsariumMeta;
-            var map = eclipseWindow.__eclipsariumMap;
+            var markers = win.__eclipsariumMarkers;
+            var meta = win.__eclipsariumMeta;
+            var map = win.__eclipsariumMap;
             if (markers && meta && map) {
                 markers.forEach(function (m: L.Marker) {
                     var d = meta!.get(m);
                     if (!d) return;
-                    var city = (d.city || '').toLowerCase();
-                    var region = (d.region || '').toLowerCase();
+                    var city = normalize(d.city || '');
+                    var region = normalize(d.region || '');
                     var match =
                         !q ||
                         city.indexOf(q) !== -1 ||
                         region.indexOf(q) !== -1;
-                    if (match) {
-                        map!.addLayer(m);
-                    } else {
-                        map!.removeLayer(m);
-                    }
+                    if (match) map!.addLayer(m);
+                    else map!.removeLayer(m);
                 });
+            }
+
+            // Clear extra when typing
+            if (extra) {
+                extra.classList.remove('search__extra--visible');
+                extra.innerHTML = '';
+            }
+
+            // Debounced Nominatim lookup when no local results
+            if (q && visibleCount === 0) {
+                nominatimCounter++;
+                var myCounter = nominatimCounter;
+                setTimeout(function () {
+                    if (myCounter !== nominatimCounter) return;
+                    if (!extra) return;
+                    extra.innerHTML =
+                        '<span class="search__extra-loading">Buscando información…</span>';
+                    extra.classList.add('search__extra--visible');
+
+                    var url =
+                        'https://nominatim.openstreetmap.org/search?format=json&q=' +
+                        encodeURIComponent(raw) +
+                        '&limit=1';
+                    fetch(url)
+                        .then(function (r: Response) {
+                            return r.json();
+                        })
+                        .then(function (data: any[]) {
+                            if (myCounter !== nominatimCounter) return;
+                            if (data && data.length > 0) {
+                                var result = data[0];
+                                var lat = parseFloat(result.lat);
+                                var lng = parseFloat(result.lon);
+                                var name = result.display_name.split(',')[0];
+
+                                var container =
+                                    document.getElementById('eclipse-map');
+                                if (container) {
+                                    var polygon: number[][] = JSON.parse(
+                                        container.dataset.polygon || '[]',
+                                    );
+                                    if (polygon.length > 0) {
+                                        var inside = pointInPolygon(
+                                            lat,
+                                            lng,
+                                            polygon,
+                                        );
+                                        if (inside) {
+                                            extra!.innerHTML =
+                                                '<p class="search__geo-text"><strong>' +
+                                                name +
+                                                '</strong> está <strong>dentro de la franja de totalidad</strong> del eclipse. Si el tiempo lo permite, el Sol se ocultará por completo.</p>';
+                                        } else {
+                                            extra!.innerHTML =
+                                                '<p class="search__geo-text"><strong>' +
+                                                name +
+                                                '</strong> está fuera de la franja de totalidad, pero el eclipse será visible como <strong>parcial</strong>. Recuerda usar protección ocular certificada ISO 12312-2.</p>';
+                                        }
+                                        extra!.classList.add(
+                                            'search__extra--visible',
+                                        );
+                                        return;
+                                    }
+                                }
+                            }
+                            if (myCounter !== nominatimCounter) return;
+                            extra!.innerHTML =
+                                '<p class="search__geo-text">No hemos encontrado esa localidad. El eclipse solar del 12 de agosto de 2026 será visible como <strong>parcial</strong> desde toda España.</p>';
+                            extra!.classList.add('search__extra--visible');
+                        })
+                        .catch(function () {
+                            if (myCounter !== nominatimCounter) return;
+                            if (extra) {
+                                extra.innerHTML =
+                                    '<p class="search__geo-text">No se ha podido consultar el mapa. El eclipse será visible como parcial en toda España.</p>';
+                                extra.classList.add('search__extra--visible');
+                            }
+                        });
+                }, GEO_DEBOUNCE);
+            } else if (!q && extra) {
+                extra.classList.remove('search__extra--visible');
+                extra.innerHTML = '';
             }
         });
     }
@@ -197,6 +309,37 @@ const sorted = [...data.places].sort((a, b) => {
         border-color: var(--space-blue);
         box-shadow: 0 0 0 1px var(--space-blue);
         outline: none;
+    }
+
+    .search__extra {
+        display: none;
+        margin-top: 1rem;
+        padding: 1rem 1.2rem;
+        background: var(--ink-soft);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        font-size: var(--step--1);
+        line-height: 1.6;
+        color: var(--bone-dim);
+        max-width: 46ch;
+    }
+
+    .search__extra--visible {
+        display: block;
+    }
+
+    .search__extra-loading {
+        color: var(--muted);
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+    }
+
+    .search__geo-text :global(strong) {
+        color: var(--bone);
+    }
+
+    .search__geo-text :global(strong:first-child) {
+        color: var(--space-blue);
     }
 
     .place--hidden {

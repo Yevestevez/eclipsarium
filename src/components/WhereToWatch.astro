@@ -10,7 +10,11 @@ const parseDur = (d: string) => {
 
 const order = { total: 0, edge: 1, partial: 2 };
 const sorted = [...data.places].sort((a, b) => {
-    return order[a.type as keyof typeof order] - order[b.type as keyof typeof order] || parseDur(b.duration) - parseDur(a.duration);
+    return (
+        order[a.type as keyof typeof order] -
+            order[b.type as keyof typeof order] ||
+        parseDur(b.duration) - parseDur(a.duration)
+    );
 });
 ---
 
@@ -29,11 +33,28 @@ const sorted = [...data.places].sort((a, b) => {
         <EclipseMap />
 
         <div class="search">
-            <svg class="search__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="11" cy="11" r="8"/>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            <svg
+                class="search__icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+            >
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
-            <input type="search" id="location-search" class="search__input" placeholder="Buscar localidad…" aria-label="Filtrar localidades por nombre o región">
+            <input
+                type="search"
+                id="location-search"
+                class="search__input"
+                placeholder="Buscar localidad…"
+                aria-label="Filtrar localidades por nombre o región"
+            />
         </div>
 
         <ul class="places">
@@ -50,15 +71,10 @@ const sorted = [...data.places].sort((a, b) => {
                             data-city={p.city}
                             data-region={p.region}
                             data-type={p.type}
-                            class:list={[
-                                'place',
-                                `place--${p.type}`,
-                            ]}
+                            class:list={['place', `place--${p.type}`]}
                         >
                             <a href={`/location/${p.slug}`} class="place__link">
-                                <div class="place__tag">
-                                    {tag}
-                                </div>
+                                <div class="place__tag">{tag}</div>
                                 <h3 class="place__city">{p.city}</h3>
                                 <p class="place__region">{p.region}</p>
                                 <div class="place__meta">
@@ -77,7 +93,11 @@ const sorted = [...data.places].sort((a, b) => {
 </section>
 
 <script>
-    var searchInput = document.getElementById('location-search');
+    import L from 'leaflet';
+
+    var searchInput = document.getElementById(
+        'location-search',
+    ) as HTMLInputElement | null;
     if (searchInput) {
         var placeItems = document.querySelectorAll('.place');
 
@@ -86,7 +106,9 @@ const sorted = [...data.places].sort((a, b) => {
 
             placeItems.forEach(function (el) {
                 var city = (el.getAttribute('data-city') || '').toLowerCase();
-                var region = (el.getAttribute('data-region') || '').toLowerCase();
+                var region = (
+                    el.getAttribute('data-region') || ''
+                ).toLowerCase();
                 var type = (el.getAttribute('data-type') || '').toLowerCase();
                 var match =
                     !q ||
@@ -96,20 +118,31 @@ const sorted = [...data.places].sort((a, b) => {
                 el.classList.toggle('place--hidden', !match);
             });
 
-            var markers = window.__eclipsariumMarkers;
-            var meta = window.__eclipsariumMeta;
-            var map = window.__eclipsariumMap;
+            var eclipseWindow = window as Window & {
+                __eclipsariumMarkers?: L.Marker[];
+                __eclipsariumMap?: L.Map;
+                __eclipsariumMeta?: WeakMap<
+                    L.Marker,
+                    { city: string; region: string }
+                >;
+            };
+            var markers = eclipseWindow.__eclipsariumMarkers;
+            var meta = eclipseWindow.__eclipsariumMeta;
+            var map = eclipseWindow.__eclipsariumMap;
             if (markers && meta && map) {
-                markers.forEach(function (m) {
-                    var d = meta.get(m);
+                markers.forEach(function (m: L.Marker) {
+                    var d = meta!.get(m);
                     if (!d) return;
                     var city = (d.city || '').toLowerCase();
                     var region = (d.region || '').toLowerCase();
-                    var match = !q || city.indexOf(q) !== -1 || region.indexOf(q) !== -1;
+                    var match =
+                        !q ||
+                        city.indexOf(q) !== -1 ||
+                        region.indexOf(q) !== -1;
                     if (match) {
-                        map.addLayer(m);
+                        map!.addLayer(m);
                     } else {
-                        map.removeLayer(m);
+                        map!.removeLayer(m);
                     }
                 });
             }
@@ -151,7 +184,9 @@ const sorted = [...data.places].sort((a, b) => {
         background: var(--ink-soft);
         border: 1px solid var(--line);
         border-radius: var(--radius);
-        transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+        transition:
+            border-color 0.3s var(--ease),
+            box-shadow 0.3s var(--ease);
     }
 
     .search__input::placeholder {

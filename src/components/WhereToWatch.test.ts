@@ -73,4 +73,27 @@ describe('WhereToWatch.astro', () => {
         const links = html.match(/class="place__link"/g) || [];
         expect(links).toHaveLength(29);
     });
+
+    it('renders search input with type="search" and placeholder', async () => {
+        const container = await AstroContainer.create();
+        const html = await container.renderToString(WhereToWatch);
+
+        expect(html).toContain('type="search"');
+        expect(html).toContain('placeholder');
+    });
+
+    it('renders search extra container for Nominatim results', async () => {
+        const container = await AstroContainer.create();
+        const html = await container.renderToString(WhereToWatch);
+
+        expect(html).toContain('class="search__extra"');
+    });
+
+    it('renders search icon SVG', async () => {
+        const container = await AstroContainer.create();
+        const html = await container.renderToString(WhereToWatch);
+
+        expect(html).toContain('<svg');
+        expect(html).toContain('search__icon');
+    });
 });

@@ -197,7 +197,7 @@ const sorted = [...data.places].sort((a, b) => {
                     var url =
                         'https://nominatim.openstreetmap.org/search?format=json&q=' +
                         encodeURIComponent(raw) +
-                        '&limit=1';
+                        '&limit=5';
                     fetch(url)
                         .then(function (r: Response) {
                             return r.json();
@@ -205,10 +205,20 @@ const sorted = [...data.places].sort((a, b) => {
                         .then(function (data: any[]) {
                             if (myCounter !== nominatimCounter) return;
                             if (data && data.length > 0) {
-                                var result = data[0];
+                                var settled = ['city','town','village','hamlet','municipality'];
+                                var result: any = null;
+                                for (var k = 0; k < data.length; k++) {
+                                    if (settled.indexOf(data[k].addresstype) !== -1) {
+                                        result = data[k];
+                                        break;
+                                    }
+                                }
+                                if (!result) result = data[0];
                                 var lat = parseFloat(result.lat);
                                 var lng = parseFloat(result.lon);
-                                var name = result.display_name.split(',')[0];
+                                var parts = result.display_name.split(',');
+                                var name = parts[0];
+                                var context = parts.slice(1, Math.min(4, parts.length)).join(',').trim();
 
                                 var container =
                                     document.getElementById('eclipse-map');
@@ -222,16 +232,20 @@ const sorted = [...data.places].sort((a, b) => {
                                             lng,
                                             polygon,
                                         );
+                                        var loc =
+                                            context
+                                                ? '<strong>' + name + '</strong>, ' + context
+                                                : '<strong>' + name + '</strong>';
                                         if (inside) {
                                             extra!.innerHTML =
-                                                '<p class="search__geo-text"><strong>' +
-                                                name +
-                                                '</strong> está <strong>dentro de la franja de totalidad</strong> del eclipse. Si el tiempo lo permite, el Sol se ocultará por completo.</p>';
+                                                '<p class="search__geo-text">' +
+                                                loc +
+                                                ' está <strong>dentro de la franja de totalidad</strong> del eclipse. Si el tiempo lo permite, el Sol se ocultará por completo.</p>';
                                         } else {
                                             extra!.innerHTML =
-                                                '<p class="search__geo-text"><strong>' +
-                                                name +
-                                                '</strong> está fuera de la franja de totalidad, pero el eclipse será visible como <strong>parcial</strong>. Recuerda usar protección ocular certificada ISO 12312-2.</p>';
+                                                '<p class="search__geo-text">' +
+                                                loc +
+                                                ' está fuera de la franja de totalidad, pero el eclipse será visible como <strong>parcial</strong>. Recuerda usar protección ocular certificada ISO 12312-2.</p>';
                                         }
                                         extra!.classList.add(
                                             'search__extra--visible',

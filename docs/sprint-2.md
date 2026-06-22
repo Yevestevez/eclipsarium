@@ -1,7 +1,7 @@
 # Sprint 2 Plan — Eclipse 2026
 
 **Deadline:** viernes 26 de junio  
-**Estado:** F1 (Mapa) ✅ · F2 (Calendario) ✅ · F3 (Checklist) ✅
+**Estado:** F1 (Mapa) ✅ · F2 (Calendario) ✅ · F3 (Checklist) ✅ · F4 (Páginas localidad + buscador) ✅ · F5 (Actividades) 🚧
 
 ---
 
@@ -61,32 +61,41 @@
 
 ### P2 — Add-on (si hay tiempo)
 
-#### F4: Horarios + Páginas por Localidad 🚧
+#### F4: Páginas por Localidad + Buscador ✅
 
-- **Descripción:** Tiempos de contacto por localidad (ya integrados). Localizaciones en mapa y lista `WhereToWatch.astro` con hover + click → página individual `/location/[slug]` con info y copia "en construcción" estilo espacial.
+- **Descripción:** Cada localización en mapa y lista enlaza a página individual `/location/[slug]`. Buscador JS filtra localidades en tiempo real (lista + mapa). Popup hover con datos y enlace.
 - **Mapa (Leaflet):**
-    - Hover en markers: cambio tamaño/color para resaltar
-    - Popup con datos de localización (city, region, type, duration, contact) + enlace "Más info" → `/location/[slug]`
+    - Hover en markers: dot escala 1.8x + glow
+    - Popup con datos (city, region, type, duration, contact) + enlace "Más info" → `/location/[slug]`
+    - Popup se mantiene abierto al hacer hover (mouseenter cancela timeout de cierre)
     - Click en marker navega a `/location/[slug]`
+    - Hover + click en dot (no solo en label)
 - **Lista (`WhereToWatch.astro`):**
-    - Cada localización clickable → `/location/[slug]`
-    - Hover ya existe, se mantiene
+    - Cada localización envuelta en `<a href="/location/{slug}">` con `class="place__link"`
+    - Hover existe, se mantiene
+- **Páginas individuales (`/location/[slug]`):**
+    - 29 rutas estáticas generadas con `getStaticPaths`
+    - Muestra ciudad, región, tipo, duración, contacto
+    - Copia "en construcción" con tono espacial, enlace volver al mapa
 - **Buscador de localidades:**
-    - Input de texto para filtrar por ciudad/región
-    - Muestra tipo (total/borde/parcial) en tiempo real
-    - Sin backend — filtrado JS sobre array local (29 localidades)
-- **Datos:** Locations.json ya tiene slug, contact, lat/lng. Todo client-side.
-- **Ubicación:** `WhereToWatch.astro` (lista), `EclipseMap.astro` (mapa), `src/pages/location/[slug].astro` (páginas dinámicas)
-- **Stack:** Astro `getStaticPaths`, Leaflet popups, vanilla JS (buscador)
+    - Input `type="search"` con icono lupa SVG
+    - Filtra por ciudad/región/tipo (case-insensitive)
+    - Lista: oculta elementos no coincidentes (`place--hidden`)
+    - Mapa: `map.addLayer` / `map.removeLayer` sobre markers registrados globalmente
+    - Marcadores expuestos via `window.__eclipsariumMarkers` + `WeakMap` para metadatos
+    - Sin backend — filtrado JS in-memory sobre 29 localidades
+- **Datos:** `locations.json` con slug, contact, lat/lng. Todo client-side.
+- **Ubicación:** `WhereToWatch.astro` (lista + buscador), `EclipseMap.astro` (mapa + registro markers), `src/pages/location/[slug].astro` (páginas)
+- **Stack:** Astro `getStaticPaths`, Leaflet popups + `getElement()`, vanilla JS, `WeakMap`
 - **Aceptación:**
-    - ✅ Markers del mapa cambian tamaño/color al hover
-    - ✅ Popup marker muestra datos + enlace "Más info"
+    - ✅ Markers del mapa escalan + glow al hover
+    - ✅ Popup hover se mantiene abierto al pasar ratón sobre él
     - ✅ Click marker navega a `/location/[slug]`
     - ✅ Lista localizaciones clickable → `/location/[slug]`
-    - ✅ Páginas `/location/[slug]` renderizan 29 slugs con getStaticPaths
-    - ✅ Página individual muestra mensaje "en construcción" con tono espacial
-    - ✅ Buscador filtra por ciudad/región en tiempo real
-    - ✅ Build producción sin errores
+    - ✅ 29 rutas `/location/[slug]` con getStaticPaths
+    - ✅ Página individual muestra datos + copia "en construcción"
+    - ✅ Buscador filtra lista + mapa en tiempo real
+    - ✅ Build producción sin errores · 41 tests (7 suites)
 
 ---
 
@@ -115,12 +124,17 @@
 - [x] F1 mergeado a main
 - [x] F2 mergeado a main
 - [x] F3 mergeado a main
+- [x] F4: Páginas `/location/[slug]` con getStaticPaths
+- [x] F4: Hover + popup en markers del mapa (popup persistente al hover)
+- [x] F4: Click en marker / lista → navega a página localidad
+- [x] F4: Buscador JS client-side funcional (filtra lista + mapa)
 - [x] Testing responsivo (mobile 360px, tablet, desktop)
-- [x] README actualizado con Sprint 2 features
 - [x] No console errors
 - [x] Performance: animación sin jank, mapa carga rápido
-- [ ] F5: Páginas `/location/[slug]` con getStaticPaths
-- [ ] F5: Hover + popup en markers del mapa
-- [ ] F5: Click en marker / lista → navega a página localidad
-- [ ] F5: Buscador JS client-side funcional
-- [ ] Build producción sin errores
+- [x] Build producción sin errores · 41 tests (7 suites)
+- [x] README actualizado con v1.4.0 features
+
+## 🔮 Próximo (v1.5.0+)
+
+- [ ] Buscador con Nominatim (OSM geocoding) + point-in-polygon — cuando búsqueda no encuentra localidad, geocodifica y comprueba si cae dentro del polígono de totalidad
+- [ ] Mensaje informativo cuando no hay resultados en búsqueda

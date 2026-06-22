@@ -9,7 +9,8 @@ Web informativa sobre el **eclipse solar total del 12 de agosto de 2026**, visib
 - **v1.0.0 (MVP):** https://eclipsarium.vercel.app/
 - **v1.1.0 (mapa):** mapa interactivo con franja de totalidad y localizaciones
 - **v1.2.0 (calendario):** botones añadir evento a calendario
-- **v1.3.0 (actual):** recomendaciones y checklist interactiva de preparación
+- **v1.3.0 (checklist):** recomendaciones y checklist interactiva de preparación
+- **v1.4.0 (actual):** páginas por localidad + buscador + hover/popup en mapa
 
 ## 🎯 Objetivo
 
@@ -43,17 +44,18 @@ pnpm test:e2e         # tests E2E (Playwright)
 
 ```
 src/
+├── __tests__/        # tests unitarios de páginas
 ├── assets/           # imágenes y svg
 ├── components/       # componentes .astro
 │   ├── EclipseMap.astro      # mapa Leaflet con polígono + markers
-│   ├── WhereToWatch.astro    # lista de lugares con mapa
+│   ├── WhereToWatch.astro    # lista de lugares + buscador + mapa
 │   ├── PrepChecklist.astro   # checklist interactiva con persistencia
 │   └── ...
 ├── data/             # datos estáticos (JSON + test co-localizado)
 ├── layouts/          # layouts de página
-├── pages/            # rutas (index.astro = home)
+├── pages/            # rutas (index.astro, /location/[slug].astro)
 └── styles/           # tokens de diseño CSS
-tests/
+test/
 └── e2e/              # tests Playwright (home, nav, countdown, a11y)
 ```
 
@@ -75,7 +77,7 @@ tests/
 - [x] Cuenta atrás al evento
 - [x] Navegación responsive con menú hamburguesa
 
-### Sprint 2 ✅ — Mapa + Calendario + Checklist (v1.3.0)
+### Sprint 2 ✅ — Mapa + Calendario + Checklist + Páginas + Buscador (v1.4.0)
 
 - [x] Mapa Leaflet con tiles CartoDB dark_all
 - [x] Polígono de totalidad con coordenadas reales NASA/JPL (83 puntos)
@@ -85,11 +87,16 @@ tests/
 - [x] Botones calendario: Google Calendar, Apple Calendar (webcal con avisos), Outlook
 - [x] Archivo .ics con 3 alarmas predefinidas (1 semana, 1 día, 1 hora)
 - [x] Checklist interactiva de preparación: recomendaciones (3 columnas desktop), 14 ítems checklist con persistencia localStorage y barra de progreso, advertencias de seguridad ocular
-- [x] Tests unitarios (Vitest, 32 tests) + E2E (Playwright)
+- [x] Hover en markers del mapa: dot escala + glow, popup con datos + enlace
+- [x] Popup hover persistente (mouseenter cancela cierre)
+- [x] Click en marker / lista → navega a `/location/[slug]`
+- [x] 29 páginas individuales `/location/[slug]` con getStaticPaths
+- [x] Buscador JS client-side: filtra lista + mapa por ciudad/región/tipo
+- [x] Tests unitarios (Vitest, 41 tests en 7 suites) + E2E (Playwright)
 
 ### Roadmap
 
-- [ ] Horarios por localidad (tiempos de contacto)
+- [ ] Buscador con Nominatim (geocoding + point-in-polygon para localidades no cubiertas)
 - [ ] FAQ y mitos sobre eclipses
 - [ ] Actividades para familias
 

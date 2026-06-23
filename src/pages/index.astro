@@ -22,10 +22,10 @@ import KidsActivities from '../components/KidsActivities.astro';
             </nav>
 
             <button class="theme-toggle" aria-label="Cambiar tema">
-                <svg class="theme-toggle__icon" viewBox="0 0 1563 1563" width="20" height="20" fill="none">
-                    <circle cx="781.25" cy="781.25" r="494.286" fill="none" stroke="currentColor" stroke-width="83.33"/>
-                    <circle cx="1035.199" cy="781.25" r="494.286" fill="currentColor"/>
-                    <path d="M51.835 781.25h120.971M762.663 83.678v103.583M182.097 432.464l109.802 61.234M182.097 1130.036l109.802-61.234" stroke="currentColor" stroke-width="83.33" stroke-linecap="round"/>
+                <svg class="theme-toggle__icon" viewBox="0 0 1563 1563" width="18" height="18" fill="none">
+                    <circle class="theme-toggle__ring" cx="781.25" cy="781.25" r="494.286" fill="none" stroke-width="83.33"/>
+                    <circle class="theme-toggle__body" cx="1035.199" cy="781.25" r="494.286"/>
+                    <path d="M51.835 781.25h120.971M762.663 83.678v103.583M182.097 432.464l109.802 61.234M182.097 1130.036l109.802-61.234" class="theme-toggle__rays" stroke-width="83.33" stroke-linecap="round"/>
                 </svg>
                 <span class="theme-toggle__switch">
                     <span class="theme-toggle__knob"></span>
@@ -303,8 +303,8 @@ import KidsActivities from '../components/KidsActivities.astro';
     .theme-toggle {
         display: inline-flex;
         align-items: center;
-        gap: 0.45rem;
-        padding: 0.1rem 0.45rem;
+        gap: 0.4rem;
+        padding: 0.1rem 0.25rem;
         border: none;
         background: transparent;
         color: var(--muted);
@@ -320,11 +320,22 @@ import KidsActivities from '../components/KidsActivities.astro';
     .theme-toggle__icon {
         display: block;
         flex-shrink: 0;
+        transition: color 0.3s var(--ease);
+    }
+
+    .theme-toggle__ring,
+    .theme-toggle__body,
+    .theme-toggle__rays {
+        stroke: currentColor;
+    }
+
+    .theme-toggle__body {
+        fill: currentColor;
     }
 
     .theme-toggle__switch {
-        width: 30px;
-        height: 14px;
+        width: 14px;
+        height: 26px;
         border-radius: 99px;
         background: var(--line);
         position: relative;
@@ -333,22 +344,28 @@ import KidsActivities from '../components/KidsActivities.astro';
 
     .theme-toggle__knob {
         position: absolute;
-        top: 2px;
         left: 2px;
         width: 10px;
         height: 10px;
         border-radius: 50%;
         background: var(--muted-deep);
         transition: transform 0.3s var(--ease), background 0.3s var(--ease);
+        /* dark: knob at bottom */
+        top: calc(100% - 12px);
     }
 
     [data-theme="light"] .theme-toggle__knob {
-        transform: translateX(16px);
+        /* light: knob at top */
+        transform: translateY(-12px);
         background: var(--space-blue);
     }
 
     [data-theme="light"] .theme-toggle__switch {
         background: rgba(var(--space-blue-rgb), 0.25);
+    }
+
+    [data-theme="light"] .theme-toggle__icon {
+        color: var(--space-blue);
     }
 
     @media (max-width: 560px) {

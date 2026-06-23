@@ -18,12 +18,12 @@ const sorted = [...data.places].sort((a, b) => {
 });
 ---
 
-<section id="donde" class="where">
+<section id="donde" class="where section">
     <div class="shell">
-        <header class="where__head">
+        <header class="section__header">
             <span class="eyebrow">Dónde verlo</span>
             <h2 class="where__title">La franja de <em>totalidad</em></h2>
-            <p class="where__lead">
+            <p class="section__lead">
                 Solo dentro de una estrecha banda que cruza el norte peninsular
                 el Sol desaparecerá por completo. Fuera de ella, el eclipse será
                 parcial.
@@ -75,7 +75,7 @@ const sorted = [...data.places].sort((a, b) => {
                             class:list={['place', `place--${p.type}`]}
                         >
                             <a href={`/location/${p.slug}`} class="place__link">
-                                <div class="place__tag">{tag}</div>
+                                <div class="badge">{tag}</div>
                                 <h3 class="place__city">{p.city}</h3>
                                 <p class="place__region">{p.region}</p>
                                 <div class="place__meta">
@@ -315,12 +315,6 @@ const sorted = [...data.places].sort((a, b) => {
 </script>
 
 <style>
-    .where {
-        padding-block: var(--section-y);
-        position: relative;
-        z-index: 1;
-    }
-
     .search {
         position: relative;
         margin-top: 2rem;
@@ -359,7 +353,7 @@ const sorted = [...data.places].sort((a, b) => {
 
     .search__input:focus {
         border-color: var(--space-blue);
-        box-shadow: 0 0 0 1px var(--space-blue);
+        box-shadow: var(--focus-ring);
         outline: none;
     }
 
@@ -371,7 +365,7 @@ const sorted = [...data.places].sort((a, b) => {
         border: 1px solid var(--line);
         border-radius: var(--radius);
         font-size: var(--step--1);
-        line-height: 1.6;
+        line-height: var(--lh-base);
         color: var(--bone-dim);
         max-width: 46ch;
     }
@@ -398,10 +392,6 @@ const sorted = [...data.places].sort((a, b) => {
         display: none;
     }
 
-    .where__head {
-        max-width: 52ch;
-    }
-
     .where__title {
         font-size: var(--step-2);
         margin-top: 1.2rem;
@@ -410,13 +400,6 @@ const sorted = [...data.places].sort((a, b) => {
     .where__title em {
         font-style: italic;
         color: var(--space-blue);
-    }
-
-    .where__lead {
-        margin-top: 1.4rem;
-        color: var(--bone-dim);
-        font-weight: 300;
-        max-width: 46ch;
     }
 
     .places {
@@ -451,38 +434,21 @@ const sorted = [...data.places].sort((a, b) => {
         background: var(--ink-soft);
     }
 
-    .place__tag {
-        align-self: flex-start;
-        font-family: var(--font-mono);
-        font-size: 0.62rem;
-        text-transform: uppercase;
-        letter-spacing: 0.22em;
-        padding: 0.3rem 0.6rem;
-        border: none;
-        --cut: 10px;
-        border-radius: 0.2rem;
-        background: var(--ink-soft);
-        clip-path: polygon(
-            0 0,
-            100% 0,
-            100% 100%,
-            var(--cut) 100%,
-            0 calc(100% - var(--cut))
-        );
-        color: var(--muted);
-        margin-bottom: 0.8rem;
-    }
-
-    .place--total .place__tag {
+    .place--total .badge {
         color: var(--void);
         background: var(--space-blue);
         border-color: var(--space-blue);
     }
 
-    .place--edge .place__tag {
+    .place--edge .badge {
         color: var(--bone);
         background: var(--edge-blue);
         border-color: var(--edge-blue);
+    }
+
+    .badge {
+        align-self: flex-start;
+        margin-bottom: 0.8rem;
     }
 
     .place__city {

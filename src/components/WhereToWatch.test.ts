@@ -9,7 +9,7 @@ describe('WhereToWatch.astro', () => {
         const html = await container.renderToString(WhereToWatch);
 
         expect(html).toContain('id="donde"');
-        expect(html).toContain('class="where"');
+        expect(html).toContain('class="where section"');
         expect(html).toContain('Dónde verlo');
         expect(html).toContain('La franja de');
     });

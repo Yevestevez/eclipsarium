@@ -33,6 +33,24 @@ const {
         />
 
         <title>{title}</title>
+
+        <script is:inline>
+            (function () {
+                try {
+                    var t = localStorage.getItem('theme');
+                    if (!t)
+                        t = window.matchMedia('(prefers-color-scheme: dark)')
+                            .matches
+                            ? 'dark'
+                            : 'light';
+                    if (t === 'light')
+                        document.documentElement.setAttribute(
+                            'data-theme',
+                            'light'
+                        );
+                } catch (e) {}
+            })();
+        </script>
     </head>
     <body>
         <div class="starfield" aria-hidden="true"></div>
@@ -104,6 +122,11 @@ const {
                 to {
                     transform: translate3d(-180px, -120px, 0);
                 }
+            }
+
+            [data-theme='light'] .starfield,
+            [data-theme='light'] .grain {
+                opacity: 0;
             }
         </style>
     </body>

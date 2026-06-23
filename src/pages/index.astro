@@ -55,7 +55,7 @@ import KidsActivities from '../components/KidsActivities.astro';
                         Cruzará el norte de la península por primera vez en más
                         de un siglo. Esto es lo que vas a ver, y dónde.
                     </p>
-                    <a href="#donde" class="hero__cta">
+                    <a href="#donde" class="btn hero__cta">
                         Encuentra tu lugar
                         <span aria-hidden="true">↓</span>
                     </a>
@@ -195,7 +195,7 @@ import KidsActivities from '../components/KidsActivities.astro';
     }
 
     .nav-mobile__trigger:hover {
-        background: rgba(var(--space-blue-rgb), 0.18);
+        background: var(--hover-bg-blue);
     }
 
     .nav-mobile__icon {
@@ -216,7 +216,7 @@ import KidsActivities from '../components/KidsActivities.astro';
     }
 
     .nav-mobile[open] .nav-mobile__trigger {
-        background: rgba(var(--space-blue-rgb), 0.18);
+        background: var(--hover-bg-blue);
     }
 
     .nav-mobile[open] .nav-mobile__icon span:nth-child(1) {
@@ -263,8 +263,8 @@ import KidsActivities from '../components/KidsActivities.astro';
     }
 
     .nav-mobile__panel a:hover {
-        color: var(--space-blue);
-        background: rgba(var(--space-blue-rgb), 0.12);
+        color: var(--hover-color);
+        background: var(--hover-bg-blue);
     }
 
     .nav-mobile:not([open]) .nav-mobile__panel {
@@ -322,70 +322,11 @@ import KidsActivities from '../components/KidsActivities.astro';
     }
 
     .hero__cta {
-        display: inline-flex;
-        align-items: center;
-        position: relative;
-        isolation: isolate;
-        gap: 0.7rem;
         margin-top: 2.4rem;
-        padding: 0.95rem 1.7rem;
-        border: none;
-        --cut: 18px;
-        --stroke: 1px;
-        --corner: 0.2rem;
-        border-radius: var(--corner);
-        clip-path: polygon(
-            0 0,
-            100% 0,
-            100% 100%,
-            var(--cut) 100%,
-            0 calc(100% - var(--cut))
-        );
-        font-family: var(--font-mono);
-        font-size: 0.74rem;
-        text-transform: uppercase;
-        letter-spacing: 0.18em;
-        transition:
-            color 0.4s var(--ease),
-            gap 0.4s var(--ease);
-    }
-
-    .hero__cta::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        z-index: -1;
-        background: var(--line-strong);
-        border-radius: var(--corner);
-        clip-path: inherit;
-        pointer-events: none;
-        transition: background-color 0.4s var(--ease);
-    }
-
-    .hero__cta::after {
-        content: '';
-        position: absolute;
-        inset: var(--stroke);
-        z-index: -1;
-        background: var(--void);
-        border-radius: calc(var(--corner) - var(--stroke));
-        clip-path: polygon(
-            0 0,
-            100% 0,
-            100% 100%,
-            calc(var(--cut) - var(--stroke)) 100%,
-            0 calc(100% - (var(--cut) - var(--stroke)))
-        );
-        pointer-events: none;
     }
 
     .hero__cta:hover {
-        color: var(--space-blue);
         gap: 1.1rem;
-    }
-
-    .hero__cta:hover::before {
-        background: var(--space-blue);
     }
 
     .hero__visual {

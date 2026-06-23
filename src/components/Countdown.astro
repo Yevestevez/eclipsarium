@@ -4,7 +4,7 @@ import event from '../data/event.json';
 const target = `${event.date}T20:30:00+02:00`;
 ---
 
-<section id="cuenta" class="cd">
+<section id="cuenta" class="cd section">
     <div class="shell cd__shell">
         <span class="eyebrow">Cuenta atrás</span>
         <div
@@ -43,10 +43,6 @@ const target = `${event.date}T20:30:00+02:00`;
 
 <style>
     .cd {
-        padding-block: var(--section-y);
-
-        position: relative;
-        z-index: 1;
         text-align: center;
     }
 
@@ -78,6 +74,11 @@ const target = `${event.date}T20:30:00+02:00`;
         line-height: 0.9;
         color: var(--bone);
         text-shadow: 0 0 50px var(--halo-soft);
+    }
+
+    .unit__n[data-d] {
+        font-weight: 700;
+        color: var(--space-blue);
     }
 
     .unit__l {

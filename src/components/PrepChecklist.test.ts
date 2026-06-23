@@ -8,7 +8,7 @@ describe('PrepChecklist.astro', () => {
         const html = await container.renderToString(PrepChecklist);
 
         expect(html).toContain('id="checklist"');
-        expect(html).toContain('class="pcl"');
+        expect(html).toContain('class="pcl section"');
         expect(html).toContain('Checklist');
     });
 

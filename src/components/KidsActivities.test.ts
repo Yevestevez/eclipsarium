@@ -9,7 +9,7 @@ describe('KidsActivities.astro', () => {
         const html = await container.renderToString(KidsActivities);
 
         expect(html).toContain('id="actividades"');
-        expect(html).toContain('class="kac"');
+        expect(html).toContain('class="kac section"');
         expect(html).toContain('Actividades');
         expect(html).toContain('para el eclipse');
     });

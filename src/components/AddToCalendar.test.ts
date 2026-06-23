@@ -53,14 +53,14 @@ describe('AddToCalendar.astro', () => {
         expect(html).toContain('/eclipse-2026.ics');
     });
 
-    it('buttons have cut-corner clip-path style and icons', async () => {
+    it('buttons have global btn class and icons', async () => {
         const container = await AstroContainer.create();
         const html = await container.renderToString(AddToCalendar);
 
-        const btnCount = (html.match(/class="cal-btn"/g) || []).length;
+        const btnCount = (html.match(/class="btn"/g) || []).length;
         expect(btnCount).toBe(4);
 
-        const iconCount = (html.match(/class="cal-btn__icon"/g) || []).length;
+        const iconCount = (html.match(/class="btn__icon"/g) || []).length;
         expect(iconCount).toBe(4);
     });
 });

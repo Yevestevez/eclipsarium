@@ -58,7 +58,7 @@ const daysLeft = Math.max(0, Math.floor(diff / 86400000));
 const eclipsePast = now > new Date('2026-08-12T22:00:00+02:00').getTime();
 ---
 
-<section id="checklist" class="pcl">
+<section id="checklist" class="pcl section">
     <div class="shell pcl__shell">
         <span class="eyebrow">Preparación</span>
         <h2 class="pcl__title">
@@ -81,8 +81,10 @@ const eclipsePast = now > new Date('2026-08-12T22:00:00+02:00').getTime();
         <div class="pcl__rec">
             <h3 class="pcl__rec-title">Recomendaciones</h3>
 
-            <details class="pcl__rec-block">
-                <summary class="pcl__rec-head"> Antes del eclipse </summary>
+            <details class="pcl__rec-block accordion">
+                <summary class="accordion-head">
+                    <span class="accordion-arrow">▶</span> Antes del eclipse
+                </summary>
                 <ul class="pcl__rec-body">
                     <li>
                         Elige una ubicación con horizonte oeste despejado. El
@@ -106,8 +108,10 @@ const eclipsePast = now > new Date('2026-08-12T22:00:00+02:00').getTime();
                 </ul>
             </details>
 
-            <details class="pcl__rec-block">
-                <summary class="pcl__rec-head"> El día del eclipse </summary>
+            <details class="pcl__rec-block accordion">
+                <summary class="accordion-head">
+                    <span class="accordion-arrow">▶</span> El día del eclipse
+                </summary>
                 <ul class="pcl__rec-body">
                     <li>
                         Llega al lugar con al menos 2 horas de antelación. El
@@ -130,8 +134,10 @@ const eclipsePast = now > new Date('2026-08-12T22:00:00+02:00').getTime();
                 </ul>
             </details>
 
-            <details class="pcl__rec-block">
-                <summary class="pcl__rec-head"> Después del eclipse </summary>
+            <details class="pcl__rec-block accordion">
+                <summary class="accordion-head">
+                    <span class="accordion-arrow">▶</span> Después del eclipse
+                </summary>
                 <ul class="pcl__rec-body">
                     <li>
                         No conduzcas inmediatamente. El tráfico de vuelta será
@@ -166,13 +172,13 @@ const eclipsePast = now > new Date('2026-08-12T22:00:00+02:00').getTime();
                 aria-valuemax={totalItems}
                 aria-label="Progreso"
             >
-                <span class="pcl__progress-track">
+                <span class="progress-track">
                     <span
-                        class="pcl__progress-fill"
+                        class="progress-fill progress-fill--gradient"
                         data-bar="total"
                         style="width:0%"></span>
                 </span>
-                <span class="pcl__progress-label" data-label="total"
+                <span class="progress-label" data-label="total"
                     >0&thinsp;/&thinsp;{totalItems}</span
                 >
             </div>
@@ -406,12 +412,6 @@ const eclipsePast = now > new Date('2026-08-12T22:00:00+02:00').getTime();
 </script>
 
 <style>
-    .pcl {
-        padding-block: var(--section-y);
-        position: relative;
-        z-index: 1;
-    }
-
     .pcl__shell {
         display: flex;
         flex-direction: column;
@@ -461,45 +461,11 @@ const eclipsePast = now > new Date('2026-08-12T22:00:00+02:00').getTime();
         border-top: none;
     }
 
-    .pcl__rec-head {
-        display: flex;
-        align-items: center;
-        gap: 0.6rem;
+    .accordion-head {
         padding: 0.85rem 1.4rem;
-        cursor: pointer;
-        font-family: var(--font-accent);
-        font-size: var(--step--1);
-        text-transform: uppercase;
         letter-spacing: 0.12em;
-        color: var(--space-blue);
-        transition: background-color 0.2s var(--ease);
-        list-style: none;
-        user-select: none;
-        -webkit-tap-highlight-color: transparent;
-    }
-
-    .pcl__rec-head::-webkit-details-marker,
-    .pcl__rec-head::marker {
-        display: none;
-        content: '';
-    }
-
-    .pcl__rec-head:hover {
-        background: rgba(244, 239, 230, 0.03);
-    }
-
-    .pcl__rec-head::before {
-        content: '▶';
-        font-size: 0.55rem;
-        line-height: 1;
-        transition: transform 0.25s var(--ease);
-        color: var(--space-blue);
-        opacity: 0.7;
-    }
-
-    .pcl__rec-block[open] > .pcl__rec-head::before {
-        transform: rotate(90deg);
-        opacity: 1;
+        justify-content: flex-start;
+        gap: 0.6rem;
     }
 
     .pcl__rec-body {
@@ -513,7 +479,7 @@ const eclipsePast = now > new Date('2026-08-12T22:00:00+02:00').getTime();
     .pcl__rec-body li {
         font-size: var(--step--1);
         color: var(--bone-dim);
-        line-height: 1.6;
+        line-height: var(--lh-base);
     }
 
     .pcl__rec-body li em {
@@ -544,32 +510,6 @@ const eclipsePast = now > new Date('2026-08-12T22:00:00+02:00').getTime();
         margin-top: 0.2rem;
     }
 
-    .pcl__progress-track {
-        flex: 1;
-        height: 6px;
-        background: var(--line);
-        border-radius: 99px;
-        overflow: hidden;
-    }
-
-    .pcl__progress-fill {
-        display: block;
-        height: 100%;
-        background: linear-gradient(90deg, var(--space-blue), var(--ember));
-        border-radius: 99px;
-        transition: width 0.35s var(--ease);
-        width: 0%;
-    }
-
-    .pcl__progress-label {
-        font-family: var(--font-mono);
-        font-size: 0.78rem;
-        color: var(--muted);
-        min-width: 5ch;
-        text-align: right;
-        font-variant-numeric: tabular-nums;
-    }
-
     .pcl__cat {
         border: 1px solid var(--line);
         border-radius: var(--radius);
@@ -591,7 +531,7 @@ const eclipsePast = now > new Date('2026-08-12T22:00:00+02:00').getTime();
         font-family: var(--font-accent);
         font-size: var(--step-0);
         font-weight: 500;
-        line-height: 1.2;
+        line-height: var(--lh-compact);
     }
 
     .pcl__cat-progress {
@@ -626,7 +566,7 @@ const eclipsePast = now > new Date('2026-08-12T22:00:00+02:00').getTime();
     }
 
     .pcl__check:hover {
-        background: rgba(244, 239, 230, 0.03);
+        background: var(--hover-bg);
     }
 
     .pcl__check-input {
@@ -689,9 +629,9 @@ const eclipsePast = now > new Date('2026-08-12T22:00:00+02:00').getTime();
        WARNINGS
     ================================ */
     .pcl__warn {
-        border: 1px solid rgba(255, 100, 80, 0.25);
+        border: 1px solid rgba(var(--warn-rgb), 0.25);
         border-radius: var(--radius);
-        background: rgba(255, 60, 40, 0.06);
+        background: rgba(var(--warn-rgb), 0.06);
         padding: 1.2rem 1.4rem;
         display: flex;
         flex-direction: column;
@@ -706,7 +646,7 @@ const eclipsePast = now > new Date('2026-08-12T22:00:00+02:00').getTime();
 
     .pcl__warn-icon {
         flex-shrink: 0;
-        color: rgb(255, 120, 100);
+        color: var(--warn);
         margin-top: 0.1rem;
     }
 
@@ -714,8 +654,8 @@ const eclipsePast = now > new Date('2026-08-12T22:00:00+02:00').getTime();
         font-family: var(--font-accent);
         font-size: var(--step-0);
         font-weight: 500;
-        color: rgb(255, 140, 120);
-        line-height: 1.2;
+        color: var(--warn);
+        line-height: var(--lh-compact);
     }
 
     .pcl__warn-sub {
@@ -743,7 +683,7 @@ const eclipsePast = now > new Date('2026-08-12T22:00:00+02:00').getTime();
         gap: 0.6rem;
         font-size: var(--step--1);
         color: var(--bone-dim);
-        line-height: 1.5;
+        line-height: var(--lh-loose);
     }
 
     .pcl__warn-x {
@@ -753,8 +693,8 @@ const eclipsePast = now > new Date('2026-08-12T22:00:00+02:00').getTime();
         display: grid;
         place-items: center;
         border-radius: 50%;
-        background: rgba(255, 60, 40, 0.15);
-        color: rgb(255, 120, 100);
+        background: rgba(var(--warn-rgb), 0.15);
+        color: var(--warn);
         font-size: 0.6rem;
         font-weight: 700;
         line-height: 1;
@@ -762,10 +702,10 @@ const eclipsePast = now > new Date('2026-08-12T22:00:00+02:00').getTime();
 
     .pcl__warn-foot {
         font-size: var(--step--1);
-        color: rgb(255, 120, 100);
+        color: var(--warn);
         font-style: italic;
         padding-top: 0.4rem;
-        border-top: 1px solid rgba(255, 100, 80, 0.12);
+        border-top: 1px solid rgba(var(--warn-rgb), 0.12);
     }
 
     /* ================================
@@ -797,7 +737,7 @@ const eclipsePast = now > new Date('2026-08-12T22:00:00+02:00').getTime();
        RESPONSIVE
     ================================ */
     @media (max-width: 560px) {
-        .pcl__rec-head,
+        .accordion-head,
         .pcl__cat-head,
         .pcl__check,
         .pcl__warn {
@@ -812,7 +752,7 @@ const eclipsePast = now > new Date('2026-08-12T22:00:00+02:00').getTime();
             gap: 0.6rem;
         }
 
-        .pcl__progress-label {
+        .pcl__progress-total .progress-label {
             font-size: 0.7rem;
             min-width: 4ch;
         }

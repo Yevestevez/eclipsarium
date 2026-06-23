@@ -163,6 +163,7 @@ import KidsActivities from '../components/KidsActivities.astro';
         align-items: center;
         justify-content: space-between;
         position: relative;
+        gap: 2rem;
     }
 
     .brand {
@@ -354,18 +355,30 @@ import KidsActivities from '../components/KidsActivities.astro';
         top: calc(100% - 12px);
     }
 
-    [data-theme="light"] .theme-toggle__knob {
-        /* light: knob at top */
+    :global([data-theme="light"]) .theme-toggle__knob {
         transform: translateY(-12px);
         background: var(--space-blue);
     }
 
-    [data-theme="light"] .theme-toggle__switch {
+    :global([data-theme="light"]) .theme-toggle__switch {
         background: rgba(var(--space-blue-rgb), 0.25);
     }
 
-    [data-theme="light"] .theme-toggle__icon {
+    :global([data-theme="light"]) .theme-toggle__icon {
         color: var(--space-blue);
+    }
+
+    @media (max-width: 860px) {
+        .topbar__inner {
+            flex-wrap: wrap;
+            gap: 0.6rem 1rem;
+        }
+
+        .nav--desktop {
+            width: 100%;
+            justify-content: center;
+            order: 1;
+        }
     }
 
     @media (max-width: 560px) {

@@ -12,7 +12,8 @@ Web informativa sobre el **eclipse solar total del 12 de agosto de 2026**, visib
 - **v1.3.0 (checklist):** recomendaciones y checklist interactiva de preparación
 - **v1.4.0:** páginas por localidad + buscador + hover/popup en mapa
 - **v1.5.0:** Nominatim geocoding con búsqueda inteligente (fase mundial + España) + filtro por tipo de lugar + contexto con país
-- **v1.6.0 (actual):** Actividades para familias: 6 actividades hands-on + quiz interactivo + enlaces fuente
+- **v1.6.0:** Actividades para familias: 6 actividades hands-on + quiz interactivo + enlaces fuente
+- **v1.7.0 (actual):** Modo claro/oscuro con switch sol/luna animado + persistencia localStorage + respeta `prefers-color-scheme` + CSS `:global()` scoping fix + refactor tokens CSS
 
 ## 🎯 Objetivo
 
@@ -26,7 +27,7 @@ Punto de referencia divulgativo y atractivo para el público general:
 ## 🛠️ Stack
 
 - [Astro](https://astro.build/) `^6.4.2`
-- [Leaflet](https://leafletjs.com/) `^1.9.4` — mapa interactivo con CartoDB dark tiles
+- [Leaflet](https://leafletjs.com/) `^1.9.4` — mapa interactivo con CartoDB tiles (dark_all / light_all)
 - [Vitest](https://vitest.dev/) `^4.1.9` — tests unitarios
 - [Playwright](https://playwright.dev/) `^1.61.0` — tests E2E + accesibilidad (axe-core)
 - Node `>=22.13.0` · pnpm
@@ -108,6 +109,23 @@ test/
 - [x] Enlace "Fuente:" por actividad a recurso externo (NASA Space Place, Exploratorium)
 - [x] Tests unitarios (Vitest, 60 tests en 9 suites) + E2E (Playwright, 16 tests) + axe a11y
 - [x] Responsivo mobile/desktop
+
+### Sprint 3 ✅ — Modo claro/oscuro (v1.7.0)
+
+- [x] Paleta clara definida en `tokens.css` con `[data-theme="light"]`
+- [x] Anti-flash script inline en `<head>` para evitar parpadeo al cargar
+- [x] Switch sol/luna animado (rotate + fade 0.4s, respeta `prefers-reduced-motion`)
+- [x] Sol visible en modo oscuro (click → modo claro), luna en modo claro (click → modo oscuro)
+- [x] Persistencia en localStorage
+- [x] `prefers-color-scheme` en primera visita
+- [x] Mapa Leaflet cambia tiles (`dark_all` ↔ `light_all`) vía MutationObserver
+- [x] Starfield + grain ocultos en modo claro
+- [x] Badges de borde con texto blanco en modo claro
+- [x] CSS `:global()` fix para selectores `[data-theme]` en Astro scoped styles
+- [x] Variables hardcodeadas reemplazadas por tokens CSS (EclipseMap, KidsActivities)
+- [x] Transición suave `background-color 0.3s, color 0.3s` con guard `prefers-reduced-motion`
+- [x] Nav responsive ≤860px: wrap a segunda línea, space-between
+- [x] Build producción 0 errores, 30+ páginas
 
 ### Roadmap
 

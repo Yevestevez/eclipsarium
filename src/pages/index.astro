@@ -22,19 +22,15 @@ import KidsActivities from '../components/KidsActivities.astro';
             </nav>
 
             <button class="theme-toggle" aria-label="Cambiar tema">
-                <svg class="theme-toggle__icon" viewBox="0 0 1563 1563" width="26" height="26" fill-rule="evenodd" clip-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="1.5">
-                    <path d="M771.038 286.964c272.804 0 494.286 221.482 494.286 494.286s-221.482 494.286-494.286 494.286-494.286-221.482-494.286-494.286 221.482-494.286 494.286-494.286m0 83.333c-226.811 0-410.953 184.142-410.953 410.953s184.142 410.953 410.953 410.953 410.953-184.142 410.953-410.953-184.142-410.953-410.953-410.953" fill="currentColor"/>
-                    <circle cx="1035.199" cy="781.25" r="494.286" fill="currentColor"/>
-                    <circle cx="891.943" cy="894.261" r="113.011" fill="currentColor" opacity="0.55"/>
-                    <circle cx="1149.363" cy="1102.319" r="67.85" fill="currentColor" opacity="0.55"/>
-                    <circle cx="905.386" cy="1102.319" r="38.449" fill="currentColor" opacity="0.55"/>
-                    <circle cx="1196.605" cy="614.934" r="161.406" fill="currentColor" opacity="0.55"/>
-                    <circle cx="957.279" cy="453.528" r="51.892" fill="currentColor" opacity="0.55"/>
-                    <path d="M51.835 781.25h120.971m-35.575-348.786 109.802 61.234m156.41-319.271 59.706 100.859M762.663 83.678v103.583m-625.432 942.775 109.802-61.234m156.41 319.271 59.706-100.859m299.514 191.608v-109.818" fill="none" stroke="currentColor" stroke-width="83.33"/>
+                <svg class="theme-toggle__icon" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <g class="theme-toggle__sun">
+                        <circle cx="12" cy="12" r="5"/>
+                        <path d="M12 1v2M12 21v2M1 12h2M21 12h2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                    </g>
+                    <g class="theme-toggle__moon" fill="currentColor" stroke="none">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </g>
                 </svg>
-                <span class="theme-toggle__switch">
-                    <span class="theme-toggle__knob"></span>
-                </span>
             </button>
 
             <details class="nav-mobile">
@@ -312,7 +308,6 @@ import KidsActivities from '../components/KidsActivities.astro';
     .theme-toggle {
         display: inline-flex;
         align-items: center;
-        gap: 0.55rem;
         padding: 0.1rem 0.25rem;
         border: none;
         background: transparent;
@@ -331,40 +326,40 @@ import KidsActivities from '../components/KidsActivities.astro';
         display: block;
         flex-shrink: 0;
         transition: color 0.3s var(--ease);
+        overflow: visible;
     }
 
-    .theme-toggle__switch {
-        width: 14px;
-        height: 26px;
-        border-radius: 99px;
-        background: var(--line);
-        position: relative;
-        transition: background 0.3s var(--ease);
+    .theme-toggle__sun,
+    .theme-toggle__moon {
+        transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
     }
 
-    .theme-toggle__knob {
-        position: absolute;
-        left: 2px;
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: var(--muted-deep);
-        transition: transform 0.3s var(--ease), background 0.3s var(--ease);
-        /* dark: knob at bottom */
-        top: calc(100% - 12px);
+    /* Dark (default): show sun, hide moon */
+    .theme-toggle__sun {
+        opacity: 1;
+        transform: rotate(0deg);
     }
 
-    :global([data-theme="light"]) .theme-toggle__knob {
-        transform: translateY(-12px);
-        background: var(--space-blue);
+    .theme-toggle__moon {
+        opacity: 0;
+        transform: rotate(-90deg);
     }
 
-    :global([data-theme="light"]) .theme-toggle__switch {
-        background: rgba(var(--space-blue-rgb), 0.25);
+    :global([data-theme="light"]) .theme-toggle__sun {
+        opacity: 0;
+        transform: rotate(90deg);
     }
 
-    :global([data-theme="light"]) .theme-toggle__icon {
-        color: var(--space-blue);
+    :global([data-theme="light"]) .theme-toggle__moon {
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .theme-toggle__sun,
+        .theme-toggle__moon {
+            transition: none;
+        }
     }
 
     @media (max-width: 860px) {

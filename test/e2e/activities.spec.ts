@@ -25,7 +25,7 @@ test.describe('activities.spec.ts — KidsActivities', () => {
     test('E32: expanding activity details shows materials and steps', async ({ page }) => {
         const firstCard = page.locator('.kac__card').first();
         const details = firstCard.locator('.kac__details');
-        const summary = details.locator('.kac__details-head');
+        const summary = details.locator('.accordion-head');
 
         // Initially collapsed
         await expect(details).not.toHaveAttribute('open');
@@ -42,7 +42,7 @@ test.describe('activities.spec.ts — KidsActivities', () => {
     // E33: source link is visible inside expanded details
     test('E33: source link visible inside expanded details', async ({ page }) => {
         const firstCard = page.locator('.kac__card').first();
-        await firstCard.locator('.kac__details-head').click();
+        await firstCard.locator('.accordion-head').click();
 
         const source = firstCard.locator('.kac__source');
         await expect(source).toBeVisible();

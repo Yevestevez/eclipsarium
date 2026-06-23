@@ -80,8 +80,52 @@
     --shadow-popup: 0 4px 24px rgba(0, 0, 0, 0.6);
     --shadow-glow: 0 0 50px var(--halo-soft);
 
+    /* --- Theme overlays --- */
+    --overlay: rgba(14, 11, 20, 0.95);
+
     /* --- Motion --- */
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-theme="light"] {
+    --void: #faf6f0;
+    --ink: #ffffff;
+    --ink-soft: #f0ece6;
+    --bone: #1c1828;
+    --bone-dim: #4f4a5a;
+    --muted: #7a7588;
+    --muted-deep: #9a95a8;
+
+    --space-blue: #0077cc;
+    --space-blue-light: #55b3ff;
+    --edge-blue: #1a5a8a;
+    --ember: #5b4dd6;
+    --ember-deep: #3d2b8a;
+
+    --space-blue-rgb: 0, 119, 204;
+    --edge-blue-rgb: 26, 90, 138;
+    --ember-rgb: 91, 77, 214;
+
+    --success: #00aa66;
+    --success-rgb: 0, 170, 102;
+    --error: #d94a3a;
+    --error-rgb: 217, 74, 58;
+    --warn: #d96a2a;
+    --warn-rgb: 217, 106, 42;
+
+    --line: rgba(10, 6, 18, 0.08);
+    --line-strong: rgba(10, 6, 18, 0.16);
+    --halo: rgba(var(--space-blue-rgb), 0.25);
+    --halo-soft: rgba(var(--space-blue-rgb), 0.08);
+
+    --hover-bg: rgba(10, 6, 18, 0.04);
+    --hover-bg-blue: rgba(var(--space-blue-rgb), 0.10);
+    --hover-color: var(--space-blue);
+
+    --shadow-popup: 0 4px 24px rgba(0, 0, 0, 0.10);
+    --shadow-glow: 0 0 50px var(--halo-soft);
+
+    --overlay: rgba(255, 255, 255, 0.95);
 }
 
 *,
@@ -107,6 +151,12 @@ body {
     letter-spacing: 0.01em;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    body {
+        transition: background-color 0.3s var(--ease), color 0.3s var(--ease);
+    }
 }
 
 h1,
@@ -373,6 +423,10 @@ a {
 .badge--edge {
     color: var(--bone);
     background: var(--edge-blue);
+}
+
+[data-theme="light"] .badge--edge {
+    color: #ffffff;
 }
 
 /* --- Responsive breakpoint reference

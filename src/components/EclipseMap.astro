@@ -135,7 +135,7 @@ const totalityPolygon = [...northLimit, ...southLimit.reverse()];
     }
 
     .map-container :global(.leaflet-control-attribution) {
-        background: rgba(7, 6, 10, 0.8) !important;
+        background: var(--overlay) !important;
         color: var(--muted-deep);
         font-size: 0.6rem;
     }
@@ -159,7 +159,7 @@ const totalityPolygon = [...northLimit, ...southLimit.reverse()];
         width: 12px;
         height: 12px;
         border-radius: 50%;
-        border: 2px solid rgba(255, 255, 255, 0.3);
+        border: 2px solid var(--line-strong);
         background: var(--space-blue);
         box-shadow:
             0 0 8px var(--halo),
@@ -202,7 +202,7 @@ const totalityPolygon = [...northLimit, ...southLimit.reverse()];
     }
 
     .map-container :global(.map-marker__label) {
-        background: rgba(7, 6, 10, 0.85);
+        background: var(--overlay);
         border: 1px solid var(--line);
         border-radius: 4px;
         padding: 2px 6px;
@@ -234,7 +234,7 @@ const totalityPolygon = [...northLimit, ...southLimit.reverse()];
         border: 1px solid var(--line) !important;
         border-radius: var(--radius) !important;
         box-shadow:
-            0 4px 24px rgba(0, 0, 0, 0.6),
+            var(--shadow-popup),
             0 0 0 1px rgba(0, 170, 255, 0.08) !important;
         color: var(--bone) !important;
         font-family: var(--font-body);
@@ -347,7 +347,7 @@ const totalityPolygon = [...northLimit, ...southLimit.reverse()];
     L.Control.Zoom.prototype.options.zoomInTitle = 'Acercar';
     L.Control.Zoom.prototype.options.zoomOutTitle = 'Alejar';
 
-    L.tileLayer(
+    var tileLayer = L.tileLayer(
         'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
         {
             attribution:
@@ -356,6 +356,33 @@ const totalityPolygon = [...northLimit, ...southLimit.reverse()];
             maxZoom: 19,
         },
     ).addTo(map);
+
+    function swapTiles(theme: string) {
+        var url =
+            theme === 'light'
+                ? 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
+                : 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+        map.removeLayer(tileLayer);
+        tileLayer = L.tileLayer(url, {
+            attribution:
+                '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · <a href="https://carto.com/">CARTO</a>',
+            subdomains: 'abcd',
+            maxZoom: 19,
+        }).addTo(map);
+    }
+
+    var themeWatcher = new MutationObserver(function () {
+        var theme = document.documentElement.getAttribute('data-theme') || 'dark';
+        swapTiles(theme);
+    });
+    themeWatcher.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['data-theme'],
+    });
+
+    // apply initial theme
+    var initialTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+    if (initialTheme === 'light') swapTiles('light');
 
     L.polygon(polygon, {
         color: '#00aaff',

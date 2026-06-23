@@ -20,6 +20,19 @@ import KidsActivities from '../components/KidsActivities.astro';
                 <a href="#checklist">Checklist</a>
                 <a href="#actividades">Actividades</a>
             </nav>
+
+            <button class="theme-toggle" aria-label="Cambiar tema">
+                <svg class="theme-toggle__icon" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <g class="theme-toggle__sun">
+                        <circle cx="12" cy="12" r="5"/>
+                        <path d="M12 1v2M12 21v2M1 12h2M21 12h2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                    </g>
+                    <g class="theme-toggle__moon" fill="currentColor" stroke="none">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </g>
+                </svg>
+            </button>
+
             <details class="nav-mobile">
                 <summary
                     class="nav-mobile__trigger"
@@ -116,6 +129,22 @@ import KidsActivities from '../components/KidsActivities.astro';
             }
         });
     });
+
+    // Theme toggle
+    const toggle = document.querySelector('.theme-toggle');
+    if (toggle) {
+        toggle.addEventListener('click', () => {
+            const html = document.documentElement;
+            const isLight = html.getAttribute('data-theme') === 'light';
+            if (isLight) {
+                html.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                html.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    }
 </script>
 
 <style>
@@ -126,7 +155,7 @@ import KidsActivities from '../components/KidsActivities.astro';
         z-index: 100;
         padding-block: 2rem;
         backdrop-filter: blur(10px);
-        background: linear-gradient(var(--void), rgba(7, 6, 10, 0));
+        background: linear-gradient(var(--void), transparent);
         border-bottom: 1px solid var(--space-blue);
     }
 
@@ -135,6 +164,7 @@ import KidsActivities from '../components/KidsActivities.astro';
         align-items: center;
         justify-content: space-between;
         position: relative;
+        gap: 2rem;
     }
 
     .brand {
@@ -142,6 +172,9 @@ import KidsActivities from '../components/KidsActivities.astro';
         font-weight: 700;
         letter-spacing: 0.2em;
         font-size: 0.9rem;
+        display: inline-flex;
+        align-items: center;
+        min-height: 2rem;
     }
 
     .brand span {
@@ -245,7 +278,7 @@ import KidsActivities from '../components/KidsActivities.astro';
         padding: 0.5rem;
         border: 1px solid var(--line);
         border-radius: 0.2rem;
-        background: rgba(14, 11, 20, 0.95);
+            background: var(--overlay);
         backdrop-filter: blur(8px);
     }
 
@@ -269,6 +302,77 @@ import KidsActivities from '../components/KidsActivities.astro';
 
     .nav-mobile:not([open]) .nav-mobile__panel {
         display: none;
+    }
+
+    /* --- Theme toggle --- */
+    .theme-toggle {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.1rem 0.25rem;
+        border: none;
+        background: transparent;
+        color: var(--muted);
+        cursor: pointer;
+        margin-left: auto;
+        min-height: 2rem;
+        transition: color 0.3s var(--ease);
+    }
+
+    .theme-toggle:hover {
+        color: var(--space-blue);
+    }
+
+    .theme-toggle__icon {
+        display: block;
+        flex-shrink: 0;
+        transition: color 0.3s var(--ease);
+        overflow: visible;
+    }
+
+    .theme-toggle__sun,
+    .theme-toggle__moon {
+        transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+    }
+
+    /* Dark (default): show sun, hide moon */
+    .theme-toggle__sun {
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+
+    .theme-toggle__moon {
+        opacity: 0;
+        transform: rotate(-90deg);
+    }
+
+    :global([data-theme="light"]) .theme-toggle__sun {
+        opacity: 0;
+        transform: rotate(90deg);
+    }
+
+    :global([data-theme="light"]) .theme-toggle__moon {
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .theme-toggle__sun,
+        .theme-toggle__moon {
+            transition: none;
+        }
+    }
+
+    @media (max-width: 860px) {
+        .topbar__inner {
+            flex-wrap: wrap;
+            gap: 1rem 1rem;
+        }
+
+        .nav--desktop {
+            width: 100%;
+            justify-content: space-between;
+            order: 1;
+        }
     }
 
     @media (max-width: 560px) {

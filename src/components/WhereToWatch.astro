@@ -446,7 +446,7 @@ const sorted = [...data.places].sort((a, b) => {
         border-color: var(--edge-blue);
     }
 
-    [data-theme="light"] .place--edge .badge {
+    :global([data-theme="light"]) .place--edge .badge {
         color: #ffffff;
     }
 

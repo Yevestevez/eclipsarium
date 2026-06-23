@@ -320,10 +320,10 @@ const eclipsePast = now > new Date('2026-08-12T22:00:00+02:00').getTime();
     const LS_KEY = 'eclipsarium-checklist';
 
     class Checklist {
-        state = {};
-        bar = null;
-        label = null;
-        catCounts = new Map();
+        state: Record<string, boolean> = {};
+        bar: HTMLElement | null = null;
+        label: HTMLElement | null = null;
+        catCounts = new Map<string, HTMLElement>();
         totalItems = 0;
 
         constructor() {
@@ -332,24 +332,28 @@ const eclipsePast = now > new Date('2026-08-12T22:00:00+02:00').getTime();
             this.label = document.querySelector('[data-label="total"]');
 
             document.querySelectorAll('[data-cat]').forEach((cat) => {
-                const id = cat.dataset.cat;
+                const id = (cat as HTMLElement).dataset.cat;
                 const count = cat.querySelectorAll('[data-key]').length;
                 this.totalItems += count;
                 const countEl = cat.querySelector(`[data-cat-count="${id}"]`);
-                if (countEl) this.catCounts.set(id, countEl);
+                if (countEl) this.catCounts.set(id!, countEl as HTMLElement);
             });
 
             const progressbar = document.querySelector('.pcl__progress-total');
             if (progressbar)
-                progressbar.setAttribute('aria-valuemax', this.totalItems);
+                progressbar.setAttribute(
+                    'aria-valuemax',
+                    String(this.totalItems),
+                );
 
             this.render();
             this.bind();
         }
 
-        load() {
+        load(): Record<string, boolean> {
             try {
-                return JSON.parse(localStorage.getItem(LS_KEY)) || {};
+                const item = localStorage.getItem(LS_KEY);
+                return item ? JSON.parse(item) : {};
             } catch {
                 return {};
             }
@@ -362,7 +366,8 @@ const eclipsePast = now > new Date('2026-08-12T22:00:00+02:00').getTime();
         bind() {
             document.querySelectorAll('.pcl__check-input').forEach((input) => {
                 input.addEventListener('change', () => {
-                    this.state[input.dataset.key] = input.checked;
+                    const inp = input as HTMLInputElement;
+                    this.state[inp.dataset.key!] = inp.checked;
                     this.save();
                     this.render();
                 });
@@ -371,17 +376,19 @@ const eclipsePast = now > new Date('2026-08-12T22:00:00+02:00').getTime();
 
         render() {
             document.querySelectorAll('.pcl__check-input').forEach((input) => {
-                input.checked = this.state[input.dataset.key] === true;
+                const inp = input as HTMLInputElement;
+                inp.checked = this.state[inp.dataset.key!] === true;
             });
 
             let done = 0;
-            const catTotals = {};
+            const catTotals: Record<string, { done: number; total: number }> =
+                {};
 
             document.querySelectorAll('[data-cat]').forEach((cat) => {
-                const id = cat.dataset.cat;
+                const id = (cat as HTMLElement).dataset.cat!;
                 let catDone = 0;
                 cat.querySelectorAll('.pcl__check-input').forEach((inp) => {
-                    if (inp.checked) catDone++;
+                    if ((inp as HTMLInputElement).checked) catDone++;
                 });
                 const total = cat.querySelectorAll('[data-key]').length;
                 catTotals[id] = { done: catDone, total };
@@ -390,12 +397,12 @@ const eclipsePast = now > new Date('2026-08-12T22:00:00+02:00').getTime();
 
             const pct =
                 this.totalItems > 0 ? (done / this.totalItems) * 100 : 0;
-            if (this.bar) this.bar.style.width = pct + '%';
+            if (this.bar) (this.bar as HTMLElement).style.width = pct + '%';
             if (this.label)
-                this.label.innerHTML =
+                (this.label as HTMLElement).innerHTML =
                     done + '&thinsp;/&thinsp;' + this.totalItems;
             const pb = document.querySelector('.pcl__progress-total');
-            if (pb) pb.setAttribute('aria-valuenow', done);
+            if (pb) pb.setAttribute('aria-valuenow', String(done));
 
             for (const [id, el] of this.catCounts) {
                 const t = catTotals[id];

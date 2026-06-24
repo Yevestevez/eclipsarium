@@ -1,7 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import EclipseAnimation from '../components/EclipseAnimation.astro';
-// import OrbitSimulation from '../components/OrbitSimulation.astro';
 import EventInfo from '../components/EventInfo.astro';
 import WhereToWatch from '../components/WhereToWatch.astro';
 import Countdown from '../components/Countdown.astro';
@@ -22,13 +21,31 @@ import KidsActivities from '../components/KidsActivities.astro';
             </nav>
 
             <button class="theme-toggle" aria-label="Cambiar tema">
-                <svg class="theme-toggle__icon" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg
+                    class="theme-toggle__icon"
+                    viewBox="0 0 24 24"
+                    width="26"
+                    height="26"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
                     <g class="theme-toggle__sun">
-                        <circle cx="12" cy="12" r="5"/>
-                        <path d="M12 1v2M12 21v2M1 12h2M21 12h2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <path
+                            d="M12 1v2M12 21v2M1 12h2M21 12h2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
+                        ></path>
                     </g>
-                    <g class="theme-toggle__moon" fill="currentColor" stroke="none">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    <g
+                        class="theme-toggle__moon"
+                        fill="currentColor"
+                        stroke="none"
+                    >
+                        <path
+                            d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+                        ></path>
                     </g>
                 </svg>
             </button>
@@ -76,7 +93,6 @@ import KidsActivities from '../components/KidsActivities.astro';
 
                 <div class="hero__visual">
                     <EclipseAnimation />
-                    <!-- <OrbitSimulation /> -->
                 </div>
             </div>
 
@@ -278,7 +294,7 @@ import KidsActivities from '../components/KidsActivities.astro';
         padding: 0.5rem;
         border: 1px solid var(--line);
         border-radius: 0.2rem;
-            background: var(--overlay);
+        background: var(--overlay);
         backdrop-filter: blur(8px);
     }
 
@@ -331,7 +347,9 @@ import KidsActivities from '../components/KidsActivities.astro';
 
     .theme-toggle__sun,
     .theme-toggle__moon {
-        transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+        transition:
+            opacity 0.4s var(--ease),
+            transform 0.4s var(--ease);
     }
 
     /* Dark (default): show sun, hide moon */
@@ -345,12 +363,12 @@ import KidsActivities from '../components/KidsActivities.astro';
         transform: rotate(-90deg);
     }
 
-    :global([data-theme="light"]) .theme-toggle__sun {
+    :global([data-theme='light']) .theme-toggle__sun {
         opacity: 0;
         transform: rotate(90deg);
     }
 
-    :global([data-theme="light"]) .theme-toggle__moon {
+    :global([data-theme='light']) .theme-toggle__moon {
         opacity: 1;
         transform: rotate(0deg);
     }

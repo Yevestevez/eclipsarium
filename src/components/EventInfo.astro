@@ -10,7 +10,7 @@ import AddToCalendar from './AddToCalendar.astro';
             <h2 class="event__title">
                 {event.type}<span class="event__date">{event.dateLabel}</span>
             </h2>
-            <p class="event__intro">{event.intro}</p>
+            <p class="section__lead">{event.intro}</p>
         </header>
 
         <dl class="facts">
@@ -50,14 +50,6 @@ import AddToCalendar from './AddToCalendar.astro';
         color: var(--space-blue);
         margin-top: 0.4rem;
         letter-spacing: 0;
-    }
-
-    .event__intro {
-        margin-top: 1.6rem;
-        color: var(--bone-dim);
-        font-size: var(--step-1);
-        line-height: var(--lh-loose);
-        font-weight: 300;
     }
 
     .facts {

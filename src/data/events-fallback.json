@@ -1,0 +1,76 @@
+[
+    {
+        "title": "El eclipse de Sol de 2026",
+        "date": "2026-06-24T16:00:00.000Z",
+        "address": "Ayuntamiento de Comillas, Cantabria",
+        "province": "Cantabria",
+        "category": "Conferencia",
+        "institution": "Observatorio de Cantabria (Gobierno de Cantabria)",
+        "url": null,
+        "description": ""
+    },
+    {
+        "title": "A la sombra de la Luna: El eclipse total de Sol de agosto",
+        "date": "2026-06-25T17:00:00.000Z",
+        "address": "Bilbao, Bizkaia",
+        "province": "Bizkaia",
+        "category": "Conferencia",
+        "institution": "Agrupación Astronómica Vizcaína",
+        "url": null,
+        "description": ""
+    },
+    {
+        "title": "Sota l'ombra de la Lluna",
+        "date": "2026-06-26T17:00:00.000Z",
+        "address": "Xàbia, Alicante",
+        "province": "Alicante",
+        "category": "Conferencia",
+        "institution": "Associació MERIDIÀ ZERO",
+        "url": "https://associaciomeridiazero.com/conferencia-sota-lombra-de-la-lluna-a-carrec-damelia-ortiz-gil-%c2%b7-observatori-astronomic-de-la-universitat-de-valencia/"
+    },
+    {
+        "title": "El gran eclipsi total de 2026: Què veurem el 12 d'agost?",
+        "date": "2026-06-26T17:00:00.000Z",
+        "address": "Bellreguard, València",
+        "province": "València",
+        "category": "Conferencia",
+        "institution": "Ajuntament de Bellreguard",
+        "url": "https://blocs.mesvilaweb.cat/marco/a-bellreguard-per-parlar-de-leclipsi/"
+    },
+    {
+        "title": "Eclipse de 2026, cuando el sol se oculte",
+        "date": "2026-06-27T09:30:00.000Z",
+        "address": "Ataria, Vitoria-Gasteiz",
+        "province": "Álava",
+        "category": "Conferencia",
+        "institution": "Sociedad Astronómica de Álava",
+        "url": "https://ataria.vitoria-gasteiz.org/portal/es/w/conferencia-eclipse-2026-cuando-el-sol-se-oculte"
+    },
+    {
+        "title": "Camino al eclipse. \"Tu cielo en imágenes\" en Jubrique",
+        "date": "2026-07-03T19:00:00.000Z",
+        "address": "Jubrique, Málaga",
+        "province": "Málaga",
+        "category": "Observación nocturna",
+        "institution": "Fundación Descubre",
+        "url": "https://elseptimocielo.fundaciondescubre.es/agenda/tu-cielo-en-imagenes-en-jubrique-malaga/"
+    },
+    {
+        "title": "Armonía Eclíptica",
+        "date": "2026-07-09T19:00:00.000Z",
+        "address": "Soria",
+        "province": "Soria",
+        "category": "Concierto",
+        "institution": "Consejo Superior de Investigaciones Científicas",
+        "url": null
+    },
+    {
+        "title": "XII Curso de Astrofísica: sol y ciencia en penumbra",
+        "date": "2026-07-06T07:00:00.000Z",
+        "address": "Teruel",
+        "province": "Teruel",
+        "category": "Curso",
+        "institution": "Fundación Universitaria Antonio Gargallo",
+        "url": "https://fantoniogargallo.unizar.es/node/723"
+    }
+]

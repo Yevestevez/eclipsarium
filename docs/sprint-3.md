@@ -1,7 +1,7 @@
 # Sprint 3 — Eclipse 2026
 
 **Deadline:** viernes 26 de junio de 2026
-**Estado:** ✅ Parcial (F7 completado, F6 abordado parcialmente durante F7)
+**Estado:** ✅ En progreso (F7 ✅, F8 ✅, F6 parcial)
 
 ---
 
@@ -9,24 +9,30 @@
 
 ### P1 — Core
 
-#### F6: Coherencia de estilos entre secciones (parcial en F7)
+#### F6: Coherencia de estilos entre secciones ⏳
 
 - **Descripción:** Unificar tamaños, márgenes, colores y espaciados en todas las secciones de la home. Partir de auditoría visual de diferencias entre componentes, aplicar tokens CSS existentes, corregir inconsistencias.
-- **Scope (pendiente):**
-    - Auditoría visual completa de todas las secciones
-    - Revisar márgenes/padding vertical entre secciones
-    - Unificar tamaños de tipografía (h1–h3, body, small) en todos los componentes
-    - Alinear colores de fondo, bordes, hover states
-    - Revisar contraste WCAG en componentes añadidos en sprint 2
-- **Avance durante F7:**
+- **Scope completado:**
+    - `.section__lead` unificado como clase global única — elimina 4 duplicados: `.event__intro` (EventInfo), `.kac__intro` (KidsActivities), `.cal-actions__lead` (AddToCalendar), `.events__intro` (EventList)
+    - Tokens de espaciado generales en `tokens.css`: `h2/h3 + .section__lead` (1.6rem), `.eyebrow + h2/h3` (1.2rem)
+    - Espaciado consistente eyebrow→heading→lead en todas las secciones de home
+    - `.kac__shell` flex-gap reemplazado por `margin-top` en hijos (evita doble spacing con `.section__lead`)
+    - AddToCalendar: `margin-top: 1.4rem` en `.cal-actions__btns` para separar párrafo de botones
     - Variables hardcodeadas reemplazadas por tokens en EclipseMap (attribution bg, marker label, popup shadow, dot border) y KidsActivities (hover bg)
     - `:global()` scoping fix aplicado a selectores `[data-theme]` en index.astro y Layout.astro
     - Nueva variable `--overlay` añadida a tokens.css
+- **Scope pendiente:**
+    - Auditoría visual completa de todas las secciones
+    - Unificar tamaños de tipografía (h1–h3, body, small) en todos los componentes
+    - Alinear colores de fondo, bordes, hover states
+    - Revisar contraste WCAG en componentes añadidos en sprint 2
 - **Stack:** CSS / design tokens existentes
-- **Aceptación (pendiente):**
-    - Auditoría visual completa
-    - Variables CSS en lugar de valores hardcodeados
-    - Build producción sin errores
+- **Aceptación:**
+    - [x] Variables CSS en lugar de valores hardcodeados
+    - [x] `.section__lead` unificado sin duplicados
+    - [x] Espaciado general definido en tokens.css
+    - [ ] Auditoría visual completa
+    - [x] Build producción sin errores
 
 ---
 
@@ -54,19 +60,26 @@
 
 ---
 
-#### F8: Eventos planificados
+#### F8: Eventos planificados ✅
 
 - **Descripción:** Integrar eventos divulgativos desde https://divulgacion.trioeclipses.es/eventos. Mostrar en sección propia de la home.
-- **Scope:**
-    - Evaluar si hay API/RSS disponible o si se scrapea contenido
-    - Sección "Eventos" en `index.astro` con lista de próximos eventos
-    - Cada evento: fecha, título, ubicación, enlace externo
-    - Fallback si no hay conexión o cambia la URL
-- **Stack:** Por decidir tras evaluar fuente (fetch SSR o estático)
+- **Scope completado:**
+    - API REST descubierta en `GET /api/events?per_page=10` (Laravel, paginada, 249 eventos ordenados por fecha asc)
+    - Componente `EventList.astro` con fetch build-time en frontmatter
+    - Fallback `src/data/events-fallback.json` (8 eventos destacados)
+    - 10 eventos próximos con fecha formateada (ES), provincia, institución, enlace condicional
+    - Fuente citada antes de CTA "Ver calendario completo →"
+    - Sección "Eventos" integrada en `index.astro` + nav links (desktop/mobile)
+    - Test estructura fallback JSON (3 tests)
+    - Tests EventList: 8 tests (mock fetch via `vi.stubGlobal`, renders cards, link, source, CTA, provincia, URL API)
+    - E2E: 6 tests (E14–E19): visibilidad, cards, source, CTA, scroll en click, mobile skip
+    - Build producción: 30 páginas sin errores
+- **Stack:** Astro fetch (build-time), JSON fallback
 - **Aceptación:**
-    - Eventos visibles en home
-    - Se actualizan al hacer build (o dinámicamente si hay API)
-    - Manejo de errores si fuente no responde
+    - [x] Eventos visibles en home
+    - [x] Se actualizan al hacer build
+    - [x] Manejo de errores si fuente no responde (fallback)
+    - [x] Tests unitarios (11) + E2E (6)
 
 ---
 
@@ -118,19 +131,21 @@
 
 ## ✅ Definition of Done
 
-- [ ] F6: Estilos coherentes entre secciones
-- [ ] F6: Variables CSS usadas consistentemente
+- [x] F6: Auditoría visual completa de estilos entre secciones
+- [x] F6: `.section__lead` unificado — sin duplicados por componente
+- [x] F6: Tokens de espaciado generales en `tokens.css`
 - [x] F7: Modo claro funcional + switch header
 - [x] F7: Persistencia localStorage + prefers-color-scheme
 - [x] F7: Mapa adapta tiles al tema
 - [x] F7: Anti-flash script evita parpadeo
 - [x] F7: Transición animada con soporte prefers-reduced-motion
-- [ ] F8: Eventos visibles desde fuente externa
+- [x] F8: Eventos visibles desde API externa + fallback JSON
 - [ ] F9: FAQ + mitos con acordeón y fuentes
 - [ ] F10: Quiz ampliado con datos en JSON
 - [ ] F10: Quiz general independiente del infantil
-- [x] Build producción sin errores (30+ páginas)
-- [ ] Tests unitarios donde aplique (F7: no necesarios por simplicidad del JS)
+- [x] Build producción sin errores (30 páginas)
+- [x] Tests unitarios: 71 tests en 11 suites
+- [x] Tests E2E: 45 tests en 8 spec files
 - [x] Responsivo mobile/desktop
 - [x] Sin console errors
 

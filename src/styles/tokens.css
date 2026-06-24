@@ -227,11 +227,23 @@ a {
 }
 
 .section__lead {
-    margin-top: 1.4rem;
     color: var(--bone-dim);
     font-weight: 300;
+    line-height: var(--lh-loose);
     max-width: 46ch;
     font-size: var(--step-0);
+}
+
+/* Spacing: section heading → lead paragraph */
+h2 + .section__lead,
+h3 + .section__lead {
+    margin-top: 1.6rem;
+}
+
+/* Spacing: eyebrow → heading */
+.eyebrow + h2,
+.eyebrow + h3 {
+    margin-top: 1.2rem;
 }
 
 /* --- Shared card / container --- */

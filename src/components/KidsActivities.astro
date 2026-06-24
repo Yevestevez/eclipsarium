@@ -9,7 +9,7 @@ const { activities, quiz } = data;
         <h2 class="kac__title">
             Actividades<span class="kac__title-sub"> para el eclipse</span>
         </h2>
-        <p class="kac__intro">
+        <p class="section__lead">
             El eclipse es un evento para todas las edades. Aquí encontrarás
             actividades prácticas para hacer en casa o en el punto de
             observación, explicadas paso a paso. Todas incluyen supervisión de
@@ -338,7 +338,6 @@ const { activities, quiz } = data;
     .kac__shell {
         display: flex;
         flex-direction: column;
-        gap: 1.6rem;
     }
 
     .kac__title {
@@ -351,17 +350,11 @@ const { activities, quiz } = data;
         color: var(--bone-dim);
     }
 
-    .kac__intro {
-        color: var(--bone-dim);
-        font-size: var(--step--1);
-        line-height: var(--lh-base);
-        max-width: 64ch;
-    }
-
     /* ================================
        ACTIVITY CARDS
     ================================ */
     .kac__grid {
+        margin-top: 1.6rem;
         display: grid;
         grid-template-columns: 1fr;
         gap: 1.2rem;
@@ -529,6 +522,7 @@ const { activities, quiz } = data;
        QUIZ
     ================================ */
     .kac__quiz-section {
+        margin-top: 1.6rem;
         background: linear-gradient(
             135deg,
             var(--ink) 0%,

@@ -227,9 +227,10 @@ a {
 }
 
 .section__lead {
-    margin-top: 1.4rem;
+    margin-top: 1.6rem;
     color: var(--bone-dim);
     font-weight: 300;
+    line-height: var(--lh-loose);
     max-width: 46ch;
     font-size: var(--step-0);
 }

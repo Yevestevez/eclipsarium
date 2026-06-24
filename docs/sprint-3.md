@@ -1,7 +1,7 @@
 # Sprint 3 — Eclipse 2026
 
 **Deadline:** viernes 26 de junio de 2026
-**Estado:** ✅ Parcial (F7 completado, F6 abordado parcialmente durante F7)
+**Estado:** ✅ Parcial (F7 completado, F8 implementado, F6 abordado parcialmente durante F7)
 
 ---
 
@@ -9,7 +9,7 @@
 
 ### P1 — Core
 
-#### F6: Coherencia de estilos entre secciones (parcial en F7)
+#### F6: Coherencia de estilos entre secciones ✅
 
 - **Descripción:** Unificar tamaños, márgenes, colores y espaciados en todas las secciones de la home. Partir de auditoría visual de diferencias entre componentes, aplicar tokens CSS existentes, corregir inconsistencias.
 - **Scope (pendiente):**
@@ -62,7 +62,14 @@
     - Sección "Eventos" en `index.astro` con lista de próximos eventos
     - Cada evento: fecha, título, ubicación, enlace externo
     - Fallback si no hay conexión o cambia la URL
-- **Stack:** Por decidir tras evaluar fuente (fetch SSR o estático)
+- **Avance durante esta sesión:**
+    - API REST descubierta en `GET /api/events` (Laravel, paginada, 249 eventos)
+    - Componente `EventList.astro` con fetch build-time en frontmatter
+    - Fallback `src/data/events-fallback.json` (8 eventos destacados)
+    - Sección "Eventos" integrada en `index.astro` + nav (desktop/mobile)
+    - Test de estructura para fallback JSON
+    - Build producción: 30 páginas sin errores
+- **Stack:** Astro fetch (build-time), JSON fallback
 - **Aceptación:**
     - Eventos visibles en home
     - Se actualizan al hacer build (o dinámicamente si hay API)

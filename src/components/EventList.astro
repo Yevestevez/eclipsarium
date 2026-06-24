@@ -1,0 +1,273 @@
+---
+const API_URL = 'https://divulgacion.trioeclipses.es/api/events?per_page=10';
+
+interface ApiEvent {
+    id: number;
+    title: string;
+    date: string;
+    address: string | null;
+    province: string | null;
+    institution: string | null;
+    url: string | null;
+    category: { name: string; slug: string };
+    description: string;
+    image: string | null;
+}
+
+interface EventItem {
+    title: string;
+    date: string;
+    address: string;
+    province: string;
+    category: string;
+    institution: string;
+    url: string | null;
+    description: string;
+}
+
+function formatDate(iso: string): string {
+    const d = new Date(iso);
+    const day = d.getDate();
+    const month = d.toLocaleDateString('es-ES', { month: 'long' });
+    const year = d.getFullYear();
+    const time = d.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
+    return `${day} ${month} ${year} · ${time}`;
+}
+
+function formatShortDate(iso: string): string {
+    const d = new Date(iso);
+    const day = d.getDate();
+    const month = d.toLocaleDateString('es-ES', { month: 'short' });
+    return `${day} ${month}`;
+}
+
+function passed(iso: string): boolean {
+    return new Date(iso) < new Date();
+}
+
+let events: EventItem[] = [];
+let fetchError = false;
+
+try {
+    const res = await fetch(API_URL);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const json = await res.json();
+    const raw: ApiEvent[] = json.data?.data ?? json.data ?? [];
+    events = raw
+        .filter((e: ApiEvent) => !passed(e.date))
+        .slice(0, 10)
+        .map((e: ApiEvent) => ({
+            title: e.title,
+            date: e.date,
+            address: e.address ?? '',
+            province: e.province ?? '',
+            category: e.category?.name ?? '',
+            institution: e.institution ?? '',
+            url: e.url,
+            description: e.description?.replace(/<[^>]*>/g, '').slice(0, 120) ?? '',
+        }));
+    if (events.length === 0) throw new Error('empty');
+} catch {
+    fetchError = true;
+    const fallback = await import('../data/events-fallback.json');
+    events = (Array.isArray(fallback.default) ? fallback.default : fallback)
+        .filter((e: EventItem) => !passed(e.date))
+        .slice(0, 10);
+}
+---
+
+<section id="eventos" class="events section">
+    <div class="shell">
+        <header class="events__head">
+            <span class="eyebrow">Eventos</span>
+            <h2 class="events__title">Próximas actividades</h2>
+            <p class="events__intro">
+                Conferencias, observaciones y actividades divulgativas sobre el eclipse.
+            </p>
+        </header>
+
+        {events.length > 0 ? (
+            <div class="events__grid">
+                {events.map((e) => (
+                    <article class="event-card">
+                        <time class="event-card__date" datetime={e.date}>
+                            <span class="event-card__day">{formatShortDate(e.date).split(' ')[0]}</span>
+                            <span class="event-card__month">{formatShortDate(e.date).split(' ')[1]}</span>
+                        </time>
+                        <div class="event-card__body">
+                            <h3 class="event-card__title">{e.title}</h3>
+                            <p class="event-card__meta">
+                                {e.institution && <span>{e.institution}</span>}
+                                {e.province && <span>{e.province}</span>}
+                            </p>
+                            {e.url ? (
+                                <a href={e.url} class="event-card__link" target="_blank" rel="noopener">
+                                    Más información →
+                                </a>
+                            ) : (
+                                <span class="event-card__link event-card__link--disabled">Entrada libre</span>
+                            )}
+                        </div>
+                    </article>
+                ))}
+            </div>
+        ) : (
+            <p class="events__empty">No hay eventos programados próximamente.</p>
+        )}
+
+        {fetchError && (
+            <p class="events__note">
+                Mostrando datos de referencia. <a href="https://divulgacion.trioeclipses.es/eventos" target="_blank" rel="noopener">Calendario oficial →</a>
+            </p>
+        )}
+
+        <p class="events__cta">
+            <a href="https://divulgacion.trioeclipses.es/eventos" class="btn" target="_blank" rel="noopener">
+                Ver calendario completo
+            </a>
+        </p>
+    </div>
+</section>
+
+<style>
+    .events__head {
+        max-width: 46ch;
+    }
+
+    .events__title {
+        font-size: var(--step-2);
+        margin-top: 1.2rem;
+    }
+
+    .events__intro {
+        margin-top: 1.6rem;
+        color: var(--bone-dim);
+        font-size: var(--step-1);
+        line-height: var(--lh-loose);
+        font-weight: 300;
+    }
+
+    .events__grid {
+        margin-top: clamp(2rem, 5vw, 3.5rem);
+        display: grid;
+        gap: 1px;
+        border: 1px solid var(--line);
+        background: var(--line);
+        border-radius: 0.3rem;
+        overflow: hidden;
+    }
+
+    .event-card {
+        display: flex;
+        gap: 1.2rem;
+        padding: 1.2rem 1.4rem;
+        background: var(--ink-soft);
+        transition: background-color 0.25s var(--ease);
+    }
+
+    .event-card:hover {
+        background: var(--hover-bg-blue);
+    }
+
+    .event-card__date {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 3.4rem;
+        padding: 0.3rem 0.6rem 0.4rem;
+        border-radius: 0.2rem;
+        background: var(--void);
+        align-self: start;
+        flex-shrink: 0;
+    }
+
+    .event-card__day {
+        font-family: var(--font-display);
+        font-size: var(--step-2);
+        line-height: 1;
+        color: var(--space-blue);
+    }
+
+    .event-card__month {
+        font-family: var(--font-mono);
+        font-size: 0.6rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--muted);
+        margin-top: 0.2rem;
+    }
+
+    .event-card__body {
+        min-width: 0;
+    }
+
+    .event-card__title {
+        font-size: var(--step-0);
+        font-weight: 600;
+        line-height: 1.3;
+    }
+
+    .event-card__meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem 1rem;
+        margin-top: 0.4rem;
+        font-family: var(--font-mono);
+        font-size: 0.68rem;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: var(--muted);
+    }
+
+    .event-card__link {
+        display: inline-block;
+        margin-top: 0.6rem;
+        font-size: var(--step--1);
+        color: var(--space-blue);
+        transition: color 0.25s var(--ease);
+    }
+
+    .event-card__link:hover {
+        color: var(--bone);
+    }
+
+    .event-card__link--disabled {
+        color: var(--muted-deep);
+        cursor: default;
+    }
+
+    .events__empty {
+        margin-top: 2rem;
+        color: var(--bone-dim);
+        font-style: italic;
+    }
+
+    .events__note {
+        margin-top: 0.8rem;
+        font-size: var(--step--1);
+        color: var(--muted);
+    }
+
+    .events__note a {
+        color: var(--space-blue);
+    }
+
+    .events__cta {
+        margin-top: 2rem;
+    }
+
+    @media (max-width: 560px) {
+        .event-card {
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .event-card__date {
+            flex-direction: row;
+            gap: 0.3rem;
+            min-width: auto;
+            padding: 0.2rem 0.6rem;
+            align-self: auto;
+        }
+    }
+</style>

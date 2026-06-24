@@ -155,4 +155,4 @@ test/
 
 ## 📄 Licencia
 
-Por definir.
+[MIT](LICENSE) © 2026 Edu Yeves

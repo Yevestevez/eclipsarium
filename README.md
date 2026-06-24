@@ -13,7 +13,8 @@ Web informativa sobre el **eclipse solar total del 12 de agosto de 2026**, visib
 - **v1.4.0:** páginas por localidad + buscador + hover/popup en mapa
 - **v1.5.0:** Nominatim geocoding con búsqueda inteligente (fase mundial + España) + filtro por tipo de lugar + contexto con país
 - **v1.6.0:** Actividades para familias: 6 actividades hands-on + quiz interactivo + enlaces fuente
-- **v1.7.0 (actual):** Modo claro/oscuro con switch sol/luna animado + persistencia localStorage + respeta `prefers-color-scheme` + CSS `:global()` scoping fix + refactor tokens CSS
+- **v1.7.0:** Modo claro/oscuro con switch sol/luna animado + persistencia localStorage + respeta `prefers-color-scheme` + CSS `:global()` scoping fix + refactor tokens CSS
+- **v1.8.0 (actual):** Eventos externos desde API divulgación + `.section__lead` unificado + tokens de espaciado generales (eyebrow→heading, heading→lead)
 
 ## 🎯 Objetivo
 
@@ -50,16 +51,18 @@ src/
 ├── __tests__/        # tests unitarios de páginas
 ├── assets/           # imágenes y svg
 ├── components/       # componentes .astro
+│   ├── AddToCalendar.astro   # botones añadir a calendario (Google, Outlook, .ics)
 │   ├── EclipseMap.astro      # mapa Leaflet con polígono + markers
-│   ├── WhereToWatch.astro    # lista de lugares + buscador + mapa
+│   ├── EventList.astro       # eventos externos desde API + fallback JSON
+│   ├── KidsActivities.astro  # actividades y quiz para familias
 │   ├── PrepChecklist.astro   # checklist interactiva con persistencia
-│   └── KidsActivities.astro  # actividades y quiz para familias
+│   └── WhereToWatch.astro    # lista de lugares + buscador + mapa
 ├── data/             # datos estáticos (JSON + test co-localizado)
 ├── layouts/          # layouts de página
 ├── pages/            # rutas (index.astro, /location/[slug].astro)
 └── styles/           # tokens de diseño CSS
 test/
-└── e2e/              # tests Playwright (home, nav, countdown, checklist, activities, a11y)
+└── e2e/              # tests Playwright (home, nav, countdown, checklist, activities, events, a11y, search)
 ```
 
 ## 📅 El evento
@@ -110,7 +113,17 @@ test/
 - [x] Tests unitarios (Vitest, 60 tests en 9 suites) + E2E (Playwright, 16 tests) + axe a11y
 - [x] Responsivo mobile/desktop
 
-### Sprint 3 ✅ — Modo claro/oscuro (v1.7.0)
+### Sprint 3 ✅ — v1.7.0 · v1.8.0
+
+#### F6: Coherencia de estilos (parcial, v1.7.0)
+
+- [x] `.section__lead` unificado como clase global única — elimina 4 duplicados por componente
+- [x] Tokens de espaciado generales en `tokens.css`: `h2/h3 + .section__lead` (1.6rem), `.eyebrow + h2/h3` (1.2rem)
+- [x] Margen consistente entre eyebrow→heading→lead en todas las secciones
+- [x] Variables hardcodeadas reemplazadas por tokens (EclipseMap, KidsActivities)
+- [x] Build producción 0 errores, 30 páginas
+
+#### F7: Modo claro/oscuro (v1.7.0)
 
 - [x] Paleta clara definida en `tokens.css` con `[data-theme="light"]`
 - [x] Anti-flash script inline en `<head>` para evitar parpadeo al cargar
@@ -125,7 +138,16 @@ test/
 - [x] Variables hardcodeadas reemplazadas por tokens CSS (EclipseMap, KidsActivities)
 - [x] Transición suave `background-color 0.3s, color 0.3s` con guard `prefers-reduced-motion`
 - [x] Nav responsive ≤860px: wrap a segunda línea, space-between
-- [x] Build producción 0 errores, 30+ páginas
+
+#### F8: Eventos planificados (v1.8.0)
+
+- [x] API REST descubierta en `GET /api/events` (Laravel, 249 eventos, paginada)
+- [x] Componente `EventList.astro` con fetch build-time + fallback JSON
+- [x] Sección "Eventos" integrada en `index.astro` con nav links (desktop + mobile)
+- [x] 10 eventos próximos, fecha formateada (ES), provincia, institución, enlace condicional
+- [x] Fuente citada antes de CTA "Ver calendario completo"
+- [x] Fallback `src/data/events-fallback.json` (8 eventos destacados)
+- [x] Tests unitarios (8) + E2E (6 tests, E14–E19)
 
 ### Roadmap
 

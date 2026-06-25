@@ -30,7 +30,10 @@ function formatDate(iso: string): string {
     const day = d.getDate();
     const month = d.toLocaleDateString('es-ES', { month: 'long' });
     const year = d.getFullYear();
-    const time = d.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
+    const time = d.toLocaleTimeString('es-ES', {
+        hour: '2-digit',
+        minute: '2-digit',
+    });
     return `${day} ${month} ${year} · ${time}`;
 }
 
@@ -64,15 +67,20 @@ try {
             category: e.category?.name ?? '',
             institution: e.institution ?? '',
             url: e.url,
-            description: e.description?.replace(/<[^>]*>/g, '').slice(0, 120) ?? '',
+            description:
+                e.description?.replace(/<[^>]*>/g, '').slice(0, 120) ?? '',
         }));
     if (events.length === 0) throw new Error('empty');
 } catch {
     fetchError = true;
     const fallback = await import('../data/events-fallback.json');
-    events = (Array.isArray(fallback.default) ? fallback.default : fallback)
-        .filter((e: EventItem) => !passed(e.date))
-        .slice(0, 10);
+    const fallbackEvents: EventItem[] = (
+        Array.isArray(fallback.default) ? fallback.default : fallback
+    ).map((e) => ({
+        ...e,
+        description: e.description ?? '',
+    }));
+    events = fallbackEvents.filter((e) => !passed(e.date)).slice(0, 10);
 }
 ---
 
@@ -82,51 +90,87 @@ try {
             <span class="eyebrow">Eventos</span>
             <h2 class="events__title">Próximas actividades</h2>
             <p class="section__lead">
-                Conferencias, observaciones y actividades divulgativas sobre el eclipse.
+                Conferencias, observaciones y actividades divulgativas sobre el
+                eclipse.
             </p>
         </header>
 
-        {events.length > 0 ? (
-            <div class="events__grid">
-                {events.map((e) => (
-                    <article class="event-card">
-                        <time class="event-card__date" datetime={e.date}>
-                            <span class="event-card__day">{formatShortDate(e.date).split(' ')[0]}</span>
-                            <span class="event-card__month">{formatShortDate(e.date).split(' ')[1]}</span>
-                        </time>
-                        <div class="event-card__body">
-                            <h3 class="event-card__title">{e.title}</h3>
-                            <p class="event-card__meta">
-                                {e.institution && <span>{e.institution}</span>}
-                                {e.province && <span>{e.province}</span>}
-                            </p>
-                            {e.url ? (
-                                <a href={e.url} class="event-card__link" target="_blank" rel="noopener">
-                                    Más información →
-                                </a>
-                            ) : (
-                                <span class="event-card__link event-card__link--disabled">Entrada libre</span>
-                            )}
-                        </div>
-                    </article>
-                ))}
-            </div>
-        ) : (
-            <p class="events__empty">No hay eventos programados próximamente.</p>
-        )}
+        {
+            events.length > 0 ? (
+                <div class="events__grid">
+                    {events.map((e) => (
+                        <article class="event-card">
+                            <time class="event-card__date" datetime={e.date}>
+                                <span class="event-card__day">
+                                    {formatShortDate(e.date).split(' ')[0]}
+                                </span>
+                                <span class="event-card__month">
+                                    {formatShortDate(e.date).split(' ')[1]}
+                                </span>
+                            </time>
+                            <div class="event-card__body">
+                                <h3 class="event-card__title">{e.title}</h3>
+                                <p class="event-card__meta">
+                                    {e.institution && (
+                                        <span>{e.institution}</span>
+                                    )}
+                                    {e.province && <span>{e.province}</span>}
+                                </p>
+                                {e.url ? (
+                                    <a
+                                        href={e.url}
+                                        class="event-card__link"
+                                        target="_blank"
+                                        rel="noopener"
+                                    >
+                                        Más información →
+                                    </a>
+                                ) : (
+                                    <span class="event-card__link event-card__link--disabled">
+                                        Entrada libre
+                                    </span>
+                                )}
+                            </div>
+                        </article>
+                    ))}
+                </div>
+            ) : (
+                <p class="events__empty">
+                    No hay eventos programados próximamente.
+                </p>
+            )
+        }
 
-        {fetchError && (
-            <p class="events__note">
-                Mostrando datos de referencia. <a href="https://divulgacion.trioeclipses.es/eventos" target="_blank" rel="noopener">Calendario oficial →</a>
-            </p>
-        )}
+        {
+            fetchError && (
+                <p class="events__note">
+                    Mostrando datos de referencia.{' '}
+                    <a
+                        href="https://divulgacion.trioeclipses.es/eventos"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        Calendario oficial →
+                    </a>
+                </p>
+            )
+        }
 
         <p class="events__source">
-            Fuente: <a href="https://divulgacion.trioeclipses.es/eventos" target="_blank" rel="noopener">Divulgación Trio Eclipses</a>
+            Fuente: <a
+                href="https://divulgacion.trioeclipses.es/eventos"
+                target="_blank"
+                rel="noopener">Divulgación Trio Eclipses</a
+            >
         </p>
 
         <p class="events__cta">
-            <a href="https://divulgacion.trioeclipses.es/eventos" class="btn" target="_blank" rel="noopener">
+            <a
+                href="https://divulgacion.trioeclipses.es/eventos"
+                class="btn"
+                target="_blank"
+                rel="noopener"
+            >
                 Ver calendario completo
             </a>
         </p>

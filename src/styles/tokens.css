@@ -135,7 +135,6 @@
 }
 
 html {
-    scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
 }
 
@@ -464,9 +463,6 @@ h3 + .section__lead {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
-    }
     *,
     *::before,
     *::after {

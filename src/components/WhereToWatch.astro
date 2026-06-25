@@ -94,8 +94,6 @@ const sorted = [...data.places].sort((a, b) => {
 </section>
 
 <script>
-    import L from 'leaflet';
-
     function normalize(s: string): string {
         return s
             .normalize('NFD')
@@ -152,10 +150,10 @@ const sorted = [...data.places].sort((a, b) => {
             });
 
             var win = window as Window & {
-                __eclipsariumMarkers?: L.Marker[];
-                __eclipsariumMap?: L.Map;
+                __eclipsariumMarkers?: any[];
+                __eclipsariumMap?: any;
                 __eclipsariumMeta?: WeakMap<
-                    L.Marker,
+                    object,
                     { city: string; region: string }
                 >;
             };
@@ -163,7 +161,7 @@ const sorted = [...data.places].sort((a, b) => {
             var meta = win.__eclipsariumMeta;
             var map = win.__eclipsariumMap;
             if (markers && meta && map) {
-                markers.forEach(function (m: L.Marker) {
+                markers.forEach(function (m) {
                     var d = meta!.get(m);
                     if (!d) return;
                     var city = normalize(d.city || '');

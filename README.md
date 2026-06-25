@@ -1,182 +1,240 @@
-# Eclipse 2026 🌑
+<p align="center">
+  <img alt="ECLIPSARIUM" src="./.github/screenshots/home-dark.png" width="720">
+</p>
 
-Web informativa sobre el **eclipse solar total del 12 de agosto de 2026**, visible en gran parte de España.
+<p align="center">
+  <strong>Informational website about the total solar eclipse on August 12, 2026</strong>
+  <br>
+  <em>Spain's first total solar eclipse in over a century.</em>
+</p>
 
-> Tras casi un siglo sin un eclipse solar total visible desde la península, España vivirá uno de los eventos astronómicos más esperados del siglo.
+<p align="center">
+  <a href="https://eclipsarium.vercel.app/">🌐 eclipsarium.vercel.app</a>
+  ·
+  <a href="#features">Features</a>
+  ·
+  <a href="#stack">Stack</a>
+  ·
+  <a href="#testing">Testing</a>
+  ·
+  <a href="CHANGELOG.md">Changelog</a>
+</p>
 
-## 🌐 Despliegue
+<p align="center">
+  <img src="https://img.shields.io/badge/version-1.10.0-blue?style=flat-square" alt="version">
+  <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="license">
+  <img src="https://img.shields.io/badge/Astro-6.4.2-purple?style=flat-square" alt="Astro">
+  <img src="https://img.shields.io/badge/tests-87%20unit%20|%2092%20e2e-brightgreen?style=flat-square" alt="tests">
+  <img src="https://img.shields.io/badge/PRs-welcome-orange?style=flat-square" alt="PRs welcome">
+</p>
 
-- **v1.0.0 (MVP):** https://eclipsarium.vercel.app/
-- **v1.1.0 (mapa):** mapa interactivo con franja de totalidad y localizaciones
-- **v1.2.0 (calendario):** botones añadir evento a calendario
-- **v1.3.0 (checklist):** recomendaciones y checklist interactiva de preparación
-- **v1.4.0:** páginas por localidad + buscador + hover/popup en mapa
-- **v1.5.0:** Nominatim geocoding con búsqueda inteligente (fase mundial + España) + filtro por tipo de lugar + contexto con país
-- **v1.6.0:** Actividades para familias: 6 actividades hands-on + quiz interactivo + enlaces fuente
-- **v1.7.0:** Modo claro/oscuro con switch sol/luna animado + persistencia localStorage + respeta `prefers-color-scheme` + CSS `:global()` scoping fix + refactor tokens CSS
-- **v1.8.0:** Eventos externos desde API divulgación + `.section__lead` unificado + tokens de espaciado generales (eyebrow→heading, heading→lead)
-- **v1.9.0:** FAQ + mitos sobre eclipses con acordeón interactivo. Tema oscuro por defecto (ignora `prefers-color-scheme`).
-- **v1.10.0 (actual):** Quiz general independiente con 12 preguntas (V/F), 4 categorías, récord en localStorage. Datos migrados a `quiz.json`.
+<p align="center">
+  🌐 <strong>Site in Spanish</strong> — content is aimed at Spanish-speaking audiences.
+  <a href="README-es.md">Leer en español →</a>
+</p>
 
-## 🎯 Objetivo
+---
 
-Punto de referencia divulgativo y atractivo para el público general:
-
-- Explicar **qué es un eclipse solar** mediante animación interactiva.
-- Ofrecer **información del evento** del 12 de agosto de 2026 en España.
-- Indicar **dónde y cuándo verlo** (franja de totalidad, horarios, mejores ubicaciones).
-- Promover la **observación segura** del Sol.
-
-## 🛠️ Stack
-
-- [Astro](https://astro.build/) `^6.4.2`
-- [Leaflet](https://leafletjs.com/) `^1.9.4` — mapa interactivo con CartoDB tiles (dark_all / light_all)
-- [Vitest](https://vitest.dev/) `^4.1.9` — tests unitarios
-- [Playwright](https://playwright.dev/) `^1.61.0` — tests E2E + accesibilidad (axe-core)
-- Node `>=22.13.0` · pnpm
-
-## 🚀 Inicio rápido
-
-```bash
-pnpm install
-pnpm dev              # servidor desarrollo (http://localhost:4321)
-pnpm build            # build producción
-pnpm preview          # previsualizar build
-pnpm test             # tests unitarios (Vitest)
-pnpm test:e2e         # tests E2E (Playwright)
-```
-
-## 📁 Estructura
-
-```
-src/
-├── __tests__/        # tests unitarios de páginas
-├── assets/           # imágenes y svg
-├── components/       # componentes .astro
-│   ├── AddToCalendar.astro   # botones añadir a calendario (Google, Outlook, .ics)
-│   ├── EclipseMap.astro      # mapa Leaflet con polígono + markers
-│   ├── EventList.astro       # eventos externos desde API + fallback JSON
-│   ├── FaqMyths.astro        # FAQ + mitos con acordeón
-│   ├── KidsActivities.astro  # actividades y quiz para familias
-│   ├── PrepChecklist.astro   # checklist interactiva con persistencia
-│   ├── QuizGeneral.astro     # quiz general de 12 preguntas V/F
-│   └── WhereToWatch.astro    # lista de lugares + buscador + mapa
-├── data/             # datos estáticos (JSON + test co-localizado)
-├── layouts/          # layouts de página
-├── pages/            # rutas (index.astro, /location/[slug].astro)
-└── styles/           # tokens de diseño CSS
-test/
-└── e2e/              # tests Playwright (home, nav, countdown, checklist, activities, quiz-general, events, a11y, search)
-```
-
-## 📅 El evento
-
-- **Fecha:** 12 de agosto de 2026
-- **Tipo:** eclipse solar total
-- **Visibilidad:** franja de totalidad cruzando el norte y centro-este peninsular; parcial en el resto.
-
-> ⚠️ **Seguridad:** nunca mirar al Sol sin protección certificada ISO 12312-2.
+<a id="features"></a>
 
 ## ✨ Features
 
-### Sprint 1 ✅ — MVP (v1.0.0)
+|     |                                                                                                                                                                 |
+| --- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 🌑  | **Eclipse animation** — Sun, Moon, umbra, partial → total phases. CSS-driven, respects `prefers-reduced-motion`.                                                |
+| 🗺️  | **Interactive map** — Leaflet + CartoDB tiles. NASA/JPL polygon (83 pts). 29 locations, 3 categories (total/edge/partial). Hover popups + click to detail page. |
+| 🔍  | **Location search** — JS client-side filter + Nominatim geocoding (2-phase: worldwide settlements → Spain streets). Ray-casting point-in-polygon.               |
+| 📅  | **Calendar integration** — Google Calendar, Apple Calendar (webcal with 3 alarms), Outlook, `.ics` download.                                                    |
+| ✅  | **Preparation checklist** — 14 items with localStorage persistence, progress bar, 3-column recommendations, safety warnings.                                    |
+| 👨‍👩‍👧‍👦  | **Family activities** — 6 hands-on activities with materials, steps, science explanations. Kids quiz (5 V/F questions).                                         |
+| ❓  | **General knowledge quiz** — 12 V/F questions across 4 categories (Eclipses, Solar System, Myths, Curiosities). Score + best record via localStorage.           |
+| 🌗  | **Dark/light theme** — Animated sun/moon toggle. Persists in localStorage. Respects `prefers-color-scheme`. Map tiles swap via MutationObserver.                |
+| 📰  | **Upcoming events** — Fetched from external API at build time. Fallback JSON if API unavailable.                                                                |
+| 💬  | **FAQ + myth-busting** — 10 real questions + 6 debunked myths. `<details>` accordion, sourced from NASA/ESA.                                                    |
+| ♿  | **Accessible** — axe-core: 0 critical violations. Semantic HTML, `aria-live` regions, `prefers-reduced-motion`.                                                 |
+| 📱  | **Responsive** — Mobile-first, works from 360px.                                                                                                                |
 
-- [x] Animación eclipse solar (Sol, Luna, sombra, fases)
-- [x] Información del evento (fecha, hora, duración, magnitud)
-- [x] Dónde verlo (texto + datos)
-- [x] Cuenta atrás al evento
-- [x] Navegación responsive con menú hamburguesa
+Full changelog → [`CHANGELOG.md`](CHANGELOG.md)
 
-### Sprint 2 ✅ — Mapa + Calendario + Checklist + Páginas + Buscador + Geocoding (v1.5.0)
+---
 
-- [x] Mapa Leaflet con tiles CartoDB dark_all
-- [x] Polígono de totalidad con coordenadas reales NASA/JPL (83 puntos)
-- [x] 29 localizaciones con 3 categorías: total (azul), borde (azul oscuro), parcial (gris)
-- [x] Labels y dots con colores por tipo
-- [x] Lista ordenada por duración de totalidad
-- [x] Botones calendario: Google Calendar, Apple Calendar (webcal con avisos), Outlook
-- [x] Archivo .ics con 3 alarmas predefinidas (1 semana, 1 día, 1 hora)
-- [x] Checklist interactiva de preparación: recomendaciones (3 columnas desktop), 14 ítems checklist con persistencia localStorage y barra de progreso, advertencias de seguridad ocular
-- [x] Hover en markers del mapa: dot escala + glow, popup con datos + enlace
-- [x] Popup hover persistente (mouseenter cancela cierre)
-- [x] Click en marker / lista → navega a `/location/[slug]`
-- [x] 29 páginas individuales `/location/[slug]` con getStaticPaths
-- [x] Buscador JS client-side: filtra lista + mapa por ciudad/región/tipo
-- [x] Tests unitarios (Vitest, 41 tests en 7 suites) + E2E (Playwright)
-- [x] Nominatim geocoding: búsqueda en 2 fases (mundial settlements → España streets/cód.postal)
-- [x] Filtro `addresstype` (city/town/village/hamlet/municipality) — evita calles confusas
-- [x] Contexto de localización con país siempre visible
-- [x] Ciudad en negrita azul, contexto gris, énfasis blanco
-- [x] CSS scoping fix (`:global()`) para contenido dinámico de búsqueda
+<a id="stack"></a>
 
-### Sprint 2 ✅ — Actividades para Familias (v1.6.0)
+## 🛠️ Stack
 
-- [x] 6 actividades prácticas con materiales, pasos, tips y explicación científica
-- [x] Mini-quiz interactivo 5 preguntas Verdadero/Falso con feedback y localStorage
-- [x] Enlace "Fuente:" por actividad a recurso externo (NASA Space Place, Exploratorium)
-- [x] Tests unitarios (Vitest, 60 tests en 9 suites) + E2E (Playwright, 16 tests) + axe a11y
-- [x] Responsivo mobile/desktop
+| Layer      | Technology                                                                                                        |
+| ---------- | ----------------------------------------------------------------------------------------------------------------- |
+| Framework  | [Astro](https://astro.build/) `^6.4.2` — static site generation, island architecture                              |
+| Map        | [Leaflet](https://leafletjs.com/) `^1.9.4` + CartoDB tiles (dark_all / light_all)                                 |
+| Geocoding  | [Nominatim](https://nominatim.org/) — 2-phase worldwide + Spain                                                   |
+| CSS        | Custom properties (design tokens), scoped styles per component                                                    |
+| Language   | [TypeScript](https://www.typescriptlang.org/) — types in frontmatter `.astro`, vanilla scripts, tests             |
+| Unit tests | [Vitest](https://vitest.dev/) `^4.1.9` — 87 tests, 13 suites                                                      |
+| E2E + a11y | [Playwright](https://playwright.dev/) `^1.61.0` + [axe-core](https://www.deque.com/axe/) — 92 tests, 9 spec files |
+| Runtime    | Node `>=22.13.0` · pnpm                                                                                           |
 
-### Sprint 3 ✅ — v1.7.0 · v1.8.0 · v1.9.0
+---
 
-#### F6: Coherencia de estilos (parcial, v1.7.0)
+## 🚀 Quick start
 
-- [x] `.section__lead` unificado como clase global única — elimina 4 duplicados por componente
-- [x] Tokens de espaciado generales en `tokens.css`: `h2/h3 + .section__lead` (1.6rem), `.eyebrow + h2/h3` (1.2rem)
-- [x] Margen consistente entre eyebrow→heading→lead en todas las secciones
-- [x] Variables hardcodeadas reemplazadas por tokens (EclipseMap, KidsActivities)
-- [x] Build producción 0 errores, 30 páginas
+```bash
+pnpm install
+pnpm dev              # http://localhost:4321
+pnpm build            # static output → dist/
+pnpm preview          # serve built output
+pnpm test             # unit tests (Vitest)
+pnpm test:e2e         # E2E tests (Playwright)
+pnpm test:c           # unit tests with coverage
+```
 
-#### F7: Modo claro/oscuro (v1.7.0)
+---
 
-- [x] Paleta clara definida en `tokens.css` con `[data-theme="light"]`
-- [x] Anti-flash script inline en `<head>` para evitar parpadeo al cargar
-- [x] Switch sol/luna animado (rotate + fade 0.4s, respeta `prefers-reduced-motion`)
-- [x] Sol visible en modo oscuro (click → modo claro), luna en modo claro (click → modo oscuro)
-- [x] Persistencia en localStorage
-- [x] `prefers-color-scheme` en primera visita
-- [x] Mapa Leaflet cambia tiles (`dark_all` ↔ `light_all`) vía MutationObserver
-- [x] Starfield + grain ocultos en modo claro
-- [x] Badges de borde con texto blanco en modo claro
-- [x] CSS `:global()` fix para selectores `[data-theme]` en Astro scoped styles
-- [x] Variables hardcodeadas reemplazadas por tokens CSS (EclipseMap, KidsActivities)
-- [x] Transición suave `background-color 0.3s, color 0.3s` con guard `prefers-reduced-motion`
-- [x] Nav responsive ≤860px: wrap a segunda línea, space-between
+## 📁 Structure
 
-#### F8: Eventos planificados (v1.8.0)
+```
+src/
+├── __tests__/              # page-level unit tests
+├── components/             # Astro components
+│   ├── AddToCalendar.astro # calendar buttons (Google, Outlook, .ics)
+│   ├── EclipseMap.astro    # Leaflet map with polygon + markers
+│   ├── EventList.astro     # external events API + fallback JSON
+│   ├── FaqMyths.astro      # FAQ + myths accordion
+│   ├── KidsActivities.astro# family activities + kids quiz
+│   ├── PrepChecklist.astro # interactive checklist with persistence
+│   ├── QuizGeneral.astro   # general knowledge quiz (12 V/F)
+│   └── WhereToWatch.astro  # location list + search + map
+├── data/                   # static JSON + co-located tests
+│   ├── activities.json
+│   ├── event.json
+│   ├── events-fallback.json
+│   ├── faq.json
+│   ├── locations.json
+│   └── quiz.json
+├── layouts/
+│   └── Layout.astro        # base layout, anti-flash script, meta
+├── pages/
+│   ├── index.astro         # single-page home
+│   └── location/[slug].astro # 29 detail pages
+├── styles/
+│   └── tokens.css          # design tokens (colors, typography, spacing)
+test/
+└── e2e/                    # Playwright test files
+```
 
-- [x] API REST descubierta en `GET /api/events` (Laravel, 249 eventos, paginada)
-- [x] Componente `EventList.astro` con fetch build-time + fallback JSON
-- [x] Sección "Eventos" integrada en `index.astro` con nav links (desktop + mobile)
-- [x] 10 eventos próximos, fecha formateada (ES), provincia, institución, enlace condicional
-- [x] Fuente citada antes de CTA "Ver calendario completo"
-- [x] Fallback `src/data/events-fallback.json` (8 eventos destacados)
-- [x] Tests unitarios (8) + E2E (6 tests, E14–E19)
+**Pattern:** tests are co-located with their source — each `.astro` component has a `.test.ts` next to it. Same for JSON data files.
 
-#### F9: FAQ y mitos (v1.9.0)
+---
 
-- [x] 10 preguntas frecuentes reales con respuesta científica
-- [x] 6 mitos desmentidos con explicación breve
-- [x] Datos en `faq.json` con estructura `{ q, a, source: { name, url } }`
-- [x] Componente `FaqMyths.astro` con `<details>` acordeón
-- [x] FAQ y mitos en bloques separados + enlace fuente por card
-- [x] Fuentes inline como enlaces `target="_blank"`
-- [x] Sección #preguntas integrada en `index.astro` con nav links
-- [x] Tema oscuro por defecto en primera visita (ignora `prefers-color-scheme`)
-- [x] Build producción sin errores (30 páginas)
+<a id="testing"></a>
 
-#### F10: Quiz general (v1.10.0)
+## 🧪 Testing
 
-- [x] Datos de quiz en `src/data/quiz.json` (12 preguntas, 4 categorías)
-- [x] Componente `QuizGeneral.astro` con badge de categoría, feedback, progreso, récord en localStorage
-- [x] Selectores JS scoped via `data-quiz-general` para coexistir con KidsActivities
-- [x] Sección #quiz-general integrada en `index.astro` con nav links
-- [x] Quiz infantil (F5) intacto sin cambios
-- [x] Tests unitarios (16) + E2E (10 tests, E38–E42)
-- [x] Build producción sin errores (30 páginas)
+Three layers, all runnable without external services:
 
-### Roadmap
+| Layer         | Tool       | Count                   | Scope                                                             |
+| ------------- | ---------- | ----------------------- | ----------------------------------------------------------------- |
+| Unit          | Vitest     | 87 tests / 13 suites    | Component rendering, data structure validation, fallback coverage |
+| E2E           | Playwright | 92 tests / 9 spec files | Navigation, interactivity, scroll, quiz flow, search              |
+| Accessibility | axe-core   | Integrated in E2E       | 0 critical violations across all key sections                     |
 
-## 📄 Licencia
+**Key practices:**
+
+- Components tested via `AstroContainer.renderToString()` — no browser needed for unit tests
+- Data files validated: schema, required fields, uniqueness
+- External API mocked via `vi.stubGlobal` — tests never hit real endpoints
+- E2E tests run on both Chromium and mobile viewport
+- CI-ready: `pnpm test && pnpm test:e2e`
+
+---
+
+## 🏗️ Architecture
+
+### Static-first
+
+Built as a fully static site (Astro SSG). Zero server runtime. Data fetched at build time via Astro frontmatter. This means:
+
+- **Fast:** pre-rendered HTML, no JS waterfall
+- **Cheap:** can deploy to any static host (Vercel, Netlify, GitHub Pages)
+- **Resilient:** external API failures don't break the site — fallback JSON files ship with the build
+
+### Component pattern
+
+Each feature is a self-contained Astro component:
+
+```
+component.astro
+├── frontmatter   → import data, render HTML
+├── template      → semantic HTML with scoped CSS classes
+├── <script>      → vanilla JS for interactivity (no framework)
+└── <style>       → scoped CSS, design tokens via var()
+```
+
+No React, no Vue, no client JS framework. Just Astro + vanilla JS where needed. This keeps the bundle tiny and the mental model simple.
+
+### Design tokens
+
+All visual properties defined as CSS custom properties in `tokens.css`:
+
+```css
+--space-blue: #4a9eff;
+--bone: #e8e6e3;
+--font-accent: 'Instrument Serif', serif;
+--step-0: clamp(1rem, 0.9vw + 0.5rem, 1.25rem);
+```
+
+Components reference these variables — never hardcode colors or sizes. The `[data-theme="light"]` selector swaps the palette for light mode.
+
+### Data isolation
+
+Content lives in `src/data/*.json`. Components import and render it. Editing copy never requires touching component code. External data (events API) has a local JSON fallback that ships with every build.
+
+### State management
+
+All client state uses `localStorage` — no global state library. Keys are namespaced per feature:
+
+- `eclipsarium-checklist`
+- `eclipsarium-quiz-best`
+- `eclipsarium-quiz-general-best`
+- `theme`
+
+### JS scoping
+
+Components sharing the DOM use unique data attributes for their JS selectors (`data-quiz-general` vs `data-quiz`) to avoid collisions when multiple instances coexist on the same page.
+
+---
+
+## 📊 Quality
+
+| Metric               | Status                                          |
+| -------------------- | ----------------------------------------------- |
+| Lighthouse (desktop) | 94 / 94 / 100 / 100                             |
+| Lighthouse (mobile)  | 73 / 94 / 100 / 100                             |
+| axe-core             | 0 critical violations                           |
+| Responsive           | Works from 360px to 4K                          |
+| Theme                | Dark (default) + Light with animated toggle     |
+| Build                | 30 static pages, 0 errors                       |
+| Motion               | All animations respect `prefers-reduced-motion` |
+
+---
+
+## 🤝 Contributing
+
+1. Fork and clone.
+2. `pnpm install`
+3. Create a branch: `feat/your-feature` or `fix/your-bug`
+4. Write tests first (data validation for JSON changes, component render for UI).
+5. Ensure `pnpm test && pnpm test:e2e` passes.
+6. Open a PR with a clear description.
+
+**Conventions:**
+
+- ESLint + Prettier via `prettier-plugin-astro`
+- Conventional commits: `feat:`, `fix:`, `test:`, `refactor:`
+- Tests co-located with source files
+- Data in JSON, never hardcoded
+
+---
+
+## 📄 License
 
 [MIT](LICENSE) © 2026 Edu Yeves

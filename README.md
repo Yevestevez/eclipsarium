@@ -14,7 +14,8 @@ Web informativa sobre el **eclipse solar total del 12 de agosto de 2026**, visib
 - **v1.5.0:** Nominatim geocoding con búsqueda inteligente (fase mundial + España) + filtro por tipo de lugar + contexto con país
 - **v1.6.0:** Actividades para familias: 6 actividades hands-on + quiz interactivo + enlaces fuente
 - **v1.7.0:** Modo claro/oscuro con switch sol/luna animado + persistencia localStorage + respeta `prefers-color-scheme` + CSS `:global()` scoping fix + refactor tokens CSS
-- **v1.8.0 (actual):** Eventos externos desde API divulgación + `.section__lead` unificado + tokens de espaciado generales (eyebrow→heading, heading→lead)
+- **v1.8.0:** Eventos externos desde API divulgación + `.section__lead` unificado + tokens de espaciado generales (eyebrow→heading, heading→lead)
+- **v1.9.0 (actual):** FAQ + mitos sobre eclipses con acordeón interactivo. Tema oscuro por defecto (ignora `prefers-color-scheme`).
 
 ## 🎯 Objetivo
 
@@ -113,7 +114,7 @@ test/
 - [x] Tests unitarios (Vitest, 60 tests en 9 suites) + E2E (Playwright, 16 tests) + axe a11y
 - [x] Responsivo mobile/desktop
 
-### Sprint 3 ✅ — v1.7.0 · v1.8.0
+### Sprint 3 ✅ — v1.7.0 · v1.8.0 · v1.9.0
 
 #### F6: Coherencia de estilos (parcial, v1.7.0)
 
@@ -149,9 +150,19 @@ test/
 - [x] Fallback `src/data/events-fallback.json` (8 eventos destacados)
 - [x] Tests unitarios (8) + E2E (6 tests, E14–E19)
 
-### Roadmap
+#### F9: FAQ y mitos (v1.9.0)
 
-- [ ] FAQ y mitos sobre eclipses
+- [x] 10 preguntas frecuentes reales con respuesta científica
+- [x] 6 mitos desmentidos con explicación breve
+- [x] Datos en `faq.json` con estructura `{ q, a, source: { name, url } }`
+- [x] Componente `FaqMyths.astro` con `<details>` acordeón
+- [x] FAQ y mitos en bloques separados + enlace fuente por card
+- [x] Fuentes inline como enlaces `target="_blank"`
+- [x] Sección #preguntas integrada en `index.astro` con nav links
+- [x] Tema oscuro por defecto en primera visita (ignora `prefers-color-scheme`)
+- [x] Build producción sin errores (30 páginas)
+
+### Roadmap
 
 ## 📄 Licencia
 

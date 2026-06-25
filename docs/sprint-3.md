@@ -1,7 +1,7 @@
 # Sprint 3 — Eclipse 2026
 
 **Deadline:** viernes 26 de junio de 2026
-**Estado:** ✅ En progreso (F7 ✅, F8 ✅, F6 parcial)
+**Estado:** ✅ Completado
 
 ---
 
@@ -83,21 +83,25 @@
 
 ---
 
-#### F9: FAQ y mitos sobre eclipses
+#### F9: FAQ y mitos sobre eclipses ✅
 
 - **Descripción:** Sección de preguntas frecuentes y mitos comunes sobre eclipses. Formato acordeón. Fuentes: NASA, ESA, agencias oficiales.
-- **Scope:**
-    - FAQ: 8–12 preguntas reales (¿por qué no hay eclipse cada mes? ¿se puede mirar? etc.)
-    - Mitos: 5–8 mitos desmentidos con explicación breve
-    - Componente acordeón (`<details>`) con datos en JSON
-    - Fuentes citadas al final
-- **Stack:** Astro, `<details>` / TS
-- **Ubicación:** Sección en `index.astro` (componente `FaqMyths.astro` o similar)
+- **Scope completado:**
+    - FAQ: 10 preguntas reales (frecuencia, seguridad, duración, totalidad, animales, predicción, parcial vs total, frecuencia local, otros planetas, solar vs lunar)
+    - Mitos: 6 mitos desmentidos (augurios, embarazo, radiación, gafas de sol, oscuridad total, duración)
+    - Datos en `src/data/faq.json` con estructura `{ q, a, source: { name, url } }`
+    - Componente `FaqMyths.astro` con `<details>` acordeón, pregunta→respuesta separadas, enlace fuente por card
+    - FAQ y mitos en bloques separados con subheading
+    - Sección #preguntas integrada en `index.astro` con nav links (desktop + mobile)
+    - Fuentes inline como enlaces `target="_blank"` — sin bloque de fuentes separado
+    - Acordeón responsive, theme-aware, borde azul al abrir
+- **Stack:** Astro, `<details>` / TS, JSON
+- **Ubicación:** `src/components/FaqMyths.astro` · `src/data/faq.json`
 - **Aceptación:**
-    - FAQ y mitos en secciones separadas dentro del mismo componente
-    - Acordeón funcional, responsive
-    - Cada item cita fuente
-    - Build producción sin errores
+    - [x] FAQ y mitos en secciones separadas dentro del mismo componente
+    - [x] Acordeón funcional, responsive
+    - [x] Cada item cita fuente como enlace
+    - [x] Build producción sin errores (30 páginas)
 
 ---
 
@@ -126,7 +130,7 @@
 | F6 Estilos    | —              | Auditoría visual + refactor CSS                           |
 | F7 Modo claro | F6             | Tema claro se basa en tokens unificados                   |
 | F8 Eventos    | Fuente externa | Evaluar si hay API o scraper; fallback contenido estático |
-| F9 FAQ        | Contenido      | Investigación en fuentes oficiales                        |
+| F9 FAQ        | ✅ Completado    | —                                                         |
 | F10 Quiz      | —              | Datos en JSON, desacoplado                                |
 
 ## ✅ Definition of Done
@@ -140,7 +144,7 @@
 - [x] F7: Anti-flash script evita parpadeo
 - [x] F7: Transición animada con soporte prefers-reduced-motion
 - [x] F8: Eventos visibles desde API externa + fallback JSON
-- [ ] F9: FAQ + mitos con acordeón y fuentes
+- [x] F9: FAQ + mitos con acordeón y fuentes
 - [ ] F10: Quiz ampliado con datos en JSON
 - [ ] F10: Quiz general independiente del infantil
 - [x] Build producción sin errores (30 páginas)

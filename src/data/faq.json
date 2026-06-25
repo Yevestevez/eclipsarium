@@ -1,0 +1,86 @@
+{
+  "faq": [
+    {
+      "q": "¿Por qué no hay un eclipse solar cada mes?",
+      "a": "La Luna orbita la Tierra cada ~29.5 días, pero su órbita está inclinada ~5° respecto al plano de la eclíptica (el plano en el que la Tierra orbita el Sol). Para que haya un eclipse solar, la Luna debe estar exactamente entre la Tierra y el Sol en el momento de luna nueva, y además alineada en el mismo plano. La mayoría de las lunas nuevas pasan ligeramente por encima o por debajo del Sol desde nuestra perspectiva, por lo que no se produce eclipse.",
+      "source": { "name": "NASA — Solar Eclipses", "url": "https://science.nasa.gov/eclipses/" }
+    },
+    {
+      "q": "¿Se puede mirar un eclipse solar sin protección?",
+      "a": "Nunca. Mirar directamente al Sol sin protección certificada puede causar daño retinal permanente o ceguera en segundos, incluso si el Sol está parcialmente cubierto. La única excepción segura son los breves minutos de totalidad (cuando la Luna cubre completamente el Sol), pero debes saber exactamente cuándo empieza y termina la totalidad. Usa siempre gafas de eclipse con certificación ISO 12312-2.",
+      "source": { "name": "NASA — Eye Safety", "url": "https://science.nasa.gov/eclipses/safety/" }
+    },
+    {
+      "q": "¿Cuánto dura un eclipse solar total?",
+      "a": "La totalidad —la fase en que la Luna cubre completamente el Sol— dura como máximo unos 7 minutos y medio, aunque lo más habitual son 2-4 minutos. La duración depende de la posición de la Tierra respecto al Sol, la distancia de la Luna, y la ubicación del observador dentro del camino de totalidad. El eclipse del 12 de agosto de 2026 tendrá una totalidad de aproximadamente 1 minuto y 49 segundos en el norte de España.",
+      "source": { "name": "ESA — Eclipse 2026", "url": "https://www.esa.int/Space_in_Member_States/Spain/Eclipse_2026" }
+    },
+    {
+      "q": "¿Qué es la totalidad?",
+      "a": "La totalidad es la fase de un eclipse solar total en la que la Luna cubre por completo el disco solar, visto desde la Tierra. Durante ese breve periodo, el cielo se oscurece como si fuera de noche, se ven estrellas y planetas, la temperatura desciende, y la corona solar (la atmósfera exterior del Sol) se vuelve visible a simple vista. Es la única fase que se puede mirar sin protección ocular.",
+      "source": { "name": "NASA — What Is a Total Solar Eclipse?", "url": "https://science.nasa.gov/eclipses/" }
+    },
+    {
+      "q": "¿Los eclipses solares afectan a los animales?",
+      "a": "Sí. Durante un eclipse solar total se han documentado comportamientos anómalos en animales: aves que dejan de cantar y se posan como al anochecer, animales crepusculares que emergen, insectos que inician sus rituales nocturnos, y ganado que se dirige a los establos. Al terminar la totalidad, los animales suelen retomar su comportamiento diurno. Estos efectos son temporales y no causan daño.",
+      "source": { "name": "NOAA — Animal Behavior During Eclipses", "url": "https://www.noaa.gov/" }
+    },
+    {
+      "q": "¿Se pueden predecir los eclipses?",
+      "a": "Sí, con enorme precisión. Los astrónomos pueden predecir eclipses con siglos de antelación gracias al ciclo de Saros, un periodo de aproximadamente 18 años y 11 días tras el cual el Sol, la Luna y la Tierra vuelven casi a la misma posición relativa. Las predicciones modernas usan mecánica celeste y modelos orbitales para calcular la fecha, hora, duración y trayectoria de cualquier eclipse.",
+      "source": { "name": "NASA — Eclipse Predictions", "url": "https://eclipse.gsfc.nasa.gov/" }
+    },
+    {
+      "q": "¿Qué diferencia hay entre un eclipse parcial y uno total?",
+      "a": "En un eclipse parcial, la Luna cubre solo una parte del disco solar, por lo que el Sol tiene forma de medialuna. En un eclipse total, la Luna cubre completamente el Sol durante unos minutos, revelando la corona solar. La fase total solo es visible desde una estrecha franja de la superficie terrestre (el camino de totalidad), mientras que desde áreas cercanas se ve como parcial.",
+      "source": { "name": "ESA — Types of Solar Eclipses", "url": "https://www.esa.int/" }
+    },
+    {
+      "q": "¿Cada cuánto ocurre un eclipse solar total en un mismo lugar?",
+      "a": "De media, un punto concreto de la Tierra experimenta un eclipse solar total aproximadamente cada 375 años. Esto se debe a que el camino de totalidad es muy estrecho (normalmente entre 100 y 250 km de ancho) y la mayor parte de la superficie terrestre está cubierta por océanos. Para España, el último eclipse solar total visible desde tierra firme fue en 1905, y el próximo será el 12 de agosto de 2026.",
+      "source": { "name": "NASA — Eclipse Frequency", "url": "https://science.nasa.gov/eclipses/" }
+    },
+    {
+      "q": "¿Hay eclipses solares en otros planetas?",
+      "a": "Sí, cualquier planeta con lunas puede experimentar eclipses solares. Marte tiene eclipses causados por Fobos y Deimos, aunque son breves y no cubren completamente el disco solar. Júpiter y Saturno, con sus numerosas lunas, tienen eclipses frecuentes. Sin embargo, los eclipses totales como los de la Tierra son especialmente raros porque requieren una coincidencia muy precisa entre el tamaño aparente de la luna y el del sol.",
+      "source": { "name": "NASA — Eclipses in the Solar System", "url": "https://science.nasa.gov/eclipses/" }
+    },
+    {
+      "q": "¿Qué diferencia hay entre un eclipse solar y uno lunar?",
+      "a": "Un eclipse solar ocurre cuando la Luna se interpone entre la Tierra y el Sol, proyectando su sombra sobre la Tierra. Ocurre durante el día y solo es visible desde una región limitada. Un eclipse lunar ocurre cuando la Tierra se interpone entre el Sol y la Luna, proyectando su sombra sobre la Luna. Ocurre de noche y es visible desde todo el hemisferio nocturno de la Tierra. Los eclipses lunares son mucho más frecuentes y seguros de ver a simple vista.",
+      "source": { "name": "NASA — Solar vs. Lunar Eclipses", "url": "https://science.nasa.gov/eclipses/" }
+    }
+  ],
+  "myths": [
+    {
+      "myth": "Los eclipses son malos augurios o señales divinas",
+      "truth": "En muchas culturas antiguas, los eclipses se interpretaban como presagios de catástrofes o intervenciones divinas. Hoy sabemos que son fenómenos astronómicos perfectamente predecibles, causados por el movimiento orbital de la Luna alrededor de la Tierra. No tienen ningún efecto sobre el destino humano.",
+      "source": { "name": "NASA — Eclipse Myths", "url": "https://science.nasa.gov/eclipses/" }
+    },
+    {
+      "myth": "Las mujeres embarazadas no deben ver un eclipse porque daña al feto",
+      "truth": "No hay ninguna base científica para esta creencia. La única preocupación real durante un eclipse es la seguridad ocular al mirar al Sol sin protección, que aplica a cualquier persona independientemente de su estado. La luz solar no emite radiación especial durante un eclipse.",
+      "source": { "name": "NASA — Eclipse Myths", "url": "https://science.nasa.gov/eclipses/" }
+    },
+    {
+      "myth": "Los eclipses emiten radiación dañina",
+      "truth": "Durante un eclipse, el Sol no emite ningún tipo de radiación diferente a la habitual. La única radiación relevante es la luz visible e infrarroja, que puede dañar la retina si se mira directamente —exactamente igual que en un día sin eclipse. No hay radiación electromagnética especial ni partículas peligrosas adicionales.",
+      "source": { "name": "ESA — Eclipse FAQ", "url": "https://www.esa.int/" }
+    },
+    {
+      "myth": "Las gafas de sol normales protegen para ver un eclipse",
+      "truth": "Falso. Las gafas de sol convencionales, incluso las muy oscuras, no filtran la radiación infrarroja y ultravioleta suficiente para proteger la retina. Solo las gafas de eclipse certificadas con la norma ISO 12312-2 o filtros solares específicos para astronomía son seguros. Mirar a través de una cámara, telescopio o prismáticos sin filtro solar también es peligroso.",
+      "source": { "name": "NASA — Eye Safety", "url": "https://science.nasa.gov/eclipses/safety/" }
+    },
+    {
+      "myth": "Los eclipses solares solo ocurren durante el día (obvio, pero malinterpretado)",
+      "truth": "Aunque parezca obvio que un eclipse solar ocurre de día, mucha gente cree erróneamente que el cielo se oscurece por completo en todo el planeta. En realidad, la oscuridad total solo ocurre en la estrecha franja de totalidad (unos 150 km de ancho), y dura apenas unos minutos. Fuera de esa zona, el eclipse se ve como parcial o no se ve en absoluto.",
+      "source": { "name": "ESA — How Eclipses Work", "url": "https://www.esa.int/" }
+    },
+    {
+      "myth": "Los eclipses solares totales duran horas",
+      "truth": "Desde que la Luna empieza a cubrir el Sol hasta que lo deja completamente pueden pasar unas 2-3 horas (fases parciales), pero la totalidad —cuando el Sol queda completamente oculto— nunca supera los 7 minutos y medio. El resto del tiempo el Sol está parcialmente cubierto y no se puede mirar sin protección.",
+      "source": { "name": "NASA — Eclipse Duration", "url": "https://science.nasa.gov/eclipses/" }
+    }
+  ]
+}

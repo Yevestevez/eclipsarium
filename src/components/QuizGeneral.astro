@@ -1,0 +1,418 @@
+---
+import { quiz } from '../data/quiz.json';
+---
+
+<section id="quiz-general" class="qz section">
+    <div class="shell qz__shell">
+        <span class="eyebrow">¿Lo sabías?</span>
+        <h2 class="qz__title">
+            Quiz general<span class="qz__title-sub"> sobre eclipses</span>
+        </h2>
+        <p class="section__lead">
+            Pon a prueba tus conocimientos sobre eclipses, el sistema solar y
+            mitos comunes. Doce preguntas de verdadero o falso con explicaciones
+            al final de cada respuesta.
+        </p>
+
+        <div class="qz__box" data-quiz-general="" data-quiz={JSON.stringify(quiz)}>
+            <div class="qz__stage" data-stage="question">
+                <span class="qz__category" data-category=""></span>
+
+                <div class="qz__progress">
+                    <span class="progress-track">
+                        <span
+                            class="progress-fill progress-fill--blue"
+                            data-fill=""
+                            style="width: 0%"></span>
+                    </span>
+                    <span class="qz__count" data-count=""
+                        >1 / {quiz.length}</span
+                    >
+                </div>
+
+                <p class="qz__q" data-question=""></p>
+
+                <div class="qz__btns">
+                    <button
+                        class="qz__btn qz__btn--true"
+                        data-btn="true"
+                    >
+                        Verdadero
+                    </button>
+                    <button
+                        class="qz__btn qz__btn--false"
+                        data-btn="false"
+                    >
+                        Falso
+                    </button>
+                </div>
+
+                <p
+                    class="qz__feedback"
+                    data-feedback=""
+                    aria-live="polite"
+                >
+                </p>
+
+                <button class="qz__next" data-next="" hidden>
+                    Siguiente →
+                </button>
+            </div>
+
+            <div class="qz__result" data-result="" hidden>
+                <p class="qz__result-score" data-score=""></p>
+                <p class="qz__result-best" data-best=""></p>
+                <button class="qz__retry" data-retry="">
+                    Repetir ↻
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const QUIZ_KEY = 'eclipsarium-quiz-general-best';
+
+    const root = document.querySelector('[data-quiz-general]') as HTMLElement | null;
+    if (!root) throw new Error('Quiz root not found');
+
+    const quizData = JSON.parse(root.dataset.quiz || '[]');
+
+    class QuizGeneral {
+        current = 0;
+        score = 0;
+        answered = false;
+        questions: any[] = [];
+
+        constructor(questions: any[]) {
+            this.questions = questions;
+            this.bind();
+            this.show();
+        }
+
+        $(sel: string) {
+            return root.querySelector(sel);
+        }
+
+        $$(sel: string) {
+            return root.querySelectorAll(sel);
+        }
+
+        bind() {
+            this.$$('[data-btn]').forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    if (this.answered) return;
+                    this.answer((btn as HTMLElement).dataset.btn === 'true');
+                });
+            });
+
+            this.$('[data-next]')?.addEventListener('click', () => this.next());
+            this.$('[data-retry]')?.addEventListener('click', () => this.reset());
+        }
+
+        show() {
+            const q = this.questions[this.current];
+            if (!q) return this.finish();
+
+            this.$('[data-category]')!.textContent = q.category;
+            this.$('[data-question]')!.textContent = q.question;
+            this.$('[data-count]')!.textContent =
+                this.current + 1 + ' / ' + this.questions.length;
+            (this.$('[data-fill]') as HTMLElement)!.style.width =
+                (this.current / this.questions.length) * 100 + '%';
+            this.$('[data-feedback]')!.textContent = '';
+            this.$('[data-feedback]')!.className = 'qz__feedback';
+            (this.$('[data-next]') as HTMLElement)!.hidden = true;
+            this.answered = false;
+            (this.$('[data-stage]') as HTMLElement)!.hidden = false;
+            (this.$('[data-result]') as HTMLElement)!.hidden = true;
+
+            this.$$('[data-btn]').forEach((btn) => {
+                (btn as HTMLButtonElement).disabled = false;
+            });
+        }
+
+        answer(val: boolean) {
+            this.answered = true;
+            const q = this.questions[this.current];
+            const correct = val === q.answer;
+
+            if (correct) {
+                this.score++;
+                this.$('[data-feedback]')!.textContent = '¡Correcto! ' + q.explain;
+                this.$('[data-feedback]')!.className =
+                    'qz__feedback qz__feedback--ok';
+            } else {
+                this.$('[data-feedback]')!.textContent =
+                    'No es correcto. ' + q.explain;
+                this.$('[data-feedback]')!.className =
+                    'qz__feedback qz__feedback--ko';
+            }
+
+            this.$$('[data-btn]').forEach((btn) => {
+                (btn as HTMLButtonElement).disabled = true;
+            });
+
+            (this.$('[data-next]') as HTMLElement)!.hidden = false;
+        }
+
+        next() {
+            this.current++;
+            if (this.current < this.questions.length) {
+                this.show();
+            } else {
+                this.finish();
+            }
+        }
+
+        finish() {
+            (this.$('[data-stage]') as HTMLElement)!.hidden = true;
+            (this.$('[data-result]') as HTMLElement)!.hidden = false;
+
+            const total = this.questions.length;
+            const pct = Math.round((this.score / total) * 100);
+
+            let msg;
+            if (pct === 100)
+                msg = '¡Perfecto! Eres un verdadero cazador de eclipses.';
+            else if (pct >= 80) msg = 'Casi perfecto. Sabes un montón.';
+            else if (pct >= 60)
+                msg =
+                    'Vas por buen camino. Repasa los materiales y vuelve a intentarlo.';
+            else msg = 'Sigue explorando — cada vez sabrás más.';
+
+            this.$('[data-score]')!.textContent =
+                this.score + ' / ' + total + ' — ' + msg;
+
+            this.saveBest(this.score);
+        }
+
+        saveBest(score: number) {
+            const prev = parseInt(localStorage.getItem(QUIZ_KEY) || '0', 10);
+            if (score > prev) {
+                localStorage.setItem(QUIZ_KEY, String(score));
+                this.$('[data-best]')!.textContent = '🏆 ¡Nuevo récord!';
+            } else {
+                this.$('[data-best]')!.textContent =
+                    'Mejor puntuación: ' + prev + ' / ' + this.questions.length;
+            }
+        }
+
+        reset() {
+            this.current = 0;
+            this.score = 0;
+            this.show();
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => new QuizGeneral(quizData));
+    } else {
+        new QuizGeneral(quizData);
+    }
+</script>
+
+<style>
+    .qz__shell {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .qz__title {
+        font-size: var(--step-2);
+        font-weight: 600;
+    }
+
+    .qz__title-sub {
+        font-weight: 300;
+        color: var(--bone-dim);
+    }
+
+    .qz__box {
+        margin-top: 1rem;
+        background: linear-gradient(
+            135deg,
+            var(--ink) 0%,
+            rgba(var(--space-blue-rgb), 0.04) 100%
+        );
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 1.6rem;
+    }
+
+    .qz__category {
+        display: inline-block;
+        font-family: var(--font-mono);
+        font-size: 0.62rem;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--space-blue);
+        border: 1px solid rgba(var(--space-blue-rgb), 0.25);
+        border-radius: var(--radius-pill);
+        padding: 0.15rem 0.6rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .qz__progress {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .qz__count {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        color: var(--muted);
+        min-width: 4ch;
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .qz__q {
+        font-family: var(--font-accent);
+        font-size: var(--step-0);
+        font-weight: 400;
+        line-height: 1.4;
+        margin-bottom: 1rem;
+        min-height: 3lh;
+    }
+
+    .qz__btns {
+        display: flex;
+        gap: 0.75rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .qz__btn {
+        flex: 1;
+        padding: 0.75rem 1rem;
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        border: 1px solid var(--line-strong);
+        border-radius: var(--radius);
+        background: transparent;
+        color: var(--bone);
+        cursor: pointer;
+        transition:
+            background-color 0.2s var(--ease),
+            border-color 0.2s var(--ease),
+            color 0.2s var(--ease);
+    }
+
+    .qz__btn:hover:not(:disabled) {
+        background: var(--hover-bg);
+        border-color: var(--bone-dim);
+    }
+
+    .qz__btn:disabled {
+        opacity: 0.4;
+        cursor: default;
+    }
+
+    .qz__btn--true:hover:not(:disabled) {
+        border-color: var(--success);
+        color: var(--success);
+    }
+
+    .qz__btn--false:hover:not(:disabled) {
+        border-color: var(--error);
+        color: var(--error);
+    }
+
+    .qz__feedback {
+        font-size: var(--step--1);
+        line-height: var(--lh-loose);
+        padding: 0.6rem 0.8rem;
+        border-radius: var(--radius-sm);
+        margin-bottom: 0.6rem;
+        min-height: 2.5lh;
+    }
+
+    .qz__feedback--ok {
+        background: rgba(var(--success-rgb), 0.08);
+        border: 1px solid rgba(var(--success-rgb), 0.2);
+        color: var(--success);
+    }
+
+    .qz__feedback--ko {
+        background: rgba(var(--error-rgb), 0.08);
+        border: 1px solid rgba(var(--error-rgb), 0.2);
+        color: var(--error);
+    }
+
+    .qz__next {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        padding: 0.5rem 1.2rem;
+        border: none;
+        border-radius: var(--radius);
+        background: var(--space-blue);
+        color: var(--void);
+        cursor: pointer;
+        transition: background-color 0.2s var(--ease);
+    }
+
+    .qz__next:hover {
+        background: var(--space-blue-light);
+    }
+
+    .qz__result {
+        margin-top: 1rem;
+        text-align: center;
+        padding: 1.2rem;
+    }
+
+    .qz__result-score {
+        font-family: var(--font-accent);
+        font-size: var(--step-1);
+        font-weight: 500;
+        line-height: 1.4;
+    }
+
+    .qz__result-best {
+        font-size: var(--step--1);
+        color: var(--muted);
+        margin-top: 0.5rem;
+    }
+
+    .qz__retry {
+        margin-top: 1rem;
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        padding: 0.6rem 1.4rem;
+        border: 1px solid var(--line-strong);
+        border-radius: var(--radius);
+        background: transparent;
+        color: var(--bone);
+        cursor: pointer;
+        transition:
+            background-color 0.2s var(--ease),
+            border-color 0.2s var(--ease);
+    }
+
+    .qz__retry:hover {
+        background: var(--hover-bg);
+        border-color: var(--bone-dim);
+    }
+
+    @media (max-width: 560px) {
+        .qz__box {
+            padding: 1rem;
+        }
+
+        .qz__q {
+            font-size: var(--step-0);
+        }
+
+        .qz__btns {
+            flex-direction: column;
+        }
+    }
+</style>

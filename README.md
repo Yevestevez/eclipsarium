@@ -15,7 +15,8 @@ Web informativa sobre el **eclipse solar total del 12 de agosto de 2026**, visib
 - **v1.6.0:** Actividades para familias: 6 actividades hands-on + quiz interactivo + enlaces fuente
 - **v1.7.0:** Modo claro/oscuro con switch sol/luna animado + persistencia localStorage + respeta `prefers-color-scheme` + CSS `:global()` scoping fix + refactor tokens CSS
 - **v1.8.0:** Eventos externos desde API divulgación + `.section__lead` unificado + tokens de espaciado generales (eyebrow→heading, heading→lead)
-- **v1.9.0 (actual):** FAQ + mitos sobre eclipses con acordeón interactivo. Tema oscuro por defecto (ignora `prefers-color-scheme`).
+- **v1.9.0:** FAQ + mitos sobre eclipses con acordeón interactivo. Tema oscuro por defecto (ignora `prefers-color-scheme`).
+- **v1.10.0 (actual):** Quiz general independiente con 12 preguntas (V/F), 4 categorías, récord en localStorage. Datos migrados a `quiz.json`.
 
 ## 🎯 Objetivo
 
@@ -55,15 +56,17 @@ src/
 │   ├── AddToCalendar.astro   # botones añadir a calendario (Google, Outlook, .ics)
 │   ├── EclipseMap.astro      # mapa Leaflet con polígono + markers
 │   ├── EventList.astro       # eventos externos desde API + fallback JSON
+│   ├── FaqMyths.astro        # FAQ + mitos con acordeón
 │   ├── KidsActivities.astro  # actividades y quiz para familias
 │   ├── PrepChecklist.astro   # checklist interactiva con persistencia
+│   ├── QuizGeneral.astro     # quiz general de 12 preguntas V/F
 │   └── WhereToWatch.astro    # lista de lugares + buscador + mapa
 ├── data/             # datos estáticos (JSON + test co-localizado)
 ├── layouts/          # layouts de página
 ├── pages/            # rutas (index.astro, /location/[slug].astro)
 └── styles/           # tokens de diseño CSS
 test/
-└── e2e/              # tests Playwright (home, nav, countdown, checklist, activities, events, a11y, search)
+└── e2e/              # tests Playwright (home, nav, countdown, checklist, activities, quiz-general, events, a11y, search)
 ```
 
 ## 📅 El evento
@@ -160,6 +163,16 @@ test/
 - [x] Fuentes inline como enlaces `target="_blank"`
 - [x] Sección #preguntas integrada en `index.astro` con nav links
 - [x] Tema oscuro por defecto en primera visita (ignora `prefers-color-scheme`)
+- [x] Build producción sin errores (30 páginas)
+
+#### F10: Quiz general (v1.10.0)
+
+- [x] Datos de quiz en `src/data/quiz.json` (12 preguntas, 4 categorías)
+- [x] Componente `QuizGeneral.astro` con badge de categoría, feedback, progreso, récord en localStorage
+- [x] Selectores JS scoped via `data-quiz-general` para coexistir con KidsActivities
+- [x] Sección #quiz-general integrada en `index.astro` con nav links
+- [x] Quiz infantil (F5) intacto sin cambios
+- [x] Tests unitarios (16) + E2E (10 tests, E38–E42)
 - [x] Build producción sin errores (30 páginas)
 
 ### Roadmap

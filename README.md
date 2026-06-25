@@ -207,8 +207,8 @@ Components sharing the DOM use unique data attributes for their JS selectors (`d
 
 | Metric               | Status                                          |
 | -------------------- | ----------------------------------------------- |
-| Lighthouse (desktop) | 94 / 94 / 100 / 100                             |
-| Lighthouse (mobile)  | 73 / 94 / 100 / 100                             |
+| Lighthouse (desktop) | 98 / 94 / 100 / 100                             |
+| Lighthouse (mobile)  | 98 / 94 / 100 / 100                             |
 | axe-core             | 0 critical violations                           |
 | Responsive           | Works from 360px to 4K                          |
 | Theme                | Dark (default) + Light with animated toggle     |

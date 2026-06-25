@@ -51,7 +51,7 @@ test.describe('activities.spec.ts — KidsActivities', () => {
 
     // E34: quiz section is visible with title and buttons
     test('E34: quiz section is visible with title and buttons', async ({ page }) => {
-        const quiz = page.locator('[data-quiz]');
+        const quiz = page.locator('#actividades [data-quiz]');
         await expect(quiz).toBeVisible();
 
         await expect(page.locator('.kac__quiz-title')).toContainText('¿Cuánto sabes del eclipse?');
@@ -66,7 +66,7 @@ test.describe('activities.spec.ts — KidsActivities', () => {
 
     // E35: answering a quiz question shows feedback
     test('E35: answering quiz question shows feedback', async ({ page }) => {
-        const quiz = page.locator('[data-quiz]');
+        const quiz = page.locator('#actividades [data-quiz]');
         const feedback = quiz.locator('[data-feedback]');
 
         await expect(feedback).toBeVisible();
@@ -85,7 +85,7 @@ test.describe('activities.spec.ts — KidsActivities', () => {
 
     // E36: completing quiz shows result screen
     test('E36: completing quiz shows result screen', async ({ page }) => {
-        const quiz = page.locator('[data-quiz]');
+        const quiz = page.locator('#actividades [data-quiz]');
         const stage = quiz.locator('[data-stage]');
         const result = quiz.locator('[data-result]');
 

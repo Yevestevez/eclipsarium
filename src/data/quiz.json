@@ -1,0 +1,88 @@
+{
+    "quiz": [
+        {
+            "id": "gq1",
+            "category": "Eclipses",
+            "question": "¿Un eclipse solar total solo puede ocurrir durante la luna nueva?",
+            "answer": true,
+            "explain": "Correcto. La Luna nueva es la única fase en la que la Luna está entre la Tierra y el Sol, alineación necesaria para un eclipse solar."
+        },
+        {
+            "id": "gq2",
+            "category": "Eclipses",
+            "question": "¿Existen entre 2 y 5 eclipses solares cada año en el mundo?",
+            "answer": true,
+            "explain": "Sí. Cada año ocurren de 2 a 5 eclipses solares, aunque la mayoría son parciales. Los totales son mucho más raros para un punto concreto."
+        },
+        {
+            "id": "gq3",
+            "category": "Eclipses",
+            "question": "¿Durante un eclipse solar anular la Luna cubre completamente el Sol formando un anillo de fuego?",
+            "answer": false,
+            "explain": "No. En un eclipse anular la Luna está más lejos y no cubre el Sol por completo. El «anillo de fuego» es el borde del Sol que queda visible alrededor de la Luna."
+        },
+        {
+            "id": "gq4",
+            "category": "Eclipses",
+            "question": "¿Los eclipses solares siempre ocurren durante la noche?",
+            "answer": false,
+            "explain": "Falso. Los eclipses solares ocurren durante el día, cuando la Luna se interpone entre el Sol y la Tierra. Lo que ocurre de noche son los eclipses lunares."
+        },
+        {
+            "id": "gq5",
+            "category": "Sistema Solar",
+            "question": "¿La Luna se aleja de la Tierra aproximadamente 3,8 centímetros cada año?",
+            "answer": true,
+            "explain": "Sí. La Luna se aleja unos 3,8 cm por año debido a las fuerzas de marea. Dentro de millones de años, los eclipses totales dejarán de ser posibles."
+        },
+        {
+            "id": "gq6",
+            "category": "Sistema Solar",
+            "question": "¿Mercurio es el planeta más pequeño del sistema solar?",
+            "answer": true,
+            "explain": "Correcto. Mercurio es el planeta más pequeño de los ocho del sistema solar, con apenas 4.879 km de diámetro."
+        },
+        {
+            "id": "gq7",
+            "category": "Sistema Solar",
+            "question": "¿La Luna tiene una atmósfera capaz de sustentar vida humana?",
+            "answer": false,
+            "explain": "No. La Luna tiene una atmósfera extremadamente tenue (exosfera), casi un vacío. No hay aire respirable, presión atmosférica ni protección contra la radiación."
+        },
+        {
+            "id": "gq8",
+            "category": "Mitos",
+            "question": "¿Los eclipses solares emiten radiación dañina para las personas?",
+            "answer": false,
+            "explain": "No. Los eclipses no emiten ningún tipo de radiación especial. El peligro está en mirar directamente al Sol sin protección, eclipse o no."
+        },
+        {
+            "id": "gq9",
+            "category": "Mitos",
+            "question": "¿Los animales pueden mostrar comportamientos inusuales durante un eclipse total?",
+            "answer": true,
+            "explain": "Sí. Al oscurecerse repentinamente, aves dejan de cantar, grillos empiezan a chirriar y animales nocturnos se activan al confundir el día con la noche."
+        },
+        {
+            "id": "gq10",
+            "category": "Mitos",
+            "question": "¿Durante la totalidad de un eclipse la temperatura ambiente puede bajar varios grados?",
+            "answer": true,
+            "explain": "Sí. Al bloquearse la luz del Sol, la temperatura puede descender entre 3 y 8 °C, dependiendo de la ubicación y las condiciones atmosféricas."
+        },
+        {
+            "id": "gq11",
+            "category": "Curiosidades",
+            "question": "¿La corona solar solo es visible a simple vista durante un eclipse total?",
+            "answer": true,
+            "explain": "Correcto. La corona —la atmósfera exterior del Sol— es millones de veces más tenue que la superficie solar y solo se ve cuando la Luna bloquea el disco completo."
+        },
+        {
+            "id": "gq12",
+            "category": "Curiosidades",
+            "question": "¿Un eclipse lunar solo puede ocurrir durante la luna llena?",
+            "answer": true,
+            "explain": "Sí. Los eclipses lunares ocurren cuando la Tierra se interpone entre el Sol y la Luna llena, proyectando su sombra sobre la superficie lunar."
+        }
+    ]
+}

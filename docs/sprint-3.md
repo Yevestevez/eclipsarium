@@ -105,21 +105,25 @@
 
 ---
 
-#### F10: Ampliar quiz con más preguntas
+#### F10: Ampliar quiz con más preguntas ✅
 
 - **Descripción:** Expandir el mini-quiz de F5 (KidsActivities) de 5 a 10–12 preguntas. Mantener formato Verdadero/Falso. Añadir categorías y quiz general independiente.
-- **Scope:**
-    - Migrar datos de quiz a JSON independiente (`src/data/quiz.json`)
-    - Ampliar preguntas (eclipses, sistema solar, mitos)
-    - Crear quiz general como componente separado
-    - Mantener quiz infantil existente en KidsActivities
-    - localStorage para récord y progreso
+- **Scope completado:**
+    - Datos de quiz en `src/data/quiz.json` (12 preguntas, 4 categorías: Eclipses, Sistema Solar, Mitos, Curiosidades)
+    - Componente `QuizGeneral.astro` con badge de categoría, feedback, progreso, puntuación final
+    - localStorage con clave `eclipsarium-quiz-general-best` para récord
+    - Quiz infantil (F5) intacto en `KidsActivities.astro` con sus 5 preguntas originales
+    - Selectores JS scoped via `data-quiz-general` para evitar colisión con KidsActivities
+    - Tests unitarios: 11 tests en `QuizGeneral.test.ts`, 5 tests en `quiz.test.ts`
+    - Tests E2E: 10 tests (E38–E42) en `test/e2e/quiz-general.spec.ts`
+    - Build producción: 30 páginas sin errores
 - **Stack:** Astro, JSON, TS, localStorage
 - **Aceptación:**
-    - Quiz general con 10–12 preguntas
-    - Quiz infantil (F5) sigue funcionando sin cambios
-    - Feedback por respuesta + puntuación final
-    - Build producción sin errores
+    - [x] Quiz general con 12 preguntas (4 categorías)
+    - [x] Quiz infantil (F5) sigue funcionando sin cambios
+    - [x] Feedback por respuesta + puntuación final + récord localStorage
+    - [x] Build producción sin errores (30 páginas)
+    - [x] Tests unitarios (16) + E2E (10) pasando
 
 ---
 
@@ -145,11 +149,11 @@
 - [x] F7: Transición animada con soporte prefers-reduced-motion
 - [x] F8: Eventos visibles desde API externa + fallback JSON
 - [x] F9: FAQ + mitos con acordeón y fuentes
-- [ ] F10: Quiz ampliado con datos en JSON
-- [ ] F10: Quiz general independiente del infantil
+- [x] F10: Quiz ampliado con datos en JSON
+- [x] F10: Quiz general independiente del infantil
 - [x] Build producción sin errores (30 páginas)
-- [x] Tests unitarios: 71 tests en 11 suites
-- [x] Tests E2E: 45 tests en 8 spec files
+- [x] Tests unitarios: 87 tests en 13 suites
+- [x] Tests E2E: 55 tests en 9 spec files
 - [x] Responsivo mobile/desktop
 - [x] Sin console errors
 

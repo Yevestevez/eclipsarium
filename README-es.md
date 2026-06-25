@@ -207,8 +207,8 @@ Los componentes que comparten el DOM usan atributos de datos únicos para sus se
 
 | Métrica              | Estado                                               |
 | -------------------- | ---------------------------------------------------- |
-| Lighthouse (desktop) | 94 / 94 / 100 / 100                                  |
-| Lighthouse (mobile)  | 73 / 94 / 100 / 100                                  |
+| Lighthouse (desktop) | 98 / 94 / 100 / 100                                  |
+| Lighthouse (mobile)  | 98 / 94 / 100 / 100                                  |
 | axe-core             | 0 violaciones críticas                               |
 | Responsive           | Funciona desde 360px hasta 4K                        |
 | Tema                 | Oscuro (por defecto) + Claro con interruptor animado |

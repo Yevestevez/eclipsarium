@@ -29,6 +29,7 @@ pnpm-debug.log*
 .windsurf/
 .clinerules/
 .opencode/
+opencode.json
 AGENTS.md
 .github/copilot-instructions.md
 skills-lock.json

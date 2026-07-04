@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import data from '../../data/locations.json';
+import ccaaData from '../../data/ccaa-events.json';
 
 export function getStaticPaths() {
     return data.places.map((p) => ({
@@ -19,6 +20,8 @@ const typeDesc =
         : place.type === 'edge'
           ? 'Rozando la totalidad'
           : 'Eclipse parcial — fuera de la franja';
+
+const ccaaEntry = (ccaaData as { ccaa: string; descripcion: string; enlace_oficial: string; fuente: string; puntos_observacion: number; puntos_informacion: number; puntos: { nombre: string; duracion: string }[]; eventos: { nombre: string; url: string }[] }[]).find((c) => c.ccaa === place.region);
 
 const hasDetails = place.description && place.description.length > 0;
 
@@ -158,6 +161,65 @@ if (place.schedule) {
                                     </svg>
                                 </a>
                             </footer>
+                        )}
+
+                        {ccaaEntry && (
+                            <section aria-labelledby="ccaa-heading" class="location__section">
+                                <h2 id="ccaa-heading" class="section__title">
+                                    Puntos de observación en {place.region}
+                                </h2>
+                                <p class="location__ccaa-desc">
+                                    {ccaaEntry.descripcion}
+                                </p>
+                                <p class="location__ccaa-count">
+                                    {ccaaEntry.puntos_observacion} punto{ccaaEntry.puntos_observacion !== 1 ? 's' : ''} de observación
+                                    {ccaaEntry.puntos_informacion > 0 && <> · {ccaaEntry.puntos_informacion} de información</>}
+                                </p>
+
+                                <div class="location__ccaa-table-wrap">
+                                    <table class="location__ccaa-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Localidad</th>
+                                                <th>Duración totalidad</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {ccaaEntry.puntos.map((p) => (
+                                                <tr>
+                                                    <td>{p.nombre}</td>
+                                                    <td class="location__ccaa-dur">{p.duracion}</td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                {ccaaEntry.eventos.length > 0 && (
+                                    <ul class="location__ccaa-events">
+                                        {ccaaEntry.eventos.map((ev) => (
+                                            <li>
+                                                <a
+                                                    href={ev.url}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    class="event__link"
+                                                >
+                                                    {ev.nombre}
+                                                    <svg class="event__icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                                        <path d="M7 17L17 7" />
+                                                        <path d="M7 7H17V17" />
+                                                    </svg>
+                                                </a>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
+
+                                <p class="location__ccaa-source">
+                                    Fuente: <a href={ccaaEntry.enlace_oficial} target="_blank" rel="noopener noreferrer">{ccaaEntry.fuente}</a>
+                                </p>
+                            </section>
                         )}
                     </>
                 ) : (
@@ -452,5 +514,83 @@ if (place.schedule) {
         .location__notice {
             padding: 1.5rem;
         }
+    }
+
+    .location__ccaa-desc {
+        color: var(--bone-dim);
+        font-weight: 300;
+        line-height: 1.7;
+        max-width: 60ch;
+    }
+
+    .location__ccaa-count {
+        font-family: var(--font-mono);
+        font-size: 0.68rem;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: var(--space-blue);
+        margin-top: 0.6rem;
+    }
+
+    .location__ccaa-table-wrap {
+        margin-top: 1rem;
+        overflow-x: auto;
+    }
+
+    .location__ccaa-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: var(--step--1);
+    }
+
+    .location__ccaa-table th {
+        font-family: var(--font-mono);
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: var(--muted-deep);
+        text-align: left;
+        padding: 0.4rem 0.6rem 0.4rem 0;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .location__ccaa-table td {
+        padding: 0.4rem 0.6rem 0.4rem 0;
+        border-bottom: 1px solid var(--line);
+        color: var(--bone-dim);
+    }
+
+    .location__ccaa-dur {
+        font-family: var(--font-mono);
+        color: var(--space-blue);
+        white-space: nowrap;
+    }
+
+    .location__ccaa-events {
+        list-style: none;
+        padding: 0;
+        margin-top: 1rem;
+        display: grid;
+        gap: 0.6rem;
+    }
+
+    .location__ccaa-events li {
+        padding: 0.8rem 1rem;
+        background: var(--ink-soft);
+        border-radius: 0.3rem;
+        border: 1px solid var(--line);
+    }
+
+    .location__ccaa-source {
+        margin-top: 1rem;
+        font-family: var(--font-mono);
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: var(--muted-deep);
+    }
+
+    .location__ccaa-source a {
+        color: var(--space-blue);
     }
 </style>

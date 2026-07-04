@@ -156,7 +156,7 @@ describe('[slug].astro', () => {
         expect(html).toContain('34 de información');
     });
 
-    it('does not render CCAA section for region without CCAA data', async () => {
+    it('does not render CCAA section when place has no description (hasDetails = false)', async () => {
         const container = await AstroContainer.create();
         const html = await container.renderToString(LocationPage, {
             props: {
@@ -174,6 +174,67 @@ describe('[slug].astro', () => {
         });
 
         expect(html).not.toContain('Puntos de observación en Galicia');
+    });
+
+    it('renders CCAA observation points for Extremadura (eclipse parcial)', async () => {
+        const container = await AstroContainer.create();
+        const html = await container.renderToString(LocationPage, {
+            props: {
+                place: {
+                    city: 'Mérida',
+                    region: 'Extremadura',
+                    duration: '98%',
+                    contact: '18:20',
+                    slug: 'merida',
+                    type: 'partial',
+                    lat: 38.92,
+                    lng: -6.34,
+                    description: 'Test description',
+                    bestSpots: [],
+                    localEvents: [],
+                    schedule: {
+                        partialStart: '19:30',
+                        partialEnd: '21:15',
+                    },
+                },
+            },
+        });
+
+        expect(html).toContain('Puntos de observación en Extremadura');
+        expect(html).toContain('eclipse parcial');
+        expect(html).toContain('98%');
+        expect(html).toContain('Fuente:');
+        expect(html).toContain('Turismo Extremadura');
+    });
+
+    it('renders CCAA observation points for País Vasco (borde de franja)', async () => {
+        const container = await AstroContainer.create();
+        const html = await container.renderToString(LocationPage, {
+            props: {
+                place: {
+                    city: 'Vitoria-Gasteiz',
+                    region: 'País Vasco',
+                    duration: '1m 02s',
+                    contact: '18:12',
+                    slug: 'vitoria-gasteiz',
+                    type: 'edge',
+                    lat: 42.85,
+                    lng: -2.67,
+                    description: 'Test description',
+                    bestSpots: [],
+                    localEvents: [],
+                    schedule: {
+                        partialStart: '19:30',
+                        partialEnd: '21:15',
+                    },
+                },
+            },
+        });
+
+        expect(html).toContain('Puntos de observación en País Vasco');
+        expect(html).toContain('Vitoria-Gasteiz');
+        expect(html).toContain('1m 02s');
+        expect(html).toContain('Fuente:');
     });
 
     it('renders back link to /#donde', async () => {

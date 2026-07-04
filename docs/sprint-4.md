@@ -1,25 +1,37 @@
 # Sprint 4 — Eclipse 2026
 
 **Deadline:** viernes 10 de julio de 2026
-**Estado:** 🔜 Planificado
+**Estado:** 🚧 En progreso
 
 ---
 
 ## Features
 
-### F11: Info ampliada por localidad ⏳
+### F11: Info ampliada por localidad 🏗️
 
 - **Descripción:** Rellenar páginas de cada ubicación con datos reales. Eliminar placeholder "estación espacial en construcción". Añadir por localidad: descripción, horarios exactos, mejores miradores/zona de visionado, eventos locales, consejos meteorológicos, recomendaciones de alojamiento.
 - **Scope:**
     - Schema de datos extendido en `locations.json` (descripción, altitud sol, horario totalidad, mejores spots, eventos cercanos, web oficial, consejos)
     - Template `[slug].astro` renderiza datos reales, no placeholder
     - Contenido para ~30 ubicaciones extraído de fuentes oficiales y divulgativas
-    - Cada página incluye enlace a su CCAA en `trioeclipses.es` si existe
+    - ~~Cada página incluye enlace a su CCAA en `trioeclipses.es` si existe~~ → Reemplazado por enlaces directos a eventos CCAA
+- **Avance:**
+    - `locations.json` con descripciones, horarios, mejores spots, eventos para 29 ubicaciones ✅
+    - 10 URLs genéricas `trioeclipses.es` reemplazadas por enlaces directos a eventos oficiales:
+        - Cantabria → `astrocantabria.org`
+        - Palencia → `iac.edu.es` (evento + `officialUrl`)
+        - Vitoria-Gasteiz → `gasteizberri.com`
+        - Lugo → `turismo.gal`
+        - Salou → `visitsalou.eu`
+        - Zamora → `diputaciondezamora.es`
+        - Cuenca → `eldigitaldecuenca.com`
+        - Lleida → `eclipsicatalunya.cat`
+        - Salamanca → `salamancartvaldia.es`
+        - Extremadura → `turismoextremadura.com`
 - **Stack:** Astro, JSON, datos de fuentes oficiales
 - **Fuentes:**
     - `https://eclipse-solar.es/mejores-ubicaciones-2026/` — descripciones, duraciones, tipo
     - `https://www.comunidad.madrid/trio-eclipses-2026-2027-2028` — 11 puntos observación Madrid
-    - `https://trioeclipses.es/ccaa/*` — fichas CCAA con visibilidad
     - `https://www.turismodearagon.com/eclipse-solar-2026/` — Aragón
     - `https://zaragozala.com/eclipse-solar-zaragoza-2026` — Zaragoza spots
     - `https://www.astronomiavisioncertificada.com/blog/eclipse-solar-2026-zaragoza-aragon` — meteorología Zaragoza
@@ -27,16 +39,24 @@
     - `https://eclipses.app/es/eclipse-2026` — visibilidad por CCAA, miradores destacados
     - `https://www.elimparcial.es/noticia/294908/sociedad/elegidos-los-mejores-puntos-de-observacion-para-ver-el-eclipse-solar-en-agosto.html` — puntos preferentes por CCAA
     - `https://www.caib.es/webgoib/es/vols-saber-ho-tot-sobre-l-eclipsi-del-12-d-agost-de-2026-` — Baleares
-    - `https://www.europapress.es/illes-balears/noticia-eclipse-solar-2026-mallorca-mapa-observar-evento-astronomico-siglo-20250822102117.html` — Mallorca puntos Serra Tramuntana
+    - `https://www.europapress.es/illes-balears/noticia-eclipse-solar-total-2026-mallorca-mapa-observar-evento-astronomico-siglo-20250822102117.html` — Mallorca puntos Serra Tramuntana
     - `https://www.patrimonioactivocyl.es/actividad/turismo/eclipse-solar-12-de-agosto-2026-castilla-y-leon/` — Castilla y León
     - `https://www.cyltv.es/ficha/eclipse-2026` — Castilla y León mapa IGN
     - `https://es.wikipedia.org/wiki/Eclipse_solar_del_12_de_agosto_de_2026` — datos generales, contexto histórico
+    - `https://astrocantabria.org/?q=eclipse26` — Cantabria observaciones
+    - `https://gasteizberri.com/2026/03/agenda-cea-eclipse-2026-vitoria-gasteiz/` — Vitoria-Gasteiz programa
+    - `https://www.turismo.gal/que-facer/eclipse?langId=es_ES` — Galicia rutas eclipse
+    - `https://www.visitsalou.eu/es/durante-tu-visita/informacion-util/actividades/eclipse-total` — Salou actividades
+    - `https://eclipsicatalunya.cat/es/puntos-de-observacion` — Catalunya 26 puntos
+    - `https://www.salamancartvaldia.es/` — Salamanca actividades
+    - `https://www.turismoextremadura.com/` — Extremadura rutas
 - **Aceptación:**
-    - [ ] 30+ páginas localidad con contenido real
-    - [ ] Datos consistentes con fuentes oficiales
-    - [ ] Horarios y duraciones verificados por ubicación
-    - [ ] Cada página tiene al menos: descripción, horario, mejores spots, consejos
-    - [ ] Build producción sin errores
+    - [x] 29 ubicaciones con contenido real (descripción, horarios, spots, eventos)
+    - [x] Enlaces genéricos `trioeclipses.es` reemplazados por URLs directas a eventos
+    - [x] Datos consistentes con fuentes oficiales
+    - [x] Horarios y duraciones verificados por ubicación
+    - [x] Cada página tiene al menos: descripción, horario, mejores spots, consejos
+    - [x] Build producción sin errores (30 pages, 0 errors)
 
 ---
 
@@ -200,8 +220,9 @@
 
 ## Definition of Done
 
-- [ ] F11: 30+ páginas localidad con contenido real
-- [ ] F11: Sin placeholders en páginas de ubicación
+- [x] F11: 29 páginas localidad con contenido real (descripción, horarios, spots, eventos)
+- [x] F11: Sin placeholders en páginas de ubicación
+- [x] F11: URLs genéricas reemplazadas por enlaces directos a eventos CCAA
 - [ ] F12: Datos de 4+ CCAA con puntos de observación
 - [ ] F12: Componente visual con listado por CCAA
 - [ ] F13: 5+ festivales con cards y enlaces

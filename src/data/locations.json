@@ -11,10 +11,10 @@
             "slug": "a-coruna",
             "description": "Punto de entrada del eclipse en España. El faro romano de la Torre de Hércules (UNESCO) ofrece un escenario único para ver la totalidad sobre el Atlántico. Hay riesgo de nubes costeras, pero si despeja es uno de los lugares más espectaculares de toda la franja.",
             "bestSpots": [
-                "Torre de Hércules â€” mirador junto al faro romano con horizonte abierto al oeste",
-                "Monte San Pedro â€” elevación con vistas panorámicas, por encima de la niebla costera",
-                "Paseo Marítimo (Riazor / Orzán) â€” amplia línea de costa orientada al oeste",
-                "Acantilados de Vixía da Herbeira â€” mirador natural elevado al norte"
+                "Torre de Hércules — mirador junto al faro romano con horizonte abierto al oeste",
+                "Monte San Pedro — elevación con vistas panorámicas, por encima de la niebla costera",
+                "Paseo Marítimo (Riazor / Orzán) — amplia línea de costa orientada al oeste",
+                "Acantilados de Vixía da Herbeira — mirador natural elevado al norte"
             ],
             "schedule": {
                 "partialStart": "19:30",
@@ -28,7 +28,7 @@
                     "url": "https://eclipse-solar.es/a-coruna/"
                 },
                 {
-                    "name": "Meliá María Pita â€” terraza eclipse",
+                    "name": "Meliá María Pita — terraza eclipse",
                     "url": "https://www.20minutos.es/viajes/hoteles/mejores-hoteles-ver-eclipse-solar-total-12-agosto-espana_6921193_0.html"
                 }
             ]
@@ -44,10 +44,10 @@
             "slug": "asturias",
             "description": "La totalidad más larga de España, muy cerca de la línea central. La costa verde y los Picos de Europa ofrecen miradores espectaculares. Oviedo, Gijón y Avilés son las mejores bases urbanas con fácil acceso a puntos elevados de observación.",
             "bestSpots": [
-                "Cabo de Peñas â€” mirador costero sobre el Cantábrico, horizonte oeste limpio",
-                "Monte Naranco (Oviedo) â€” elevación con vistas a la ciudad y el mar",
-                "Cerro de Santa Catalina (Gijón) â€” colina con horizonte despejado al oeste",
-                "Picos de Europa â€” miradores de montaña por encima de nubes bajas"
+                "Cabo de Peñas — mirador costero sobre el Cantábrico, horizonte oeste limpio",
+                "Monte Naranco (Oviedo) — elevación con vistas a la ciudad y el mar",
+                "Cerro de Santa Catalina (Gijón) — colina con horizonte despejado al oeste",
+                "Picos de Europa — miradores de montaña por encima de nubes bajas"
             ],
             "schedule": {
                 "partialStart": "19:31",
@@ -73,10 +73,10 @@
             "slug": "leon",
             "description": "Ciudad del Camino de Santiago cerca de la línea central con una de las totalidades más largas de España. Su catedral gótica es uno de los escenarios más fotogénicos del eclipse. Los cielos del interior son más despejados que en la costa cantábrica.",
             "bestSpots": [
-                "Catedral de León â€” la Pulchra Leonina recortada contra la corona solar",
-                "Orilla del río Bernesga â€” paseo con horizonte oeste despejado",
-                "Barrio Húmedo â€” calles medievales, ideal para combinar eclipse y tapeo",
-                "La Bañeza â€” municipio cercano con buena visibilidad y menos aglomeraciones"
+                "Catedral de León — la Pulchra Leonina recortada contra la corona solar",
+                "Orilla del río Bernesga — paseo con horizonte oeste despejado",
+                "Barrio Húmedo — calles medievales, ideal para combinar eclipse y tapeo",
+                "La Bañeza — municipio cercano con buena visibilidad y menos aglomeraciones"
             ],
             "schedule": {
                 "partialStart": "19:32",
@@ -86,11 +86,11 @@
             },
             "localEvents": [
                 {
-                    "name": "Asociación Leonesa de Astronomía â€” observación pública (40 aniversario)",
+                    "name": "Asociación Leonesa de Astronomía — observación pública (40 aniversario)",
                     "url": "https://www.astroleon.org/eventos-astronomicos/eclipse-solar-2026/"
                 },
                 {
-                    "name": "Planetario de León â€” sesiones especiales",
+                    "name": "Planetario de León — sesiones especiales",
                     "url": "https://eclipse-solar.es/leon/"
                 }
             ]
@@ -106,10 +106,10 @@
             "slug": "burgos",
             "description": "Cerca de la línea central con 1m 44s de totalidad. La catedral gótica (UNESCO), el Camino de Santiago y el yacimiento de Atapuerca la convierten en un destino cultural y astronómico de primer orden. Cielos despejados en la Meseta.",
             "bestSpots": [
-                "Mirador del Castillo â€” vista panorámica de la ciudad y horizonte oeste",
-                "Paseo del Espolón â€” amplia avenida junto al Arlanzón con orientación oeste",
-                "Atapuerca â€” yacimiento con horizonte limpio, ideal para observación",
-                "Finca privada AstroAfición â€” observación guiada con telescopios"
+                "Mirador del Castillo — vista panorámica de la ciudad y horizonte oeste",
+                "Paseo del Espolón — amplia avenida junto al Arlanzón con orientación oeste",
+                "Atapuerca — yacimiento con horizonte limpio, ideal para observación",
+                "Finca privada AstroAfición — observación guiada con telescopios"
             ],
             "schedule": {
                 "partialStart": "19:33",
@@ -119,7 +119,7 @@
             },
             "localEvents": [
                 {
-                    "name": "AstroAfición â€” observación guiada en finca privada (bus desde Madrid)",
+                    "name": "AstroAfición — observación guiada en finca privada (bus desde Madrid)",
                     "url": "https://astroaficion.com/producto/eclipse-sol-2026/"
                 }
             ]
@@ -135,10 +135,10 @@
             "slug": "valladolid",
             "description": "Antigua capital de España con excelentes conexiones AVE y una de las mayores probabilidades de cielo despejado (~70%). El Museo de la Ciencia programa actividades especiales. Región vinícola de Ribera del Duero para maridar el eclipse con enología.",
             "bestSpots": [
-                "Museo de la Ciencia â€” actividades y terraza con horizonte oeste",
-                "Campo Grande â€” parque amplio con orientación despejada al oeste",
-                "Orilla del Pisuerga â€” paseos con vistas al atardecer",
-                "Ruta del Vino Ribera del Duero â€” bodegas con catas y observación"
+                "Museo de la Ciencia — actividades y terraza con horizonte oeste",
+                "Campo Grande — parque amplio con orientación despejada al oeste",
+                "Orilla del Pisuerga — paseos con vistas al atardecer",
+                "Ruta del Vino Ribera del Duero — bodegas con catas y observación"
             ],
             "schedule": {
                 "partialStart": "19:33",
@@ -148,11 +148,11 @@
             },
             "localEvents": [
                 {
-                    "name": "Museo de la Ciencia â€” programa especial eclipse",
+                    "name": "Museo de la Ciencia — programa especial eclipse",
                     "url": "https://www.cope.es/emisoras/castilla-y-leon/valladolid-provincia/valladolid/noticias/valladolid-mira-cielo-guia-definitiva-actividades-gran-eclipse-solar-20260701_3395673.html"
                 },
                 {
-                    "name": "Hotel Arzuaga â€” fiesta eclipse en Ribera del Duero",
+                    "name": "Hotel Arzuaga — fiesta eclipse en Ribera del Duero",
                     "url": "https://www.20minutos.es/viajes/hoteles/mejores-hoteles-ver-eclipse-solar-total-12-agosto-espana_6921193_0.html"
                 }
             ]
@@ -168,10 +168,10 @@
             "slug": "zaragoza",
             "description": "Frecuentemente recomendada como la mejor ubicación peninsular: buena duración de totalidad, la mayor probabilidad de cielos despejados de toda la franja (~70-75%) y excelentes conexiones AVE. La silueta de la Basílica del Pilar recortada contra la corona solar será una de las imágenes del eclipse.",
             "bestSpots": [
-                "Basílica del Pilar â€” la silueta más icónica del eclipse, desde la orilla del Ebro",
-                "Parque José Antonio Labordeta â€” amplio espacio verde con horizonte despejado",
-                "Orilla del Ebro (Puente de Piedra) â€” vista abierta hacia el oeste",
-                "Mirador de Torrero â€” colina al sur con panorámica de la ciudad"
+                "Basílica del Pilar — la silueta más icónica del eclipse, desde la orilla del Ebro",
+                "Parque José Antonio Labordeta — amplio espacio verde con horizonte despejado",
+                "Orilla del Ebro (Puente de Piedra) — vista abierta hacia el oeste",
+                "Mirador de Torrero — colina al sur con panorámica de la ciudad"
             ],
             "schedule": {
                 "partialStart": "19:34",
@@ -181,11 +181,11 @@
             },
             "localEvents": [
                 {
-                    "name": "Guía del eclipse â€” Ayuntamiento de Zaragoza",
+                    "name": "Guía del eclipse — Ayuntamiento de Zaragoza",
                     "url": "https://zaragozala.com/eclipse-solar-zaragoza-2026"
                 },
                 {
-                    "name": "CEFCA â€” actividades divulgativas en Aragón",
+                    "name": "CEFCA — actividades divulgativas en Aragón",
                     "url": "https://aragoninvestiga.es/aragon-escenario-privilegiado-del-eclipse-solar-total-de-2026/"
                 }
             ],
@@ -202,10 +202,10 @@
             "slug": "tarragona",
             "description": "La antigua Tarraco romana (UNESCO) ofrece uno de los escenarios más espectaculares del eclipse: el anfiteatro frente al mar Mediterráneo. 1 minuto exacto de totalidad con el sol muy bajo sobre el horizonte marino.",
             "bestSpots": [
-                "Anfiteatro Romano â€” patrimonio UNESCO frente al mar, orientación oeste",
-                "Balcón del Mediterráneo â€” mirador elevado sobre la costa",
-                "Paseo Marítimo â€” línea de costa despejada hacia el oeste",
-                "Puerto de Tarragona â€” vistas marítimas sin obstáculos"
+                "Anfiteatro Romano — patrimonio UNESCO frente al mar, orientación oeste",
+                "Balcón del Mediterráneo — mirador elevado sobre la costa",
+                "Paseo Marítimo — línea de costa despejada hacia el oeste",
+                "Puerto de Tarragona — vistas marítimas sin obstáculos"
             ],
             "schedule": {
                 "partialStart": "19:38",
@@ -215,11 +215,11 @@
             },
             "localEvents": [
                 {
-                    "name": "Catalunya mira al cielo â€” 26 puntos de observación en 20 municipios",
+                    "name": "Catalunya mira al cielo — 26 puntos de observación en 20 municipios",
                     "url": "https://www.elimparcial.es/noticia/294908/sociedad/elegidos-los-mejores-puntos-de-observacion-para-ver-el-eclipse-solar-en-agosto.html"
                 },
                 {
-                    "name": "Festival Prades â€” Parc Astronòmic (10-13 ago)",
+                    "name": "Festival Prades — Parc Astronòmic (10-13 ago)",
                     "url": "https://www.parcastronomicprades.cat/es/solar-eclipse-26/"
                 }
             ]
@@ -235,10 +235,10 @@
             "slug": "valencia",
             "description": "Tercera ciudad de España, en el borde sur de la franja con ~1 minuto de totalidad. La Ciudad de las Artes y las Ciencias es el escenario más vanguardista. Conduce 30 min al norte a Sagunto o Puzol para totalidad más larga y segura.",
             "bestSpots": [
-                "Ciudad de las Artes y las Ciencias â€” arquitectura futurista y horizonte abierto",
-                "Malvarrosa â€” playa al norte con orientación oeste sobre el mar",
-                "Puerto de Sagunto â€” desplazamiento 30 min para totalidad más larga",
-                "Albufera â€” horizonte despejado hacia el oeste desde el lago"
+                "Ciudad de las Artes y las Ciencias — arquitectura futurista y horizonte abierto",
+                "Malvarrosa — playa al norte con orientación oeste sobre el mar",
+                "Puerto de Sagunto — desplazamiento 30 min para totalidad más larga",
+                "Albufera — horizonte despejado hacia el oeste desde el lago"
             ],
             "schedule": {
                 "partialStart": "19:36",
@@ -264,10 +264,10 @@
             "slug": "mallorca",
             "description": "La línea central cruza la isla, con las mejores probabilidades de cielos despejados de España (~75%). El sol estará extremadamente bajo, por lo que los miradores costeros y elevados de la Serra de Tramuntana son esenciales. La totalidad ocurre prácticamente al atardecer sobre el Mediterráneo.",
             "bestSpots": [
-                "Serra de Tramuntana (UNESCO) â€” Pollença, Sóller, Deià, Valldemossa, Banyalbufar",
-                "Cap de Formentor â€” mirador al norte con horizonte marítimo limpio",
-                "Cap de ses Salines â€” extremo sur, horizonte oeste despejado",
-                "Sa Foradada / Sa Calobra â€” acantilados icónicos orientados al oeste"
+                "Serra de Tramuntana (UNESCO) — Pollença, Sóller, Deià, Valldemossa, Banyalbufar",
+                "Cap de Formentor — mirador al norte con horizonte marítimo limpio",
+                "Cap de ses Salines — extremo sur, horizonte oeste despejado",
+                "Sa Foradada / Sa Calobra — acantilados icónicos orientados al oeste"
             ],
             "schedule": {
                 "partialStart": "19:38",
@@ -277,7 +277,7 @@
             },
             "localEvents": [
                 {
-                    "name": "Fiaam â€” Fundación Instituto de Astronomía de Mallorca",
+                    "name": "Fiaam — Fundación Instituto de Astronomía de Mallorca",
                     "url": "https://www.europapress.es/illes-balears/noticia-eclipse-solar-total-2026-mallorca-mapa-observar-evento-astronomico-siglo-20250822102117.html"
                 },
                 {
@@ -296,22 +296,22 @@
             "lat": 40.4168,
             "lng": -3.7038,
             "slug": "madrid",
-            "description": "Justo al sur de la franja de totalidad. La capital ofrece las mejores conexiones de transporte a ubicaciones de totalidad: Somosierra (1m 29s a 45 min), Guadalajara (1m 07s a 35 min), Segovia (57s a 30 min). Dentro de la ciudad el eclipse será parcial al 99,9% â€” una experiencia impresionante pero sin oscuridad total.",
+            "description": "Justo al sur de la franja de totalidad. La capital ofrece las mejores conexiones de transporte a ubicaciones de totalidad: Somosierra (1m 29s a 45 min), Guadalajara (1m 07s a 35 min), Segovia (57s a 30 min). Dentro de la ciudad el eclipse será parcial al 99,9% — una experiencia impresionante pero sin oscuridad total.",
             "bestSpots": [
-                "Templo de Debod â€” horizonte oeste sobre la Casa de Campo",
-                "Casa de Campo â€” amplio espacio verde con vistas hacia el oeste",
-                "Parque del Oeste â€” orientación directa al atardecer",
-                "Somosierra (45 min) â€” totalidad 1m 29s, el punto más largo de Madrid"
+                "Templo de Debod — horizonte oeste sobre la Casa de Campo",
+                "Casa de Campo — amplio espacio verde con vistas hacia el oeste",
+                "Parque del Oeste — orientación directa al atardecer",
+                "Somosierra (45 min) — totalidad 1m 29s, el punto más largo de Madrid"
             ],
             "schedule": {
                 "partialStart": "19:30",
-                "totalityStart": "â€”",
-                "totalityEnd": "â€”",
+                "totalityStart": "—",
+                "totalityEnd": "—",
                 "partialEnd": "21:17"
             },
             "localEvents": [
                 {
-                    "name": "Comunidad de Madrid â€” 11 puntos de observación + 34 puntos de información",
+                    "name": "Comunidad de Madrid — 11 puntos de observación + 34 puntos de información",
                     "url": "https://www.comunidad.madrid/trio-eclipses-2026-2027-2028"
                 },
                 {
@@ -544,10 +544,10 @@
             "slug": "castellon",
             "description": "Capital de la Plana, dentro de la franja de totalidad con 1m 34s. El Grao de Castellón y el Desierto de las Palmas ofrecen miradores excepcionales con horizonte marítimo despejado. El Parque Natural de la Sierra de Espadán es otra alternativa para quienes busquen observar desde la montaña.",
             "bestSpots": [
-                "Grao de Castellón â€” paseo marítimo con horizonte abierto al oeste sobre el Mediterráneo",
-                "Desierto de las Palmas â€” colina con vistas panorámicas de la costa y el interior",
-                "Parque Natural Sierra de Espadán â€” miradores de montaña con cielos limpios",
-                "Plaza Mayor â€” espacio céntrico con orientación despejada"
+                "Grao de Castellón — paseo marítimo con horizonte abierto al oeste sobre el Mediterráneo",
+                "Desierto de las Palmas — colina con vistas panorámicas de la costa y el interior",
+                "Parque Natural Sierra de Espadán — miradores de montaña con cielos limpios",
+                "Plaza Mayor — espacio céntrico con orientación despejada"
             ],
             "schedule": {
                 "partialStart": "19:34",
@@ -683,10 +683,10 @@
             "slug": "pais-vasco",
             "description": "La comunidad autónoma vasca se asoma a la franja de totalidad con 31 segundos en su extremo sur. Bilbao, San Sebastián y Vitoria-Gasteiz organizan actividades de observación. El monte Jaizkibel y el Golfo de Vizcaya ofrecen miradores naturales con horizonte oeste sobre el Cantábrico.",
             "bestSpots": [
-                "Monte Jaizkibel (Guipúzcoa) â€” acantilado con vistas al mar y horizonte oeste limpio",
-                "Puente Colgante de Vizcaya (UNESCO) â€” mirador elevado sobre la ría de Bilbao",
-                "Gaztelugatxe â€” isla-mirador con horizonte marítimo despejado",
-                "Puerto Viejo de Algorta â€” paseo marítimo con orientación al oeste"
+                "Monte Jaizkibel (Guipúzcoa) — acantilado con vistas al mar y horizonte oeste limpio",
+                "Puente Colgante de Vizcaya (UNESCO) — mirador elevado sobre la ría de Bilbao",
+                "Gaztelugatxe — isla-mirador con horizonte marítimo despejado",
+                "Puerto Viejo de Algorta — paseo marítimo con orientación al oeste"
             ],
             "schedule": {
                 "partialStart": "19:34",
@@ -793,10 +793,10 @@
             "slug": "vilanova",
             "description": "Ciudad costera catalana en el extremo sur de la franja de totalidad, con apenas 15 segundos de oscuridad total. El puerto deportivo, la Rambla y el frente marítimo son los mejores puntos de observación. El cercano Parc del Garraf ofrece alternativas elevadas con horizonte despejado.",
             "bestSpots": [
-                "Puerto deportivo de Vilanova â€” paseo marítimo con horizonte oeste sobre el Mediterráneo",
-                "Rambla Principal â€” espacio abierto en el centro con orientación suroeste",
-                "Parc del Garraf â€” colina costera con miradores naturales elevados",
-                "Platja de Ribes Roges â€” arenal extenso con vista despejada al oeste"
+                "Puerto deportivo de Vilanova — paseo marítimo con horizonte oeste sobre el Mediterráneo",
+                "Rambla Principal — espacio abierto en el centro con orientación suroeste",
+                "Parc del Garraf — colina costera con miradores naturales elevados",
+                "Platja de Ribes Roges — arenal extenso con vista despejada al oeste"
             ],
             "schedule": {
                 "partialStart": "19:38",

@@ -1,7 +1,7 @@
 {
     "places": [
         {
-            "city": "A Coruña",
+            "city": "A CoruÃ±a",
             "region": "Galicia",
             "type": "total",
             "duration": "1m 16s",
@@ -9,12 +9,12 @@
             "lat": 43.3623,
             "lng": -8.4115,
             "slug": "a-coruna",
-            "description": "Punto de entrada del eclipse en España. El faro romano de la Torre de Hércules (UNESCO) ofrece un escenario único para ver la totalidad sobre el Atlántico. Hay riesgo de nubes costeras, pero si despeja es uno de los lugares más espectaculares de toda la franja.",
+            "description": "Punto de entrada del eclipse en EspaÃ±a. El faro romano de la Torre de HÃ©rcules (UNESCO) ofrece un escenario Ãºnico para ver la totalidad sobre el AtlÃ¡ntico. Hay riesgo de nubes costeras, pero si despeja es uno de los lugares mÃ¡s espectaculares de toda la franja.",
             "bestSpots": [
-                "Torre de Hércules — mirador junto al faro romano con horizonte abierto al oeste",
-                "Monte San Pedro — elevación con vistas panorámicas, por encima de la niebla costera",
-                "Paseo Marítimo (Riazor / Orzán) — amplia línea de costa orientada al oeste",
-                "Acantilados de Vixía da Herbeira — mirador natural elevado al norte"
+                "Torre de HÃ©rcules â€” mirador junto al faro romano con horizonte abierto al oeste",
+                "Monte San Pedro â€” elevaciÃ³n con vistas panorÃ¡micas, por encima de la niebla costera",
+                "Paseo MarÃ­timo (Riazor / OrzÃ¡n) â€” amplia lÃ­nea de costa orientada al oeste",
+                "Acantilados de VixÃ­a da Herbeira â€” mirador natural elevado al norte"
             ],
             "schedule": {
                 "partialStart": "19:30",
@@ -24,11 +24,11 @@
             },
             "localEvents": [
                 {
-                    "name": "Observación en Torre de Hércules",
+                    "name": "ObservaciÃ³n en Torre de HÃ©rcules",
                     "url": "https://eclipse-solar.es/a-coruna/"
                 },
                 {
-                    "name": "Meliá María Pita — terraza eclipse",
+                    "name": "MeliÃ¡ MarÃ­a Pita â€” terraza eclipse",
                     "url": "https://www.20minutos.es/viajes/hoteles/mejores-hoteles-ver-eclipse-solar-total-12-agosto-espana_6921193_0.html"
                 }
             ]
@@ -42,12 +42,12 @@
             "lat": 43.3619,
             "lng": -5.8494,
             "slug": "asturias",
-            "description": "La totalidad más larga de España, muy cerca de la línea central. La costa verde y los Picos de Europa ofrecen miradores espectaculares. Oviedo, Gijón y Avilés son las mejores bases urbanas con fácil acceso a puntos elevados de observación.",
+            "description": "La totalidad mÃ¡s larga de EspaÃ±a, muy cerca de la lÃ­nea central. La costa verde y los Picos de Europa ofrecen miradores espectaculares. Oviedo, GijÃ³n y AvilÃ©s son las mejores bases urbanas con fÃ¡cil acceso a puntos elevados de observaciÃ³n.",
             "bestSpots": [
-                "Cabo de Peñas — mirador costero sobre el Cantábrico, horizonte oeste limpio",
-                "Monte Naranco (Oviedo) — elevación con vistas a la ciudad y el mar",
-                "Cerro de Santa Catalina (Gijón) — colina con horizonte despejado al oeste",
-                "Picos de Europa — miradores de montaña por encima de nubes bajas"
+                "Cabo de PeÃ±as â€” mirador costero sobre el CantÃ¡brico, horizonte oeste limpio",
+                "Monte Naranco (Oviedo) â€” elevaciÃ³n con vistas a la ciudad y el mar",
+                "Cerro de Santa Catalina (GijÃ³n) â€” colina con horizonte despejado al oeste",
+                "Picos de Europa â€” miradores de montaÃ±a por encima de nubes bajas"
             ],
             "schedule": {
                 "partialStart": "19:31",
@@ -63,20 +63,20 @@
             ]
         },
         {
-            "city": "León",
-            "region": "Castilla y León",
+            "city": "LeÃ³n",
+            "region": "Castilla y LeÃ³n",
             "type": "total",
             "duration": "1m 45s",
             "contact": "20:28",
             "lat": 42.5987,
             "lng": -5.5671,
             "slug": "leon",
-            "description": "Ciudad del Camino de Santiago cerca de la línea central con una de las totalidades más largas de España. Su catedral gótica es uno de los escenarios más fotogénicos del eclipse. Los cielos del interior son más despejados que en la costa cantábrica.",
+            "description": "Ciudad del Camino de Santiago cerca de la lÃ­nea central con una de las totalidades mÃ¡s largas de EspaÃ±a. Su catedral gÃ³tica es uno de los escenarios mÃ¡s fotogÃ©nicos del eclipse. Los cielos del interior son mÃ¡s despejados que en la costa cantÃ¡brica.",
             "bestSpots": [
-                "Catedral de León — la Pulchra Leonina recortada contra la corona solar",
-                "Orilla del río Bernesga — paseo con horizonte oeste despejado",
-                "Barrio Húmedo — calles medievales, ideal para combinar eclipse y tapeo",
-                "La Bañeza — municipio cercano con buena visibilidad y menos aglomeraciones"
+                "Catedral de LeÃ³n â€” la Pulchra Leonina recortada contra la corona solar",
+                "Orilla del rÃ­o Bernesga â€” paseo con horizonte oeste despejado",
+                "Barrio HÃºmedo â€” calles medievales, ideal para combinar eclipse y tapeo",
+                "La BaÃ±eza â€” municipio cercano con buena visibilidad y menos aglomeraciones"
             ],
             "schedule": {
                 "partialStart": "19:32",
@@ -86,30 +86,30 @@
             },
             "localEvents": [
                 {
-                    "name": "Asociación Leonesa de Astronomía — observación pública (40 aniversario)",
+                    "name": "AsociaciÃ³n Leonesa de AstronomÃ­a â€” observaciÃ³n pÃºblica (40 aniversario)",
                     "url": "https://www.astroleon.org/eventos-astronomicos/eclipse-solar-2026/"
                 },
                 {
-                    "name": "Planetario de León — sesiones especiales",
+                    "name": "Planetario de LeÃ³n â€” sesiones especiales",
                     "url": "https://eclipse-solar.es/leon/"
                 }
             ]
         },
         {
             "city": "Burgos",
-            "region": "Castilla y León",
+            "region": "Castilla y LeÃ³n",
             "type": "total",
             "duration": "1m 44s",
             "contact": "20:30",
             "lat": 42.3439,
             "lng": -3.6969,
             "slug": "burgos",
-            "description": "Cerca de la línea central con 1m 44s de totalidad. La catedral gótica (UNESCO), el Camino de Santiago y el yacimiento de Atapuerca la convierten en un destino cultural y astronómico de primer orden. Cielos despejados en la Meseta.",
+            "description": "Cerca de la lÃ­nea central con 1m 44s de totalidad. La catedral gÃ³tica (UNESCO), el Camino de Santiago y el yacimiento de Atapuerca la convierten en un destino cultural y astronÃ³mico de primer orden. Cielos despejados en la Meseta.",
             "bestSpots": [
-                "Mirador del Castillo — vista panorámica de la ciudad y horizonte oeste",
-                "Paseo del Espolón — amplia avenida junto al Arlanzón con orientación oeste",
-                "Atapuerca — yacimiento con horizonte limpio, ideal para observación",
-                "Finca privada AstroAfición — observación guiada con telescopios"
+                "Mirador del Castillo â€” vista panorÃ¡mica de la ciudad y horizonte oeste",
+                "Paseo del EspolÃ³n â€” amplia avenida junto al ArlanzÃ³n con orientaciÃ³n oeste",
+                "Atapuerca â€” yacimiento con horizonte limpio, ideal para observaciÃ³n",
+                "Finca privada AstroAficiÃ³n â€” observaciÃ³n guiada con telescopios"
             ],
             "schedule": {
                 "partialStart": "19:33",
@@ -119,26 +119,26 @@
             },
             "localEvents": [
                 {
-                    "name": "AstroAfición — observación guiada en finca privada (bus desde Madrid)",
+                    "name": "AstroAficiÃ³n â€” observaciÃ³n guiada en finca privada (bus desde Madrid)",
                     "url": "https://astroaficion.com/producto/eclipse-sol-2026/"
                 }
             ]
         },
         {
             "city": "Valladolid",
-            "region": "Castilla y León",
+            "region": "Castilla y LeÃ³n",
             "type": "total",
             "duration": "1m 28s",
             "contact": "20:29",
             "lat": 41.6523,
             "lng": -4.7245,
             "slug": "valladolid",
-            "description": "Antigua capital de España con excelentes conexiones AVE y una de las mayores probabilidades de cielo despejado (~70%). El Museo de la Ciencia programa actividades especiales. Región vinícola de Ribera del Duero para maridar el eclipse con enología.",
+            "description": "Antigua capital de EspaÃ±a con excelentes conexiones AVE y una de las mayores probabilidades de cielo despejado (~70%). El Museo de la Ciencia programa actividades especiales. RegiÃ³n vinÃ­cola de Ribera del Duero para maridar el eclipse con enologÃ­a.",
             "bestSpots": [
-                "Museo de la Ciencia — actividades y terraza con horizonte oeste",
-                "Campo Grande — parque amplio con orientación despejada al oeste",
-                "Orilla del Pisuerga — paseos con vistas al atardecer",
-                "Ruta del Vino Ribera del Duero — bodegas con catas y observación"
+                "Museo de la Ciencia â€” actividades y terraza con horizonte oeste",
+                "Campo Grande â€” parque amplio con orientaciÃ³n despejada al oeste",
+                "Orilla del Pisuerga â€” paseos con vistas al atardecer",
+                "Ruta del Vino Ribera del Duero â€” bodegas con catas y observaciÃ³n"
             ],
             "schedule": {
                 "partialStart": "19:33",
@@ -148,30 +148,30 @@
             },
             "localEvents": [
                 {
-                    "name": "Museo de la Ciencia — programa especial eclipse",
+                    "name": "Museo de la Ciencia â€” programa especial eclipse",
                     "url": "https://www.cope.es/emisoras/castilla-y-leon/valladolid-provincia/valladolid/noticias/valladolid-mira-cielo-guia-definitiva-actividades-gran-eclipse-solar-20260701_3395673.html"
                 },
                 {
-                    "name": "Hotel Arzuaga — fiesta eclipse en Ribera del Duero",
+                    "name": "Hotel Arzuaga â€” fiesta eclipse en Ribera del Duero",
                     "url": "https://www.20minutos.es/viajes/hoteles/mejores-hoteles-ver-eclipse-solar-total-12-agosto-espana_6921193_0.html"
                 }
             ]
         },
         {
             "city": "Zaragoza",
-            "region": "Aragón",
+            "region": "AragÃ³n",
             "type": "total",
             "duration": "1m 24s",
             "contact": "20:29",
             "lat": 41.6488,
             "lng": -0.8891,
             "slug": "zaragoza",
-            "description": "Frecuentemente recomendada como la mejor ubicación peninsular: buena duración de totalidad, la mayor probabilidad de cielos despejados de toda la franja (~70-75%) y excelentes conexiones AVE. La silueta de la Basílica del Pilar recortada contra la corona solar será una de las imágenes del eclipse.",
+            "description": "Frecuentemente recomendada como la mejor ubicaciÃ³n peninsular: buena duraciÃ³n de totalidad, la mayor probabilidad de cielos despejados de toda la franja (~70-75%) y excelentes conexiones AVE. La silueta de la BasÃ­lica del Pilar recortada contra la corona solar serÃ¡ una de las imÃ¡genes del eclipse.",
             "bestSpots": [
-                "Basílica del Pilar — la silueta más icónica del eclipse, desde la orilla del Ebro",
-                "Parque José Antonio Labordeta — amplio espacio verde con horizonte despejado",
-                "Orilla del Ebro (Puente de Piedra) — vista abierta hacia el oeste",
-                "Mirador de Torrero — colina al sur con panorámica de la ciudad"
+                "BasÃ­lica del Pilar â€” la silueta mÃ¡s icÃ³nica del eclipse, desde la orilla del Ebro",
+                "Parque JosÃ© Antonio Labordeta â€” amplio espacio verde con horizonte despejado",
+                "Orilla del Ebro (Puente de Piedra) â€” vista abierta hacia el oeste",
+                "Mirador de Torrero â€” colina al sur con panorÃ¡mica de la ciudad"
             ],
             "schedule": {
                 "partialStart": "19:34",
@@ -181,11 +181,11 @@
             },
             "localEvents": [
                 {
-                    "name": "Guía del eclipse — Ayuntamiento de Zaragoza",
+                    "name": "GuÃ­a del eclipse â€” Ayuntamiento de Zaragoza",
                     "url": "https://zaragozala.com/eclipse-solar-zaragoza-2026"
                 },
                 {
-                    "name": "CEFCA — actividades divulgativas en Aragón",
+                    "name": "CEFCA â€” actividades divulgativas en AragÃ³n",
                     "url": "https://aragoninvestiga.es/aragon-escenario-privilegiado-del-eclipse-solar-total-de-2026/"
                 }
             ],
@@ -193,19 +193,19 @@
         },
         {
             "city": "Tarragona",
-            "region": "Cataluña",
+            "region": "CataluÃ±a",
             "type": "total",
             "duration": "1m 00s",
             "contact": "20:33",
             "lat": 41.1189,
             "lng": 1.2445,
             "slug": "tarragona",
-            "description": "La antigua Tarraco romana (UNESCO) ofrece uno de los escenarios más espectaculares del eclipse: el anfiteatro frente al mar Mediterráneo. 1 minuto exacto de totalidad con el sol muy bajo sobre el horizonte marino.",
+            "description": "La antigua Tarraco romana (UNESCO) ofrece uno de los escenarios mÃ¡s espectaculares del eclipse: el anfiteatro frente al mar MediterrÃ¡neo. 1 minuto exacto de totalidad con el sol muy bajo sobre el horizonte marino.",
             "bestSpots": [
-                "Anfiteatro Romano — patrimonio UNESCO frente al mar, orientación oeste",
-                "Balcón del Mediterráneo — mirador elevado sobre la costa",
-                "Paseo Marítimo — línea de costa despejada hacia el oeste",
-                "Puerto de Tarragona — vistas marítimas sin obstáculos"
+                "Anfiteatro Romano â€” patrimonio UNESCO frente al mar, orientaciÃ³n oeste",
+                "BalcÃ³n del MediterrÃ¡neo â€” mirador elevado sobre la costa",
+                "Paseo MarÃ­timo â€” lÃ­nea de costa despejada hacia el oeste",
+                "Puerto de Tarragona â€” vistas marÃ­timas sin obstÃ¡culos"
             ],
             "schedule": {
                 "partialStart": "19:38",
@@ -215,11 +215,11 @@
             },
             "localEvents": [
                 {
-                    "name": "Catalunya mira al cielo — 26 puntos de observación en 20 municipios",
+                    "name": "Catalunya mira al cielo â€” 26 puntos de observaciÃ³n en 20 municipios",
                     "url": "https://www.elimparcial.es/noticia/294908/sociedad/elegidos-los-mejores-puntos-de-observacion-para-ver-el-eclipse-solar-en-agosto.html"
                 },
                 {
-                    "name": "Festival Prades — Parc Astronòmic (10-13 ago)",
+                    "name": "Festival Prades â€” Parc AstronÃ²mic (10-13 ago)",
                     "url": "https://www.parcastronomicprades.cat/es/solar-eclipse-26/"
                 }
             ]
@@ -233,12 +233,12 @@
             "lat": 39.4699,
             "lng": -0.3763,
             "slug": "valencia",
-            "description": "Tercera ciudad de España, en el borde sur de la franja con ~1 minuto de totalidad. La Ciudad de las Artes y las Ciencias es el escenario más vanguardista. Conduce 30 min al norte a Sagunto o Puzol para totalidad más larga y segura.",
+            "description": "Tercera ciudad de EspaÃ±a, en el borde sur de la franja con ~1 minuto de totalidad. La Ciudad de las Artes y las Ciencias es el escenario mÃ¡s vanguardista. Conduce 30 min al norte a Sagunto o Puzol para totalidad mÃ¡s larga y segura.",
             "bestSpots": [
-                "Ciudad de las Artes y las Ciencias — arquitectura futurista y horizonte abierto",
-                "Malvarrosa — playa al norte con orientación oeste sobre el mar",
-                "Puerto de Sagunto — desplazamiento 30 min para totalidad más larga",
-                "Albufera — horizonte despejado hacia el oeste desde el lago"
+                "Ciudad de las Artes y las Ciencias â€” arquitectura futurista y horizonte abierto",
+                "Malvarrosa â€” playa al norte con orientaciÃ³n oeste sobre el mar",
+                "Puerto de Sagunto â€” desplazamiento 30 min para totalidad mÃ¡s larga",
+                "Albufera â€” horizonte despejado hacia el oeste desde el lago"
             ],
             "schedule": {
                 "partialStart": "19:36",
@@ -262,12 +262,12 @@
             "lat": 39.5696,
             "lng": 2.6502,
             "slug": "mallorca",
-            "description": "La línea central cruza la isla, con las mejores probabilidades de cielos despejados de España (~75%). El sol estará extremadamente bajo, por lo que los miradores costeros y elevados de la Serra de Tramuntana son esenciales. La totalidad ocurre prácticamente al atardecer sobre el Mediterráneo.",
+            "description": "La lÃ­nea central cruza la isla, con las mejores probabilidades de cielos despejados de EspaÃ±a (~75%). El sol estarÃ¡ extremadamente bajo, por lo que los miradores costeros y elevados de la Serra de Tramuntana son esenciales. La totalidad ocurre prÃ¡cticamente al atardecer sobre el MediterrÃ¡neo.",
             "bestSpots": [
-                "Serra de Tramuntana (UNESCO) — Pollença, Sóller, Deià, Valldemossa, Banyalbufar",
-                "Cap de Formentor — mirador al norte con horizonte marítimo limpio",
-                "Cap de ses Salines — extremo sur, horizonte oeste despejado",
-                "Sa Foradada / Sa Calobra — acantilados icónicos orientados al oeste"
+                "Serra de Tramuntana (UNESCO) â€” PollenÃ§a, SÃ³ller, DeiÃ , Valldemossa, Banyalbufar",
+                "Cap de Formentor â€” mirador al norte con horizonte marÃ­timo limpio",
+                "Cap de ses Salines â€” extremo sur, horizonte oeste despejado",
+                "Sa Foradada / Sa Calobra â€” acantilados icÃ³nicos orientados al oeste"
             ],
             "schedule": {
                 "partialStart": "19:38",
@@ -277,7 +277,7 @@
             },
             "localEvents": [
                 {
-                    "name": "Fiaam — Fundación Instituto de Astronomía de Mallorca",
+                    "name": "Fiaam â€” FundaciÃ³n Instituto de AstronomÃ­a de Mallorca",
                     "url": "https://www.europapress.es/illes-balears/noticia-eclipse-solar-total-2026-mallorca-mapa-observar-evento-astronomico-siglo-20250822102117.html"
                 },
                 {
@@ -296,22 +296,22 @@
             "lat": 40.4168,
             "lng": -3.7038,
             "slug": "madrid",
-            "description": "Justo al sur de la franja de totalidad. La capital ofrece las mejores conexiones de transporte a ubicaciones de totalidad: Somosierra (1m 29s a 45 min), Guadalajara (1m 07s a 35 min), Segovia (57s a 30 min). Dentro de la ciudad el eclipse será parcial al 99,9% — una experiencia impresionante pero sin oscuridad total.",
+            "description": "Justo al sur de la franja de totalidad. La capital ofrece las mejores conexiones de transporte a ubicaciones de totalidad: Somosierra (1m 29s a 45 min), Guadalajara (1m 07s a 35 min), Segovia (57s a 30 min). Dentro de la ciudad el eclipse serÃ¡ parcial al 99,9% â€” una experiencia impresionante pero sin oscuridad total.",
             "bestSpots": [
-                "Templo de Debod — horizonte oeste sobre la Casa de Campo",
-                "Casa de Campo — amplio espacio verde con vistas hacia el oeste",
-                "Parque del Oeste — orientación directa al atardecer",
-                "Somosierra (45 min) — totalidad 1m 29s, el punto más largo de Madrid"
+                "Templo de Debod â€” horizonte oeste sobre la Casa de Campo",
+                "Casa de Campo â€” amplio espacio verde con vistas hacia el oeste",
+                "Parque del Oeste â€” orientaciÃ³n directa al atardecer",
+                "Somosierra (45 min) â€” totalidad 1m 29s, el punto mÃ¡s largo de Madrid"
             ],
             "schedule": {
                 "partialStart": "19:30",
-                "totalityStart": "—",
-                "totalityEnd": "—",
+                "totalityStart": "â€”",
+                "totalityEnd": "â€”",
                 "partialEnd": "21:17"
             },
             "localEvents": [
                 {
-                    "name": "Comunidad de Madrid — 11 puntos de observación + 34 puntos de información",
+                    "name": "Comunidad de Madrid â€” 11 puntos de observaciÃ³n + 34 puntos de informaciÃ³n",
                     "url": "https://www.comunidad.madrid/trio-eclipses-2026-2027-2028"
                 },
                 {
@@ -334,12 +334,12 @@
             "lat": 43.1828,
             "lng": -3.9878,
             "slug": "cantabria",
-            "description": "Comunidad cant�brica con 1 minuto de totalidad y la costa m�s espectacular del norte. Santander ofrece miradores urbanos, mientras que los acantilados de la Costa Quebrada y el Parque de la Naturaleza de Cab�rceno son opciones inigualables para una observaci�n en plena naturaleza.",
+            "description": "Comunidad cantábrica con 1 minuto de totalidad y la costa más espectacular del norte. Santander ofrece miradores urbanos, mientras que los acantilados de la Costa Quebrada y el Parque de la Naturaleza de Cabárceno son opciones inigualables para una observación en plena naturaleza.",
             "bestSpots": [
-                "Pen�nsula de la Magdalena (Santander) � parque elevado con horizonte abierto al oeste sobre la bah�a",
-                "Faro de Cabo Mayor � acantilado con vistas panor�micas del Cant�brico",
-                "Costa Quebrada � acantilados naturales orientados al oeste entre Suances y Santander",
-                "Parque de la Naturaleza de Cab�rceno � espacio abierto con horizonte despejado"
+                "Península de la Magdalena (Santander) — parque elevado con horizonte abierto al oeste sobre la bahía",
+                "Faro de Cabo Mayor — acantilado con vistas panorámicas del Cantábrico",
+                "Costa Quebrada — acantilados naturales orientados al oeste entre Suances y Santander",
+                "Parque de la Naturaleza de Cabárceno — espacio abierto con horizonte despejado"
             ],
             "schedule": {
                 "partialStart": "19:33",
@@ -356,19 +356,19 @@
         },
         {
             "city": "Palencia",
-            "region": "Castilla y León",
+            "region": "Castilla y LeÃ³n",
             "type": "total",
             "duration": "1m 42s",
             "contact": "20:29",
             "lat": 42.0096,
             "lng": -4.5288,
             "slug": "palencia",
-            "description": "En el coraz�n de Castilla y Le�n, Palencia ofrece 1m 42s de totalidad �una de las m�s largas de la pen�nsula� con cielos muy despejados. El Cerro del Otero es el mirador natural de la ciudad, y la cercana Monta�a Palentina a�ade paisajes de alta monta�a.",
+            "description": "En el corazón de Castilla y León, Palencia ofrece 1m 42s de totalidad —una de las más largas de la península— con cielos muy despejados. El Cerro del Otero es el mirador natural de la ciudad, y la cercana Montaña Palentina añade paisajes de alta montaña.",
             "bestSpots": [
-                "Cerro del Otero � colina emblem�tica con vistas de la ciudad y horizonte oeste limpio",
-                "Canal de Castilla � paseo junto al agua con orientaci�n despejada",
-                "Monta�a Palentina � puertos de monta�a por encima de posibles nieblas",
-                "Cerrato � paisaje de llanuras cerealistas con horizonte infinito"
+                "Cerro del Otero — colina emblemática con vistas de la ciudad y horizonte oeste limpio",
+                "Canal de Castilla — paseo junto al agua con orientación despejada",
+                "Montaña Palentina — puertos de montaña por encima de posibles nieblas",
+                "Cerrato — paisaje de llanuras cerealistas con horizonte infinito"
             ],
             "schedule": {
                 "partialStart": "19:33",
@@ -385,19 +385,19 @@
         },
         {
             "city": "Vitoria-Gasteiz",
-            "region": "País Vasco",
+            "region": "PaÃ­s Vasco",
             "type": "total",
             "duration": "1m 04s",
             "contact": "20:30",
             "lat": 42.8467,
             "lng": -2.6716,
             "slug": "vitoria-gasteiz",
-            "description": "Capital verde del Pa�s Vasco, dentro de la franja de totalidad con 1m 04s. El Anillo Verde de Vitoria, su catedral g�tica y las llanadas alavesas ofrecen m�ltiples opciones de observaci�n. La ciudad ha preparado un programa especial de actividades astron�micas.",
+            "description": "Capital verde del País Vasco, dentro de la franja de totalidad con 1m 04s. El Anillo Verde de Vitoria, su catedral gótica y las llanadas alavesas ofrecen múltiples opciones de observación. La ciudad ha preparado un programa especial de actividades astronómicas.",
             "bestSpots": [
-                "Anillo Verde � parque periurbano con amplios espacios y horizonte oeste",
-                "Parque de la Florida � zona elevada en el centro con orientaci�n despejada",
-                "Llanada Alavesa � campos abiertos al sur de la ciudad sin obst�culos",
-                "Mirador de Est�baliz � colina con ermita y vistas panor�micas al oeste"
+                "Anillo Verde — parque periurbano con amplios espacios y horizonte oeste",
+                "Parque de la Florida — zona elevada en el centro con orientación despejada",
+                "Llanada Alavesa — campos abiertos al sur de la ciudad sin obstáculos",
+                "Mirador de Estíbaliz — colina con ermita y vistas panorámicas al oeste"
             ],
             "schedule": {
                 "partialStart": "19:34",
@@ -407,7 +407,7 @@
             },
             "localEvents": [
                 {
-                    "name": "Programa municipal de observaci�n del eclipse",
+                    "name": "Programa municipal de observación del eclipse",
                     "url": "https://trioeclipses.es/"
                 }
             ]
@@ -421,12 +421,12 @@
             "lat": 43.0096,
             "lng": -7.556,
             "slug": "lugo",
-            "description": "Ciudad amurallada (UNESCO) en el interior de Galicia, con 1m 30s de totalidad y menos riesgo de nubes que la costa. La Muralla Romana y la Catedral de Santa Mar�a son escenarios monumentales para la observaci�n. El eclipse ocurre con el sol a�n alto, ideal para quienes buscan evitar la niebla costera.",
+            "description": "Ciudad amurallada (UNESCO) en el interior de Galicia, con 1m 30s de totalidad y menos riesgo de nubes que la costa. La Muralla Romana y la Catedral de Santa María son escenarios monumentales para la observación. El eclipse ocurre con el sol aún alto, ideal para quienes buscan evitar la niebla costera.",
             "bestSpots": [
-                "Muralla Romana (UNESCO) � paseo elevado con horizonte despejado al oeste",
-                "Parque de Rosal�a de Castro � zona verde con vistas abiertas",
-                "Mirador de Montefiou � elevaci�n natural sobre la ciudad",
-                "Ribeira Sacra � ca�ones del Sil con miradores hacia el oeste"
+                "Muralla Romana (UNESCO) — paseo elevado con horizonte despejado al oeste",
+                "Parque de Rosalía de Castro — zona verde con vistas abiertas",
+                "Mirador de Montefiou — elevación natural sobre la ciudad",
+                "Ribeira Sacra — cañones del Sil con miradores hacia el oeste"
             ],
             "schedule": {
                 "partialStart": "19:30",
@@ -436,26 +436,26 @@
             },
             "localEvents": [
                 {
-                    "name": "Observaci�n desde la Muralla Romana",
+                    "name": "Observación desde la Muralla Romana",
                     "url": "https://trioeclipses.es/"
                 }
             ]
         },
         {
             "city": "Soria",
-            "region": "Castilla y León",
+            "region": "Castilla y LeÃ³n",
             "type": "total",
             "duration": "1m 43s",
             "contact": "20:30",
             "lat": 41.7636,
             "lng": -2.4649,
             "slug": "soria",
-            "description": "Una de las totalidades m�s largas de Espa�a (1m 43s), con cielos despejados garantizados en plena Meseta. Soria combina el rom�nico m�s puro con paisajes de la ribera del Duero. Es sede del Iberia Eclipse Festival, uno de los mayores eventos del eclipse.",
+            "description": "Una de las totalidades más largas de España (1m 43s), con cielos despejados garantizados en plena Meseta. Soria combina el románico más puro con paisajes de la ribera del Duero. Es sede del Iberia Eclipse Festival, uno de los mayores eventos del eclipse.",
             "bestSpots": [
-                "Monte de las �nimas � colina emblem�tica de B�cquer, horizonte oeste abierto",
-                "Orilla del Duero (paseo de San Prudencio) � amplio corredor fluvial",
-                "Ca��n del R�o Lobos � paisaje k�rstico con miradores naturales",
-                "Laguna Negra de Urbi�n � alta monta�a con vistas espectaculares"
+                "Monte de las Ánimas — colina emblemática de Bécquer, horizonte oeste abierto",
+                "Orilla del Duero (paseo de San Prudencio) — amplio corredor fluvial",
+                "Cañón del Río Lobos — paisaje kárstico con miradores naturales",
+                "Laguna Negra de Urbión — alta montaña con vistas espectaculares"
             ],
             "schedule": {
                 "partialStart": "19:33",
@@ -479,12 +479,12 @@
             "lat": 40.6337,
             "lng": -3.1674,
             "slug": "guadalajara",
-            "description": "A solo 35 min de Madrid, Guadalajara ofrece 1m 07s de totalidad para quienes quieran escapar de la capital. El Palacio del Infantado, la Sierra Norte y la arquitectura negra de la Campi�a son el tel�n de fondo perfecto. Las conexiones AVE la hacen ideal para una excursi�n de un d�a.",
+            "description": "A solo 35 min de Madrid, Guadalajara ofrece 1m 07s de totalidad para quienes quieran escapar de la capital. El Palacio del Infantado, la Sierra Norte y la arquitectura negra de la Campiña son el telón de fondo perfecto. Las conexiones AVE la hacen ideal para una excursión de un día.",
             "bestSpots": [
-                "Palacio del Infantado � plaza con horizonte despejado al oeste",
-                "Parque de la Concordia � espacio elevado en el centro urbano",
-                "Sierra Norte � miradores de monta�a entre Cogolludo y Tamaj�n",
-                "Arquitectura Negra (Campillo de Ranas) � aldeas de pizarra con cielos limpios"
+                "Palacio del Infantado — plaza con horizonte despejado al oeste",
+                "Parque de la Concordia — espacio elevado en el centro urbano",
+                "Sierra Norte — miradores de montaña entre Cogolludo y Tamajón",
+                "Arquitectura Negra (Campillo de Ranas) — aldeas de pizarra con cielos limpios"
             ],
             "schedule": {
                 "partialStart": "19:33",
@@ -494,26 +494,26 @@
             },
             "localEvents": [
                 {
-                    "name": "AstroAfici�n � ruta eclipse desde Guadalajara",
+                    "name": "AstroAfición — ruta eclipse desde Guadalajara",
                     "url": "https://astroaficion.com/producto/eclipse-sol-2026-guadalajara/"
                 }
             ]
         },
         {
             "city": "Teruel",
-            "region": "Aragón",
+            "region": "AragÃ³n",
             "type": "total",
             "duration": "1m 34s",
             "contact": "20:32",
             "lat": 40.3456,
             "lng": -1.1065,
             "slug": "teruel",
-            "description": "Mud�jar aragon�s (UNESCO) y astroturismo de primer nivel. Teruel ofrece 1m 34s de totalidad con alta probabilidad de cielo despejado (~70%). La cercan�a al Observatorio Astrof�sico de Javalambre (CEFCA) la convierte en capital astron�mica durante el eclipse.",
+            "description": "Mudéjar aragonés (UNESCO) y astroturismo de primer nivel. Teruel ofrece 1m 34s de totalidad con alta probabilidad de cielo despejado (~70%). La cercanía al Observatorio Astrofísico de Javalambre (CEFCA) la convierte en capital astronómica durante el eclipse.",
             "bestSpots": [
-                "Acueducto de los Arcos � monumento con orientaci�n oeste despejada",
-                "Torre de El Salvador � mirador elevado en el centro mud�jar",
-                "Observatorio Astrof�sico de Javalambre � cumbre cient�fica con cielos pr�stinos",
-                "Din�polis � espacio tem�tico con actividades especiales"
+                "Acueducto de los Arcos — monumento con orientación oeste despejada",
+                "Torre de El Salvador — mirador elevado en el centro mudéjar",
+                "Observatorio Astrofísico de Javalambre — cumbre científica con cielos prístinos",
+                "Dinópolis — espacio temático con actividades especiales"
             ],
             "schedule": {
                 "partialStart": "19:35",
@@ -523,17 +523,17 @@
             },
             "localEvents": [
                 {
-                    "name": "La Noche del Sol � CEFCA Javalambre",
+                    "name": "La Noche del Sol — CEFCA Javalambre",
                     "url": "https://aragoninvestiga.es/guia-del-eclipse-solar-de-2026/"
                 },
                 {
-                    "name": "Actividades divulgativas en Din�polis",
+                    "name": "Actividades divulgativas en Dinópolis",
                     "url": "https://www.turismodearagon.com/eclipse-solar-2026/"
                 }
             ]
         },
         {
-            "city": "Castellón",
+            "city": "CastellÃ³n",
             "region": "C. Valenciana",
             "type": "total",
             "duration": "1m 34s",
@@ -544,19 +544,19 @@
         },
         {
             "city": "Reus",
-            "region": "Cataluña",
+            "region": "CataluÃ±a",
             "type": "total",
             "duration": "1m 04s",
             "contact": "20:33",
             "lat": 41.1559,
             "lng": 1.107,
             "slug": "reus",
-            "description": "Ciudad natal de Gaud�, dentro de la franja de totalidad con 1m 04s. Cerca de la costa de Tarragona y del aeropuerto de Barcelona-El Prat. El Modernismo reusense es el tel�n de fondo urbano; el cercano Parc Astron�mic de Prades organiza el Festival Eclipse 2026.",
+            "description": "Ciudad natal de Gaudí, dentro de la franja de totalidad con 1m 04s. Cerca de la costa de Tarragona y del aeropuerto de Barcelona-El Prat. El Modernismo reusense es el telón de fondo urbano; el cercano Parc Astronòmic de Prades organiza el Festival Eclipse 2026.",
             "bestSpots": [
-                "Plaza del Mercadal � centro hist�rico con horizonte abierto al oeste",
-                "Instituto Pere Mata � edificio modernista en colina con vistas",
-                "Paraje Natural de la Mierla � bosque mediterr�neo con claros orientados",
-                "Parc Astron�mic de Prades (20 min) � festival eclipse profesional"
+                "Plaza del Mercadal — centro histórico con horizonte abierto al oeste",
+                "Instituto Pere Mata — edificio modernista en colina con vistas",
+                "Paraje Natural de la Mierla — bosque mediterráneo con claros orientados",
+                "Parc Astronòmic de Prades (20 min) — festival eclipse profesional"
             ],
             "schedule": {
                 "partialStart": "19:38",
@@ -566,26 +566,26 @@
             },
             "localEvents": [
                 {
-                    "name": "Festival Eclipse 2026 � Parc Astron�mic de Prades (10-13 ago)",
+                    "name": "Festival Eclipse 2026 — Parc Astronòmic de Prades (10-13 ago)",
                     "url": "https://www.parcastronomicprades.cat/es/solar-eclipse-26/"
                 }
             ]
         },
         {
             "city": "Salou",
-            "region": "Cataluña",
+            "region": "CataluÃ±a",
             "type": "total",
             "duration": "1m 07s",
             "contact": "20:33",
             "lat": 41.0766,
             "lng": 1.1316,
             "slug": "salou",
-            "description": "Capital tur�stica de la Costa Daurada, dentro de la zona de totalidad con 1m 07s. El sol se pondr� eclipsado sobre el Mediterr�neo, creando una imagen inolvidable. Puerto Aventura ofrece un escenario singular para vivir el fen�meno.",
+            "description": "Capital turística de la Costa Daurada, dentro de la zona de totalidad con 1m 07s. El sol se pondrá eclipsado sobre el Mediterráneo, creando una imagen inolvidable. Puerto Aventura ofrece un escenario singular para vivir el fenómeno.",
             "bestSpots": [
-                "Paseo Mar�timo de Salou � l�nea de costa despejada hacia el oeste",
-                "Cabo de Salou � mirador rocoso con horizonte mar�timo limpio",
-                "Playa de la Pineda � arenal extenso con orientaci�n suroeste",
-                "Puerto Aventura � parque tem�tico con espacios abiertos"
+                "Paseo Marítimo de Salou — línea de costa despejada hacia el oeste",
+                "Cabo de Salou — mirador rocoso con horizonte marítimo limpio",
+                "Playa de la Pineda — arenal extenso con orientación suroeste",
+                "Puerto Aventura — parque temático con espacios abiertos"
             ],
             "schedule": {
                 "partialStart": "19:38",
@@ -609,12 +609,12 @@
             "lat": 39.9496,
             "lng": 4.1104,
             "slug": "menorca",
-            "description": "La isla m�s tranquila de Baleares ofrece 1m 10s de totalidad en un entorno de calas v�rgenes y paisajes protegidos (Reserva de la Biosfera). El Monte Toro, punto m�s alto de la isla, es el mirador natural perfecto. Menos masificada que Mallorca.",
+            "description": "La isla más tranquila de Baleares ofrece 1m 10s de totalidad en un entorno de calas vírgenes y paisajes protegidos (Reserva de la Biosfera). El Monte Toro, punto más alto de la isla, es el mirador natural perfecto. Menos masificada que Mallorca.",
             "bestSpots": [
-                "Monte Toro (289 m) � punto m�s alto de Menorca, vistas de 360�",
-                "Cala en Turqueta � cala virgen con horizonte oeste sobre el mar",
-                "Faro de Cavalleria � acantilado norte, privilegiado para atardeceres",
-                "Ciutadella � puerto y casco hist�rico con amplitud visual"
+                "Monte Toro (289 m) — punto más alto de Menorca, vistas de 360°",
+                "Cala en Turqueta — cala virgen con horizonte oeste sobre el mar",
+                "Faro de Cavalleria — acantilado norte, privilegiado para atardeceres",
+                "Ciutadella — puerto y casco histórico con amplitud visual"
             ],
             "schedule": {
                 "partialStart": "19:40",
@@ -624,26 +624,26 @@
             },
             "localEvents": [
                 {
-                    "name": "Observaci�n desde el Monte Toro",
+                    "name": "Observación desde el Monte Toro",
                     "url": "https://www.caib.es/"
                 }
             ]
         },
         {
             "city": "Zamora",
-            "region": "Castilla y León",
+            "region": "Castilla y LeÃ³n",
             "type": "edge",
             "duration": "24s",
             "contact": "20:28",
             "lat": 41.5034,
             "lng": -5.7468,
             "slug": "zamora",
-            "description": "En el borde sur de la franja de totalidad, Zamora apenas disfruta de 24 segundos de oscuridad total, pero bien merecen el desplazamiento. El rom�nico zamorano �el mejor conservado de Europa� y las Arribes del Duero crean un escenario espectacular para este fugaz eclipse.",
+            "description": "En el borde sur de la franja de totalidad, Zamora apenas disfruta de 24 segundos de oscuridad total, pero bien merecen el desplazamiento. El románico zamorano —el mejor conservado de Europa— y las Arribes del Duero crean un escenario espectacular para este fugaz eclipse.",
             "bestSpots": [
-                "Catedral de Zamora � el cimborrio rom�nico recortado contra el eclipse",
-                "Arribes del Duero � ca�ones profundos con miradores al oeste",
-                "Puente de Piedra � perspectiva del r�o Duero con horizonte abierto",
-                "Monte la Reina � elevaci�n al sur de la ciudad"
+                "Catedral de Zamora — el cimborrio románico recortado contra el eclipse",
+                "Arribes del Duero — cañones profundos con miradores al oeste",
+                "Puente de Piedra — perspectiva del río Duero con horizonte abierto",
+                "Monte la Reina — elevación al sur de la ciudad"
             ],
             "schedule": {
                 "partialStart": "19:32",
@@ -653,14 +653,14 @@
             },
             "localEvents": [
                 {
-                    "name": "Observaci�n organizada en las Arribes",
+                    "name": "Observación organizada en las Arribes",
                     "url": "https://trioeclipses.es/"
                 }
             ]
         },
         {
-            "city": "País Vasco",
-            "region": "País Vasco",
+            "city": "PaÃ­s Vasco",
+            "region": "PaÃ­s Vasco",
             "type": "edge",
             "duration": "31s",
             "contact": "20:29",
@@ -670,19 +670,19 @@
         },
         {
             "city": "Segovia",
-            "region": "Castilla y León",
+            "region": "Castilla y LeÃ³n",
             "type": "edge",
             "duration": "57s",
             "contact": "20:29",
             "lat": 40.9429,
             "lng": -4.1088,
             "slug": "segovia",
-            "description": "A solo 30 min de Madrid, Segovia ofrece 57 segundos de totalidad con el inconfundible perfil del Acueducto Romano (UNESCO) como testigo. El Alc�zar, la Catedral y la gastronom�a (cochinillo) hacen de la visita una experiencia completa. Sede del Astral Plane Festival.",
+            "description": "A solo 30 min de Madrid, Segovia ofrece 57 segundos de totalidad con el inconfundible perfil del Acueducto Romano (UNESCO) como testigo. El Alcázar, la Catedral y la gastronomía (cochinillo) hacen de la visita una experiencia completa. Sede del Astral Plane Festival.",
             "bestSpots": [
-                "Acueducto Romano � monumento milenario con horizonte oeste despejado",
-                "Alc�zar de Segovia � mirador elevado sobre la confluencia de r�os",
-                "Plaza Mayor � espacio abierto en el centro monumental",
-                "La Granja de San Ildefonso � palacio y jardines con horizontes amplios"
+                "Acueducto Romano — monumento milenario con horizonte oeste despejado",
+                "Alcázar de Segovia — mirador elevado sobre la confluencia de ríos",
+                "Plaza Mayor — espacio abierto en el centro monumental",
+                "La Granja de San Ildefonso — palacio y jardines con horizontes amplios"
             ],
             "schedule": {
                 "partialStart": "19:33",
@@ -692,7 +692,7 @@
             },
             "localEvents": [
                 {
-                    "name": "Astral Plane Festival � La Pinilla (10-12 ago)",
+                    "name": "Astral Plane Festival — La Pinilla (10-12 ago)",
                     "url": "https://spaineclipsefestival.com/"
                 }
             ]
@@ -706,12 +706,12 @@
             "lat": 40.0704,
             "lng": -2.1374,
             "slug": "cuenca",
-            "description": "Ciudad encantada colgada sobre la hoz del Hu�car, en el borde de la franja de totalidad con 53 segundos. Las Casas Colgadas (UNESCO) y la Serran�a de Cuenca crean un paisaje lunar que casa a la perfecci�n con el evento astron�mico.",
+            "description": "Ciudad encantada colgada sobre la hoz del Huécar, en el borde de la franja de totalidad con 53 segundos. Las Casas Colgadas (UNESCO) y la Serranía de Cuenca crean un paisaje lunar que casa a la perfección con el evento astronómico.",
             "bestSpots": [
-                "Casas Colgadas � mirador sobre la hoz con horizonte hacia el oeste",
-                "Parque de San Juli�n � espacio elevado en el casco antiguo",
-                "Serran�a de Cuenca � miradores del Hosquillo y la Ciudad Encantada",
-                "Ventano del Diablo � mirador natural sobre el r�o J�car"
+                "Casas Colgadas — mirador sobre la hoz con horizonte hacia el oeste",
+                "Parque de San Julián — espacio elevado en el casco antiguo",
+                "Serranía de Cuenca — miradores del Hosquillo y la Ciudad Encantada",
+                "Ventano del Diablo — mirador natural sobre el río Júcar"
             ],
             "schedule": {
                 "partialStart": "19:34",
@@ -721,26 +721,26 @@
             },
             "localEvents": [
                 {
-                    "name": "Observaci�n desde la Ciudad Encantada",
+                    "name": "Observación desde la Ciudad Encantada",
                     "url": "https://trioeclipses.es/"
                 }
             ]
         },
         {
             "city": "Lleida",
-            "region": "Cataluña",
+            "region": "CataluÃ±a",
             "type": "edge",
             "duration": "28s",
             "contact": "20:32",
             "lat": 41.6176,
             "lng": 0.62,
             "slug": "lleida",
-            "description": "En el extremo sur de la franja de totalidad catalana, Lleida disfruta de 28 segundos de oscuridad total. La Seu Vella, el Castillo de Gardeny y los paisajes de secano del Segri� son el escenario de esta breve pero intensa totalidad vespertina.",
+            "description": "En el extremo sur de la franja de totalidad catalana, Lleida disfruta de 28 segundos de oscuridad total. La Seu Vella, el Castillo de Gardeny y los paisajes de secano del Segrià son el escenario de esta breve pero intensa totalidad vespertina.",
             "bestSpots": [
-                "Seu Vella � catedral en la colina con vistas panor�micas de 360�",
-                "Castillo de Gardeny � fortaleza templaria con horizonte oeste",
-                "Parque de la Mitjana � espacio natural junto al r�o Segre",
-                "Llanos de Lleida � horizontes agr�colas completamente despejados"
+                "Seu Vella — catedral en la colina con vistas panorámicas de 360°",
+                "Castillo de Gardeny — fortaleza templaria con horizonte oeste",
+                "Parque de la Mitjana — espacio natural junto al río Segre",
+                "Llanos de Lleida — horizontes agrícolas completamente despejados"
             ],
             "schedule": {
                 "partialStart": "19:37",
@@ -750,14 +750,14 @@
             },
             "localEvents": [
                 {
-                    "name": "Catalunya mira al cielo � 26 puntos de observaci�n en 20 municipios",
+                    "name": "Catalunya mira al cielo — 26 puntos de observación en 20 municipios",
                     "url": "https://trioeclipses.es/"
                 }
             ]
         },
         {
-            "city": "Vilanova i la Geltrú",
-            "region": "Cataluña",
+            "city": "Vilanova i la GeltrÃº",
+            "region": "CataluÃ±a",
             "type": "edge",
             "duration": "15s",
             "contact": "20:33",
@@ -767,29 +767,29 @@
         },
         {
             "city": "Salamanca",
-            "region": "Castilla y León",
+            "region": "Castilla y LeÃ³n",
             "type": "partial",
             "duration": "99,5%",
             "contact": "20:28",
             "lat": 40.9701,
             "lng": -5.6635,
             "slug": "salamanca",
-            "description": "Al sur de la franja de totalidad, Salamanca ver� un eclipse parcial del 99,5% � una oscuridad casi total que oscurecer� la Plaza Mayor y la fachada plateresca de la Universidad. La ciudad universitaria ofrece un marco inolvidable, aunque no se ver� la corona solar.",
+            "description": "Al sur de la franja de totalidad, Salamanca verá un eclipse parcial del 99,5% — una oscuridad casi total que oscurecerá la Plaza Mayor y la fachada plateresca de la Universidad. La ciudad universitaria ofrece un marco inolvidable, aunque no se verá la corona solar.",
             "bestSpots": [
-                "Plaza Mayor � la plaza m�s bonita de Espa�a, orientaci�n oeste",
-                "Puente Romano sobre el Tormes � perspectiva monumental del atardecer",
-                "Huerto de Calixto y Melibea � jard�n elevado junto a la Catedral",
-                "Parque de la Alamedilla � espacio abierto con horizonte despejado"
+                "Plaza Mayor — la plaza más bonita de España, orientación oeste",
+                "Puente Romano sobre el Tormes — perspectiva monumental del atardecer",
+                "Huerto de Calixto y Melibea — jardín elevado junto a la Catedral",
+                "Parque de la Alamedilla — espacio abierto con horizonte despejado"
             ],
             "schedule": {
                 "partialStart": "19:32",
-                "totalityStart": "�",
-                "totalityEnd": "�",
+                "totalityStart": "—",
+                "totalityEnd": "—",
                 "partialEnd": "21:15"
             },
             "localEvents": [
                 {
-                    "name": "Observaci�n en la Plaza Mayor � actividades universitarias",
+                    "name": "Observación en la Plaza Mayor — actividades universitarias",
                     "url": "https://trioeclipses.es/"
                 }
             ]
@@ -803,22 +803,22 @@
             "lat": 39.4735,
             "lng": -6.3724,
             "slug": "extremadura",
-            "description": "La comunidad m�s al sur del mapa, fuera de la franja de totalidad. Extremadura ver� un eclipse parcial del 98% que transformar� el atardecer extreme�o en un crep�sculo a�n m�s dorado. M�rida, C�ceres y el Parque de Monfrag�e ofrecen entornos �nicos para la observaci�n parcial.",
+            "description": "La comunidad más al sur del mapa, fuera de la franja de totalidad. Extremadura verá un eclipse parcial del 98% que transformará el atardecer extremeño en un crepúsculo aún más dorado. Mérida, Cáceres y el Parque de Monfragüe ofrecen entornos únicos para la observación parcial.",
             "bestSpots": [
-                "Teatro Romano de M�rida (UNESCO) � atardecer entre columnas milenarias",
-                "Ciudad Monumental de C�ceres (UNESCO) � miradores desde la Torre de Bujaco",
-                "Parque Nacional de Monfrag�e � miradores naturales con horizonte oeste",
-                "Valle del Jerte � paisaje de cerezos en flor con vistas abiertas"
+                "Teatro Romano de Mérida (UNESCO) — atardecer entre columnas milenarias",
+                "Ciudad Monumental de Cáceres (UNESCO) — miradores desde la Torre de Bujaco",
+                "Parque Nacional de Monfragüe — miradores naturales con horizonte oeste",
+                "Valle del Jerte — paisaje de cerezos en flor con vistas abiertas"
             ],
             "schedule": {
                 "partialStart": "19:30",
-                "totalityStart": "�",
-                "totalityEnd": "�",
+                "totalityStart": "—",
+                "totalityEnd": "—",
                 "partialEnd": "21:14"
             },
             "localEvents": [
                 {
-                    "name": "Observaci�n en el Conjunto Arqueol�gico de M�rida",
+                    "name": "Observación en el Conjunto Arqueológico de Mérida",
                     "url": "https://trioeclipses.es/"
                 }
             ]

@@ -62,35 +62,64 @@
 
 ---
 
-### F12: Eventos por CCAA ⏳
+### F12: Eventos por CCAA ✅
 
-- **Descripción:** Sección de eventos oficiales organizados por comunidades autónomas. Integrar datos de la red de 34 puntos de información de Madrid, 73 municipios de Castilla y León, 26 puntos de Cataluña, y actividades de Aragón, Baleares, etc.
+- **Descripción:** Puntos de observación oficiales organizados por comunidades autónomas, integrados dentro de cada página de localidad (`[slug].astro`). Datos de 12 CCAA extraídos de fuentes oficiales y divulgativas.
 - **Alcance:**
     - Datos en `src/data/ccaa-events.json` con estructura `{ ccaa, puntos[], eventos[], enlace_oficial }`
-    - Componente `CCAAEvents.astro` o integración en `EventList.astro` con filtro por CCAA
-    - Mapa o listado por comunidad con número de puntos de observación
-    - Madrid: 11 puntos con duración específica (Somosierra 1m29s, Buitrago 1m19s, La Cabrera 1m11s, El Molar 1m01s, Meco 55s, San Agustín 53s, Navacerrada 49s, Colmenar Viejo 43s, Alcalá 41s, Tres Cantos 36s, San Sebastián 35s) + 34 puntos información Pueblos con Vida
-    - Castilla y León: 73 municipios recomendados por la Junta
-    - Cataluña: 26 puntos en 20 municipios (iniciativa "Catalunya mira al cielo")
-    - Aragón: actividades CEFCA, Galáctica, Planetario
-    - Fuente citada antes de CTA por CCAA
+    - Integración en `[slug].astro` — lookup por `place.region`, renderiza tabla de puntos y eventos de la CCAA
+    - Fuente citada antes de cada bloque de eventos por CCAA
+    - 12 CCAA cubiertas (100% de las regiones en `locations.json`)
+- **Avance:**
+    - Datos de 12 CCAA con puntos, duraciones, eventos, enlace oficial y fuente:
+        - Madrid: 11 puntos (Somosierra 1m29s → San Sebastián de los Reyes 35s) + 34 puntos información ✅
+        - Castilla y León: 73 municipios, 16 puntos representativos con duraciones ✅
+        - Cataluña: 26 puntos en 20 municipios (iniciativa "Catalunya mira al cielo") ✅
+        - Aragón: 10 puntos (CEFCA, Galáctica, Planetario, Sizigia) ✅
+        - Galicia: 143 municipios Xunta, 12 puntos costeros (Torre Hércules, Vixía da Herbeira, Estaca Bares) ✅
+        - Asturias: 78 puntos seguros FICYT, 12 puntos (Cabo Peñas, Sablón, Lagos Covadonga, Picu Polio) ✅
+        - C. Valenciana: 8 puntos oficiales Generalitat (Aras Olmos, Benassal, Castellón, Valencia) ✅
+        - Cantabria: 51 municipios, 12 puntos (Fuente Dé, Magdalena, Cabo Mayor, Comillas) ✅
+        - Castilla-La Mancha: 12 puntos (Guadalajara, Cuenca, Alto Tajo, Serranía, Brihuega) ✅
+        - País Vasco: 5 puntos (Vitoria-Gasteiz 1m02s, Bilbao 31s, San Sebastián parcial) ✅
+        - Islas Baleares: 10 puntos (Serra Tramuntana, Deià, Palma, Menorca, Eivissa) ✅
+        - Extremadura: eclipse parcial ~98%, nota informativa con enlaces a turismo ✅
+    - Datos embedidos en `[slug].astro` renderizan automáticamente por CCAA ✅
+    - Sin sección separada en home (todo va en páginas de localidad) ✅
+    - 95 tests, 0 failures ✅
 - **Stack:** Astro, JSON, datos oficiales CCAA
 - **Fuentes:**
     - `https://www.comunidad.madrid/trio-eclipses-2026-2027-2028` — Madrid 11+34 puntos, reparto gafas
     - `https://www.eldebate.com/espana/madrid/20260320/madrid-vuelca-historico-eclipse-solar-12-agosto-ambicioso-programa-actividades_398028.html` — programa Madrid
     - `https://www.eleconomista.es/actualidad/noticias/13958497/06/26/la-lista-con-los-73-municipios-recomendados-para-ver-el-eclipse-del-12-de-agosto-2026-6.html` — 73 municipios Castilla y León
     - `https://www.diariodecastillayleon.es/castilla-y-leon/260120/104249/eclipse-solar-deslumbra-oferta-castilla-leon-fitur.html` — promoción CyL Fitur
-    - `https://www.elimparcial.es/noticia/294908/sociedad/elegidos-los-mejores-puntos-de-observacion-para-ver-el-eclipse-solar-en-agosto.html` — Cataluña 26 puntos, resto CCAA
+    - `https://www.elimparcial.es/noticia/294908/sociedad/elegidos-los-mejores-puntos-de-observacion-para-ver-el-eclipse-solar-en-agosto.html` — puntos preferentes por CCAA
+    - `https://eclipsicatalunya.cat/es/puntos-de-observacion` — Catalunya 26 puntos
     - `https://aragoninvestiga.es/aragon-escenario-privilegiado-del-eclipse-solar-total-de-2026/` — Aragón CEFCA/Galáctica
     - `https://www.hoyaragon.es/articulo/noticias-aragon/eclipse-solar-total-2026/20250812093351105296.html` — "La Noche del Sol" Javalambre
     - `https://www.tourspain.es/es/b2b/aragon-experiencias-astroturismo-teruel-huesca-zaragoza` — astroturismo Aragón
     - `https://www.caib.es/webgoib/es/vols-saber-ho-tot-sobre-l-eclipsi-del-12-d-agost-de-2026-` — Baleares gov
     - `https://www.20minutos.es/ciencia/cuatro-comunidades-quedaran-completamente-oscuras-eclipse-solar-2026_6513074_0.html` — 4 CCAA oscuridad total
+    - `https://www.turismo.gal/que-facer/eclipse?langId=es_ES` — Galicia rutas eclipse
+    - `https://www.elespanol.com/quincemil/economia/turismo/20260124/confirmado-xunta-mejores-lugares-galicia-ver-gran-eclipse-sol-agosto/1003744099973_0.html` — Xunta 143 municipios
+    - `https://eclipseasturias2026.ficyt.es/puntos_observacion.php` — Asturias 78 puntos seguros
+    - `https://www.elcomercio.es/eclipse/mieres-prepara-vivir-eclipse-solar-maximo-picu-20260405205919-nt.html` — Mieres Picu Polio
+    - `https://eclipses.gva.es/` — C. Valenciana 8 puntos oficiales
+    - `https://www.valenciabonita.es/2026/06/17/eclipse-solar-total-12-agosto-2026-comunitat-valenciana` — Guía C. Valenciana
+    - `https://astrocantabria.org/?q=eclipse26` — Cantabria observaciones
+    - `https://www.observatorioastronomicocantabria.com/oac/web/observaciones-eclipse` — Obs. Astronómico Cantabria
+    - `https://www.turismocastillalamancha.es/es/naturaleza/astroturismo/eclipse-total-de-sol-en-castilla-la-mancha` — Castilla-La Mancha turismo
+    - `https://eclipse-solar.es/guadalajara/` — Guadalajara puntos
+    - `https://eclipse-solar.es/pais-vasco/` — País Vasco guía
+    - `https://eclipse-solar.es/extremadura/` — Extremadura guía
+    - `https://astroturismoporextremadura.es/eclipse-total` — Astroturismo Extremadura
+    - `https://www.treseclipses.es/eclipses/2026-total/miradores/galicia` — TresEclipses Galicia
 - **Aceptación:**
-    - [ ] Datos de mínimo 4 CCAA con puntos de observación verificados
-    - [ ] Componente visual con listado por CCAA
-    - [ ] Enlaces a fuentes oficiales de cada CCAA
-    - [ ] Build producción sin errores
+    - [x] Datos de 12 CCAA con puntos de observación verificados
+    - [x] Puntos embedidos en cada página de localidad (`[slug].astro`)
+    - [x] Enlaces a fuentes oficiales de cada CCAA con fuente citada
+    - [x] Build producción sin errores (30 pages, 0 errors)
+    - [x] 95 tests, 0 failures
 
 ---
 
@@ -226,8 +255,8 @@
 - [x] F11: Sin placeholders en páginas de ubicación
 - [x] F11: URLs genéricas reemplazadas por enlaces directos a eventos CCAA
 - [x] F11: Mojibake UTF-8 corregido en locations.json
-- [ ] F12: Datos de 4+ CCAA con puntos de observación
-- [ ] F12: Componente visual con listado por CCAA
+- [x] F12: Datos de 12 CCAA con puntos de observación
+- [x] F12: Puntos embedidos en páginas de localidad ([slug].astro)
 - [ ] F13: 5+ festivales con cards y enlaces
 - [ ] F13: Sección festivales integrada en home
 - [ ] F14: Tooltip funcional en marquee hero

@@ -350,12 +350,13 @@
             "localEvents": [
                 {
                     "name": "Observaciones organizadas por ayuntamientos costeros",
-                    "url": "https://trioeclipses.es/"
+                    "url": "https://astrocantabria.org/?q=eclipse26"
                 }
             ]
         },
         {
             "city": "Palencia",
+            "officialUrl": "https://iac.edu.es/es/divulgacion/galeria-multimedia/elemento-multimedia/cerro-y-cristo-del-otero-en-palencia-0",
             "region": "Castilla y LeÃ³n",
             "type": "total",
             "duration": "1m 42s",
@@ -379,7 +380,7 @@
             "localEvents": [
                 {
                     "name": "Actividades divulgativas en centros culturales",
-                    "url": "https://trioeclipses.es/"
+                    "url": "https://iac.edu.es/es/divulgacion/galeria-multimedia/elemento-multimedia/cerro-y-cristo-del-otero-en-palencia-0"
                 }
             ]
         },
@@ -408,7 +409,7 @@
             "localEvents": [
                 {
                     "name": "Programa municipal de observación del eclipse",
-                    "url": "https://trioeclipses.es/"
+                    "url": "https://gasteizberri.com/2026/03/agenda-cea-eclipse-2026-vitoria-gasteiz/"
                 }
             ]
         },
@@ -437,7 +438,7 @@
             "localEvents": [
                 {
                     "name": "Observación desde la Muralla Romana",
-                    "url": "https://trioeclipses.es/"
+                    "url": "https://www.turismo.gal/que-facer/eclipse?langId=es_ES"
                 }
             ]
         },
@@ -596,7 +597,7 @@
             "localEvents": [
                 {
                     "name": "Actividades especiales en Puerto Aventura",
-                    "url": "https://trioeclipses.es/"
+                    "url": "https://www.visitsalou.eu/es/durante-tu-visita/informacion-util/actividades/eclipse-total"
                 }
             ]
         },
@@ -654,7 +655,7 @@
             "localEvents": [
                 {
                     "name": "Observación organizada en las Arribes",
-                    "url": "https://trioeclipses.es/"
+                    "url": "https://www.diputaciondezamora.es/opencms/servicios/agenda-e-informacion/notas-de-prensa/detalle-noticia/Zamora-refuerza-su-presencia-en-INTUR-2025-con-un-stand-de-150-metros-cuadrados-y-una-completa-programacion-basada-en-el-turismo-sostenible-la-innovacion-y-los-grandes-eventos-provinciales"
                 }
             ]
         },
@@ -722,7 +723,7 @@
             "localEvents": [
                 {
                     "name": "Observación desde la Ciudad Encantada",
-                    "url": "https://trioeclipses.es/"
+                    "url": "https://eldigitaldecuenca.com/2026/05/15/guia-de-los-mejores-lugares-de-cuenca-para-ver-el-eclipse-solar-del-12-de-agosto/"
                 }
             ]
         },
@@ -751,7 +752,7 @@
             "localEvents": [
                 {
                     "name": "Catalunya mira al cielo — 26 puntos de observación en 20 municipios",
-                    "url": "https://trioeclipses.es/"
+                    "url": "https://eclipsicatalunya.cat/es/puntos-de-observacion"
                 }
             ]
         },
@@ -790,7 +791,7 @@
             "localEvents": [
                 {
                     "name": "Observación en la Plaza Mayor — actividades universitarias",
-                    "url": "https://trioeclipses.es/"
+                    "url": "https://www.salamancartvaldia.es/"
                 }
             ]
         },
@@ -819,7 +820,7 @@
             "localEvents": [
                 {
                     "name": "Observación en el Conjunto Arqueológico de Mérida",
-                    "url": "https://trioeclipses.es/"
+                    "url": "https://www.turismoextremadura.com/"
                 }
             ]
         }

@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.11.0 (2026-07-04)
+
+- F11: Contenido real para 29 localidades: descripción, horarios exactos, mejores miradores, eventos locales
+- F11: Datos extraídos de fuentes oficiales (CCAA, NASA, ESA, medios)
+- F11: Enlaces genéricos `trioeclipses.es` reemplazados por URLs directas a eventos oficiales
+- F11: Corregido mojibake en `locations.json` — 156 caracteres doble-codificados revertidos
+- Build: 30 páginas, 87 tests
+
 ## v1.10.1 (2026-07-04)
 
 - Security: `innerHTML` eliminado en buscador Nominatim (XSS vía OSM display_name)

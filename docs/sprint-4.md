@@ -1,22 +1,23 @@
 # Sprint 4 — Eclipse 2026
 
-**Deadline:** viernes 10 de julio de 2026
+**Fecha límite:** viernes 10 de julio de 2026
 **Estado:** 🚧 En progreso
 
 ---
 
-## Features
+## Funcionalidades
 
 ### F11: Info ampliada por localidad 🏗️
 
 - **Descripción:** Rellenar páginas de cada ubicación con datos reales. Eliminar placeholder "estación espacial en construcción". Añadir por localidad: descripción, horarios exactos, mejores miradores/zona de visionado, eventos locales, consejos meteorológicos, recomendaciones de alojamiento.
-- **Scope:**
+- **Alcance:**
     - Schema de datos extendido en `locations.json` (descripción, altitud sol, horario totalidad, mejores spots, eventos cercanos, web oficial, consejos)
     - Template `[slug].astro` renderiza datos reales, no placeholder
     - Contenido para ~30 ubicaciones extraído de fuentes oficiales y divulgativas
     - ~~Cada página incluye enlace a su CCAA en `trioeclipses.es` si existe~~ → Reemplazado por enlaces directos a eventos CCAA
 - **Avance:**
     - `locations.json` con descripciones, horarios, mejores spots, eventos para 29 ubicaciones ✅
+    - Mojibake UTF-8 corregido (156 chars doble-codificados, 67 en guiones) ✅
     - 10 URLs genéricas `trioeclipses.es` reemplazadas por enlaces directos a eventos oficiales:
         - Cantabria → `astrocantabria.org`
         - Palencia → `iac.edu.es` (evento + `officialUrl`)
@@ -56,6 +57,7 @@
     - [x] Datos consistentes con fuentes oficiales
     - [x] Horarios y duraciones verificados por ubicación
     - [x] Cada página tiene al menos: descripción, horario, mejores spots, consejos
+    - [x] Mojibake UTF-8 corregido (sin caracteres corruptos en datos)
     - [x] Build producción sin errores (30 pages, 0 errors)
 
 ---
@@ -63,7 +65,7 @@
 ### F12: Eventos por CCAA ⏳
 
 - **Descripción:** Sección de eventos oficiales organizados por comunidades autónomas. Integrar datos de la red de 34 puntos de información de Madrid, 73 municipios de Castilla y León, 26 puntos de Cataluña, y actividades de Aragón, Baleares, etc.
-- **Scope:**
+- **Alcance:**
     - Datos en `src/data/ccaa-events.json` con estructura `{ ccaa, puntos[], eventos[], enlace_oficial }`
     - Componente `CCAAEvents.astro` o integración en `EventList.astro` con filtro por CCAA
     - Mapa o listado por comunidad con número de puntos de observación
@@ -95,7 +97,7 @@
 ### F13: Festivales del eclipse ⏳
 
 - **Descripción:** Sección dedicada a festivales y eventos destacados organizados específicamente para el eclipse del 12 de agosto de 2026. Extraído de eclipse-solar.es/eventos y webs de cada festival.
-- **Scope:**
+- **Alcance:**
     - Datos en `src/data/festivals.json` con estructura `{ name, date, location, type, description, url, ccaa }`
     - Componente `Festivals.astro` con cards de festival
     - 5 festivales principales:
@@ -132,7 +134,7 @@
 ### F14: Hover informativo en marquee ⏳
 
 - **Descripción:** Añadir hover/tooltip en el marquee del hero que explique términos astronómicos mostrados. Pendiente de sprint-3.
-- **Scope:**
+- **Alcance:**
     - Tooltip al hacer hover sobre términos en el marquee rotatorio
     - Explicación breve de cada término (totalidad, parcialidad, anular, umbra, penumbra, etc.)
     - Animación smooth, theme-aware
@@ -218,11 +220,12 @@
 
 ---
 
-## Definition of Done
+## Definición de completado
 
 - [x] F11: 29 páginas localidad con contenido real (descripción, horarios, spots, eventos)
 - [x] F11: Sin placeholders en páginas de ubicación
 - [x] F11: URLs genéricas reemplazadas por enlaces directos a eventos CCAA
+- [x] F11: Mojibake UTF-8 corregido en locations.json
 - [ ] F12: Datos de 4+ CCAA con puntos de observación
 - [ ] F12: Componente visual con listado por CCAA
 - [ ] F13: 5+ festivales con cards y enlaces

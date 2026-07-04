@@ -392,6 +392,15 @@ const totalityPolygon = [...northLimit, ...southLimit.reverse()];
         fillOpacity: 0.12,
     }).addTo(map);
 
+    function esc(s: any): string {
+        return String(s)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+    }
+
     places.forEach(function (p: MapPlace) {
         if (!p.lat || !p.lng) return;
 
@@ -413,7 +422,7 @@ const totalityPolygon = [...northLimit, ...southLimit.reverse()];
             '"></span><span class="' +
             labelClass +
             '">' +
-            p.city +
+            esc(p.city) +
             '</span>';
 
         var marker = L.marker([p.lat, p.lng], {
@@ -435,24 +444,24 @@ const totalityPolygon = [...northLimit, ...southLimit.reverse()];
         var popupHtml =
             '<div class="map-marker__popup">' +
             '<span class="map-marker__popup-tag">' +
-            typeTag +
+            esc(typeTag) +
             '</span>' +
             '<strong class="map-marker__popup-city">' +
-            p.city +
+            esc(p.city) +
             '</strong>' +
             '<span class="map-marker__popup-region">' +
-            p.region +
+            esc(p.region) +
             '</span>' +
             '<div class="map-marker__popup-meta">' +
             '<span>' +
-            p.duration +
+            esc(p.duration) +
             '</span>' +
             '<span>Contacto: ' +
-            p.contact +
+            esc(p.contact) +
             '</span>' +
             '</div>' +
             '<a href="/location/' +
-            p.slug +
+            esc(p.slug) +
             '" class="map-marker__popup-link">Más info →</a>' +
             '</div>';
 

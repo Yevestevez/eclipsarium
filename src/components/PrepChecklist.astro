@@ -399,8 +399,8 @@ const eclipsePast = now > new Date('2026-08-12T22:00:00+02:00').getTime();
                 this.totalItems > 0 ? (done / this.totalItems) * 100 : 0;
             if (this.bar) (this.bar as HTMLElement).style.width = pct + '%';
             if (this.label)
-                (this.label as HTMLElement).innerHTML =
-                    done + '&thinsp;/&thinsp;' + this.totalItems;
+                (this.label as HTMLElement).textContent =
+                    done + '\u2009/\u2009' + this.totalItems;
             const pb = document.querySelector('.pcl__progress-total');
             if (pb) pb.setAttribute('aria-valuenow', String(done));
 

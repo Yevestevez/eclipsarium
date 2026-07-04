@@ -1,0 +1,285 @@
+---
+import data from '../data/festivals.json';
+const { festivals } = data;
+
+const typeLabels: Record<string, string> = {
+    festival: 'Festival',
+    tour: 'Tour guiado',
+    observacion: 'Observación pública',
+};
+
+const typeColors: Record<string, string> = {
+    festival: 'var(--ember)',
+    tour: 'var(--space-blue)',
+    observacion: 'var(--edge-blue)',
+};
+---
+
+<section id="festivales" class="ftv section">
+    <div class="shell">
+        <span class="eyebrow">Agosto 2026</span>
+        <h2 class="section__title">Festivales del eclipse</h2>
+        <p class="section__lead">
+            Organizaciones de toda España preparan eventos especiales para el eclipse del 12 de agosto.
+            Festivales de varios días, observaciones guiadas y redes nacionales de observación.
+        </p>
+
+        <div class="ftv__groups">
+            <div class="ftv__group">
+                <h3 class="ftv__group-title">Festivales</h3>
+                <div class="ftv__grid">
+                    {festivals.filter((f) => f.type === 'festival').map((f) => (
+                        <article class="ftv__card">
+                            <div class="ftv__card-head">
+                                <span class="ftv__badge" style={`background:${typeColors[f.type]}`}>
+                                    {typeLabels[f.type]}
+                                </span>
+                                {f.duration && <span class="ftv__duration">{f.duration}</span>}
+                            </div>
+                            <h4 class="ftv__name">{f.name}</h4>
+                            <p class="ftv__meta">
+                                <span class="ftv__date">{f.date}</span>
+                                <span class="ftv__dot">·</span>
+                                <span class="ftv__loc">{f.location}</span>
+                            </p>
+                            <p class="ftv__desc">{f.description}</p>
+                            {f.highlights.length > 0 && (
+                                <ul class="ftv__highlights">
+                                    {f.highlights.map((h) => (
+                                        <li>{h}</li>
+                                    ))}
+                                </ul>
+                            )}
+                            <a href={f.url} target="_blank" rel="noopener noreferrer" class="ftv__link">
+                                Más información
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M7 17L17 7" />
+                                    <path d="M7 7H17V17" />
+                                </svg>
+                            </a>
+                        </article>
+                    ))}
+                </div>
+            </div>
+
+            <div class="ftv__group">
+                <h3 class="ftv__group-title">Tours guiados</h3>
+                <div class="ftv__grid">
+                    {festivals.filter((f) => f.type === 'tour').map((f) => (
+                        <article class="ftv__card">
+                            <div class="ftv__card-head">
+                                <span class="ftv__badge" style={`background:${typeColors[f.type]}`}>
+                                    {typeLabels[f.type]}
+                                </span>
+                                {f.duration && <span class="ftv__duration">{f.duration}</span>}
+                            </div>
+                            <h4 class="ftv__name">{f.name}</h4>
+                            <p class="ftv__meta">
+                                <span class="ftv__date">{f.date}</span>
+                                <span class="ftv__dot">·</span>
+                                <span class="ftv__loc">{f.location}</span>
+                            </p>
+                            <p class="ftv__desc">{f.description}</p>
+                            {f.highlights.length > 0 && (
+                                <ul class="ftv__highlights">
+                                    {f.highlights.map((h) => (
+                                        <li>{h}</li>
+                                    ))}
+                                </ul>
+                            )}
+                            <a href={f.url} target="_blank" rel="noopener noreferrer" class="ftv__link">
+                                Más información
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M7 17L17 7" />
+                                    <path d="M7 7H17V17" />
+                                </svg>
+                            </a>
+                        </article>
+                    ))}
+                </div>
+            </div>
+
+            <div class="ftv__group">
+                <h3 class="ftv__group-title">Observaciones públicas</h3>
+                <div class="ftv__grid">
+                    {festivals.filter((f) => f.type === 'observacion').map((f) => (
+                        <article class="ftv__card">
+                            <div class="ftv__card-head">
+                                <span class="ftv__badge" style={`background:${typeColors[f.type]}`}>
+                                    {typeLabels[f.type]}
+                                </span>
+                                {f.duration && <span class="ftv__duration">{f.duration}</span>}
+                            </div>
+                            <h4 class="ftv__name">{f.name}</h4>
+                            <p class="ftv__meta">
+                                <span class="ftv__date">{f.date}</span>
+                                <span class="ftv__dot">·</span>
+                                <span class="ftv__loc">{f.location}</span>
+                            </p>
+                            <p class="ftv__desc">{f.description}</p>
+                            {f.highlights.length > 0 && (
+                                <ul class="ftv__highlights">
+                                    {f.highlights.map((h) => (
+                                        <li>{h}</li>
+                                    ))}
+                                </ul>
+                            )}
+                            <a href={f.url} target="_blank" rel="noopener noreferrer" class="ftv__link">
+                                Más información
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M7 17L17 7" />
+                                    <path d="M7 7H17V17" />
+                                </svg>
+                            </a>
+                        </article>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .ftv__groups {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        margin-top: 2.5rem;
+    }
+
+    .ftv__group-title {
+        font-family: var(--font-display);
+        font-size: var(--step-1);
+        font-weight: 500;
+        color: var(--muted);
+        margin: 0 0 1.25rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .ftv__grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .ftv__card {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        background: var(--ink);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 1.5rem;
+        transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    }
+
+    .ftv__card:hover {
+        border-color: var(--line-strong);
+        box-shadow: var(--shadow-glow);
+    }
+
+    .ftv__card-head {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .ftv__badge {
+        display: inline-block;
+        font-family: var(--font-mono);
+        font-size: var(--step--1);
+        font-weight: 600;
+        color: var(--bone);
+        padding: 0.15rem 0.6rem;
+        border-radius: var(--radius-xs);
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+    }
+
+    .ftv__duration {
+        font-family: var(--font-mono);
+        font-size: var(--step--1);
+        color: var(--muted);
+    }
+
+    .ftv__name {
+        font-family: var(--font-display);
+        font-size: var(--step-1);
+        font-weight: 600;
+        color: var(--bone);
+        margin: 0;
+        line-height: var(--lh-compact);
+    }
+
+    .ftv__meta {
+        font-size: var(--step--1);
+        color: var(--muted-deep);
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    .ftv__dot {
+        margin: 0 0.3rem;
+    }
+
+    .ftv__desc {
+        font-size: var(--step-0);
+        color: var(--bone-dim);
+        margin: 0;
+        line-height: var(--lh-base);
+    }
+
+    .ftv__highlights {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .ftv__highlights li {
+        font-size: var(--step--1);
+        color: var(--bone-dim);
+        background: var(--hover-bg);
+        padding: 0.2rem 0.55rem;
+        border-radius: var(--radius-xs);
+        line-height: 1.4;
+    }
+
+    .ftv__link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-size: var(--step--1);
+        font-weight: 500;
+        color: var(--space-blue);
+        text-decoration: none;
+        margin-top: auto;
+        transition: color 0.2s;
+    }
+
+    .ftv__link:hover {
+        color: var(--space-blue-light);
+    }
+
+    @media (min-width: 560px) {
+        .ftv__card {
+            padding: 1.75rem;
+        }
+    }
+
+    @media (min-width: 720px) {
+        .ftv__grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (min-width: 860px) {
+        .ftv__grid--compact {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+</style>

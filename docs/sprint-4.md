@@ -123,7 +123,7 @@
 
 ---
 
-### F13: Festivales del eclipse ⏳
+### F13: Festivales del eclipse ✅
 
 - **Descripción:** Sección dedicada a festivales y eventos destacados organizados específicamente para el eclipse del 12 de agosto de 2026. Extraído de eclipse-solar.es/eventos y webs de cada festival.
 - **Alcance:**
@@ -137,7 +137,14 @@
         - EclipsaFest 2026 (Manjirón, Sierra Norte Madrid, ~80s) — `https://elnocturnario.com/eclipsafest/`
     - Tours guiados: Sky & Telescope, Smithsonian Journeys, AstroAfición
     - Observaciones públicas: ALA Astronomía León, FAAE red nodos IAU, CESAR/ESA
-    - Integración en home (sección propia o subsección de Eventos)
+    - Integración en home (sección propia, después de Eventos)
+- **Avance:**
+    - `festivals.json` con 11 eventos (5 festivales, 3 tours, 3 observaciones) ✅
+    - `Festivals.astro` con cards agrupadas por tipo (festival/tour/observación) ✅
+    - Badge coloreado por tipo (ember/azul/azul edge), highlights list, enlace externo ✅
+    - Grid responsive: 1 col móvil, 2 col tablet ✅
+    - Integrado en `index.astro`: import, nav (desktop + mobile), render en `<main>` después de Eventos ✅
+    - 103 tests, 0 failures ✅
 - **Stack:** Astro, JSON
 - **Fuentes:**
     - `https://eclipse-solar.es/eventos/` — listado completo festivales y observaciones
@@ -153,10 +160,11 @@
     - `https://www.smithsonianjourneys.org/tours/solar-eclipse-over-spain-madrid/itinerary/` — Smithsonian tour
     - `https://www.astroleon.org/eventos-astronomicos/eclipse-solar-2026/` — ALA León
 - **Aceptación:**
-    - [ ] 5+ festivales con datos completos
-    - [ ] Componente visual con cards
-    - [ ] Enlaces a webs oficiales de cada evento
-    - [ ] Build producción sin errores
+    - [x] 5+ festivales con datos completos
+    - [x] Componente visual con cards
+    - [x] Enlaces a webs oficiales de cada evento
+    - [x] Build producción sin errores (30 pages, 0 errors)
+    - [x] 103 tests, 0 failures
 
 ---
 
@@ -257,8 +265,8 @@
 - [x] F11: Mojibake UTF-8 corregido en locations.json
 - [x] F12: Datos de 12 CCAA con puntos de observación
 - [x] F12: Puntos embedidos en páginas de localidad ([slug].astro)
-- [ ] F13: 5+ festivales con cards y enlaces
-- [ ] F13: Sección festivales integrada en home
+- [x] F13: 5+ festivales con cards y enlaces
+- [x] F13: Sección festivales integrada en home
 - [ ] F14: Tooltip funcional en marquee hero
 - [ ] Build producción sin errores
 - [ ] Tests unitarios y E2E para nuevos componentes

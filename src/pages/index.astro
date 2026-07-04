@@ -9,6 +9,7 @@ import KidsActivities from '../components/KidsActivities.astro';
 import EventList from '../components/EventList.astro';
 import FaqMyths from '../components/FaqMyths.astro';
 import QuizGeneral from '../components/QuizGeneral.astro';
+import Festivals from '../components/Festivals.astro';
 ---
 
 <Layout>
@@ -16,13 +17,13 @@ import QuizGeneral from '../components/QuizGeneral.astro';
         <div class="shell topbar__inner">
             <a href="#" class="brand">ECLIPSARIUM<span>·26</span></a>
             <nav class="nav nav--desktop">
-                <a href="#cuenta">Cuenta atrás</a>
                 <a href="#evento">El evento</a>
                 <a href="#donde">Dónde verlo</a>
                 <a href="#checklist">Checklist</a>
                 <a href="#actividades">Actividades</a>
                 <a href="#quiz-general">Quiz</a>
                 <a href="#eventos">Eventos</a>
+                <a href="#festivales">Festivales</a>
                 <a href="#preguntas">FAQ</a>
             </nav>
 
@@ -68,13 +69,13 @@ import QuizGeneral from '../components/QuizGeneral.astro';
                     </span>
                 </summary>
                 <nav class="nav-mobile__panel" aria-label="Navegación móvil">
-                    <a href="#cuenta">Cuenta atrás</a>
                     <a href="#evento">El evento</a>
                     <a href="#donde">Dónde verlo</a>
                     <a href="#checklist">Checklist</a>
                     <a href="#actividades">Actividades</a>
                     <a href="#quiz-general">Quiz</a>
                     <a href="#eventos">Eventos</a>
+                    <a href="#festivales">Festivales</a>
                     <a href="#preguntas">FAQ</a>
                 </nav>
             </details>
@@ -125,6 +126,7 @@ import QuizGeneral from '../components/QuizGeneral.astro';
         <KidsActivities />
         <QuizGeneral />
         <EventList />
+        <Festivals />
         <FaqMyths />
     </main>
 
@@ -212,6 +214,8 @@ import QuizGeneral from '../components/QuizGeneral.astro';
 
     .nav {
         display: flex;
+        flex: 1;
+        justify-content: center;
         gap: clamp(1rem, 3vw, 2.4rem);
         font-family: var(--font-mono);
         font-size: 0.72rem;
@@ -393,7 +397,7 @@ import QuizGeneral from '../components/QuizGeneral.astro';
         }
     }
 
-    @media (max-width: 860px) {
+    @media (max-width: 1280px) {
         .topbar__inner {
             flex-wrap: wrap;
             gap: 1rem 1rem;
@@ -401,12 +405,15 @@ import QuizGeneral from '../components/QuizGeneral.astro';
 
         .nav--desktop {
             width: 100%;
+            flex: none;
             justify-content: space-between;
             order: 1;
+            gap: 0.5rem 0.9rem;
+            flex-wrap: wrap;
         }
     }
 
-    @media (max-width: 560px) {
+    @media (max-width: 720px) {
         .nav--desktop {
             display: none;
         }
@@ -417,6 +424,11 @@ import QuizGeneral from '../components/QuizGeneral.astro';
 
         .topbar {
             padding-block: 1rem;
+        }
+
+        .topbar__inner {
+            flex-wrap: nowrap;
+            gap: 1rem;
         }
     }
 

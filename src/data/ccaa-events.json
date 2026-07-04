@@ -1,0 +1,151 @@
+[
+    {
+        "ccaa": "Comunidad de Madrid",
+        "slug": "comunidad-de-madrid",
+        "descripcion": "La Comunidad de Madrid se vuelca con el eclipse con 11 puntos de observación privilegiados en la Sierra Norte y 34 puntos de información 'Pueblos con Vida'. La duración de la totalidad disminuye de norte a sur, desde 1m29s en Somosierra hasta 35s en San Sebastián de los Reyes.",
+        "enlace_oficial": "https://www.comunidad.madrid/trio-eclipses-2026-2027-2028",
+        "fuente": "Comunidad de Madrid",
+        "puntos_observacion": 11,
+        "puntos_informacion": 34,
+        "puntos": [
+            { "nombre": "Somosierra", "duracion": "1m 29s" },
+            { "nombre": "Buitrago de Lozoya", "duracion": "1m 19s" },
+            { "nombre": "La Cabrera", "duracion": "1m 11s" },
+            { "nombre": "El Molar", "duracion": "1m 01s" },
+            { "nombre": "Meco", "duracion": "55s" },
+            { "nombre": "San Agustín del Guadalix", "duracion": "53s" },
+            { "nombre": "Navacerrada", "duracion": "49s" },
+            { "nombre": "Colmenar Viejo", "duracion": "43s" },
+            { "nombre": "Alcalá de Henares", "duracion": "41s" },
+            { "nombre": "Tres Cantos", "duracion": "36s" },
+            { "nombre": "San Sebastián de los Reyes", "duracion": "35s" }
+        ],
+        "eventos": [
+            { "nombre": "Pueblos con Vida — 34 puntos de información", "url": "https://www.comunidad.madrid/trio-eclipses-2026-2027-2028" },
+            { "nombre": "Reparto de gafas de eclipse", "url": "https://www.comunidad.madrid/trio-eclipses-2026-2027-2028" }
+        ]
+    },
+    {
+        "ccaa": "Castilla y León",
+        "slug": "castilla-y-leon",
+        "descripcion": "La Junta de Castilla y León ha identificado 73 municipios recomendados para la observación del eclipse, con una oferta turística y divulgativa coordinada desde Fitur 2026. La comunidad alberga la mayor duración de totalidad (1m42s en la provincia de Soria) y el Iberia Eclipse Festival en Vinuesa.",
+        "enlace_oficial": "https://www.patrimonioactivocyl.es/actividad/turismo/eclipse-solar-12-de-agosto-2026-castilla-y-leon/",
+        "fuente": "Patrimonio Activo CyL / Junta de Castilla y León",
+        "puntos_observacion": 73,
+        "puntos_informacion": 0,
+        "puntos": [
+            { "nombre": "Vinuesa (Soria)", "duracion": "1m 42s" },
+            { "nombre": "Ágreda (Soria)", "duracion": "1m 38s" },
+            { "nombre": "Soria capital", "duracion": "1m 35s" },
+            { "nombre": "San Leonardo de Yagüe", "duracion": "1m 32s" },
+            { "nombre": "El Burgo de Osma", "duracion": "1m 20s" },
+            { "nombre": "Aranda de Duero (Burgos)", "duracion": "1m 10s" },
+            { "nombre": "Cuéllar (Segovia)", "duracion": "1m 05s" },
+            { "nombre": "La Granja de San Ildefonso", "duracion": "1m 00s" },
+            { "nombre": "Segovia capital", "duracion": "56s" },
+            { "nombre": "Medina del Campo (Valladolid)", "duracion": "45s" },
+            { "nombre": "Valladolid capital", "duracion": "40s" },
+            { "nombre": "Ciudad Rodrigo (Salamanca)", "duracion": "38s" },
+            { "nombre": "Salamanca capital", "duracion": "35s" },
+            { "nombre": "León capital", "duracion": "30s" },
+            { "nombre": "Astorga", "duracion": "28s" },
+            { "nombre": "Ponferrada", "duracion": "15s" }
+        ],
+        "eventos": [
+            { "nombre": "Iberia Eclipse Festival (Vinuesa, 10-14 ago)", "url": "https://iberiaeclipse.com/en" },
+            { "nombre": "Astral Plane Festival (La Pinilla, Segovia, 10-12 ago)", "url": "https://spaineclipsefestival.com/" },
+            { "nombre": "Eclipse Solar 2026 — Patrimonio Activo CyL", "url": "https://www.patrimonioactivocyl.es/actividad/turismo/eclipse-solar-12-de-agosto-2026-castilla-y-leon/" },
+            { "nombre": "Mapa IGN eclipse en CyL", "url": "https://www.cyltv.es/ficha/eclipse-2026" }
+        ]
+    },
+    {
+        "ccaa": "Cataluña",
+        "slug": "cataluna",
+        "descripcion": "Cataluña participa con la iniciativa 'Catalunya mira al cielo', que coordina 26 puntos de observación en 20 municipios, principalmente en la provincia de Lleida y Tarragona. El Parc Astronòmic Prades organiza su propio festival científico.",
+        "enlace_oficial": "https://eclipsicatalunya.cat/es/puntos-de-observacion",
+        "fuente": "Eclipsi Catalunya",
+        "puntos_observacion": 26,
+        "puntos_informacion": 0,
+        "puntos": [
+            { "nombre": "Pallars Sobirà — Espot", "duracion": "1m 45s" },
+            { "nombre": "Alta Ribagorça — Vall de Boí", "duracion": "1m 42s" },
+            { "nombre": "Val d'Aran — Vielha", "duracion": "1m 40s" },
+            { "nombre": "Pallars Jussà — La Pobla de Segur", "duracion": "1m 38s" },
+            { "nombre": "Alt Urgell — La Seu d'Urgell", "duracion": "1m 32s" },
+            { "nombre": "Cerdanya — Puigcerdà", "duracion": "1m 28s" },
+            { "nombre": "Solsonès — Solsona", "duracion": "1m 20s" },
+            { "nombre": "Noguera — Àger", "duracion": "1m 18s" },
+            { "nombre": "Segarra — Cervera", "duracion": "1m 05s" },
+            { "nombre": "Urgell — Tàrrega", "duracion": "58s" },
+            { "nombre": "Pla d'Urgell — Mollerussa", "duracion": "50s" },
+            { "nombre": "Garrigues — Les Borges Blanques", "duracion": "48s" },
+            { "nombre": "Segrià — Lleida", "duracion": "45s" },
+            { "nombre": "Baix Camp — Prades", "duracion": "40s" },
+            { "nombre": "Ribera d'Ebre — Flix", "duracion": "35s" },
+            { "nombre": "Terra Alta — Horta de Sant Joan", "duracion": "30s" },
+            { "nombre": "Priorat — Falset", "duracion": "28s" },
+            { "nombre": "Baix Ebre — Tortosa", "duracion": "20s" },
+            { "nombre": "Montsià — Amposta", "duracion": "15s" },
+            { "nombre": "Tarragonès — Salou", "duracion": "10s" }
+        ],
+        "eventos": [
+            { "nombre": "Festival Eclipse 2026 — Parc Astronòmic Prades (10-13 ago)", "url": "https://www.parcastronomicprades.cat/es/solar-eclipse-26/" },
+            { "nombre": "Eclipsi Catalunya — 26 puntos de observación", "url": "https://eclipsicatalunya.cat/es/puntos-de-observacion" },
+            { "nombre": "Actividades Salou", "url": "https://www.visitsalou.eu/es/durante-tu-visita/informacion-util/actividades/eclipse-total" }
+        ]
+    },
+    {
+        "ccaa": "Aragón",
+        "slug": "aragon",
+        "descripcion": "Aragón se posiciona como destino astroturístico de referencia con el Observatorio Astrofísico de Javalambre (CEFCA), Galáctica (centro de divulgación cósmica) y el Planetario de Aragón. La comunidad celebra 'La Noche del Sol' y ofrece actividades en sus 594 municipios.",
+        "enlace_oficial": "https://www.turismodearagon.com/eclipse-solar-2026/",
+        "fuente": "Turismo de Aragón",
+        "puntos_observacion": 594,
+        "puntos_informacion": 0,
+        "puntos": [
+            { "nombre": "Teruel — Observatorio Javalambre (CEFCA)", "duracion": "1m 44s" },
+            { "nombre": "Huesca — Embalse de Sotonera", "duracion": "1m 30s" },
+            { "nombre": "Zaragoza — Pza. del Pilar / Parque Grande", "duracion": "1m 10s" },
+            { "nombre": "Huesca capital", "duracion": "1m 25s" },
+            { "nombre": "Jaca", "duracion": "1m 35s" },
+            { "nombre": "Sabiñánigo", "duracion": "1m 32s" },
+            { "nombre": "Albarracín", "duracion": "1m 40s" },
+            { "nombre": "Calatayud", "duracion": "55s" },
+            { "nombre": "Tarazona", "duracion": "1m 00s" },
+            { "nombre": "Huesca — Pirineos (valle de Tena)", "duracion": "1m 38s" }
+        ],
+        "eventos": [
+            { "nombre": "Sizigia Eclipse Gathering (Embalse Sotonera, 10-14 ago)", "url": "https://sizigiaeclipse.com/" },
+            { "nombre": "La Noche del Sol — Javalambre", "url": "https://www.hoyaragon.es/articulo/noticias-aragon/eclipse-solar-total-2026/20250812093351105296.html" },
+            { "nombre": "Galáctica — Centro de divulgación cósmica", "url": "https://aragoninvestiga.es/aragon-escenario-privilegiado-del-eclipse-solar-total-de-2026/" },
+            { "nombre": "Planetario de Aragón — actividades eclipse", "url": "https://www.enjoyzaragoza.es/eclipse-aragon/" },
+            { "nombre": "Astroturismo Aragón — Turespaña", "url": "https://www.tourspain.es/es/b2b/aragon-experiencias-astroturismo-teruel-huesca-zaragoza" }
+        ]
+    },
+    {
+        "ccaa": "Islas Baleares",
+        "slug": "islas-baleares",
+        "descripcion": "Baleares ofrece visionados únicos desde la Serra de Tramuntana (Mallorca) y excursiones en catamarán para observar el eclipse desde el mar. La visibilidad parcial desde las islas convierte la costa norte de Mallorca en el punto preferente.",
+        "enlace_oficial": "https://www.caib.es/webgoib/es/vols-saber-ho-tot-sobre-l-eclipsi-del-12-d-agost-de-2026-",
+        "fuente": "Govern Illes Balears",
+        "puntos_observacion": 10,
+        "puntos_informacion": 0,
+        "puntos": [
+            { "nombre": "Serra de Tramuntana — Puig Major", "duracion": "Parcial 85%" },
+            { "nombre": "Deià", "duracion": "Parcial 82%" },
+            { "nombre": "Valldemossa", "duracion": "Parcial 82%" },
+            { "nombre": "Sóller", "duracion": "Parcial 80%" },
+            { "nombre": "Formentor", "duracion": "Parcial 78%" },
+            { "nombre": "Alcúdia", "duracion": "Parcial 76%" },
+            { "nombre": "Palma", "duracion": "Parcial 70%" },
+            { "nombre": "Menorca — Ciutadella", "duracion": "Parcial 65%" },
+            { "nombre": "Eivissa", "duracion": "Parcial 60%" },
+            { "nombre": "Catamarán eclipse (Mallorca)", "duracion": "Parcial 80%" }
+        ],
+        "eventos": [
+            { "nombre": "Rutas eclipse — Serra de Tramuntana", "url": "https://www.europapress.es/illes-balears/noticia-eclipse-solar-total-2026-mallorca-mapa-observar-evento-astronomico-siglo-20250822102117.html" },
+            { "nombre": "Catamarán eclipse solar", "url": "https://www.oasiscatamaran.com/excursiones-mallorca/eclipse-solar-total-2026-desde-el-mar" },
+            { "nombre": "Govern Balear — información oficial", "url": "https://www.caib.es/webgoib/es/vols-saber-ho-tot-sobre-l-eclipsi-del-12-d-agost-de-2026-" }
+        ]
+    }
+]

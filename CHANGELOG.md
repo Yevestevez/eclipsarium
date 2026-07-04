@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.10.1 (2026-07-04)
+
+- Security: `innerHTML` eliminado en buscador Nominatim (XSS vía OSM display_name)
+- Security: HTML escape (`esc()`) en markers/popups de Leaflet (EclipseMap.astro)
+- Security: `innerHTML` → `textContent` en checklist (PrepChecklist.astro)
+- Build: 30 páginas, 87 tests
+
 ## v1.10.0 (2026-06-25)
 
 - Quiz general independiente (12 preguntas V/F, 4 categorías)

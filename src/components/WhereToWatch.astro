@@ -178,7 +178,7 @@ const sorted = [...data.places].sort((a, b) => {
             // Clear extra when typing
             if (extra) {
                 extra.classList.remove('search__extra--visible');
-                extra.innerHTML = '';
+                extra.textContent = '';
             }
 
             // Debounced Nominatim lookup when no local results
@@ -213,17 +213,30 @@ const sorted = [...data.places].sort((a, b) => {
                         );
                         if (polygon.length === 0) return;
                         var inside = pointInPolygon(lat, lng, polygon);
-                        var loc = context
-                            ? '<strong>' + name + '</strong>, ' + context
-                            : '<strong>' + name + '</strong>';
-                        extra!.innerHTML =
-                            '<p class="search__geo-text">' +
-                            loc +
-                            (inside
-                                ? ' está <strong>dentro de la franja de totalidad</strong> del eclipse. Si el tiempo lo permite, el Sol se ocultará por completo.'
-                                : ' está fuera de la franja de totalidad, pero el eclipse será visible como <strong>parcial</strong>. Recuerda usar protección ocular certificada ISO 12312-2.') +
-                            '</p>';
-                        extra!.classList.add('search__extra--visible');
+                    var p = document.createElement('p');
+                    p.className = 'search__geo-text';
+                    var strong = document.createElement('strong');
+                    strong.textContent = name;
+                    p.appendChild(strong);
+                    if (context) {
+                        p.appendChild(document.createTextNode(', ' + context));
+                    }
+                    if (inside) {
+                        p.appendChild(document.createTextNode(' está '));
+                        var s = document.createElement('strong');
+                        s.textContent = 'dentro de la franja de totalidad';
+                        p.appendChild(s);
+                        p.appendChild(document.createTextNode(' del eclipse. Si el tiempo lo permite, el Sol se ocultará por completo.'));
+                    } else {
+                        p.appendChild(document.createTextNode(' está fuera de la franja de totalidad, pero el eclipse será visible como '));
+                        var s = document.createElement('strong');
+                        s.textContent = 'parcial';
+                        p.appendChild(s);
+                        p.appendChild(document.createTextNode('. Recuerda usar protección ocular certificada ISO 12312-2.'));
+                    }
+                    extra!.textContent = '';
+                    extra!.appendChild(p);
+                    extra!.classList.add('search__extra--visible');
                     }
 
                     function findSettlement(data: any[]): any {
@@ -244,8 +257,15 @@ const sorted = [...data.places].sort((a, b) => {
                     function showNotFound(): void {
                         if (myCounter !== nominatimCounter) return;
                         if (!extra) return;
-                        extra.innerHTML =
-                            '<p class="search__geo-text">No hemos encontrado esa localidad. El eclipse solar del 12 de agosto de 2026 será visible como <strong>parcial</strong> desde toda España.</p>';
+                        var p = document.createElement('p');
+                        p.className = 'search__geo-text';
+                        p.appendChild(document.createTextNode('No hemos encontrado esa localidad. El eclipse solar del 12 de agosto de 2026 será visible como '));
+                        var s = document.createElement('strong');
+                        s.textContent = 'parcial';
+                        p.appendChild(s);
+                        p.appendChild(document.createTextNode(' desde toda España.'));
+                        extra.textContent = '';
+                        extra.appendChild(p);
                         extra.classList.add('search__extra--visible');
                     }
 
@@ -266,14 +286,20 @@ const sorted = [...data.places].sort((a, b) => {
                     function onError(): void {
                         if (myCounter !== nominatimCounter) return;
                         if (extra) {
-                            extra.innerHTML =
-                                '<p class="search__geo-text">No se ha podido consultar el mapa. El eclipse será visible como parcial en toda España.</p>';
+                            var p = document.createElement('p');
+                            p.className = 'search__geo-text';
+                            p.textContent = 'No se ha podido consultar el mapa. El eclipse será visible como parcial en toda España.';
+                            extra.textContent = '';
+                            extra.appendChild(p);
                             extra.classList.add('search__extra--visible');
                         }
                     }
 
-                    extra.innerHTML =
-                        '<span class="search__extra-loading">Buscando información…</span>';
+                    var loadingSpan = document.createElement('span');
+                    loadingSpan.className = 'search__extra-loading';
+                    loadingSpan.textContent = 'Buscando información…';
+                    extra.textContent = '';
+                    extra.appendChild(loadingSpan);
                     extra.classList.add('search__extra--visible');
 
                     // Phase 1: worldwide, prefer settlement
@@ -306,7 +332,7 @@ const sorted = [...data.places].sort((a, b) => {
                 }, GEO_DEBOUNCE);
             } else if (!q && extra) {
                 extra.classList.remove('search__extra--visible');
-                extra.innerHTML = '';
+                extra.textContent = '';
             }
         });
     }

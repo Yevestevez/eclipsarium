@@ -21,7 +21,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-1.10.1-blue?style=flat-square" alt="version">
+  <img src="https://img.shields.io/badge/version-1.11.0-blue?style=flat-square" alt="version">
   <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="license">
   <img src="https://img.shields.io/badge/Astro-6.4.2-purple?style=flat-square" alt="Astro">
   <img src="https://img.shields.io/badge/tests-87%20unit%20|%2092%20e2e-brightgreen?style=flat-square" alt="tests">

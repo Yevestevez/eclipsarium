@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.13.0 (2026-07-04)
+
+- F13: Festivales del eclipse — 11 eventos (5 festivales, 3 tours, 3 observaciones públicas)
+- F13: `Festivals.astro` — cards agrupadas por tipo, badges coloreados, highlights, grid responsive
+- F13: Sección integrada en home con enlace nav
+- Build: 30 páginas, 103 tests
+
 ## v1.12.0 (2026-07-04)
 
 - F12: Eventos por CCAA — 12 comunidades con puntos de observación, duraciones y eventos

@@ -21,10 +21,10 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-1.12.0-blue?style=flat-square" alt="versión">
+  <img src="https://img.shields.io/badge/version-1.13.0-blue?style=flat-square" alt="versión">
   <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="licencia">
   <img src="https://img.shields.io/badge/Astro-6.4.2-purple?style=flat-square" alt="Astro">
-  <img src="https://img.shields.io/badge/tests-95%20unit%20|%2092%20e2e-brightgreen?style=flat-square" alt="tests">
+  <img src="https://img.shields.io/badge/tests-103%20unit%20|%2092%20e2e-brightgreen?style=flat-square" alt="tests">
   <img src="https://img.shields.io/badge/PRs-welcome-orange?style=flat-square" alt="PRs bienvenidos">
 </p>
 
@@ -52,6 +52,7 @@
 | 📰  | **Eventos próximos** — Obtenidos de API externa en tiempo de build. Fallback JSON si la API no responde.                                                             |
 | 💬  | **FAQ + mitos** — 10 preguntas reales + 6 mitos desmentidos. Acordeón `<details>`, fuentes de NASA/ESA.                                                              |
 | 🏘️  | **Puntos por CCAA** — 12 comunidades con puntos de observación verificados, duraciones, eventos y fuentes oficiales. Integrados en cada página de localidad.         |
+| 🎪  | **Festivales del eclipse** — 11 eventos: 5 festivales multi-día, 3 tours guiados, 3 redes de observación. Cards por tipo, badges, highlights.               |
 | ♿  | **Accesible** — axe-core: 0 violaciones críticas. HTML semántico, regiones `aria-live`, `prefers-reduced-motion`.                                                    |
 | 📱  | **Responsive** — Mobile-first, funciona desde 360px.                                                                                                                 |
 
@@ -70,7 +71,7 @@ Changelog completo → [`CHANGELOG.md`](CHANGELOG.md)
 | Geocoding   | [Nominatim](https://nominatim.org/) — 2 fases: global + España                                                    |
 | CSS         | Propiedades personalizadas (design tokens), estilos scoped por componente                                         |
 | Lenguaje    | [TypeScript](https://www.typescriptlang.org/) — tipos en frontmatter `.astro`, scripts vanilla, tests             |
-| Tests unit. | [Vitest](https://vitest.dev/) `^4.1.9` — 95 tests, 13 suites                                                      |
+| Tests unit. | [Vitest](https://vitest.dev/) `^4.1.9` — 103 tests, 15 suites                                                    |
 | E2E + a11y  | [Playwright](https://playwright.dev/) `^1.61.0` + [axe-core](https://www.deque.com/axe/) — 92 tests, 9 spec files |
 | Entorno     | Node `>=22.13.0` · pnpm                                                                                           |
 
@@ -100,6 +101,7 @@ src/
 │   ├── EclipseMap.astro    # mapa Leaflet con polígono + marcadores
 │   ├── EventList.astro     # eventos externos API + fallback JSON
 │   ├── FaqMyths.astro      # acordeón FAQ + mitos
+│   ├── Festivals.astro     # cards festivales eclipse
 │   ├── KidsActivities.astro# actividades familiares + quiz infantil
 │   ├── PrepChecklist.astro # checklist interactiva con persistencia
 │   ├── QuizGeneral.astro   # quiz general (12 V/F)
@@ -110,6 +112,7 @@ src/
 │   ├── event.json
 │   ├── events-fallback.json
 │   ├── faq.json
+│   ├── festivals.json
 │   ├── locations.json
 │   └── quiz.json
 ├── layouts/
@@ -135,7 +138,7 @@ Tres capas, todas ejecutables sin servicios externos:
 
 | Capa          | Herramienta | Cuenta                  | Ámbito                                                                 |
 | ------------- | ----------- | ----------------------- | ---------------------------------------------------------------------- |
-| Unitarios     | Vitest      | 95 tests / 13 suites    | Renderizado de componentes, validación de datos, cobertura de fallback |
+| Unitarios     | Vitest      | 103 tests / 15 suites   | Renderizado de componentes, validación de datos, cobertura de fallback |
 | E2E           | Playwright  | 92 tests / 9 spec files | Navegación, interactividad, scroll, flujo del quiz, búsqueda           |
 | Accesibilidad | axe-core    | Integrado en E2E        | 0 violaciones críticas en todas las secciones clave                    |
 

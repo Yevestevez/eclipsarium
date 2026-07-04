@@ -15,24 +15,44 @@ const typeLabel =
     place.type === 'total' ? 'Totalidad' : place.type === 'edge' ? 'Borde' : 'Parcial';
 const typeDesc =
     place.type === 'total'
-        ? 'El Sol desaparecerá por completo.'
+        ? 'El Sol desaparece por completo'
         : place.type === 'edge'
-          ? 'Rozando la totalidad.'
-          : 'Eclipse parcial — fuera de la franja.';
+          ? 'Rozando la totalidad'
+          : 'Eclipse parcial — fuera de la franja';
+
+const hasDetails = place.description && place.description.length > 0;
+
+const scheduleRows: { label: string; time: string }[] = [];
+if (place.schedule) {
+    if (place.schedule.partialStart) scheduleRows.push({ label: 'Inicio parcial', time: place.schedule.partialStart });
+    if (place.type !== 'partial' && place.schedule.totalityStart) scheduleRows.push({ label: 'Inicio totalidad', time: place.schedule.totalityStart });
+    if (place.type !== 'partial' && place.schedule.totalityEnd) scheduleRows.push({ label: 'Fin totalidad', time: place.schedule.totalityEnd });
+    if (place.schedule.partialEnd) scheduleRows.push({ label: 'Fin eclipse', time: place.schedule.partialEnd });
+}
 ---
 
-<Layout title={`${place.city} · ECLIPSARIUM`}>
-    <main class="location">
+<Layout
+    title={`${place.city} · ECLIPSARIUM`}
+    description={hasDetails ? place.description : `Guía del eclipse solar en ${place.city}: horarios, mejores lugares de observación y consejos.`}
+>
+    <main class="location" id="main-content">
         <div class="shell">
-            <a href="/#donde" class="location__back">← Volver al mapa</a>
+            <nav aria-label="Navegación">
+                <a href="/#donde" class="location__back">← Volver al mapa</a>
+            </nav>
 
             <header class="location__head">
                 <span class="eyebrow">{place.region}</span>
                 <h1 class="location__title">{place.city}</h1>
-                <span class="location__type location__type--{place.type}">{typeLabel}</span>
+                <span
+                    class="location__type location__type--{place.type}"
+                    role="text"
+                >
+                    <span class="sr-only">Eclipse </span>{typeLabel}
+                </span>
             </header>
 
-            <div class="location__stats">
+            <div class="location__stats" aria-label="Datos del eclipse">
                 <div class="stat">
                     <span class="stat__label">Duración</span>
                     <span class="stat__value">{place.duration}</span>
@@ -45,23 +65,111 @@ const typeDesc =
                     <span class="stat__label">Tipo</span>
                     <span class="stat__value">{typeDesc}</span>
                 </div>
+                
             </div>
 
-            <div class="location__notice">
-                <div class="notice__icon" aria-hidden="true">🚀</div>
-                <h2 class="notice__title">Estación espacial en construcción</h2>
-                <p class="notice__text">
-                    Esta página está flotando en el espacio a la espera de ser aterrizada.
-                    Pronto tendrás aquí toda la información sobre cómo ver el eclipse desde{' '}
-                    <strong>{place.city}</strong>: horas exactas, mapas detallados, rutas de
-                    escape meteorológico y planes de observación.
-                </p>
-                <p class="notice__text">
-                    Mientras tanto, los astronautas del Eclipsarium siguen calibrando los
-                    instrumentos. Vuelve a orbitar por aquí más tarde.
-                </p>
-                <a href="/#donde" class="notice__cta">← Regresar a la Tierra (y al mapa)</a>
-            </div>
+            {
+                hasDetails ? (
+                    <>
+                        <section aria-labelledby="desc-heading">
+                            <h2 id="desc-heading" class="section__title">Sobre {place.city}</h2>
+                            <p class="location__desc">{place.description}</p>
+                        </section>
+
+                        {scheduleRows.length > 0 && (
+                            <section aria-labelledby="schedule-heading" class="location__section">
+                                <h2 id="schedule-heading" class="section__title">Horario del eclipse</h2>
+                                <div class="location__schedule" role="table" aria-label="Horario del eclipse en {place.city}">
+                                    {scheduleRows.map((row) => (
+                                        <div class="schedule__row" role="row">
+                                            <span class="schedule__label" role="cell">{row.label}</span>
+                                            <span class="schedule__time" role="cell">{row.time} h</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </section>
+                        )}
+
+                        {place.bestSpots && place.bestSpots.length > 0 && (
+                            <section aria-labelledby="spots-heading" class="location__section">
+                                <h2 id="spots-heading" class="section__title">Mejores lugares para verlo</h2>
+                                <ul class="location__spots">
+                                    {place.bestSpots.map((spot: string) => (
+                                        <li class="spot__item">{spot}</li>
+                                    ))}
+                                </ul>
+                            </section>
+                        )}
+
+                        {place.localEvents && place.localEvents.length > 0 && (
+                            <section aria-labelledby="events-heading" class="location__section">
+                                <h2 id="events-heading" class="section__title">Eventos y actividades</h2>
+                                <ul class="location__events">
+                                    {place.localEvents.map((evt: { name: string; url: string }) => (
+                                        <li class="event__item">
+                                            <a
+                                                href={evt.url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                class="event__link"
+                                            >
+                                                {evt.name}
+                                                <svg
+                                                    class="event__icon"
+                                                    width="12"
+                                                    height="12"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="2"
+                                                    aria-hidden="true"
+                                                >
+                                                    <path d="M7 17L17 7" />
+                                                    <path d="M7 7H17V17" />
+                                                </svg>
+                                            </a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </section>
+                        )}
+
+                        {place.officialUrl && (
+                            <footer class="location__footer">
+                                <a
+                                    href={place.officialUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="official-link"
+                                >
+                                    Información oficial de {place.region}
+                                    <svg
+                                        class="official-link__icon"
+                                        width="14"
+                                        height="14"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M7 17L17 7" />
+                                        <path d="M7 7H17V17" />
+                                    </svg>
+                                </a>
+                            </footer>
+                        )}
+                    </>
+                ) : (
+                    <div class="location__notice" role="status">
+                        <p class="notice__text">
+                            Pronto tendremos información detallada sobre cómo ver el eclipse desde{' '}
+                            <strong>{place.city}</strong>.
+                        </p>
+                        <a href="/#donde" class="notice__cta">← Regresar al mapa</a>
+                    </div>
+                )
+            }
         </div>
     </main>
 </Layout>
@@ -72,8 +180,6 @@ const typeDesc =
         position: relative;
         z-index: 1;
         min-height: 100vh;
-        display: flex;
-        align-items: center;
     }
 
     .location__back {
@@ -93,7 +199,7 @@ const typeDesc =
     }
 
     .location__head {
-        margin-bottom: 2.5rem;
+        margin-bottom: 2rem;
     }
 
     .location__title {
@@ -157,22 +263,149 @@ const typeDesc =
         font-weight: 500;
     }
 
+    .section__title {
+        font-size: var(--step-1);
+        margin-bottom: 1rem;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 0.5rem;
+    }
+
+    .location__desc {
+        color: var(--bone-dim);
+        font-weight: 300;
+        line-height: 1.8;
+        max-width: 60ch;
+    }
+
+    .location__section {
+        margin-top: 3rem;
+    }
+
+    .location__schedule {
+        display: grid;
+        gap: 0.5rem;
+        max-width: 24rem;
+    }
+
+    .schedule__row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.6rem 1rem;
+        background: var(--ink-soft);
+        border-radius: 0.3rem;
+        border: 1px solid var(--line);
+    }
+
+    .schedule__label {
+        font-family: var(--font-mono);
+        font-size: var(--step--1);
+        color: var(--muted);
+    }
+
+    .schedule__time {
+        font-family: var(--font-mono);
+        font-weight: 600;
+        color: var(--space-blue);
+    }
+
+    .location__spots {
+        list-style: none;
+        padding: 0;
+        display: grid;
+        gap: 0.6rem;
+    }
+
+    .spot__item {
+        padding: 0.8rem 1rem;
+        background: var(--ink-soft);
+        border-radius: 0.3rem;
+        border: 1px solid var(--line);
+        color: var(--bone-dim);
+        font-weight: 300;
+        line-height: 1.5;
+    }
+
+    .spot__item::before {
+        content: "✦";
+        margin-right: 0.6rem;
+        color: var(--space-blue);
+    }
+
+    .location__events {
+        list-style: none;
+        padding: 0;
+        display: grid;
+        gap: 0.6rem;
+    }
+
+    .event__item {
+        padding: 0.8rem 1rem;
+        background: var(--ink-soft);
+        border-radius: 0.3rem;
+        border: 1px solid var(--line);
+    }
+
+    .event__link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        color: var(--space-blue);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s var(--ease);
+    }
+
+    .event__link:hover {
+        color: var(--space-blue-light);
+    }
+
+    .event__icon {
+        flex-shrink: 0;
+        opacity: 0.6;
+        transition: opacity 0.3s var(--ease);
+    }
+
+    .event__link:hover .event__icon {
+        opacity: 1;
+    }
+
+    .location__footer {
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--line);
+    }
+
+    .official-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        color: var(--muted);
+        font-family: var(--font-mono);
+        font-size: var(--step--1);
+        text-decoration: none;
+        transition: color 0.3s var(--ease);
+    }
+
+    .official-link:hover {
+        color: var(--space-blue);
+    }
+
+    .official-link__icon {
+        flex-shrink: 0;
+        opacity: 0.5;
+    }
+
+    .official-link:hover .official-link__icon {
+        opacity: 1;
+    }
+
     .location__notice {
         background: var(--ink-soft);
         border: 1px solid var(--line);
         border-radius: var(--radius);
         padding: 2.5rem;
         max-width: 54ch;
-    }
-
-    .notice__icon {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-    }
-
-    .notice__title {
-        font-size: var(--step-1);
-        margin-bottom: 1rem;
     }
 
     .notice__text {
@@ -196,6 +429,17 @@ const typeDesc =
 
     .notice__cta:hover {
         color: var(--space-blue-light);
+    }
+
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
     }
 
     @media (max-width: 560px) {

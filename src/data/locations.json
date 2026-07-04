@@ -8,7 +8,24 @@
             "contact": "20:27",
             "lat": 43.3623,
             "lng": -8.4115,
-            "slug": "a-coruna"
+            "slug": "a-coruna",
+            "description": "Punto de entrada del eclipse en España. El faro romano de la Torre de Hércules (UNESCO) ofrece un escenario único para ver la totalidad sobre el Atlántico. Hay riesgo de nubes costeras, pero si despeja es uno de los lugares más espectaculares de toda la franja.",
+            "bestSpots": [
+                "Torre de Hércules — mirador junto al faro romano con horizonte abierto al oeste",
+                "Monte San Pedro — elevación con vistas panorámicas, por encima de la niebla costera",
+                "Paseo Marítimo (Riazor / Orzán) — amplia línea de costa orientada al oeste",
+                "Acantilados de Vixía da Herbeira — mirador natural elevado al norte"
+            ],
+            "schedule": {
+                "partialStart": "19:30",
+                "totalityStart": "20:27",
+                "totalityEnd": "20:28",
+                "partialEnd": "21:15"
+            },
+            "localEvents": [
+                { "name": "Observación en Torre de Hércules", "url": "https://eclipse-solar.es/a-coruna/" },
+                { "name": "Meliá María Pita — terraza eclipse", "url": "https://www.20minutos.es/viajes/hoteles/mejores-hoteles-ver-eclipse-solar-total-12-agosto-espana_6921193_0.html" }
+            ]
         },
         {
             "city": "Asturias",
@@ -18,7 +35,23 @@
             "contact": "20:28",
             "lat": 43.3619,
             "lng": -5.8494,
-            "slug": "asturias"
+            "slug": "asturias",
+            "description": "La totalidad más larga de España, muy cerca de la línea central. La costa verde y los Picos de Europa ofrecen miradores espectaculares. Oviedo, Gijón y Avilés son las mejores bases urbanas con fácil acceso a puntos elevados de observación.",
+            "bestSpots": [
+                "Cabo de Peñas — mirador costero sobre el Cantábrico, horizonte oeste limpio",
+                "Monte Naranco (Oviedo) — elevación con vistas a la ciudad y el mar",
+                "Cerro de Santa Catalina (Gijón) — colina con horizonte despejado al oeste",
+                "Picos de Europa — miradores de montaña por encima de nubes bajas"
+            ],
+            "schedule": {
+                "partialStart": "19:31",
+                "totalityStart": "20:28",
+                "totalityEnd": "20:30",
+                "partialEnd": "21:15"
+            },
+            "localEvents": [
+                { "name": "Observaciones municipales en varios concejos", "url": "https://eclipse-solar.es/asturias/" }
+            ]
         },
         {
             "city": "León",
@@ -28,7 +61,215 @@
             "contact": "20:28",
             "lat": 42.5987,
             "lng": -5.5671,
-            "slug": "leon"
+            "slug": "leon",
+            "description": "Ciudad del Camino de Santiago cerca de la línea central con una de las totalidades más largas de España. Su catedral gótica es uno de los escenarios más fotogénicos del eclipse. Los cielos del interior son más despejados que en la costa cantábrica.",
+            "bestSpots": [
+                "Catedral de León — la Pulchra Leonina recortada contra la corona solar",
+                "Orilla del río Bernesga — paseo con horizonte oeste despejado",
+                "Barrio Húmedo — calles medievales, ideal para combinar eclipse y tapeo",
+                "La Bañeza — municipio cercano con buena visibilidad y menos aglomeraciones"
+            ],
+            "schedule": {
+                "partialStart": "19:32",
+                "totalityStart": "20:28",
+                "totalityEnd": "20:30",
+                "partialEnd": "21:15"
+            },
+            "localEvents": [
+                { "name": "Asociación Leonesa de Astronomía — observación pública (40 aniversario)", "url": "https://www.astroleon.org/eventos-astronomicos/eclipse-solar-2026/" },
+                { "name": "Planetario de León — sesiones especiales", "url": "https://eclipse-solar.es/leon/" }
+            ]
+        },
+        {
+            "city": "Burgos",
+            "region": "Castilla y León",
+            "type": "total",
+            "duration": "1m 44s",
+            "contact": "20:30",
+            "lat": 42.3439,
+            "lng": -3.6969,
+            "slug": "burgos",
+            "description": "Cerca de la línea central con 1m 44s de totalidad. La catedral gótica (UNESCO), el Camino de Santiago y el yacimiento de Atapuerca la convierten en un destino cultural y astronómico de primer orden. Cielos despejados en la Meseta.",
+            "bestSpots": [
+                "Mirador del Castillo — vista panorámica de la ciudad y horizonte oeste",
+                "Paseo del Espolón — amplia avenida junto al Arlanzón con orientación oeste",
+                "Atapuerca — yacimiento con horizonte limpio, ideal para observación",
+                "Finca privada AstroAfición — observación guiada con telescopios"
+            ],
+            "schedule": {
+                "partialStart": "19:33",
+                "totalityStart": "20:30",
+                "totalityEnd": "20:32",
+                "partialEnd": "21:16"
+            },
+            "localEvents": [
+                { "name": "AstroAfición — observación guiada en finca privada (bus desde Madrid)", "url": "https://astroaficion.com/producto/eclipse-sol-2026/" }
+            ]
+        },
+        {
+            "city": "Valladolid",
+            "region": "Castilla y León",
+            "type": "total",
+            "duration": "1m 28s",
+            "contact": "20:29",
+            "lat": 41.6523,
+            "lng": -4.7245,
+            "slug": "valladolid",
+            "description": "Antigua capital de España con excelentes conexiones AVE y una de las mayores probabilidades de cielo despejado (~70%). El Museo de la Ciencia programa actividades especiales. Región vinícola de Ribera del Duero para maridar el eclipse con enología.",
+            "bestSpots": [
+                "Museo de la Ciencia — actividades y terraza con horizonte oeste",
+                "Campo Grande — parque amplio con orientación despejada al oeste",
+                "Orilla del Pisuerga — paseos con vistas al atardecer",
+                "Ruta del Vino Ribera del Duero — bodegas con catas y observación"
+            ],
+            "schedule": {
+                "partialStart": "19:33",
+                "totalityStart": "20:29",
+                "totalityEnd": "20:30",
+                "partialEnd": "21:16"
+            },
+            "localEvents": [
+                { "name": "Museo de la Ciencia — programa especial eclipse", "url": "https://www.cope.es/emisoras/castilla-y-leon/valladolid-provincia/valladolid/noticias/valladolid-mira-cielo-guia-definitiva-actividades-gran-eclipse-solar-20260701_3395673.html" },
+                { "name": "Hotel Arzuaga — fiesta eclipse en Ribera del Duero", "url": "https://www.20minutos.es/viajes/hoteles/mejores-hoteles-ver-eclipse-solar-total-12-agosto-espana_6921193_0.html" }
+            ]
+        },
+        {
+            "city": "Zaragoza",
+            "region": "Aragón",
+            "type": "total",
+            "duration": "1m 24s",
+            "contact": "20:29",
+            "lat": 41.6488,
+            "lng": -0.8891,
+            "slug": "zaragoza",
+            "description": "Frecuentemente recomendada como la mejor ubicación peninsular: buena duración de totalidad, la mayor probabilidad de cielos despejados de toda la franja (~70-75%) y excelentes conexiones AVE. La silueta de la Basílica del Pilar recortada contra la corona solar será una de las imágenes del eclipse.",
+            "bestSpots": [
+                "Basílica del Pilar — la silueta más icónica del eclipse, desde la orilla del Ebro",
+                "Parque José Antonio Labordeta — amplio espacio verde con horizonte despejado",
+                "Orilla del Ebro (Puente de Piedra) — vista abierta hacia el oeste",
+                "Mirador de Torrero — colina al sur con panorámica de la ciudad"
+            ],
+            "schedule": {
+                "partialStart": "19:34",
+                "totalityStart": "20:29",
+                "totalityEnd": "20:30",
+                "partialEnd": "21:07"
+            },
+            "localEvents": [
+                { "name": "Guía del eclipse — Ayuntamiento de Zaragoza", "url": "https://zaragozala.com/eclipse-solar-zaragoza-2026" },
+                { "name": "CEFCA — actividades divulgativas en Aragón", "url": "https://aragoninvestiga.es/aragon-escenario-privilegiado-del-eclipse-solar-total-de-2026/" }
+            ],
+            "officialUrl": "https://www.turismodearagon.com/eclipse-solar-2026/"
+        },
+        {
+            "city": "Tarragona",
+            "region": "Cataluña",
+            "type": "total",
+            "duration": "1m 00s",
+            "contact": "20:33",
+            "lat": 41.1189,
+            "lng": 1.2445,
+            "slug": "tarragona",
+            "description": "La antigua Tarraco romana (UNESCO) ofrece uno de los escenarios más espectaculares del eclipse: el anfiteatro frente al mar Mediterráneo. 1 minuto exacto de totalidad con el sol muy bajo sobre el horizonte marino.",
+            "bestSpots": [
+                "Anfiteatro Romano — patrimonio UNESCO frente al mar, orientación oeste",
+                "Balcón del Mediterráneo — mirador elevado sobre la costa",
+                "Paseo Marítimo — línea de costa despejada hacia el oeste",
+                "Puerto de Tarragona — vistas marítimas sin obstáculos"
+            ],
+            "schedule": {
+                "partialStart": "19:38",
+                "totalityStart": "20:33",
+                "totalityEnd": "20:34",
+                "partialEnd": "21:18"
+            },
+            "localEvents": [
+                { "name": "Catalunya mira al cielo — 26 puntos de observación en 20 municipios", "url": "https://www.elimparcial.es/noticia/294908/sociedad/elegidos-los-mejores-puntos-de-observacion-para-ver-el-eclipse-solar-en-agosto.html" },
+                { "name": "Festival Prades — Parc Astronòmic (10-13 ago)", "url": "https://www.parcastronomicprades.cat/es/solar-eclipse-26/" }
+            ]
+        },
+        {
+            "city": "Valencia",
+            "region": "C. Valenciana",
+            "type": "edge",
+            "duration": "1m 00s",
+            "contact": "20:32",
+            "lat": 39.4699,
+            "lng": -0.3763,
+            "slug": "valencia",
+            "description": "Tercera ciudad de España, en el borde sur de la franja con ~1 minuto de totalidad. La Ciudad de las Artes y las Ciencias es el escenario más vanguardista. Conduce 30 min al norte a Sagunto o Puzol para totalidad más larga y segura.",
+            "bestSpots": [
+                "Ciudad de las Artes y las Ciencias — arquitectura futurista y horizonte abierto",
+                "Malvarrosa — playa al norte con orientación oeste sobre el mar",
+                "Puerto de Sagunto — desplazamiento 30 min para totalidad más larga",
+                "Albufera — horizonte despejado hacia el oeste desde el lago"
+            ],
+            "schedule": {
+                "partialStart": "19:36",
+                "totalityStart": "20:32",
+                "totalityEnd": "20:33",
+                "partialEnd": "21:19"
+            },
+            "localEvents": [
+                { "name": "Actividades divulgativas en centros culturales", "url": "https://eclipse-solar.es/valencia/" }
+            ]
+        },
+        {
+            "city": "Mallorca",
+            "region": "Islas Baleares",
+            "type": "total",
+            "duration": "1m 36s",
+            "contact": "20:35",
+            "lat": 39.5696,
+            "lng": 2.6502,
+            "slug": "mallorca",
+            "description": "La línea central cruza la isla, con las mejores probabilidades de cielos despejados de España (~75%). El sol estará extremadamente bajo, por lo que los miradores costeros y elevados de la Serra de Tramuntana son esenciales. La totalidad ocurre prácticamente al atardecer sobre el Mediterráneo.",
+            "bestSpots": [
+                "Serra de Tramuntana (UNESCO) — Pollença, Sóller, Deià, Valldemossa, Banyalbufar",
+                "Cap de Formentor — mirador al norte con horizonte marítimo limpio",
+                "Cap de ses Salines — extremo sur, horizonte oeste despejado",
+                "Sa Foradada / Sa Calobra — acantilados icónicos orientados al oeste"
+            ],
+            "schedule": {
+                "partialStart": "19:38",
+                "totalityStart": "20:35",
+                "totalityEnd": "20:36",
+                "partialEnd": "21:22"
+            },
+            "localEvents": [
+                { "name": "Fiaam — Fundación Instituto de Astronomía de Mallorca", "url": "https://www.europapress.es/illes-balears/noticia-eclipse-solar-total-2026-mallorca-mapa-observar-evento-astronomico-siglo-20250822102117.html" },
+                { "name": "Catamaranes eclipse desde Mallorca", "url": "https://www.oasiscatamaran.com/excursiones-mallorca/eclipse-solar-total-2026-desde-el-mar" }
+            ],
+            "officialUrl": "https://www.caib.es/webgoib/es/vols-saber-ho-tot-sobre-l-eclipsi-del-12-d-agost-de-2026-/"
+        },
+        {
+            "city": "Madrid",
+            "region": "Comunidad de Madrid",
+            "type": "partial",
+            "duration": "99,9%",
+            "contact": "20:31",
+            "lat": 40.4168,
+            "lng": -3.7038,
+            "slug": "madrid",
+            "description": "Justo al sur de la franja de totalidad. La capital ofrece las mejores conexiones de transporte a ubicaciones de totalidad: Somosierra (1m 29s a 45 min), Guadalajara (1m 07s a 35 min), Segovia (57s a 30 min). Dentro de la ciudad el eclipse será parcial al 99,9% — una experiencia impresionante pero sin oscuridad total.",
+            "bestSpots": [
+                "Templo de Debod — horizonte oeste sobre la Casa de Campo",
+                "Casa de Campo — amplio espacio verde con vistas hacia el oeste",
+                "Parque del Oeste — orientación directa al atardecer",
+                "Somosierra (45 min) — totalidad 1m 29s, el punto más largo de Madrid"
+            ],
+            "schedule": {
+                "partialStart": "19:30",
+                "totalityStart": "—",
+                "totalityEnd": "—",
+                "partialEnd": "21:17"
+            },
+            "localEvents": [
+                { "name": "Comunidad de Madrid — 11 puntos de observación + 34 puntos de información", "url": "https://www.comunidad.madrid/trio-eclipses-2026-2027-2028" },
+                { "name": "Agenda descargable de actividades", "url": "https://www.comunidad.madrid/docs/2026-06/eclipse-agenda.pdf" },
+                { "name": "Reparto gratuito de gafas certificadas", "url": "https://www.eldebate.com/espana/madrid/20260320/madrid-vuelca-historico-eclipse-solar-12-agosto-ambicioso-programa-actividades_398028.html" }
+            ],
+            "officialUrl": "https://www.comunidad.madrid/trio-eclipses-2026-2027-2028"
         },
         {
             "city": "Cantabria",
@@ -49,26 +290,6 @@
             "lat": 42.0096,
             "lng": -4.5288,
             "slug": "palencia"
-        },
-        {
-            "city": "Burgos",
-            "region": "Castilla y León",
-            "type": "total",
-            "duration": "1m 44s",
-            "contact": "20:30",
-            "lat": 42.3439,
-            "lng": -3.6969,
-            "slug": "burgos"
-        },
-        {
-            "city": "Valladolid",
-            "region": "Castilla y León",
-            "type": "total",
-            "duration": "1m 28s",
-            "contact": "20:29",
-            "lat": 41.6523,
-            "lng": -4.7245,
-            "slug": "valladolid"
         },
         {
             "city": "Vitoria-Gasteiz",
@@ -101,16 +322,6 @@
             "slug": "soria"
         },
         {
-            "city": "Zaragoza",
-            "region": "Aragón",
-            "type": "total",
-            "duration": "1m 24s",
-            "contact": "20:32",
-            "lat": 41.6488,
-            "lng": -0.8891,
-            "slug": "zaragoza"
-        },
-        {
             "city": "Guadalajara",
             "region": "Castilla-La Mancha",
             "type": "total",
@@ -141,16 +352,6 @@
             "slug": "castellon"
         },
         {
-            "city": "Tarragona",
-            "region": "Cataluña",
-            "type": "total",
-            "duration": "1m 00s",
-            "contact": "20:33",
-            "lat": 41.1189,
-            "lng": 1.2445,
-            "slug": "tarragona"
-        },
-        {
             "city": "Reus",
             "region": "Cataluña",
             "type": "total",
@@ -169,16 +370,6 @@
             "lat": 41.0766,
             "lng": 1.1316,
             "slug": "salou"
-        },
-        {
-            "city": "Mallorca",
-            "region": "Islas Baleares",
-            "type": "total",
-            "duration": "1m 36s",
-            "contact": "20:35",
-            "lat": 39.5696,
-            "lng": 2.6502,
-            "slug": "mallorca"
         },
         {
             "city": "Menorca",
@@ -231,16 +422,6 @@
             "slug": "cuenca"
         },
         {
-            "city": "Valencia",
-            "region": "C. Valenciana",
-            "type": "edge",
-            "duration": "1m 00s",
-            "contact": "20:32",
-            "lat": 39.4699,
-            "lng": -0.3763,
-            "slug": "valencia"
-        },
-        {
             "city": "Lleida",
             "region": "Cataluña",
             "type": "edge",
@@ -259,16 +440,6 @@
             "lat": 41.2242,
             "lng": 1.7257,
             "slug": "vilanova"
-        },
-        {
-            "city": "Madrid",
-            "region": "Comunidad de Madrid",
-            "type": "partial",
-            "duration": "99,9%",
-            "contact": "20:31",
-            "lat": 40.4168,
-            "lng": -3.7038,
-            "slug": "madrid"
         },
         {
             "city": "Salamanca",

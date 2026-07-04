@@ -1,0 +1,136 @@
+{
+    "festivals": [
+        {
+            "id": "iberia-eclipse-festival",
+            "name": "Iberia Eclipse Festival",
+            "date": "10–14 de agosto",
+            "location": "Vinuesa, Soria",
+            "ccaa": "Castilla y León",
+            "type": "festival",
+            "duration": "1m 42s",
+            "description": "Encuentro global de 5 días organizado por 7 crews internacionales. Cuatro escenarios principales con psytrance, house, techno, ambient y bandas en directo. Instalaciones artísticas inmersivas, talleres, charlas y espacios de bienestar. Toda la música se detiene durante los 1m 42s de totalidad.",
+            "url": "https://iberiaeclipse.com/en",
+            "highlights": ["4 escenarios musicales", "Instalaciones artísticas", "Zonas de bienestar", "En la línea central de totalidad"]
+        },
+        {
+            "id": "sizigia-eclipse-gathering",
+            "name": "Sizigia Eclipse Gathering",
+            "date": "10–14 de agosto",
+            "location": "Embalse de Sotonera, Huesca",
+            "ccaa": "Aragón",
+            "type": "festival",
+            "duration": "<1 min",
+            "description": "Festival único de música psicodélica y underground creado específicamente para este eclipse, organizado por el equipo de Own Spirit Festival. Artistas internacionales en múltiples escenarios y observación colectiva del eclipse desde un lugar elevado con horizonte despejado hacia el oeste. Coincide con el pico de las Perseidas.",
+            "url": "https://sizigiaeclipse.com/",
+            "highlights": ["Música underground", "Espacio de sanación", "Arte visionario", "Observación colectiva elevada"]
+        },
+        {
+            "id": "astral-plane-festival",
+            "name": "Astral Plane Festival",
+            "date": "10–12 de agosto",
+            "location": "La Pinilla, Segovia",
+            "ccaa": "Castilla y León",
+            "type": "festival",
+            "duration": "<1 min",
+            "description": "Festival de música electrónica de 3 días (techno, house, acid) en la estación de esquí de La Pinilla, a más de 1.500 m de altitud. El escenario está posicionado para una observación óptima del eclipse, con líneas de visión despejadas. Dentro de la franja de totalidad, cerca del borde sur.",
+            "url": "https://spaineclipsefestival.com/",
+            "highlights": ["3 escenarios", "Música electrónica", "Entorno montaña >1.500m", "Observación desde estación de esquí"]
+        },
+        {
+            "id": "festival-prades",
+            "name": "Festival Eclipse 2026 – Parc Astronòmic Prades",
+            "date": "10–13 de agosto",
+            "location": "Prades, Tarragona",
+            "ccaa": "Cataluña",
+            "type": "festival",
+            "duration": "<1 min",
+            "description": "Festival científico de 4 días organizado por el Parc Astronòmic Prades, destacado por National Geographic como uno de los mejores puntos de observación. Incluye música, talleres, observaciones solares, sesiones de planetario familiar, astrobiología y cohetes de agua para niños. Actividades en catalán, castellano e inglés.",
+            "url": "https://www.parcastronomicprades.cat/es/solar-eclipse-26/",
+            "highlights": ["Planetario familiar", "Talleres de astrobiología", "Cohetes de agua", "Observaciones solares guiadas"]
+        },
+        {
+            "id": "eclipsafest",
+            "name": "EclipsaFest 2026",
+            "date": "Agosto 2026",
+            "location": "Manjirón, Sierra Norte de Madrid",
+            "ccaa": "Comunidad de Madrid",
+            "type": "festival",
+            "duration": "~80 s",
+            "description": "Celebrado en un complejo palaciego del siglo XIX a menos de 45 minutos del centro de Madrid, dentro de la franja de totalidad. Incluye astrónomo dedicado, telescopios solares, pantalla gigante con retransmisión en directo, música ambient y actividades de ocio. Organizado por El Nocturnario.",
+            "url": "https://elnocturnario.com/eclipsafest/",
+            "highlights": ["Palacio del siglo XIX", "Astrónomo dedicado", "Telescopios solares", "Pantalla gigante"]
+        },
+        {
+            "id": "tour-astroaficion",
+            "name": "AstroAfición – Observación Guiada",
+            "date": "12 de agosto",
+            "location": "Finca privada, Burgos",
+            "ccaa": "Castilla y León",
+            "type": "tour",
+            "duration": "~1m 30s",
+            "description": "Excursión de observación guiada por un grupo profesional de astronomía. Incluye telescopios con filtros solares, astrónomos en directo, gafas de eclipse y vino español en una finca privada. Transporte en autobús desde Madrid Chamartín disponible. Opción de pernoctar para observar las Perseidas.",
+            "url": "https://astroaficion.com/producto/eclipse-sol-2026/",
+            "highlights": ["Astrónomos profesionales", "Telescopios con filtros", "Transporte desde Madrid", "Perseidas nocturnas"]
+        },
+        {
+            "id": "tour-sky-telescope",
+            "name": "Sky & Telescope – Aventura del Eclipse Total",
+            "date": "Varios días, agosto 2026",
+            "location": "Barcelona → Madrid (totalidad cerca de Alcañiz)",
+            "ccaa": "Varias",
+            "type": "tour",
+            "duration": "~1m 25s",
+            "description": "Tour astronómico guiado por expertos organizado por la prestigiosa revista Sky & Telescope. Observación del eclipse cerca de Alcañiz en la franja de totalidad con equipo profesional, comentarios de astrónomos y acompañamiento durante todo el viaje.",
+            "url": "https://skyandtelescope.org/astronomy-travel/spain2026/",
+            "highlights": ["Revista Sky & Telescope", "Astrónomos guía", "Equipo profesional", "Itinerario completo"]
+        },
+        {
+            "id": "tour-smithsonian",
+            "name": "Smithsonian Journeys – Eclipse Solar en España",
+            "date": "Varios días, agosto 2026",
+            "location": "Madrid y Castilla, o País Vasco a León",
+            "ccaa": "Varias",
+            "type": "tour",
+            "duration": "~1m 45s",
+            "description": "Tours de viaje educativo organizados por el Smithsonian con guías expertos, diseñados específicamente en torno al eclipse. Dos itinerarios disponibles: Madrid y Castilla la Vieja, o País Vasco hasta León. Ambos posicionan a los viajeros dentro de la franja de totalidad.",
+            "url": "https://www.smithsonianjourneys.org/tours/solar-eclipse-over-spain-madrid/itinerary/",
+            "highlights": ["Institución Smithsonian", "Dos itinerarios", "Guías expertos", "Viaje educativo"]
+        },
+        {
+            "id": "observacion-ala-leon",
+            "name": "ALA Astronomía – Observaciones Públicas",
+            "date": "12 de agosto",
+            "location": "León",
+            "ccaa": "Castilla y León",
+            "type": "observacion",
+            "duration": "~1m 45s",
+            "description": "La Agrupación Leonesa de Astronomía (40º aniversario) organiza observaciones solares públicas en León, ciudad situada en la línea central de máxima duración de totalidad. Coordinado con el ayuntamiento. León no ha visto un eclipse total en más de un siglo.",
+            "url": "https://www.astroleon.org/eventos-astronomicos/eclipse-solar-2026/",
+            "highlights": ["40 aniversario ALA", "Línea central de totalidad", "Observación pública gratuita", "Coordinación municipal"]
+        },
+        {
+            "id": "red-faae",
+            "name": "FAAE – Red de Nodos de Observación (IAU)",
+            "date": "12 de agosto",
+            "location": "Múltiples nodos en la franja de totalidad",
+            "ccaa": "Nacional",
+            "type": "observacion",
+            "duration": "Variable",
+            "description": "Proyecto respaldado por la IAU que construye una red de nodos oficiales de observación a lo largo de la franja de totalidad, cubriendo Aragón, Asturias, Baleares, Cantabria, Castilla y León, Cataluña, Valencia, Galicia, La Rioja y País Vasco. Cada nodo seleccionado por acceso, alojamiento y climatología.",
+            "url": "https://eclipse262728.es/en/eclipse2026/",
+            "highlights": ["Red IAU oficial", "10 CCAA participantes", "Nodos verificados", "Coordinación astronómica"]
+        },
+        {
+            "id": "programa-cesar-esa",
+            "name": "CESAR / ESA – Programa Eclipse Total 2026",
+            "date": "12 de agosto",
+            "location": "Varias ubicaciones",
+            "ccaa": "Nacional",
+            "type": "observacion",
+            "duration": "Variable",
+            "description": "El programa educativo CESAR de la Agencia Espacial Europea ofrece recursos educativos, conferencias, acceso a observatorios, programas de experiencia en ciencias espaciales, recursos para profesores y consultas con astrónomos de la ESA con motivo del eclipse.",
+            "url": "https://cesar.esa.int/index.php?Section=Total_Eclipse_2026",
+            "highlights": ["Agencia Espacial Europea", "Recursos educativos", "Acceso a observatorios", "Consultas con astrónomos ESA"]
+        }
+    ]
+}

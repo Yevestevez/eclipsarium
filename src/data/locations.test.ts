@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import locations from './locations.json';
+import ccaaEvents from './ccaa-events.json';
 
 describe('locations.json', () => {
     it('U05: places is an array with exactly 29 items', () => {
@@ -51,6 +52,32 @@ describe('locations.json', () => {
             expect(place.lat).toBeLessThanOrEqual(50);
             expect(place.lng).toBeGreaterThanOrEqual(-12);
             expect(place.lng).toBeLessThanOrEqual(6);
+        });
+    });
+
+    it('U10: every region in locations.json has matching CCAA entry in ccaa-events.json', () => {
+        const regions = [...new Set(locations.places.map((p) => p.region))];
+        const ccaaNames = ccaaEvents.map((c) => c.ccaa);
+        const missing = regions.filter((r) => !ccaaNames.includes(r));
+        expect(missing).toEqual([]);
+    });
+
+    it('U11: ccaa-events.json has all 12 regions', () => {
+        expect(ccaaEvents).toHaveLength(12);
+    });
+
+    it('U12: each CCAA entry has required fields', () => {
+        ccaaEvents.forEach((entry) => {
+            expect(typeof entry.ccaa).toBe('string');
+            expect(typeof entry.descripcion).toBe('string');
+            expect(entry.descripcion.length).toBeGreaterThan(0);
+            expect(typeof entry.enlace_oficial).toBe('string');
+            expect(entry.enlace_oficial.startsWith('http')).toBe(true);
+            expect(typeof entry.fuente).toBe('string');
+            expect(entry.fuente.length).toBeGreaterThan(0);
+            expect(Array.isArray(entry.puntos)).toBe(true);
+            expect(entry.puntos.length).toBeGreaterThan(0);
+            expect(Array.isArray(entry.eventos)).toBe(true);
         });
     });
 });

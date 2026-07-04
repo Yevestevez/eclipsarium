@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.12.0 (2026-07-04)
+
+- F12: Eventos por CCAA — 12 comunidades con puntos de observación, duraciones y eventos
+- F12: Datos embedidos en cada página de localidad (`[slug].astro`), lookup por región
+- F12: Fuente citada antes de cada bloque de eventos CCAA
+- F12: Cubiertas 12/12 regiones — Aragón, Asturias, C. Valenciana, Cantabria, Castilla y León, Castilla-La Mancha, Cataluña, Madrid, Extremadura (parcial), Galicia, Islas Baleares, País Vasco
+- Build: 30 páginas, 95 tests
+
 ## v1.11.0 (2026-07-04)
 
 - F11: Contenido real para 29 localidades: descripción, horarios exactos, mejores miradores, eventos locales

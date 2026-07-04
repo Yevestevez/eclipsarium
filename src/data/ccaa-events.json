@@ -1,0 +1,324 @@
+[
+    {
+        "ccaa": "Aragón",
+        "slug": "aragon",
+        "descripcion": "Aragón se posiciona como destino astroturístico de referencia con el Observatorio Astrofísico de Javalambre (CEFCA), Galáctica (centro de divulgación cósmica) y el Planetario de Aragón. La comunidad celebra 'La Noche del Sol' y ofrece actividades en sus 594 municipios.",
+        "enlace_oficial": "https://www.turismodearagon.com/eclipse-solar-2026/",
+        "fuente": "Turismo de Aragón",
+        "puntos_observacion": 594,
+        "puntos_informacion": 0,
+        "puntos": [
+            { "nombre": "Teruel — Observatorio Javalambre (CEFCA)", "duracion": "1m 44s" },
+            { "nombre": "Huesca — Embalse de Sotonera", "duracion": "1m 30s" },
+            { "nombre": "Zaragoza — Pza. del Pilar / Parque Grande", "duracion": "1m 10s" },
+            { "nombre": "Huesca capital", "duracion": "1m 25s" },
+            { "nombre": "Jaca", "duracion": "1m 35s" },
+            { "nombre": "Sabiñánigo", "duracion": "1m 32s" },
+            { "nombre": "Albarracín", "duracion": "1m 40s" },
+            { "nombre": "Calatayud", "duracion": "55s" },
+            { "nombre": "Tarazona", "duracion": "1m 00s" },
+            { "nombre": "Huesca — Pirineos (valle de Tena)", "duracion": "1m 38s" }
+        ],
+        "eventos": [
+            { "nombre": "Sizigia Eclipse Gathering (Embalse Sotonera, 10-14 ago)", "url": "https://sizigiaeclipse.com/" },
+            { "nombre": "La Noche del Sol — Javalambre", "url": "https://www.hoyaragon.es/articulo/noticias-aragon/eclipse-solar-total-2026/20250812093351105296.html" },
+            { "nombre": "Galáctica — Centro de divulgación cósmica", "url": "https://aragoninvestiga.es/aragon-escenario-privilegiado-del-eclipse-solar-total-de-2026/" },
+            { "nombre": "Planetario de Aragón — actividades eclipse", "url": "https://www.enjoyzaragoza.es/eclipse-aragon/" },
+            { "nombre": "Astroturismo Aragón — Turespaña", "url": "https://www.tourspain.es/es/b2b/aragon-experiencias-astroturismo-teruel-huesca-zaragoza" }
+        ]
+    },
+    {
+        "ccaa": "Asturias",
+        "slug": "asturias",
+        "descripcion": "Asturias ofrece la totalidad más larga de España con toda la comunidad dentro de la franja. El Gobierno del Principado ha identificado 78 puntos seguros de observación. La costa cantábrica, los Picos de Europa y los lagos de Covadonga son los escenarios más espectaculares.",
+        "enlace_oficial": "https://eclipseasturias2026.ficyt.es/puntos_observacion.php",
+        "fuente": "Gobierno del Principado de Asturias / FICYT",
+        "puntos_observacion": 78,
+        "puntos_informacion": 0,
+        "puntos": [
+            { "nombre": "Cabo de Peñas — mirador costero", "duracion": "1m 48s" },
+            { "nombre": "Mirador del Sablón (Cudillero)", "duracion": "1m 48s" },
+            { "nombre": "Lagos de Covadonga — Picos de Europa", "duracion": "1m 44s" },
+            { "nombre": "Cabo Vidio — acantilado natural", "duracion": "1m 48s" },
+            { "nombre": "Gijón — Cerro de Santa Catalina", "duracion": "1m 46s" },
+            { "nombre": "Oviedo — Monte Naranco", "duracion": "1m 45s" },
+            { "nombre": "Picu Polio (Mieres)", "duracion": "1m 48s" },
+            { "nombre": "Coto Bello (Aller) — a 1.200 m", "duracion": "1m 47s" },
+            { "nombre": "Avilés — paseo marítimo", "duracion": "1m 44s" },
+            { "nombre": "Llanes — playa de Torimbia", "duracion": "1m 42s" },
+            { "nombre": "Somiedo — Parque Natural", "duracion": "1m 46s" },
+            { "nombre": "Cangas de Onís", "duracion": "1m 43s" }
+        ],
+        "eventos": [
+            { "nombre": "Puntos seguros de observación — FICYT", "url": "https://eclipseasturias2026.ficyt.es/puntos_observacion.php" },
+            { "nombre": "Observación en Mieres — Picu Polio", "url": "https://www.elcomercio.es/eclipse/mieres-prepara-vivir-eclipse-solar-maximo-picu-20260405205919-nt.html" },
+            { "nombre": "Guía Eltiempo.es — Asturias", "url": "https://www.eltiempo.es/noticias/los-mejores-rincones-de-asturias-donde-observar-el-eclipse-solar-de-2026" }
+        ]
+    },
+    {
+        "ccaa": "C. Valenciana",
+        "slug": "c-valenciana",
+        "descripcion": "La Generalitat Valenciana ha establecido 8 puntos oficiales de observación con un plan de gestión integral. La provincia de Castellón y el norte de Valencia están en franja de totalidad, con el Sol muy bajo (4°). Web oficial: eclipses.gva.es.",
+        "enlace_oficial": "https://eclipses.gva.es/",
+        "fuente": "Generalitat Valenciana",
+        "puntos_observacion": 8,
+        "puntos_informacion": 0,
+        "puntos": [
+            { "nombre": "Aras de los Olmos", "duracion": "1m 00s" },
+            { "nombre": "Benassal", "duracion": "1m 25s" },
+            { "nombre": "Castellón de la Plana", "duracion": "1m 15s" },
+            { "nombre": "Macastre", "duracion": "45s" },
+            { "nombre": "Peñíscola", "duracion": "1m 20s" },
+            { "nombre": "Puçol", "duracion": "35s" },
+            { "nombre": "Utiel", "duracion": "55s" },
+            { "nombre": "Valencia — Ciutat de les Arts", "duracion": "1m 00s" }
+        ],
+        "eventos": [
+            { "nombre": "Plan de Gestión Eclipse — Generalitat", "url": "https://eclipses.gva.es/" },
+            { "nombre": "Mapa visibilidad por municipios", "url": "https://www.eldebate.com/espana/comunidad-valenciana/20260510/eclipse-solar-2026-mapa-visibilidad-municipios-castellon-valencia-alicante_414664.html" },
+            { "nombre": "Guía Valencia Bonita", "url": "https://www.valenciabonita.es/2026/06/17/eclipse-solar-total-12-agosto-2026-comunitat-valenciana" }
+        ]
+    },
+    {
+        "ccaa": "Cantabria",
+        "slug": "cantabria",
+        "descripcion": "Toda Cantabria está dentro de la franja de totalidad con 51 municipios afectados. El Observatorio Astronómico de Cantabria en Valderredible y Astrocantabria coordinan la divulgación. Los Picos de Europa (Fuente Dé), la bahía de Santander y Comillas son los puntos estrella.",
+        "enlace_oficial": "https://astrocantabria.org/?q=eclipse26",
+        "fuente": "Astrocantabria / Observatorio Astronómico de Cantabria",
+        "puntos_observacion": 51,
+        "puntos_informacion": 0,
+        "puntos": [
+            { "nombre": "Fuente Dé — Teleférico (Picos Europa)", "duracion": "1m 41s" },
+            { "nombre": "Santander — Península de la Magdalena", "duracion": "1m 03s" },
+            { "nombre": "Cabo Mayor — faro de Santander", "duracion": "1m 05s" },
+            { "nombre": "Comillas — El Capricho de Gaudí", "duracion": "1m 24s" },
+            { "nombre": "Santander — playas del Sardinero", "duracion": "1m 03s" },
+            { "nombre": "Torrelavega", "duracion": "1m 22s" },
+            { "nombre": "Potes — Liébana", "duracion": "1m 38s" },
+            { "nombre": "Camaleño", "duracion": "1m 41s" },
+            { "nombre": "Valderredible — Observatorio", "duracion": "1m 36s" },
+            { "nombre": "Castro-Urdiales", "duracion": "35s" },
+            { "nombre": "Laredo", "duracion": "47s" },
+            { "nombre": "Santoña", "duracion": "46s" }
+        ],
+        "eventos": [
+            { "nombre": "Astrocantabria — info eclipse", "url": "https://astrocantabria.org/?q=eclipse26" },
+            { "nombre": "Observatorio Astronómico de Cantabria", "url": "https://www.observatorioastronomicocantabria.com/oac/web/observaciones-eclipse" },
+            { "nombre": "Guía eclipse-solar.es Cantabria", "url": "https://eclipse-solar.es/cantabria/" }
+        ]
+    },
+    {
+        "ccaa": "Castilla y León",
+        "slug": "castilla-y-leon",
+        "descripcion": "La Junta de Castilla y León ha identificado 73 municipios recomendados para la observación del eclipse, con una oferta turística y divulgativa coordinada desde Fitur 2026. La comunidad alberga la mayor duración de totalidad (1m42s en la provincia de Soria) y el Iberia Eclipse Festival en Vinuesa.",
+        "enlace_oficial": "https://www.patrimonioactivocyl.es/actividad/turismo/eclipse-solar-12-de-agosto-2026-castilla-y-leon/",
+        "fuente": "Patrimonio Activo CyL / Junta de Castilla y León",
+        "puntos_observacion": 73,
+        "puntos_informacion": 0,
+        "puntos": [
+            { "nombre": "Vinuesa (Soria)", "duracion": "1m 42s" },
+            { "nombre": "Ágreda (Soria)", "duracion": "1m 38s" },
+            { "nombre": "Soria capital", "duracion": "1m 35s" },
+            { "nombre": "San Leonardo de Yagüe", "duracion": "1m 32s" },
+            { "nombre": "El Burgo de Osma", "duracion": "1m 20s" },
+            { "nombre": "Aranda de Duero (Burgos)", "duracion": "1m 10s" },
+            { "nombre": "Cuéllar (Segovia)", "duracion": "1m 05s" },
+            { "nombre": "La Granja de San Ildefonso", "duracion": "1m 00s" },
+            { "nombre": "Segovia capital", "duracion": "56s" },
+            { "nombre": "Medina del Campo (Valladolid)", "duracion": "45s" },
+            { "nombre": "Valladolid capital", "duracion": "40s" },
+            { "nombre": "Ciudad Rodrigo (Salamanca)", "duracion": "38s" },
+            { "nombre": "Salamanca capital", "duracion": "35s" },
+            { "nombre": "León capital", "duracion": "30s" },
+            { "nombre": "Astorga", "duracion": "28s" },
+            { "nombre": "Ponferrada", "duracion": "15s" }
+        ],
+        "eventos": [
+            { "nombre": "Iberia Eclipse Festival (Vinuesa, 10-14 ago)", "url": "https://iberiaeclipse.com/en" },
+            { "nombre": "Astral Plane Festival (La Pinilla, Segovia, 10-12 ago)", "url": "https://spaineclipsefestival.com/" },
+            { "nombre": "Eclipse Solar 2026 — Patrimonio Activo CyL", "url": "https://www.patrimonioactivocyl.es/actividad/turismo/eclipse-solar-12-de-agosto-2026-castilla-y-leon/" },
+            { "nombre": "Mapa IGN eclipse en CyL", "url": "https://www.cyltv.es/ficha/eclipse-2026" }
+        ]
+    },
+    {
+        "ccaa": "Castilla-La Mancha",
+        "slug": "castilla-la-mancha",
+        "descripcion": "La franja de totalidad cruza el noreste de Castilla-La Mancha, afectando a Guadalajara y Cuenca. El Señorío de Molina, el Parque Natural del Alto Tajo y la Serranía de Cuenca son los enclaves naturales más destacados. Guadalajara ofrece 1m07s de totalidad a solo 35 minutos de Madrid en tren.",
+        "enlace_oficial": "https://www.turismocastillalamancha.es/es/naturaleza/astroturismo/eclipse-total-de-sol-en-castilla-la-mancha",
+        "fuente": "Turismo Castilla-La Mancha",
+        "puntos_observacion": 20,
+        "puntos_informacion": 0,
+        "puntos": [
+            { "nombre": "Guadalajara — Palacio del Infantado", "duracion": "1m 07s" },
+            { "nombre": "Señorío de Molina", "duracion": "1m 30s" },
+            { "nombre": "Parque Natural del Alto Tajo", "duracion": "1m 32s" },
+            { "nombre": "Barranco del Río Dulce", "duracion": "1m 20s" },
+            { "nombre": "Brihuega — campos de lavanda", "duracion": "1m 15s" },
+            { "nombre": "Alcarria — mesetas abiertas", "duracion": "1m 10s" },
+            { "nombre": "Sigüenza", "duracion": "1m 22s" },
+            { "nombre": "Atienza", "duracion": "1m 25s" },
+            { "nombre": "Cuenca — Ciudad Encantada", "duracion": "1m 28s" },
+            { "nombre": "Serranía de Cuenca", "duracion": "1m 30s" },
+            { "nombre": "Mirador del Ventano del Diablo", "duracion": "1m 26s" },
+            { "nombre": "Laguna de Uña", "duracion": "1m 24s" }
+        ],
+        "eventos": [
+            { "nombre": "Turismo Castilla-La Mancha — eclipse", "url": "https://www.turismocastillalamancha.es/es/naturaleza/astroturismo/eclipse-total-de-sol-en-castilla-la-mancha" },
+            { "nombre": "Guía eclipse-solar.es Guadalajara", "url": "https://eclipse-solar.es/guadalajara/" }
+        ]
+    },
+    {
+        "ccaa": "Cataluña",
+        "slug": "cataluna",
+        "descripcion": "Cataluña participa con la iniciativa 'Catalunya mira al cielo', que coordina 26 puntos de observación en 20 municipios, principalmente en la provincia de Lleida y Tarragona. El Parc Astronòmic Prades organiza su propio festival científico.",
+        "enlace_oficial": "https://eclipsicatalunya.cat/es/puntos-de-observacion",
+        "fuente": "Eclipsi Catalunya",
+        "puntos_observacion": 26,
+        "puntos_informacion": 0,
+        "puntos": [
+            { "nombre": "Pallars Sobirà — Espot", "duracion": "1m 45s" },
+            { "nombre": "Alta Ribagorça — Vall de Boí", "duracion": "1m 42s" },
+            { "nombre": "Val d'Aran — Vielha", "duracion": "1m 40s" },
+            { "nombre": "Pallars Jussà — La Pobla de Segur", "duracion": "1m 38s" },
+            { "nombre": "Alt Urgell — La Seu d'Urgell", "duracion": "1m 32s" },
+            { "nombre": "Cerdanya — Puigcerdà", "duracion": "1m 28s" },
+            { "nombre": "Solsonès — Solsona", "duracion": "1m 20s" },
+            { "nombre": "Noguera — Àger", "duracion": "1m 18s" },
+            { "nombre": "Segarra — Cervera", "duracion": "1m 05s" },
+            { "nombre": "Urgell — Tàrrega", "duracion": "58s" },
+            { "nombre": "Pla d'Urgell — Mollerussa", "duracion": "50s" },
+            { "nombre": "Garrigues — Les Borges Blanques", "duracion": "48s" },
+            { "nombre": "Segrià — Lleida", "duracion": "45s" },
+            { "nombre": "Baix Camp — Prades", "duracion": "40s" },
+            { "nombre": "Ribera d'Ebre — Flix", "duracion": "35s" },
+            { "nombre": "Terra Alta — Horta de Sant Joan", "duracion": "30s" },
+            { "nombre": "Priorat — Falset", "duracion": "28s" },
+            { "nombre": "Baix Ebre — Tortosa", "duracion": "20s" },
+            { "nombre": "Montsià — Amposta", "duracion": "15s" },
+            { "nombre": "Tarragonès — Salou", "duracion": "10s" }
+        ],
+        "eventos": [
+            { "nombre": "Festival Eclipse 2026 — Parc Astronòmic Prades (10-13 ago)", "url": "https://www.parcastronomicprades.cat/es/solar-eclipse-26/" },
+            { "nombre": "Eclipsi Catalunya — 26 puntos de observación", "url": "https://eclipsicatalunya.cat/es/puntos-de-observacion" },
+            { "nombre": "Actividades Salou", "url": "https://www.visitsalou.eu/es/durante-tu-visita/informacion-util/actividades/eclipse-total" }
+        ]
+    },
+    {
+        "ccaa": "Comunidad de Madrid",
+        "slug": "comunidad-de-madrid",
+        "descripcion": "La Comunidad de Madrid se vuelca con el eclipse con 11 puntos de observación privilegiados en la Sierra Norte y 34 puntos de información 'Pueblos con Vida'. La duración de la totalidad disminuye de norte a sur, desde 1m29s en Somosierra hasta 35s en San Sebastián de los Reyes.",
+        "enlace_oficial": "https://www.comunidad.madrid/trio-eclipses-2026-2027-2028",
+        "fuente": "Comunidad de Madrid",
+        "puntos_observacion": 11,
+        "puntos_informacion": 34,
+        "puntos": [
+            { "nombre": "Somosierra", "duracion": "1m 29s" },
+            { "nombre": "Buitrago de Lozoya", "duracion": "1m 19s" },
+            { "nombre": "La Cabrera", "duracion": "1m 11s" },
+            { "nombre": "El Molar", "duracion": "1m 01s" },
+            { "nombre": "Meco", "duracion": "55s" },
+            { "nombre": "San Agustín del Guadalix", "duracion": "53s" },
+            { "nombre": "Navacerrada", "duracion": "49s" },
+            { "nombre": "Colmenar Viejo", "duracion": "43s" },
+            { "nombre": "Alcalá de Henares", "duracion": "41s" },
+            { "nombre": "Tres Cantos", "duracion": "36s" },
+            { "nombre": "San Sebastián de los Reyes", "duracion": "35s" }
+        ],
+        "eventos": [
+            { "nombre": "Pueblos con Vida — 34 puntos de información", "url": "https://www.comunidad.madrid/trio-eclipses-2026-2027-2028" },
+            { "nombre": "Reparto de gafas de eclipse", "url": "https://www.comunidad.madrid/trio-eclipses-2026-2027-2028" }
+        ]
+    },
+    {
+        "ccaa": "Extremadura",
+        "slug": "extremadura",
+        "descripcion": "Extremadura está fuera de la franja de totalidad y verá un eclipse parcial profundo (~98% de cobertura). Para presenciar la totalidad hay que desplazarse al norte (Zamora, León o Salamanca). La región ofrece un extraordinario valor cultural: Mérida romana, Cáceres medieval y el Parque Nacional de Monfragüe.",
+        "enlace_oficial": "https://www.turismoextremadura.com/",
+        "fuente": "Turismo Extremadura",
+        "puntos_observacion": 0,
+        "puntos_informacion": 0,
+        "puntos": [
+            { "nombre": "Eclipse parcial (~98%) — sin puntos de totalidad en la región", "duracion": "Parcial" }
+        ],
+        "eventos": [
+            { "nombre": "Turismo Extremadura — info eclipse", "url": "https://www.turismoextremadura.com/" },
+            { "nombre": "Guía eclipse-solar.es Extremadura", "url": "https://eclipse-solar.es/extremadura/" },
+            { "nombre": "Astroturismo por Extremadura", "url": "https://astroturismoporextremadura.es/eclipse-total" }
+        ]
+    },
+    {
+        "ccaa": "Galicia",
+        "slug": "galicia",
+        "descripcion": "Galicia es el kilómetro cero del eclipse en la península, con 143 municipios afectados según la Xunta. La costa atlántica, los acantilados de Vixía da Herbeira y la Torre de Hércules (UNESCO) son los escenarios más espectaculares. El eclipse entra por A Coruña a las 20:27.",
+        "enlace_oficial": "https://www.turismo.gal/que-facer/eclipse?langId=es_ES",
+        "fuente": "Xunta de Galicia / Turismo de Galicia",
+        "puntos_observacion": 143,
+        "puntos_informacion": 0,
+        "puntos": [
+            { "nombre": "A Coruña — Torre de Hércules", "duracion": "1m 16s" },
+            { "nombre": "Acantilados de Vixía da Herbeira", "duracion": "1m 12s" },
+            { "nombre": "Estaca de Bares", "duracion": "1m 10s" },
+            { "nombre": "Monte San Pedro (A Coruña)", "duracion": "1m 16s" },
+            { "nombre": "Faro de Punta Roncadoira", "duracion": "1m 08s" },
+            { "nombre": "O Fuciño do Porco", "duracion": "1m 06s" },
+            { "nombre": "Cabo Vilán", "duracion": "1m 02s" },
+            { "nombre": "Ferrol", "duracion": "1m 14s" },
+            { "nombre": "Mariña Lucense — playas y acantilados", "duracion": "1m 10s" },
+            { "nombre": "Ribadeo", "duracion": "1m 05s" },
+            { "nombre": "Foz", "duracion": "1m 04s" },
+            { "nombre": "Narón", "duracion": "1m 12s" }
+        ],
+        "eventos": [
+            { "nombre": "Turismo de Galicia — rutas eclipse", "url": "https://www.turismo.gal/que-facer/eclipse?langId=es_ES" },
+            { "nombre": "Xunta — comisión interdepartamental eclipse", "url": "https://www.elespanol.com/quincemil/economia/turismo/20260124/confirmado-xunta-mejores-lugares-galicia-ver-gran-eclipse-sol-agosto/1003744099973_0.html" },
+            { "nombre": "Miradores Galicia — TresEclipses", "url": "https://www.treseclipses.es/eclipses/2026-total/miradores/galicia" }
+        ]
+    },
+    {
+        "ccaa": "Islas Baleares",
+        "slug": "islas-baleares",
+        "descripcion": "Baleares ofrece visionados únicos desde la Serra de Tramuntana (Mallorca) y excursiones en catamarán para observar el eclipse desde el mar. La visibilidad parcial desde las islas convierte la costa norte de Mallorca en el punto preferente.",
+        "enlace_oficial": "https://www.caib.es/webgoib/es/vols-saber-ho-tot-sobre-l-eclipsi-del-12-d-agost-de-2026-",
+        "fuente": "Govern Illes Balears",
+        "puntos_observacion": 10,
+        "puntos_informacion": 0,
+        "puntos": [
+            { "nombre": "Serra de Tramuntana — Puig Major", "duracion": "Parcial 85%" },
+            { "nombre": "Deià", "duracion": "Parcial 82%" },
+            { "nombre": "Valldemossa", "duracion": "Parcial 82%" },
+            { "nombre": "Sóller", "duracion": "Parcial 80%" },
+            { "nombre": "Formentor", "duracion": "Parcial 78%" },
+            { "nombre": "Alcúdia", "duracion": "Parcial 76%" },
+            { "nombre": "Palma", "duracion": "Parcial 70%" },
+            { "nombre": "Menorca — Ciutadella", "duracion": "Parcial 65%" },
+            { "nombre": "Eivissa", "duracion": "Parcial 60%" },
+            { "nombre": "Catamarán eclipse (Mallorca)", "duracion": "Parcial 80%" }
+        ],
+        "eventos": [
+            { "nombre": "Rutas eclipse — Serra de Tramuntana", "url": "https://www.europapress.es/illes-balears/noticia-eclipse-solar-total-2026-mallorca-mapa-observar-evento-astronomico-siglo-20250822102117.html" },
+            { "nombre": "Catamarán eclipse solar", "url": "https://www.oasiscatamaran.com/excursiones-mallorca/eclipse-solar-total-2026-desde-el-mar" },
+            { "nombre": "Govern Balear — información oficial", "url": "https://www.caib.es/webgoib/es/vols-saber-ho-tot-sobre-l-eclipsi-del-12-d-agost-de-2026-" }
+        ]
+    },
+    {
+        "ccaa": "País Vasco",
+        "slug": "pais-vasco",
+        "descripcion": "El País Vasco está dividido por el límite norte de la franja de totalidad. Vitoria-Gasteiz es la mejor opción (>1 minuto), Bilbao queda en el borde (~31s) y San Sebastián ve un eclipse parcial extremo (99.6%). El riesgo de nubes es significativo por el clima marítimo.",
+        "enlace_oficial": "https://eclipse-solar.es/pais-vasco/",
+        "fuente": "Eclipse Solar España",
+        "puntos_observacion": 5,
+        "puntos_informacion": 0,
+        "puntos": [
+            { "nombre": "Vitoria-Gasteiz — humedales de Salburua", "duracion": "1m 02s" },
+            { "nombre": "Vitoria-Gasteiz — parques y miradores", "duracion": "1m 02s" },
+            { "nombre": "Bilbao — Monte Artxanda (funicular)", "duracion": "31s" },
+            { "nombre": "Bilbao — paseo de la ría", "duracion": "31s" },
+            { "nombre": "San Sebastián — Monte Igueldo (parcial)", "duracion": "Parcial 99.6%" }
+        ],
+        "eventos": [
+            { "nombre": "Guía eclipse-solar.es País Vasco", "url": "https://eclipse-solar.es/pais-vasco/" },
+            { "nombre": "CEA Vitoria-Gasteiz — programa eclipse", "url": "https://gasteizberri.com/2026/03/agenda-cea-eclipse-2026-vitoria-gasteiz/" },
+            { "nombre": "Eclipse en Bilbao — Instituto Hemingway", "url": "https://www.institutohemingway.com/es/noticias/2502/quieres-ver-en-bilbao-el-eclipse-total-solar-el-12-de-agosto.html" }
+        ]
+    }
+]

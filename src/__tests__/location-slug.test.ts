@@ -92,6 +92,151 @@ describe('[slug].astro', () => {
         expect(html).toContain('parcial');
     });
 
+    it('renders CCAA observation points for matching region (Castilla y León)', async () => {
+        const container = await AstroContainer.create();
+        const html = await container.renderToString(LocationPage, {
+            props: {
+                place: {
+                    city: 'Burgos',
+                    region: 'Castilla y León',
+                    duration: '1m 30s',
+                    contact: '18:10',
+                    slug: 'burgos',
+                    type: 'edge',
+                    lat: 42.34,
+                    lng: -3.7,
+                    description: 'Test description',
+                    bestSpots: [],
+                    localEvents: [],
+                    schedule: {
+                        partialStart: '19:30',
+                        partialEnd: '21:15',
+                    },
+                },
+            },
+        });
+
+        expect(html).toContain('Puntos de observación en Castilla y León');
+        expect(html).toContain('73 puntos');
+        expect(html).toContain('Vinuesa (Soria)');
+        expect(html).toContain('1m 42s');
+        expect(html).toContain('Iberia Eclipse Festival');
+        expect(html).toContain('Fuente:');
+        expect(html).toContain('Patrimonio Activo CyL');
+    });
+
+    it('renders CCAA observation points for Comunidad de Madrid', async () => {
+        const container = await AstroContainer.create();
+        const html = await container.renderToString(LocationPage, {
+            props: {
+                place: {
+                    city: 'Madrid',
+                    region: 'Comunidad de Madrid',
+                    duration: '93%',
+                    contact: '18:15',
+                    slug: 'madrid',
+                    type: 'partial',
+                    lat: 40.42,
+                    lng: -3.7,
+                    description: 'Test description',
+                    bestSpots: [],
+                    localEvents: [],
+                    schedule: {
+                        partialStart: '19:30',
+                        partialEnd: '21:15',
+                    },
+                },
+            },
+        });
+
+        expect(html).toContain('Puntos de observación en Comunidad de Madrid');
+        expect(html).toContain('Somosierra');
+        expect(html).toContain('1m 29s');
+        expect(html).toContain('11 puntos');
+        expect(html).toContain('34 de información');
+    });
+
+    it('does not render CCAA section when place has no description (hasDetails = false)', async () => {
+        const container = await AstroContainer.create();
+        const html = await container.renderToString(LocationPage, {
+            props: {
+                place: {
+                    city: 'A Coruña',
+                    region: 'Galicia',
+                    duration: '1m 48s',
+                    contact: '18:28',
+                    slug: 'a-coruna',
+                    type: 'total',
+                    lat: 43.37,
+                    lng: -8.41,
+                },
+            },
+        });
+
+        expect(html).not.toContain('Puntos de observación en Galicia');
+    });
+
+    it('renders CCAA observation points for Extremadura (eclipse parcial)', async () => {
+        const container = await AstroContainer.create();
+        const html = await container.renderToString(LocationPage, {
+            props: {
+                place: {
+                    city: 'Mérida',
+                    region: 'Extremadura',
+                    duration: '98%',
+                    contact: '18:20',
+                    slug: 'merida',
+                    type: 'partial',
+                    lat: 38.92,
+                    lng: -6.34,
+                    description: 'Test description',
+                    bestSpots: [],
+                    localEvents: [],
+                    schedule: {
+                        partialStart: '19:30',
+                        partialEnd: '21:15',
+                    },
+                },
+            },
+        });
+
+        expect(html).toContain('Puntos de observación en Extremadura');
+        expect(html).toContain('eclipse parcial');
+        expect(html).toContain('98%');
+        expect(html).toContain('Fuente:');
+        expect(html).toContain('Turismo Extremadura');
+    });
+
+    it('renders CCAA observation points for País Vasco (borde de franja)', async () => {
+        const container = await AstroContainer.create();
+        const html = await container.renderToString(LocationPage, {
+            props: {
+                place: {
+                    city: 'Vitoria-Gasteiz',
+                    region: 'País Vasco',
+                    duration: '1m 02s',
+                    contact: '18:12',
+                    slug: 'vitoria-gasteiz',
+                    type: 'edge',
+                    lat: 42.85,
+                    lng: -2.67,
+                    description: 'Test description',
+                    bestSpots: [],
+                    localEvents: [],
+                    schedule: {
+                        partialStart: '19:30',
+                        partialEnd: '21:15',
+                    },
+                },
+            },
+        });
+
+        expect(html).toContain('Puntos de observación en País Vasco');
+        expect(html).toContain('Vitoria-Gasteiz');
+        expect(html).toContain('1m 02s');
+        expect(html).toContain('Fuente:');
+    });
+
     it('renders back link to /#donde', async () => {
         const container = await AstroContainer.create();
         const html = await container.renderToString(LocationPage, {

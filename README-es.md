@@ -21,10 +21,10 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-1.11.0-blue?style=flat-square" alt="versión">
+  <img src="https://img.shields.io/badge/version-1.12.0-blue?style=flat-square" alt="versión">
   <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="licencia">
   <img src="https://img.shields.io/badge/Astro-6.4.2-purple?style=flat-square" alt="Astro">
-  <img src="https://img.shields.io/badge/tests-87%20unit%20|%2092%20e2e-brightgreen?style=flat-square" alt="tests">
+  <img src="https://img.shields.io/badge/tests-95%20unit%20|%2092%20e2e-brightgreen?style=flat-square" alt="tests">
   <img src="https://img.shields.io/badge/PRs-welcome-orange?style=flat-square" alt="PRs bienvenidos">
 </p>
 
@@ -51,6 +51,7 @@
 | 🌗  | **Tema claro/oscuro** — Interruptor sol/luna animado. Persiste en localStorage. Respeta `prefers-color-scheme`. El mapa cambia tiles via MutationObserver.           |
 | 📰  | **Eventos próximos** — Obtenidos de API externa en tiempo de build. Fallback JSON si la API no responde.                                                             |
 | 💬  | **FAQ + mitos** — 10 preguntas reales + 6 mitos desmentidos. Acordeón `<details>`, fuentes de NASA/ESA.                                                              |
+| 🏘️  | **Puntos por CCAA** — 12 comunidades con puntos de observación verificados, duraciones, eventos y fuentes oficiales. Integrados en cada página de localidad.         |
 | ♿  | **Accesible** — axe-core: 0 violaciones críticas. HTML semántico, regiones `aria-live`, `prefers-reduced-motion`.                                                    |
 | 📱  | **Responsive** — Mobile-first, funciona desde 360px.                                                                                                                 |
 
@@ -69,7 +70,7 @@ Changelog completo → [`CHANGELOG.md`](CHANGELOG.md)
 | Geocoding   | [Nominatim](https://nominatim.org/) — 2 fases: global + España                                                    |
 | CSS         | Propiedades personalizadas (design tokens), estilos scoped por componente                                         |
 | Lenguaje    | [TypeScript](https://www.typescriptlang.org/) — tipos en frontmatter `.astro`, scripts vanilla, tests             |
-| Tests unit. | [Vitest](https://vitest.dev/) `^4.1.9` — 87 tests, 13 suites                                                      |
+| Tests unit. | [Vitest](https://vitest.dev/) `^4.1.9` — 95 tests, 13 suites                                                      |
 | E2E + a11y  | [Playwright](https://playwright.dev/) `^1.61.0` + [axe-core](https://www.deque.com/axe/) — 92 tests, 9 spec files |
 | Entorno     | Node `>=22.13.0` · pnpm                                                                                           |
 
@@ -105,6 +106,7 @@ src/
 │   └── WhereToWatch.astro  # lista localidades + buscador + mapa
 ├── data/                   # JSON estático + tests co-localizados
 │   ├── activities.json
+│   ├── ccaa-events.json
 │   ├── event.json
 │   ├── events-fallback.json
 │   ├── faq.json
@@ -133,7 +135,7 @@ Tres capas, todas ejecutables sin servicios externos:
 
 | Capa          | Herramienta | Cuenta                  | Ámbito                                                                 |
 | ------------- | ----------- | ----------------------- | ---------------------------------------------------------------------- |
-| Unitarios     | Vitest      | 87 tests / 13 suites    | Renderizado de componentes, validación de datos, cobertura de fallback |
+| Unitarios     | Vitest      | 95 tests / 13 suites    | Renderizado de componentes, validación de datos, cobertura de fallback |
 | E2E           | Playwright  | 92 tests / 9 spec files | Navegación, interactividad, scroll, flujo del quiz, búsqueda           |
 | Accesibilidad | axe-core    | Integrado en E2E        | 0 violaciones críticas en todas las secciones clave                    |
 

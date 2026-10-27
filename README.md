@@ -73,7 +73,7 @@ Full changelog → [`CHANGELOG.md`](CHANGELOG.md)
 | Language   | [TypeScript](https://www.typescriptlang.org/) — types in frontmatter `.astro`, vanilla scripts, tests             |
 | Unit tests | [Vitest](https://vitest.dev/) `^4.1.9` — 103 tests, 15 suites                                                     |
 | E2E + a11y | [Playwright](https://playwright.dev/) `^1.61.0` + [axe-core](https://www.deque.com/axe/) — 92 tests, 9 spec files |
-| Runtime    | Node `>=22.13.0` · pnpm                                                                                           |
+| Runtime    | Node `>=22.23.4` · pnpm                                                                                           |
 
 ---
 

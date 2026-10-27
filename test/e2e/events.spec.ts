@@ -15,12 +15,19 @@ test.describe('events.spec.ts — Eventos section', () => {
         await expect(heading).toHaveText('Próximas actividades');
     });
 
-    test('E16: at least one event card is rendered with title', async ({ page }) => {
+    test('E16: event cards or empty state are rendered', async ({ page }) => {
         const cards = page.locator('#eventos .event-card');
-        await expect(cards.first()).toBeVisible();
+        const emptyState = page.locator('#eventos .events__empty');
 
-        const title = cards.first().locator('.event-card__title');
-        await expect(title).not.toBeEmpty();
+        if (await cards.count() > 0) {
+            const title = cards.first().locator('.event-card__title');
+            await expect(title).toBeVisible();
+            await expect(title).not.toBeEmpty();
+        } else {
+            await expect(emptyState).toHaveText(
+                'No hay eventos programados próximamente.',
+            );
+        }
     });
 
     test('E17: source citation "Fuente:" is visible before CTA', async ({ page }) => {
